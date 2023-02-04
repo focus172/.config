@@ -1,0 +1,16 @@
+#
+# ~/.config/.gitignore
+#
+
+# Ignore macOS specific files
+configstore/
+jgit/
+sketchybar/
+skhd/
+wireshark/
+yabai/
+
+# Ignore linux specific files
+
+
+
