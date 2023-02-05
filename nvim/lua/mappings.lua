@@ -10,7 +10,7 @@ vim.g.mapleader = " "
 
 -- setting key maps --
 vim.api.nvim_set_keymap("", "Y", "y$", opts)
--- vim.api.nvim_set_keymap("", "<leader>e", ":Ex<CR>", opts)
+vim.api.nvim_set_keymap("", "<leader>e", ":Ex<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>s", ":w<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leaader>q", ":q<CR>", opts)
 

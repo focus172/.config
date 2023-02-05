@@ -9,10 +9,13 @@ sketchybar/
 skhd/
 wireshark/
 yabai/
+discord/
 
 # Ignore linux specific files
+cef_user_data/
+pulse/
+htop/
+user-dirs.*
+dconf/
 
 
-
-
-nvim/plugin/packer_compiled.lua

@@ -1,0 +1,35 @@
+# /* vim: set filetype=conf : */
+
+input type:touchpad {
+    # Enale natural scrolling by default
+    # (Inverted Scrolling)
+    natural_scroll enabled
+
+    # Factor of scroll speed
+    # 1 = Default, 0.5 = 50% Speed
+    scroll_factor 0.5
+
+    # Disable while typing
+    dwt enabled
+
+    # Tap to click enabled
+    tap enabled
+    # One finger tap for LMB and two finger tap for RMB
+    tap_button_map lrm
+}
+
+input * {
+    # Enable the Compose Key for special characters
+    # Such as ö with [ralt]+["]+o
+    #
+    # Remap Capslock to Escape
+    xkb_options "compose:ralt, caps:escape"
+
+    # Enable numpad by default
+    xkb_numlock enabled
+}
+
+# Go GERMAN
+input 1133:49978:Logitech_G413_Carbon_Mechanical_Gaming_Keyboard {
+    xkb_layout de
+}
