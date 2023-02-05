@@ -11,6 +11,7 @@ wireshark/
 yabai/
 discord/
 
+
 # Ignore linux specific files
 cef_user_data/
 pulse/
@@ -18,3 +19,4 @@ user-dirs.*
 dconf/
 Code\ -\ OSS/
 Electron/
+htop/
