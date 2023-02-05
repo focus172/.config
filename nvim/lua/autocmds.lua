@@ -28,11 +28,3 @@ autocmd("FileType", {
   end,
 })
 
--- Automatically fold implementation files
-autocmd("FileType", {
-  pattern = { "c", "cpp", "objc" },
-  callback = function()
-    vim.cmd("set foldlevel=0")
-    vim.cmd("set foldnestmax=1")
-  end,
-})

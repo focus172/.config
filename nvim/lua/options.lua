@@ -1,3 +1,9 @@
+-------------- --
+-- options.lua --
+-- @Focus172   --
+-- ----------- --
+
+-- Options --
 vim.opt.clipboard = "unnamed"
 vim.opt.cul = false
 vim.opt.expandtab = true
@@ -11,15 +17,18 @@ vim.opt.tabstop = 8
 vim.opt.timeoutlen = 400
 vim.opt.undofile = true
 vim.opt.showmode = true
-
 vim.opt.laststatus = 3
 vim.opt.statusline=' '
-vim.opt.cmdheight = 0
 
-vim.cmd("set foldcolumn=1")
-vim.cmd("set foldenable")
-vim.cmd("set foldlevel=99")
-vim.cmd("set foldmethod=indent")
-vim.cmd("set foldnestmax=99")
+-- Commands --
 vim.cmd("set termguicolors")
-vim.cmd("set colorcolumn=80")
+
+-- --------------------------------------- --
+-- this requires commands to be confirmed  --
+--       vim.opt.cmdheight = 0             --
+-- --------------------------------------- --
+
+-- ----------------------------------------------- --
+-- this adds an ugly bar on the side of the screen --
+--              vim.cmd("set colorcolumn=80")      --
+-- --------------------------------------------------
