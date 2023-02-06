@@ -10,7 +10,7 @@ skhd/
 wireshark/
 yabai/
 discord/
-
+Autodesk/
 
 # Ignore linux specific files
 cef_user_data/
@@ -20,3 +20,9 @@ dconf/
 Code\ -\ OSS/
 Electron/
 htop/
+
+# Ignore general files
+nvim/plugin/
+
+
+nvim.back/

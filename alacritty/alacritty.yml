@@ -112,8 +112,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    # family: Liga SFMono Nerd Font
-    family: monospace
+    family: Liga SFMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -124,20 +123,18 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    # family: Liga SFMono Nerd Font
-    family: monospace
+    family: Liga SFMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold
 
   # Italic font face
-  #italic:
+  italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    # family: Liga SFMono Nerd Font
-    family: monospace
+    family: Liga SFMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -148,14 +145,13 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    # family: Liga SFMono Nerd Font
-    family: monospace
-
+    family: Liga SFMono Nerd Font
+    
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -181,9 +177,7 @@ font:
 #draw_bold_text_with_bright_colors: false
 
 color_schemes:
-
-
-
+ 
   latte: &latte
 
     # Default colors
@@ -431,8 +425,6 @@ color_schemes:
       - { index: 16, color: '#F5A97F' }
       - { index: 17, color: '#F4DBD6' }
 
-
-
   mocha: &mocha
 
     # Default colors
@@ -514,9 +506,43 @@ color_schemes:
       - { index: 16, color: '#FAB387' }
       - { index: 17, color: '#F5E0DC' }
 
+  # Colors (Gruvbox dark)
+  gruvbox: &gruvbox 
+    primary:
+      # hard contrast: background = '#1d2021'
+      background: '#1d2021'
+      # soft contrast: background = '#32302f'
+      foreground: '#ebdbb2'
 
+    # Normal colors
+    normal:
+      black:   '#282828'
+      red:     '#cc241d'
+      green:   '#98971a'
+      yellow:  '#d79921'
+      blue:    '#458588'
+      magenta: '#b16286'
+      cyan:    '#689d6a'
+      white:   '#a89984'
 
-colors: *frappe
+    # Bright colors
+    bright:
+      black:   '#928374'
+      red:     '#fb4934'
+      green:   '#b8bb26'
+      yellow:  '#fabd2f'
+      blue:    '#83a598'
+      magenta: '#d3869b'
+      cyan:    '#8ec07c'
+      white:   '#ebdbb2'
+
+# Options
+# - latte (light)
+# - mocha
+# - frappe
+# - macchiato
+# - gruvbox
+colors: *gruvbox
 
 cursor:
   # Cursor style
@@ -537,25 +563,6 @@ cursor:
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
     blinking: Off
-
-  # Vi mode cursor style
-  #
-  # If the vi mode cursor style is `None` or not specified, it will fall back to
-  # the style of the active value of the normal cursor.
-  #
-  # See `cursor.style` for available options.
-  #vi_mode_style: None
-
-  # Cursor blinking interval in milliseconds.
-  #blink_interval: 750
-
-  # If this is `true`, the cursor will be rendered as a hollow box when the
-  # window is not focused.
-  #unfocused_hollow: true
-
-  # Thickness of the cursor relative to the cell width as floating point number
-  # from `0.0` to `1.0`.
-  #thickness: 0.15
 
 # Live config reload (changes require restart)
 #live_config_reload: true
