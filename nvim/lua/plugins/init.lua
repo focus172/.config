@@ -20,7 +20,7 @@ local options = {
   },
 }
 
-return require('packer').startup(function(use)
+return require('lazy').startup(function(use)
   require('packer').init(options)
 
   use 'wbthomason/packer.nvim'

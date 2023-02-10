@@ -5,7 +5,7 @@ export PATH="$PATH:/Users/evanstokdyk/.local/bin:/Users/evanstokdyk/.pub-cache/b
 # add things as vars needed for stuff
 eval "$(/opt/homebrew/bin/brew shellenv)"
 /bin/sh ~/.cargo/env
-export XDG_CONFIG_HOME="~/.config"
+export XDG_CONFIG_HOME="/Users/evanstokdyk/.config"
 
 # don't write dumb files
 export LESSHISTFILE="/dev/null"
@@ -26,6 +26,8 @@ if status is-interactive
   alias c="clear"
   alias ls="ls --color=tty"
 
+  # math shit
+  alias math="math \"$1\""
 
   # Start starship
   # eval "$(starship init fish)"
