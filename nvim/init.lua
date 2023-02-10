@@ -3,6 +3,7 @@
 --
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+print("lazy path: " .. lazypath)
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -16,10 +17,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { "catppuccin/nvim", name = "catppuccin" },
+  require "plugin"
 })
 
 require "options"
 require "mappings"
 require "autocmds"
-require "plugins"

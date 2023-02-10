@@ -4,15 +4,16 @@
 -- ------------ --
 
 local opts = { silent = true, noremap = false }
+local km = vim.api.nvim_set_keymap
 
 -- setting leader key and mapping it to do nothing
 vim.g.mapleader = " "
 
 -- setting key maps --
-vim.api.nvim_set_keymap("", "Y", "y$", opts)
-vim.api.nvim_set_keymap("", "<leader>e", ":Ex<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>s", ":w<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leaader>q", ":q<CR>", opts)
+km("", "Y", "y$", opts)
+km("", "<leader>e", ":Ex<CR>", opts)
+km("n", "<leader>s", ":w<CR>", opts)
+km("n", "<leaader>q", ":q<CR>", opts)
 
 --vim.api.nvim_set_keymap("n", "<TAB>", ":BufferLineCycleNext<CR>", opts)
 --vim.api.nvim_set_keymap("n", "<S-TAB>", ":BufferLineCyclePrev<CR>", opts)
