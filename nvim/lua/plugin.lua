@@ -24,6 +24,15 @@ return {
   catppuccin,
   --tokyonight,
 
+  {
+    "williamboman/mason.nvim",
+    name = "mason",
+    lazy = false, -- as per github recommendation
+    config = function()
+      require("plugin_config.mason")
+    end,
+  }
+
   --[[
   -- I have a separate config.mappings file where I require which-key.
   -- With lazy the plugin will be automatically loaded when it is required somewhere

@@ -21,14 +21,6 @@ vim.opt.laststatus = 3
 vim.opt.statusline=' '
 
 -- Commands --
-vim.cmd("set termguicolors")
+-- vim.cmd("set termguicolors")
+vim.cmd("set shortmess+=c")
 
--- --------------------------------------- --
--- this requires commands to be confirmed  --
---       vim.opt.cmdheight = 0             --
--- --------------------------------------- --
-
--- ----------------------------------------------- --
--- this adds an ugly bar on the side of the screen --
---              vim.cmd("set colorcolumn=80")      --
--- --------------------------------------------------
