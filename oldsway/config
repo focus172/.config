@@ -21,6 +21,8 @@
 
 
 
+
+
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
@@ -30,18 +32,18 @@
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
-set $mod Mod4
+ # set $mod Mod4
 # Home row direction keys, like vim
-  set $left h
-  set $down j
-  set $up k
-  set $right l
+ # set $left h
+ # set $down j
+ # set $up k
+ # set $right l
 # Your preferred terminal emulator
   set $term alacritty 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu exec wofi --show 
+ # set $menu exec wofi --show drun 
 
 ### Output configuration
 #

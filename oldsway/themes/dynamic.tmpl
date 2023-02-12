@@ -1,0 +1,41 @@
+{{ if (index .theme "background_image") }}
+output * bg {{ .theme.background_image }} stretch
+{{ else }}
+output * bg {{ .theme.dark }} solid_color
+{{ end }}
+
+set $focused_bgcolor {{ .theme.hint }}
+set $focused_textcolor {{ .theme.dark }}
+set $focused_indicator {{ .theme.primary }}
+
+set $inactive_bgcolor {{ .theme.white }}
+set $inactive_textcolor {{ .theme.dark }}
+set $inactive_indicator {{ .theme.white }}
+
+set $unfocused_bgcolor {{ .theme.secondary }}
+set $unfocused_textcolor {{ .theme.dark }}
+set $unfocused_indicator {{ .theme.secondary }}
+
+set $urgent_bgcolor {{ .theme.primary }}
+set $urgent_textcolor {{ .theme.hint }}
+set $urgent_indicator {{ .theme.hint }}
+
+
+# Set inner/outer gaps
+default_border normal 0
+gaps inner 0
+gaps outer 0
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+smart_borders on
+
+default_border pixel 2 
+default_floating_border pixel 4
+
+client.focused $focused_bgcolor $focused_bgcolor $focused_textcolor $focused_indicator $focused_bgcolor
+client.focused_inactive $inactive_bgcolor $inactive_bgcolor $inactive_textcolor $inactive_indicator $inactive_bgcolor
+client.unfocused $unfocused_bgcolor $unfocused_bgcolor $unfocused_textcolor $unfocused_indicator $unfocused_bgcolor
+client.urgent $urgent_bgcolor $urgent_bgcolor $urgent_textcolor $urgent_indicator $urgent_bgcolor

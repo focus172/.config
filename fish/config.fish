@@ -2,10 +2,15 @@
 export PATH="$PATH:/Users/evanstokdyk/.local/bin:/Users/evanstokdyk/.pub-cache/bin:/Users/evanstokdyk/.local/flutter/bin:/Users/evanstokdyk/.cargo/bin"
 
 
-# add things as vars needed for stuff
-eval "$(/opt/homebrew/bin/brew shellenv)"
-/bin/sh ~/.cargo/env
-export XDG_CONFIG_HOME="/Users/evanstokdyk/.config"
+# add things as vars needed for stuff only on mac
+# eval "$(/opt/homebrew/bin/brew shellenv)"
+# /bin/sh ~/.cargo/env
+
+#if $USER == "archfocus";
+#	export XDG_CONFIG_HOME="/home/archfocus/.config"
+#else;	
+#	export XDG_CONFIG_HOME=/Users/evanstokdyk/.config
+#end
 
 # don't write dumb files
 export LESSHISTFILE="/dev/null"
@@ -24,14 +29,10 @@ if status is-interactive
   alias home="cd ~"
   alias ..="cd .."
   alias c="clear"
-  alias ls="ls --color=tty"
+  alias ls="ls -A --color=tty"
 
   # math shit
   alias math="math \"$1\""
-
-  # Start starship
-  # eval "$(starship init fish)"
-
 
   # Creating Diced CLI
   # alias diced="kotlinc -script /Users/evanstokdyk/code/Diced/Diced.kts# Commands to run in interactive sessions can go here
