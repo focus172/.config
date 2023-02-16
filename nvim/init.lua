@@ -1,7 +1,9 @@
----
--- init.lua
---
+-- --------- --
+-- init.lua  --
+-- @Focus172 --
+-- --------- --
 
+-- initializing lazy package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 print("lazy path: " .. lazypath)
 if not vim.loop.fs_stat(lazypath) then
@@ -16,8 +18,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 require("lazy").setup({
-  require "plugin"
+	require "plugins"
 })
 
 require "options"

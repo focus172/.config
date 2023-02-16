@@ -20,7 +20,7 @@ local tokyonight = {
 
 return {
 
-  -- selecting a colorscheme here
+  -- selecting a colorscheme here (none for defualt terminal scheme)
   catppuccin,
   --tokyonight,
 
@@ -31,16 +31,61 @@ return {
     config = function()
       require("plugin_config.mason")
     end,
-  }
+  },
 
-  --[[
-  -- I have a separate config.mappings file where I require which-key.
-  -- With lazy the plugin will be automatically loaded when it is required somewhere
+  {
+    "nvim-treesitter/nvim-treesitter",
+    name = "treesitter",
+    -- lazy = true,
+    config = function()
+      require("plugin_config.treesitter") 
+    end,
+    -- cmd = "TSUpdate"
+
+  },
+
   {
     "folke/which-key.nvim",
-    lazy = true
+    name = "which-key",
+    -- lazy = true,
+    config = function()
+      -- todo
+    end,
   },
-  
+ 
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    name = "neo-tree",
+    -- lazy = true,
+    dependencies = { 
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      -- require
+    end
+  },
+
+  {
+    "akinsho/toggleterm.nvim",
+    name = "toggleterm",
+    config = function()
+      require("plugin_config.toggleterm")
+    end
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    name = "indent_blankline",
+    config = function()
+      require("plugin_config.indent")
+    end,
+  },
+
+
+
+  --[[
   {
     "nvim-neorg/neorg",
     -- lazy-load on filetype
@@ -49,13 +94,6 @@ return {
     config = function()
       require("neorg").setup()
     end,
-  },
-
-  -- or set custom options:
-  {
-    "nvim-neorg/neorg",
-    ft = "norg",
-    opts = { foo = "bar" }, -- run require("neorg").setup({foo = "bar"})
   },
 
   {
@@ -117,6 +155,14 @@ return {
       -- "MunifTanjim/nui.nvim", -- don't know why this is required
       -- "rcarriga/nvim-notify", -- only required for notifications
     }
+  },
+  --]]
+
+  -- I have not gotten this to work but should be loaded at the top for best effect
+  --[[ {
+    "lewis6991/impatient.nvim",
+    name = "impatient",
+    cmd = "lua require('impatient')"
   },
   --]]
 }

@@ -30,6 +30,8 @@ if status is-interactive
   alias ..="cd .."
   alias c="clear"
   alias ls="ls -A --color=tty"
+  alias land="cat ~/.config/george.txt"
+  alias nnn="nnn -H"
 
   # math shit
   alias math="math \"$1\""

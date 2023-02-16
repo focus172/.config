@@ -11,7 +11,11 @@ vim.g.mapleader = " "
 
 -- setting key maps --
 km("", "Y", "y$", opts)
-km("", "<leader>e", ":Ex<CR>", opts)
+
+-- km("", "<leader>r", ":Ex<CR>", opts)
+km("", "<leader>e", ":Neotree<CR>", opts)
+km("", "<leader>t", ":ToggleTerm<CR>", opts)
+
 km("n", "<leader>s", ":w<CR>", opts)
 km("n", "<leaader>q", ":q<CR>", opts)
 

@@ -28,3 +28,5 @@ nvim/plugin/
 nvim.back/
 
 flutter/
+
+lazygit/state.yml
