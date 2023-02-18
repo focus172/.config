@@ -3,8 +3,8 @@ export PATH="$PATH:/Users/evanstokdyk/.local/bin:/Users/evanstokdyk/.pub-cache/b
 
 
 # add things as vars needed for stuff only on mac
-# eval "$(/opt/homebrew/bin/brew shellenv)"
-# /bin/sh ~/.cargo/env
+eval "$(/opt/homebrew/bin/brew shellenv)"
+/bin/sh ~/.cargo/env
 
 #if $USER == "archfocus";
 #	export XDG_CONFIG_HOME="/home/archfocus/.config"
