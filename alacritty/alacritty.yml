@@ -46,7 +46,7 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 3
+    x: 3 
     y: 5
 
   # Spread additional padding evenly around the terminal content.
@@ -103,7 +103,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Hack Nerd Font 
+    family: Liga SFMono Nerd Font
+ 
     #    family: Liga SFMono Nerd Font
 
       # family: Liga SFMono Nerd Font
@@ -179,7 +180,7 @@ cursor:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: fish 
+  program: /opt/homebrew/bin/fish 
   args:
     - --login
 
@@ -187,7 +188,7 @@ shell:
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
-working_directory: /home/archfocus
+# working_directory:
 
 # Send ESC (\x1b) before characters when alt is pressed.
 alt_send_esc: false
@@ -563,7 +564,7 @@ key_bindings:
   #- { key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize }
   #- { key: Minus,          mods: Control,                         action: DecreaseFontSize }
   #- { key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize }
-  - { key: Q,             mods: Super,                            action: Quit              }
+  #- { key: Q,             mods: Super,                            action: Quit              }
   # (Windows only)
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
 

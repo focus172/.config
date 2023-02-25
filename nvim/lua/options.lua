@@ -3,6 +3,7 @@
 -- @Focus172   --
 -- ----------- --
 
+
 -- Options --
 vim.opt.clipboard = "unnamed"
 vim.opt.cul = false

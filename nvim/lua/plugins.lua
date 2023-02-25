@@ -18,11 +18,34 @@ local tokyonight = {
   end,
 }
 
+local rosepine = {
+  "rose-pine/neovim",
+  name = 'rose-pine',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    vim.cmd.colorscheme "rose-pine"
+  end,
+}
+
+local gruvbox = {
+  "ellisonleao/gruvbox.nvim",
+  name = "gruvbox",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    vim.cmd.colorscheme "gruvbox"
+  end,
+}
+
 return {
 
   -- selecting a colorscheme here (none for defualt terminal scheme)
-  catppuccin,
+  
+  --catppuccin,
   --tokyonight,
+  gruvbox,
+  --rosepine,
 
   {
     "williamboman/mason.nvim",
@@ -83,6 +106,18 @@ return {
     end,
   },
 
+  {
+    "folke/noice.nvim", -- cmdline popup and cool things
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify"
+    },
+  },
+
+  {
+    "github/copilot.vim",
+    name = "copilot",
+  },
 
 
   --[[
@@ -142,19 +177,6 @@ return {
     keys = {
       "<C-a>", { "<C-x>", mode = "n" }
     },
-  },
-
-  {
-    "folke/noice.nvim",
-    config = function()
-      require("noice").setup({
-          -- add any options here
-      })
-    end,
-    requires = {
-      -- "MunifTanjim/nui.nvim", -- don't know why this is required
-      -- "rcarriga/nvim-notify", -- only required for notifications
-    }
   },
   --]]
 
