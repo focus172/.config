@@ -7,13 +7,17 @@ set -g PATH "$PATH:/Users/evanstokdyk/.local/bin:/Users/evanstokdyk/.pub-cache/b
 set -g EDITOR "$(which nvim)"
 
 # add things as vars needed for stuff only on mac
-# eval "$(/opt/homebrew/bin/brew shellenv)"
+if string match -q "/Users/evanstokdyk" $HOME
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  # echo is does not match
+end
 
 # don't write dumb files
 export LESSHISTFILE="/dev/null"
 set -g fish_greeting ""
 
-if status is-interactive  
+if status is-interactive
 
   # Start starship
   eval "$(starship init fish)"
