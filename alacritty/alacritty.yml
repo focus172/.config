@@ -54,7 +54,7 @@ window:
 
   decorations: none 
 
-  opacity: 0.99
+  opacity: 0.80
 
   # Startup Mode (changes require restart)
   #
@@ -103,11 +103,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Liga SFMono Nerd Font
- 
-    #    family: Liga SFMono Nerd Font
-
-      # family: Liga SFMono Nerd Font
+    family: mononoki
     
 
   # Point size

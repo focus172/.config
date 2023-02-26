@@ -8,7 +8,6 @@ set -g EDITOR "$(which nvim)"
 
 # add things as vars needed for stuff only on mac
 eval "$(/opt/homebrew/bin/brew shellenv)"
-/bin/sh ~/.cargo/env
 
 # don't write dumb files
 export LESSHISTFILE="/dev/null"
