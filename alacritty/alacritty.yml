@@ -103,7 +103,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: mononoki
+    family: Mononoki Nerd Font 
     
 
   # Point size
@@ -176,7 +176,7 @@ cursor:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /opt/homebrew/bin/fish 
+  program: fish 
   args:
     - --login
 

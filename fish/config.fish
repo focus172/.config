@@ -7,7 +7,7 @@ set -g PATH "$PATH:/Users/evanstokdyk/.local/bin:/Users/evanstokdyk/.pub-cache/b
 set -g EDITOR "$(which nvim)"
 
 # add things as vars needed for stuff only on mac
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # don't write dumb files
 export LESSHISTFILE="/dev/null"
