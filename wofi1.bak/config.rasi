@@ -1,9 +1,0 @@
-configuration {
-    width: 20;
-    padding: 20;
-    terminal: "alacritty";
-    show-icons: true;
-}
-@theme "gruvbox-dark"
-
-/* vim:ft=css
