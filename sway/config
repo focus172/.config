@@ -16,7 +16,7 @@ set $term alacritty
 set $menu exec wofi --show drun
 
 # wallpaper
-output * bg /home/focus/.config/wall.jpg fill
+output * bg /home/focus/.config/assets/wall.jpg fill
 
 # Example configuration:
 #
