@@ -29,6 +29,7 @@ if status is-interactive
   alias ls="ls -A --color=tty"
   alias land="cat ~/.config/george.txt"
   alias nnn="nnn -H"
+  alias startw="exec dbus-run-session sway"
 
   # math shit
   alias math="math \"$1\""

@@ -1,42 +1,26 @@
+// vim: set ft=json:
+
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 35, // Waybar height (to be removed for auto height)
-   //  "width": 1280, // Waybar width
-     "margin-left": 2, // Waybar left margin
-     "margin-right": 2, //  Waybar right margin
-    "spacing": 2, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "height": 32, // Waybar height (to be removed for auto height)
+    //  "width": 1280, // Waybar width
+    "margin-left": 100,
+    "margin-right": 100,
+    "spacing": 6, // Gaps between modules (4px)
+
+
+    // Modules positon
     "modules-left": ["custom/separator2", "sway/workspaces", "custom/separator", "sway/window"],
     "modules-center": ["clock"],
-    "modules-right": ["idle_inhibitor", "gamemode", "tray", "custom/spotify", "pulseaudio", "network", "cpu", "memory", "temperature", "keyboard-state", "custom/power"],
+    "modules-right": ["idle_inhibitor", "tray", "custom/spotify", "pulseaudio", "network", "cpu", "memory", "temperature", "custom/power"],
+
+
     // Modules configuration
    "sway/workspaces": {
         "format": "{name}",
-   		"sort-by-number": true,
-       "persistent_workspaces": {
-           "1:一": [], // Always show a workspace with name '一', on all outputs if it does not exists
-           "2:二": [], // Always show a workspace with name '二', on all outputs if it does not exists
-           "3:三": [], // Always show a workspace with name '三', on all outputs if it does not exists
-           "4:勉強": [], // Always show a workspace with name '勉強' on all outputs if it does not exists
-           "5:ゲーム": [], // Always show a workspace with name 'ゲーム', on all outputs if it does not exists
-           "6:宿題": [], // Always show a workspace with name '宿題', on all outputs if it does not exists
-           "7:桜": [], // Always show a workspace with name '桜', on all outputs if it does not exists
-           
-    }   
-},   
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
+        "sort-by-number": true
     },
-
-    
-
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -48,19 +32,6 @@
         // "icon-size": 21,
         "spacing": 10
     },
-    
-"gamemode": {
-    "format": "{glyph}",
-    "format-alt": "{glyph} {count}",
-    "glyph":  "",
-    "hide-not-running": true,
-    "use-icon": true,
-    "icon-name": "input-gaming-symbolic",
-    "icon-size": 15,
-    "tooltip": true,
-    "tooltip-format": "Games running: {count}"
-},
-    
     "clock": {
         // "timezone": "America/Chicago",
         "format": "{:%Y-%m-%d - %I:%M}",
@@ -154,19 +125,17 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-
-
-"custom/power": {
-    "format": "", // This icon is provided by the Awesome-fonts collection, not sure how to paste it unfortunately
-        "on-click": "exec /home/petergriffin/.config/waybar/scripts/power-menu.sh",
-        "tooltip": false,
-},
-"return-type": "json",
-"exec-if": "which swaync-client",
-"exec": "swaync-client -swb",
-"on-click": "swaync-client -t -sw",
-"on-click-right": "swaync-client -d -sw",
-"escape": true
+    "custom/power": {
+        "format": "", // This icon is provided by the Awesome-fonts collection, not sure how to paste it unfortunately
+            "on-click": "exec /home/focus/.config/waybar/scripts/power-menu.sh",
+            "tooltip": false
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
 }
 
 

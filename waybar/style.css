@@ -1,16 +1,19 @@
- @import "macchiato.css";
-*
- {
 
-	border: none;
-	border-radius: 6px;
+@import "themes/mocha.css";
+/* @import "macchiato.css"; */
+/* @import "macchiato.css"; */
+/* @import "macchiato.css"; */
+
+* {
+    border: none;
+    border-radius: 6px;
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto Bold, Helvetica, Arial, sans-serif;
     font-size: 14px;
 }
 
 window#waybar {
-	background: shade(alpha(@mantle, 0.9), 1.0);
+    background: shade(alpha(@mantle, 0.9), 1.0);
     border-bottom: shade(alpha(@base, 0.9), 1.0);
     color: @rosewater;
     transition-property: background-color;
@@ -31,11 +34,11 @@ window#waybar.solo {
 }
 */
 
-window#waybar.termite {
+window#waybar.alacritty {
     background-color: #3F3F3F;
 }
 
-window#waybar.chromium {
+window#waybar.firefox {
     background-color: #000000;
     border: none;
 }
@@ -95,7 +98,7 @@ workspaces {
 #idle_inhibitor,
 #mpd
 #gamemode
- {
+{
     padding: 0 10px;
     color: #ffffff;
 }
@@ -106,14 +109,18 @@ workspaces {
 }
 
 /* If workspaces is the leftmost module, omit left margin */
- .modules-left > widget:first-child > #workspaces { 
-    margin-left: 0;   
-} 
+/*
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+*/
 
 /* If workspaces is the rightmost module, omit right margin */
+/*
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
 }
+*/
 
 #clock {
     background-color: @surface0;
@@ -277,7 +284,6 @@ label:focus {
     padding: 0 5px;
     margin: 0 4px;
     color: #1e66f5;
-
 }
 
 #keyboard-state {
@@ -314,15 +320,9 @@ label:focus {
   margin: 0px 3px 0px 1px;
 }
 
-
-
-
-
 #custom-power {
     background-color: @mauve;
     color: @base;
     padding: 0 15px;
     border-radius: 6px 15px 15px 6px;
-
 }
-
