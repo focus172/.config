@@ -1,7 +1,6 @@
- @import "macchiato.css";
-*
+@import "themes/macchiato.css";
 
-{
+* {
     font-family: Roboto Bold;
 }
 

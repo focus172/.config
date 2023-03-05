@@ -1,4 +1,0 @@
-# /* vim: set filetype=conf : */
-bar {
-	swaybar_command waybar
-}
