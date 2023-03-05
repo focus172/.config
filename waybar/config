@@ -5,8 +5,8 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 32, // Waybar height (to be removed for auto height)
     //  "width": 1280, // Waybar width
-    "margin-left": 100,
-    "margin-right": 100,
+    "margin-left": 5,
+    "margin-right": 5,
     "spacing": 6, // Gaps between modules (4px)
 
 
@@ -59,7 +59,7 @@
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "custom/spotify": {
-        "exec": "/usr/bin/python3 /home/petergriffin/.config/waybar/mediaplayer.py --player spotify",
+        "exec": "/usr/bin/python3 /home/focus/.config/waybar/mediaplayer.py --player spotify",
         "format": "{}  ",
         "return-type": "json",
         "on-click": "playerctl play-pause",
@@ -100,19 +100,16 @@
         "interval": "once",
         "tooltip": false
     },
-
     "custom/separator2": {
         "format": "|",
         "interval": "once",
         "tooltip": false
     },
-
     "custom/separator3": {
         "format": "|",
         "interval": "once",
         "tooltip": false
     },
-
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
@@ -126,9 +123,9 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-        "format": "", // This icon is provided by the Awesome-fonts collection, not sure how to paste it unfortunately
-            "on-click": "exec /home/focus/.config/waybar/scripts/power-menu.sh",
-            "tooltip": false
+        "format": "",
+        "on-click": "exec /home/focus/.config/waybar/scripts/power-menu.sh",
+        "tooltip": false
     },
     "return-type": "json",
     "exec-if": "which swaync-client",
@@ -137,5 +134,3 @@
     "on-click-right": "swaync-client -d -sw",
     "escape": true
 }
-
-
