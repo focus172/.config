@@ -2,16 +2,15 @@
 # config.fish
 #
 
-# set path
-set -g PATH "$PATH:/Users/evanstokdyk/.local/bin:/Users/evanstokdyk/.pub-cache/bin:/Users/evanstokdyk/.local/flutter/bin:/Users/evanstokdyk/.cargo/bin"
-set -g EDITOR "$(which nvim)"
-
 # add things as vars needed for stuff only on mac
 if string match -q "/Users/evanstokdyk" $HOME
+  set -g PATH "$PATH:/Users/evanstokdyk/.local/bin:/Users/evanstokdyk/.pub-cache/bin:/Users/evanstokdyk/.local/flutter/bin:/Users/evanstokdyk/.cargo/bin"
   eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   # echo is does not match
 end
+
+set -g EDITOR "$(which nvim)"
 
 # don't write dumb files
 export LESSHISTFILE="/dev/null"
@@ -21,7 +20,7 @@ if status is-interactive
 
   # Start starship
   eval "$(starship init fish)"
-  
+
   # Alias things
   alias home="cd ~"
   alias ..="cd .."
