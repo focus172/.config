@@ -58,16 +58,16 @@
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
-    "custom/spotify": {
-        "exec": "/usr/bin/python3 /home/focus/.config/waybar/mediaplayer.py --player spotify",
-        "format": "{}  ",
-        "return-type": "json",
-        "on-click": "playerctl play-pause",
-        "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous"
-    },
+    //"custom/spotify": {
+    //    "exec": "/usr/bin/python3 /home/focus/.config/waybar/mediaplayer.py --player spotify",
+    //    "format": "{}  ",
+    //    "return-type": "json",
+    //    "on-click": "playerctl play-pause",
+    //    "on-scroll-up": "playerctl next",
+    //    "on-scroll-down": "playerctl previous"
+    //},
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "interface": "wlan0", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",

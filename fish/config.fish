@@ -30,6 +30,7 @@ if status is-interactive
   alias land="cat ~/.config/george.txt"
   alias nnn="nnn -H"
   alias startw="exec dbus-run-session sway"
+  alias hgrep="history | grep"
 
   # math shit
   alias math="math \"$1\""
