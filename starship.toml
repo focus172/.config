@@ -17,11 +17,7 @@ $java\
 $julia\
 $nodejs\
 $rust\
-[](fg:#86BBD8 bg:#06969A)\
-$docker_context\
-[](fg:#06969A bg:#33658A)\
-$time\
-[ ](fg:#33658A)\
+[ ](fg:#86BBD8)\
 """
 
 # Disable the blank line at the start of the prompt
@@ -51,7 +47,8 @@ truncation_symbol = "…/"
 # Here is how you can shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
 [directory.substitutions]
-"Documents" = " "
+"library" = " "
+"Library" = " "
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "

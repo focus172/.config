@@ -1,28 +1,22 @@
--- --------- --
--- init.lua  --
--- @Focus172 --
--- --------- --
+require "core"
 
--- initializing lazy package manager
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-print("lazy path: " .. lazypath)
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
+
+if custom_init_path then
+  dofile(custom_init_path)
 end
+
+require("core.utils").load_mappings()
+
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+
+-- bootstrap lazy.nvim!
+if not vim.loop.fs_stat(lazypath) then
+  require("core.bootstrap").gen_chadrc_template()
+  require("core.bootstrap").lazy(lazypath)
+end
+
 vim.opt.rtp:prepend(lazypath)
+require "plugins"
 
-
-require("lazy").setup({
-	require "plugins"
-})
-
-require "options"
-require "mappings"
-require "autocmds"
+dofile(vim.g.base46_cache .. "defaults")
