@@ -1,0 +1,40 @@
+@import "/home/focus/.config/wofi/themes/macchiato.css";
+
+* {
+    font-family: Hack Nerd Bold;
+}
+
+window {
+    border: 5px solid @sky;
+}
+
+#input {
+    margin-bottom: 15px;
+    padding:3px;
+    border-radius: 5px;
+    background-color: @surface0;
+    color: @text;
+}
+
+#inner-box {
+    background-color: @base;
+}
+
+#outer-box {
+    margin: 5px;
+    padding:15px;
+    background-color: @base;
+}
+
+#text {
+    padding: 5px;
+    color: @rosewater;
+}
+
+#entry:nth-child(even) {
+    background-color: @mantle;
+}
+
+#entry:selected {
+    background-color: @overlay0;
+}

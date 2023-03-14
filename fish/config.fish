@@ -8,6 +8,7 @@ if string match -q "/Users/evanstokdyk" $HOME
   eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   # echo is does not match
+  export RUSTC_WRAPPER=/sbin/sccache
 end
 
 set -g EDITOR "$(which nvim)"

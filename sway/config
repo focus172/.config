@@ -18,6 +18,15 @@ set $menu exec wofi --show drun
 # wallpaper
 output * bg /home/focus/.config/assets/wall.jpg fill
 
+# Volume and brightness
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioMute exec amixer set Master toggle
+
+
+bindsym XF86MonBrightnessUp exec brightnessctl set +1
+bindsym XF86MonBrightnessDown exec brightnessctl set 1-
+
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
