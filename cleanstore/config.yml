@@ -1,0 +1,15 @@
+#
+# cleanstore.yml
+#
+
+silent: false
+
+# leaving blank causes default to home
+root_directory: /home/focus
+
+to_remove: |
+  /home/focus/.lesshst
+  /home/focus/.wget-hsts
+
+directories_to_ignore: |
+  /home/focus/library

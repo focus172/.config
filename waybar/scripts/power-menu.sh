@@ -1,10 +1,12 @@
 #!/bin/bash
 
-entries="Logout Suspend Reboot Shutdown"
+entries="Cancel Logout Suspend Reboot Shutdown"
 
-selected=$(printf '%s\n' $entries | wofi --conf=$HOME/.config/wofi/config.power --style=$HOME/.config/wofi/style.widgets.css | awk '{print tolower($1)}')
+selected=$(printf '%s\n' $entries | wofi --conf=$HOME/.config/wofi/power_off_config --style=$HOME/.config/wofi/widget_style.css | awk '{print tolower($1)}')
 
 case $selected in
+  cancel)
+    ;;
   logout)
     swaymsg exit;;
   suspend)

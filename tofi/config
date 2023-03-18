@@ -1,0 +1,16 @@
+anchor = center
+width = 600
+height = 400
+horizontal = false
+font-size = 14
+prompt-text = " run: "
+font = /usr/share/fonts/TTF/Hack Regular Nerd Font Complete.ttf
+outline-width = 10
+border-width = 0
+background-color = #000000
+min-input-width = 120
+result-spacing = 15
+padding-top = 0
+padding-bottom = 0
+padding-left = 0
+padding-right = 0

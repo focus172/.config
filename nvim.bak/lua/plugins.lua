@@ -119,6 +119,11 @@ return {
     name = "copilot",
   },
 
+  {
+    "neoclide/coc.nvim",
+    branch = "release",
+    name = "coc",
+  },
 
   --[[
   {
