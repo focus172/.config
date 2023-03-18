@@ -21,18 +21,12 @@ htop/
 BraveSoftware
 spotify
 cleanstore
-<<<<<<< HEAD
 btop
 mimeapps.list
 pavucontrol.ini
-pavucontrol.ini
 gtk-3.0
-=======
-Code - OSS
 btop
-coc
 nvim
-VSCodium
-Electron
+
+# Ignore secrets
 github-copilot
->>>>>>> 19fa2b0 (bad stuff)
