@@ -1,15 +1,12 @@
+#
+# ~/.bashrc
+#
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
-function br {
-    local cmd cmd_file code
-    cmd_file=$(mktemp)
-    if broot --outcmd "$cmd_file" "$@"; then
-        cmd=$(<"$cmd_file")
-        command rm -f "$cmd_file"
-        eval "$cmd"
-    else
-        code=$?
-        command rm -f "$cmd_file"
-        return "$code"
-    fi
-}
+export PATH="$PATH:$HOME/.cargo/bin"
+
+# alias ls='ls --color=auto'
+# alias grep='grep --color=auto'
+# PS1='[\u@\h \W]\$ '

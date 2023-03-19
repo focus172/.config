@@ -7,8 +7,8 @@ if string match -q "/Users/evanstokdyk" $HOME
   set -g PATH "$PATH:/Users/evanstokdyk/.local/bin:/Users/evanstokdyk/.pub-cache/bin:/Users/evanstokdyk/.local/flutter/bin:/Users/evanstokdyk/.cargo/bin"
   eval "$(/opt/homebrew/bin/brew shellenv)"
 else
-  # echo is does not match
-  export RUSTC_WRAPPER=/sbin/sccache
+  	set -g PATH "$PATH:$HOME/.cargo/bin:$HOME/.config/scripts"
+	export RUSTC_WRAPPER=$(which sccache)
 end
 
 set -g EDITOR "$(which nvim)"
@@ -19,6 +19,10 @@ set -g fish_greeting ""
 
 if status is-interactive
 
+  alias starts="exec dbus-run-session sway" 
+  alias starth="exec dbus-run-session Hyprland"
+  
+  
   # Start starship
   eval "$(starship init fish)"
 
@@ -29,7 +33,6 @@ if status is-interactive
   alias ls="ls -A --color=tty"
   alias land="cat ~/.config/george.txt"
   alias nnn="nnn -H"
-  alias startw="exec dbus-run-session sway"
   alias hgrep="history | grep"
 
   # math shit

@@ -30,3 +30,6 @@ nvim
 
 # Ignore secrets
 github-copilot
+pavucontrol.ini
+QtProject.conf
+keepassxc
