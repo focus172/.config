@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="exa -a"
 
-if [ "$HOME" = "/User/evanstokdyk" ]; then
+if [ "$HOME" = "/Users/evanstokdyk" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
