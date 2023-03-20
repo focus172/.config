@@ -101,11 +101,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ls="ls -A"
+alias ls="exa -a"
 
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
+if [ "$HOME" = "/User/evanstokdyk" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 
 

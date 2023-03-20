@@ -10,12 +10,16 @@ wireshark/
 yabai/
 discord/
 
+
 # Ignore linux specific files
 cef_user_data/
 pulse/
 user-dirs.*
 dconf/
 htop/
+QtProject.conf
+keepassxc
+
 
 # Ignore general files
 BraveSoftware
@@ -28,10 +32,13 @@ gtk-3.0
 btop
 nvim
 
+
 # Ignore secrets
 github-copilot
-pavucontrol.ini
-QtProject.conf
-keepassxc
+
+
+# zsh garbage
 zsh/.zcompdump-Evan’s MacBook-5.8.1
 zsh/.zsh_history
+zsh/.zcompdump-steamfunk-5.9
+zsh/.zcompdump-steamfunk-5.9.zwc
