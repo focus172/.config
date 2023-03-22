@@ -4,7 +4,7 @@
 
 # add things as vars needed for stuff only on mac
 if string match -q "/Users/evanstokdyk" $HOME
-  set -g PATH "$PATH:/Users/evanstokdyk/.local/bin:/Users/evanstokdyk/.pub-cache/bin:/Users/evanstokdyk/.local/flutter/bin:/Users/evanstokdyk/.cargo/bin"
+  set -g PATH "$PATH:/Users/evanstokdyk/.local/bin:/Users/evanstokdyk/.pub-cache/bin:/Users/evanstokdyk/.cargo/bin"
   eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   	set -g PATH "$PATH:$HOME/.cargo/bin:$HOME/.config/scripts"
