@@ -3,34 +3,24 @@
 #
 
 # Ignore macOS specific files
-configstore/
-sketchybar/
-skhd/
-wireshark/
-yabai/
-discord/
+configstore
+sketchybar
+skhd
+wireshark
+yabai
+discord
 
 
 # Ignore linux specific files
-cef_user_data/
-pulse/
-user-dirs.*
-dconf/
-htop/
-QtProject.conf
+dconf
 keepassxc
 
 
 # Ignore general files
 BraveSoftware
-spotify
-cleanstore
-btop
-mimeapps.list
 pavucontrol.ini
-gtk-3.0
-btop
 nvim
+spotify
 
 
 # Ignore secrets
@@ -38,7 +28,7 @@ github-copilot
 
 
 # zsh garbage
-zsh/.zcompdump-Evan’s MacBook-5.8.1
 zsh/.zsh_history
-zsh/.zcompdump-steamfunk-5.9
-zsh/.zcompdump-steamfunk-5.9.zwc
+
+# Unsorted ignores
+
