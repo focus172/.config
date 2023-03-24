@@ -27,8 +27,23 @@ spotify
 github-copilot
 
 
+<<<<<<< Updated upstream
 # zsh garbage
 zsh/.zsh_history
 
 # Unsorted ignores
 
+=======
+lazygit/state.yml
+BraveSoftware
+spotify
+cleanstore
+btop
+mimeapps.list
+pavucontrol.ini
+pavucontrol.ini
+gtk-3.0
+nvim/.github
+nvim/lazy-lock.json
+>>>>>>> Stashed changes
+pulse

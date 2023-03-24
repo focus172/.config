@@ -4,14 +4,12 @@
 
 # add things as vars needed for stuff only on mac
 if string match -q "/Users/evanstokdyk" $HOME
-  set -g PATH "$PATH:/Users/evanstokdyk/.local/bin:/Users/evanstokdyk/.cargo/bin:$HOME/.config/scripts"
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+	set -g PATH "$PATH:/Users/evanstokdyk/.local/bin:/Users/evanstokdyk/.cargo/bin:$HOME/.config/scripts"
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   	set -g PATH "$PATH:$HOME/.cargo/bin:$HOME/.config/scripts"
 	export RUSTC_WRAPPER=$(which sccache)
 end
-
-set -g EDITOR "$(which nvim)"
 
 # don't write dumb files
 export LESSHISTFILE="/dev/null"
@@ -20,8 +18,7 @@ set -g fish_greeting ""
 if status is-interactive
 
   alias starts="exec dbus-run-session sway" 
-  alias starth="exec dbus-run-session Hyprland"
-  
+  alias starth="exec dbus-run-session Hyprland"  
   
   # Start starship
   eval "$(starship init fish)"

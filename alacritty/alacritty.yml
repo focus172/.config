@@ -175,8 +175,9 @@ cursor:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /opt/homebrew/bin/fish
+  program: /sbin/fish
   args:
+    - --login
 
 
 # Startup directory
