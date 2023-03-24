@@ -1,11 +1,12 @@
 
 format = """
-[{](bold purple)\
+[{](bold white)\
 ($username)\
 [@](bold yellow)\
 ($hostname)\
-($directory)\
-($git_status)\
+( $directory )\
+($git_branch)\
+[}> ](bold purple)
 """
 
 add_newline = false
@@ -19,14 +20,20 @@ format = "[$user]($style)"
 [hostname]
 disabled = false
 ssh_only = false
-style = "bold white"
+style = "bold green"
 format =  "[$hostname]($style)"
 
 [directory]
 disabled = false
 truncation_length = 1
 home_symbol = "~"
-format = "[$path](bold cyan)[/](bold green) "
+format = "[$path](bold cyan)"
+
+[directory.substitutions]
+"library" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
 [character]
 success_symbol = ""
@@ -49,8 +56,8 @@ added_style = "bold blue"
 format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style) )'
-style = "bold cyan"
+format = '([\[$all_status$ahead_behind\]]($style))'
+style = "bold blue"
 conflicted = "= "
 ahead = "⇡ ${count} "
 behind = "⇣ ${count} "
@@ -93,12 +100,6 @@ disabled = true
 #format = "[ $path ]($style)"
 #truncation_length = 3
 #truncation_symbol = "…/"
-
-#[directory.substitutions]
-#"library" = " "
-#"Downloads" = " "
-#"Music" = " "
-#"Pictures" = " "
 
 #[git_branch]
 #symbol = ""
