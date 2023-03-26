@@ -19,8 +19,8 @@ run_eww() {
 ## Launch or close widgets accordingly
 if [[ ! -f "$FILE" ]]; then
 	touch "$FILE"
-	sh ${DASHBOARD}/scripts/quotes update
-	sh ${DASHBOARD}/scripts/getweather --getdata
+	sh ${DASHBOARD}/../scripts/quotes update
+	sh ${DASHBOARD}/../scripts/getweather --getdata
 	run_eww
 else
 	${EWW} -c ${DASHBOARD} close-all 

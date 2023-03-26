@@ -68,7 +68,7 @@
     //    "on-scroll-down": "playerctl previous"
     //},
     "network": {
-        "interface": "wlan0", // (Optional) To force the use of this interface
+        //"interface": "wlan0", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",

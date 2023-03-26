@@ -3,9 +3,6 @@
 ;;;;			AESTHETIC DASHBOARD					 ;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(include "./src/yuck/_windows.yuck")
-(include "./src/yuck/_widgets.yuck")
-(include "./src/yuck/_variables.yuck")
-
-
-	
+(include "./src/yuck/windows.yuck")
+(include "./src/yuck/widgets.yuck")
+(include "./src/yuck/variables.yuck")

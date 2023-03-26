@@ -21,12 +21,5 @@
 #   export EDITOR='mvim'
 # fi
 
-alias ls="exa -a"
-
-if [ "$HOME" = "/Users/evanstokdyk" ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-
 # source <(/opt/homebrew/bin/starship init zsh --print-full-init)
 

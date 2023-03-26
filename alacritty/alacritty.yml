@@ -33,6 +33,9 @@ window:
   #  columns: 0
   #  lines: 0
 
+  # Moved from deprication of prior
+  option_as_alt: false
+
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
@@ -186,7 +189,7 @@ shell:
 # working_directory:
 
 # Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: false
+# alt_send_esc: false # DEPRICATED
 
 mouse:
   # Click settings
