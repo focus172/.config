@@ -20,7 +20,6 @@
 
 
 # Set path globally
-export PATH="$PATH:$HOME/.local/bin:$HOME/.config/scripts:$XDG_DATA_HOME/cargo/bin"
 
 if [ $(uname) = "Darwin" ]; then
 		# run mac stuff

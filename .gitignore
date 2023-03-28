@@ -26,6 +26,8 @@ spotify
 # Ignore secrets
 github-copilot
 
+# This file specificly is ignored beacuse it creates problems with different shells
+alacritty/alacritty.yml
 
 # zsh garbage
 zsh/.zsh_history
@@ -38,5 +40,5 @@ btop
 mimeapps.list
 pavucontrol.ini
 pulse
-alacritty/alacritty.yml
 neofetch
+bottom
