@@ -9,12 +9,19 @@ set -g fish_greeting ""
 if status is-interactive
 
     if string match -q "Darwin" $(uname)
-        set -g PATH "$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.config/scripts"
+
+        set -g XDG_DATA_HOME "$HOME/.local/share"
+        set -g CARGO_HOME "$XDG_DATA_HOME/cargo"
+        
+        set -g PATH "$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.config/scripts:$CARGO_HOME/bin"
         eval "$(/opt/homebrew/bin/brew shellenv)"
-   
+        export XDG_DATA_HOME="$HOME/.local/share"
+
+        set -g RUSTUP_HOME "$XDG_DATA_HOME/rustup"
+        set -g GNUPGHOME "$XDG_DATA_HOME/gnupg"  
     else
-#  	set -g PATH "$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.config/scripts"
-	export RUSTC_WRAPPER=$(which sccache)
+    #  	set -g PATH "$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.config/scripts"
+	    export RUSTC_WRAPPER=$(which sccache)
 
         alias starts="exec dbus-run-session sway" 
         alias starth="exec dbus-run-session Hyprland"
@@ -39,3 +46,5 @@ if status is-interactive
     alias math="math \"$1\""
 
 end
+
+

@@ -25,7 +25,7 @@ format =  "[$hostname]($style)"
 
 [directory]
 disabled = false
-truncation_length = 1
+truncation_length = 3
 home_symbol = "~"
 format = "[$path](bold cyan)"
 
