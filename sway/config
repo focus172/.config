@@ -13,14 +13,7 @@ set $right l
 set $term alacritty
 
 # Note: Should pass the final command to swaymsg
-<<<<<<< Updated upstream
-set $menu tofi-drun | xargs swaymsg exec --
-set $run tofi-run | xargs swaymsg exec --
-bindsym $mod+Shift+d exec $run
-=======
 set $menu exec yofi
-# wofi --show drun
->>>>>>> Stashed changes
 
 # wallpaper
 output * bg /home/focus/.config/assets/wall.jpg fill
