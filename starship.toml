@@ -125,3 +125,28 @@ disabled = true
 #time_format = "%R" # Hour:Minute Format
 #style = "bg:#1d2230"
 #format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+
+#[character]
+#error_symbol = "[](bold red)"
+#success_symbol = "[](bold cyan)"
+#vicmd_symbol = "[](bold yellow)"
+#format = "$symbol [|](bold bright-black) "
+
+#[username]
+#style_user = 'blue'
+#style_root = 'black bold'
+#format = '[$user]($style) '
+#disabled = true
+#show_always = true
+
+#[hostname]
+#ssh_only = true
+#format = "[$hostname](bold blue) "
+#disabled = false
+
+#[line_break]
+#disabled = true
+
+#[directory]
+#disabled = true
+

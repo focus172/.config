@@ -1,0 +1,208 @@
+#!/bin/sh
+
+COLORSCRIPTSDIR=$HOME/Programs/color-scripts/color-scripts
+CONFIGDIR=$HOME/dotfiles/dotfiles/config/
+
+
+cat <<EOF | xmenu -i -p 0x40:1 | sh &
+ Applications
+	 Firefox	firefox
+	 Terminal	foot
+	 Files	thunar
+	
+	 Comms
+		Discord (cordless)		foot -e cordless
+		 Email (Neomutt)		foot -e neomutt
+		 IRC (irssi)		foot -e irssi
+	 Utilities
+		 Calculator (TUI)		foot -e qalq
+		 Map (TUI)		foot -e mapscii
+		
+		 System
+			 Keyboard (Corsair)		ckb-next
+			 Fonts 	gucharmap
+			 Smartphone (kdeconnect)		kdeconnect-app --style gtk2
+			 Docker (lazydocker)		foot -e lazydocker
+			 Kill Window	xkill
+			 Screen Recording (OBS)		obs
+			 Screenshot
+				GUI	flameshot gui
+				All Displays	flameshot screen -d 5000 -n 3 -p $HOME/Photos/screenshots
+				Middle Display	flameshot screen -d 5000 -n 0 -p $HOME/Photos/screenshots
+				Right Display	flameshot screen -d 5000 -n 1 -p $HOME/Photos/screenshots
+				Left Display	flameshot screen -d 5000 -n 2 -p $HOME/Photos/screenshots
+		 Personal
+			 Nextcloud		nextcloud --style gtk2
+			 Passwords (keepassxc)		keepassxc --style gtk2
+			 Keys (Seahorse)		seahorse
+		 Theming
+			lxappearance 	lxappearance
+			GTK (oomox) 	oomox-gui
+			Qt (qt5ct) 	qt5ct --style gtk2
+			WPGTK 	wpg
+		 Monitors
+			System (ytop)		foot -e ytop
+			System (bashtop)		foot -e bashtop
+			System (glances)		foot -e glances
+			
+			Disk Usage (GUI)		baobab
+			Disk Usage (TUI)		foot -e ncdu
+			IO (iotop)		foot -e iotop
+			
+			Kernel (kmon)		foot -e kmon
+			Nvidia GPU (nvtop)		foot -e nvtop
+			Power (powertop)		foot -e powertop
+			
+			DNS (dnstop)		foot -e powertop
+			Network Usage (jnettop)		foot -e jnettop
+			Network Load (nload)		foot -e nload
+			Bandwidth (bmon)		foot -e bmon
+			Media Server		foot -e jellyfinips.sh
+		 Media
+			 EasyTag		easytag
+	 Entertainment
+		 Media
+			 Podcasts (castero)	castero
+			 RSS (newsboat)	newsboat
+			 Reddit (tuir)	tuir
+			 Music (cmus)	cmus
+			 Spotify (GUI)	spotify
+			 Spotify (spotifytui)	spt
+			Soulseek (Nicotine+)	nicotine
+		 Games
+			 Steam	steam
+			Itch	itch
+			Lutris	lutris
+			Tetris	tetris
+			Solitaire	ttysolitaire
+			Battleship	bs
+			Minecraft	minecraft-launcher
+			Dopewars	dopewars
+		 Misc
+			Color Scripts
+				alpha	foot -e sh -c '$COLORSCRIPTSDIR/alpha; read'
+				arch	foot -e sh -c '$COLORSCRIPTSDIR/arch; read'
+				bars	foot -e sh -c '$COLORSCRIPTSDIR/bars; read'
+				blocks2	foot -e sh -c '$COLORSCRIPTSDIR/blocks2; read'
+				bloks	foot -e sh -c '$COLORSCRIPTSDIR/bloks; read'
+				colorbars	foot -e sh -c '$COLORSCRIPTSDIR/colorbars; read'
+				colortest	foot -e sh -c '$COLORSCRIPTSDIR/colortest; read'
+				colortest-slim	foot -e sh -c '$COLORSCRIPTSDIR/colortest-slim; colortest'
+				colorview	foot -e sh -c '$COLORSCRIPTSDIR/colorview; read'
+				crunch	foot -e sh -c '$COLORSCRIPTSDIR/crunch; read'
+				crunchbang	foot -e sh -c '$COLORSCRIPTSDIR/crunchbang; read'
+				crunchbang-mini	foot -e sh -c '$COLORSCRIPTSDIR/crunchbang-mini; read'
+				darthvader	foot -e sh -c '$COLORSCRIPTSDIR/darthvader; read'
+				dna	foot -e sh -c '$COLORSCRIPTSDIR/dna; read'
+				dotx	foot -e sh -c '$COLORSCRIPTSDIR/dna; read'
+				elfman	foot -e sh -c '$COLORSCRIPTSDIR/elfman; read'
+				faces	foot -e sh -c '$COLORSCRIPTSDIR/faces; read'
+				fade	foot -e sh -c '$COLORSCRIPTSDIR/fade; read'
+				ghosts	foot -e sh -c '$COLORSCRIPTSDIR/ghosts; read'
+				guns	foot -e sh -c '$COLORSCRIPTSDIR/guns; read'
+				hex	foot -e sh -c '$COLORSCRIPTSDIR/hex; read'
+				hex-block	foot -e sh -c '$COLORSCRIPTSDIR/hex-block; read'
+				illumina	foot -e sh -c '$COLORSCRIPTSDIR/illumina; read'
+				jangofett	foot -e sh -c '$COLORSCRIPTSDIR/jangofett; read'
+				monster	foot -e sh -c '$COLORSCRIPTSDIR/monster; read'
+				mouseface	foot -e sh -c '$COLORSCRIPTSDIR/mouseface; read'
+				pacman	foot -e sh -c '$COLORSCRIPTSDIR/pacman; read'
+				panes	foot -e sh -c '$COLORSCRIPTSDIR/panes; read'
+				pinguco	foot -e sh -c '$COLORSCRIPTSDIR/pinguco; read'
+				pipes1	foot -e sh -c '$COLORSCRIPTSDIR/pipes1; read'
+				pipes2	foot -e sh -c '$COLORSCRIPTSDIR/pipes2; read'
+				pipes2-slim	foot -e sh -c '$COLORSCRIPTSDIR/pipes2-slim; read'
+				pukeskull	foot -e sh -c '$COLORSCRIPTSDIR/pukeskull; read'
+				rails	foot -e sh -c '$COLORSCRIPTSDIR/rails; read'
+				rally-x	foot -e sh -c '$COLORSCRIPTSDIR/rally-x; read'
+				rupees	foot -e sh -c '$COLORSCRIPTSDIR/rupees; read'
+				space-invaders	foot -e sh -c '$COLORSCRIPTSDIR/space-invaders; read'
+				spectrum	foot -e sh -c '$COLORSCRIPTSDIR/spectrum; read'
+				square	foot -e sh -c '$COLORSCRIPTSDIR/square; read'
+				tanks	foot -e sh -c '$COLORSCRIPTSDIR/tanks; read'
+				thebat	foot -e sh -c '$COLORSCRIPTSDIR/thebat; read'
+				thebat2	foot -e sh -c '$COLORSCRIPTSDIR/thebat2; read'
+				tiefighter1-no-invo	foot -e sh -c '$COLORSCRIPTSDIR/tiefighter1-no-invo; read'
+				tiefighter2	foot -e sh -c '$COLORSCRIPTSDIR/tiefighter2; read'
+				zwaves	foot -e sh -c '$COLORSCRIPTSDIR/zwaves; read'
+			cava	foot -e cava
+			pipes.sh	foot -e pipes.sh
+			rain.sh	foot -e rain.sh
+			unimatrix	foot -e unimatrix -l Gg
+			asciiquarium	foot -e asciiquarium
+			bonsai.sh	foot -e bonsai -l -i -T
+			eDEX-UI		sh -c (cd $HOME/Programs/edex-ui/ ; npm start)
+	 Science
+		 Astronomy
+			Celestia	celestia
+		 Biology
+			Pymol		pymol
+		 Chemistry
+			ptable	foot -e ptable
+			chemtool	chemtool
+		 Math
+			Desmos	desmos
+			Geogebra	geogebra
+		Anki		anki
+	 Development
+		 IDEs
+			Neovim	foot -e nvim
+			VS Code	code
+			Dr. Racket	drracket
+		 Github (TUI)	foot -e github
+		bitwise	bitwise
+		Github Activity (TUI)	foot -e sh -c 'ghcal --no-ansi ; read'
+		QDbusViewer	qdbusviewer --style gtk2	
+
+ Configs
+	 System
+		 i3	foot -e nvim $CONFIGDIR/i3/config
+		 Start Menu	foot -e nvim $HOME/dotfiles/dotfiles/scripts/xmenu.sh
+		 Notifications	foot -e nvim $CONFIGDIR/wal/templates/dunstrc
+		 Smartphone	kdeconnect-settings --style gtk2
+		 Sound	pavucontrol
+		 Shell
+			fish
+				config.fish	foot -e nvim $CONFIGDIR/fish/config.fish
+				Web Config	fish -c fish_config
+			bash	foot -e nvim $HOME/.bashrc
+		 polybar
+			config	foot -e nvim $CONFIGDIR/polybar/config
+			launch.sh	foot -e nvim $CONFIGDIR/polybar/scripts/launch.sh
+		 rofi
+			config	foot -e nvim $CONFIGDIR/rofi/config
+			template	foot -e nvim $CONFIGDIR/wal/templates/custom-rofi.rasi
+		 Utilities
+			 khard	foot -e nvim $CONFIGDIR/khard/khard.conf
+			 khal	foot -e nvim $CONFIGDIR/khal/config
+			 vdirsyncer	foot -e nvim $CONFIGDIR/vdirsyncer/config
+		 .Xresources	foot -e nvim $HOME/.Xresources
+	 User
+		ranger	foot -e nvim $CONFIGDIR/ranger/rc.conf
+		newsboat	foot -e nvim $CONFIGDIR/newsboat/config
+		neomutt
+			neomuttrc	foot -e nvim $CONFIGDIR/neomutt/neomuttrc
+			colors	foot -e nvim $CONFIGDIR/neomutt/colors
+			settings	foot -e nvim $CONFIGDIR/neomutt/settings
+			mappings	foot -e nvim $CONFIGDIR/neomutt/mappings
+			mailcap	foot -e nvim $CONFIGDIR/neomutt/mailcap
+		neovim
+			coc-settings	foot -e nvim $HOME/.config/nvim/coc-settings.json
+			functions	foot -e nvim $HOME/.config/nvim/configs/functions.vim
+			main	foot -e nvim $HOME/.config/nvim/configs/main.vim
+			mappings	foot -e nvim $HOME/.config/nvim/configs/mappings.vim
+			plugin-settings	foot -e nvim $HOME/.config/nvim/configs/plugin-settings.vim
+			plugins	foot -e nvim $HOME/.config/nvim/configs/plugin.vim
+		neofetch	foot -e nvim $CONFIGDIR/neofetch/config.conf
+		htop	foot -e nvim $CONFIGDIR/htop/htoprc
+		s-tui	foot -e nvim $CONFIGDIR/s-tui/s-tui.conf
+		spicetify	foot -e nvim $CONFIGDIR/spicetify/config.ini
+		stonks	foot -e nvim $CONFIGDIR/stonks.yml
+
+ System
+	 Refresh sway		swaymsg restart
+	
+	 Shutdown		poweroff
+	 Reboot			reboot
+Exit 
+EOF

@@ -1,0 +1,199 @@
+{
+    "height": 37, // Waybar height (to be removed for auto height)
+    "modules-left": ["sway/workspaces", "custom/separator", "wlr/taskbar"],
+    "modules-center": [],
+    "modules-right": ["tray", "pulseaudio", "custom/separator", "backlight",  "battery", "custom/separator", "clock", "network",],
+
+    // Modules configuration
+    //  "sway/workspaces": {
+    //    "disable-scroll": true,
+    //    "all-outputs": false,
+    //    "persistent_workspaces": {
+    //      "1": [],
+    //      "2": [],
+    //      "3": [],
+    //      "4": [],
+    //      "5": [],
+    //    },
+    //    "format": "{icon}",
+    //    "format-icons": {
+    //        "urgent": "",
+    //        // "focused": "",
+    //        "focused": "",
+    //        "default": "",
+    //        "persistent": ""
+    //    }
+    //  },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󰂚<span foreground='red'><sup></sup></span>",
+      "none": "󰂚",
+      "dnd-notification": "󰂛<span foreground='red'><sup></sup></span> ",
+      "dnd-none": "󰂛",
+      "inhibited-notification": "󰂚<span foreground='red'><sup></sup></span> ",
+      "inhibited-none": "󰂚",
+      "dnd-inhibited-notification": "󰂛<span foreground='red'><sup></sup></span> ",
+      "dnd-inhibited-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+    "custom/separator": {
+        "format": "" 
+      },
+    "custom/logo": {
+        "format": "󰍜",
+        "on-click": "rofi -show drun"
+      },
+    "custom/wireguard": {
+        "format": "{}<big></big>",
+        "exec": "~/.config/waybar/wireguard-rofi-waybar/wireguard.sh",
+        "on-click": "rofi -modi 'WireGuard:~/.config/waybar/wireguard-rofi-waybar/wireguard-rofi.sh' -show WireGuard",
+        "interval": 60,
+        "return-type": "json"
+    },
+    "wlr/taskbar": {
+    	"format": "{icon}",
+    	"icon-size": 16,
+    	"tooltip-format": "{title}",
+    	"on-click": "activate",
+    	"on-click-middle": "minimize",
+    	"on-click-right": "close",
+    },
+    "custom/updates": {
+	    "exec": "/home/aspect/.config/waybar/updates.sh",
+	    "interval": 1800,
+	    "on-click": "foot -e sudo pacman -Syu",
+	    "return-type": "json"
+	},
+    "sway/language": {
+        "format": "{short} ⠀⠀"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        }
+    },
+      "tray": {
+        "spacing": 10
+      },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+	"format": "{:%I:%M %p}",
+	"format-alt": "{:%A, %B %d, %Y}"
+    },
+    "custom/spacer": {
+        "format": "|||",
+    },
+    "cpu": {
+        "format": "{usage}%  ",
+        "tooltip": false
+    },
+    "custom/power": {
+    	"format": "⏻  ",
+	"on-click": "wlogout"
+    },
+    "custom/arch": {
+    	"format": "",
+	"on-click": "$HOME/.local/bin/xmenurun"
+    },
+    "memory": {
+        "format": "{}%  "
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [" ", " ", " "]
+    },
+    "backlight": {
+        "format": "{icon} {percent}",
+        "format-icons": [ "", "", "", "", "", "" ],
+        "on-scroll-up": "light -A 1",
+        "on-scroll-down": "light -U 1"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "tooltip-format": "{timeTo}, {capacity}%",
+        "format-charging": " {capacity}",
+        "format-plugged": " ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "interface": "wlan0",
+        "format-wifi": "󰤨 ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr}  ",
+        "format-linked": "{ifname} (No IP)  ",
+        "format-disconnected": "睊 ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{essid}",
+    },
+    "tray": {
+    
+        "icon-size": 23,
+    
+        "spacing": 10
+    },
+      "pulseaudio": {
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{icon} {format_source}",
+        "format-bluetooth-muted": " {icon} 0% {format_source}",
+        "format-muted": " 0% {format_source}",
+        "format-source": "  {volume}%",
+        "format-source-muted": "  0%",
+        "format-icons": {
+          "headphone": "",
+          "hands-free": "蓼",
+          "headset": "蓼",
+          "phone": "",
+          "portable": "",
+          "car": "",
+          "default": ["", "", ""] // 醙
+        },
+        "on-click": "pavucontrol"
+      },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": " ",
+            "default": " "
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null",
+        "on-click": "playerctl play-pause",
+    },
+    "custom/fans": {
+        "format": "{}",
+        "exec": "$HOME/.config/waybar/fans.sh",
+        "escape": true,
+        "restart-interval": 10,
+    },
+    "custom/bluetooth": {
+      "exec": "~/.config/waybar/bluetooth.sh",
+      "interval": 5,
+      "format": "",
+       "on-click": "$HOME/.local/bin/rofi-bluetooth",
+      "tooltip": "Bluetooth",
+      "return-type": "json"
+    }
+}
+
+
