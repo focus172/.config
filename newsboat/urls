@@ -1,13 +1,11 @@
 https://lukesmith.xyz/rss.xml
-https://videos.lukesmith.xyz/feeds/videos.xml?videoChannelId=2 "~Luke Smith (Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~Luke Smith (YouTube)"
 https://lindypress.net/rss
 https://notrelated.xyz/rss
 https://landchad.net/rss.xml
 https://based.cooking/index.xml
 https://artixlinux.org/feed.php "tech"
 https://www.archlinux.org/feeds/news/ "tech"
-https://github.com/LukeSmithxyz/voidrice/commits/master.atom "~LARBS dotfiles"
+
 blogs
 https://log.pyratebeard.net/rss.xml "~pyratebeard" "blogs"
 http://feeds.xero.nu/rss/blog/newest "~xero" "blogs"
@@ -28,29 +26,11 @@ http://feeds.feedburner.com/comiclistfeed "~comic list - this week" "newsletters
 http://feeds.feedburner.com/comiclistnextweek "~comic list - next week" "newsletters" "comics"
 http://www.metalstorm.net/rss/news.xml "~metalstorm" "newsletters" "music"
 
-reddit
-https://reddit.com/r/unixart.rss "~unixart" "reddit"
-https://reddit.com/r/vim.rss "~vim" "reddit"
-https://reddit.com/r/zsh.rss "~zsh" "reddit"
-https://reddit.com/r/privacy.rss "~privacy" "reddit"
-https://reddit.com/r/opensource.rss "~opensource" "reddit"
-https://reddit.com/r/comicbooks.rss "~comicbooks" "reddit" "comics"
-https://reddit.com/r/comicbookcollecting.rss "~comicbookcollecting" "reddit" "comics"
-
 mastodon
 https://mastodon.social/@pyratebeard.rss "~pyratebeard" "mastodon"
 https://mastodon.social/@eff.rss "~eff" "mastodon"
 https://mastodon.social/@x0rz.rss "~x0rz" "mastodon"
 https://infosec.exchange/@0xmrtn.rss "~0xmrtn" "mastodon"
-
-twitter
-https://nitter.net/rikkuness/rss "~rikkuness" "twitter"
-https://nitter.net/moongoosedani/rss "~moongoosedani" "twitter"
-https://nitter.net/dogspacesuit/rss "~dogspacesuit" "twitter"
-https://nitter.net/_glasshalfphil/rss "~_glasshalfphil" "twitter"
-https://nitter.net/fontvirus/rss "~fontvirus" "twitter"
-https://nitter.net/doctorow/rss "~doctorow" "twitter"
-https://nitter.net/pyratebeard/lists/tech/rss "~tech list" "twitter" "tech"
 
 podcasts
 https://podcast.nixers.net/feed/feed.xml "~nixers" "podcasts"
