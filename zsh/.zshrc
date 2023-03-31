@@ -462,17 +462,14 @@ mcd () {
 
 # Other program settings:
 #export DICS="/usr/share/stardict/dic/"
-#export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+export SUDO_ASKPASS="$HOME/.config/scripts/menupass"
 #export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 #export QT_QPA_PLATFORMTHEME="gtk2" # Have QT use gtk2 theme.
 #export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.
 
 
-export RUSTC_WRAPPER=$(which sccache)
 
 #alias startw="wpa supplicant -B -D wext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf"
-alias starth="exec dbus-run-session Hyprland"
-alias starts="exec dbus-run-session sway"
 #[ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ] && setsid shortcuts >/dev/null 2>&1
 
 

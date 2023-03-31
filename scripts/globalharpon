@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# TODO: This is not my script but i want to edit it to be more useful to me 
+# to do this i want to make a version of harpon that works globally
+
 # script for editing some of my more frequently edited config files.
 
 menu="rofi -dmenu"

@@ -1,3 +1,7 @@
 #!/usr/bin/env sh
 
-[ "$(printf "No\\nYes" | rofi -theme ~/.config/rofi/theme/dracula-dark.rasi -dmenu -theme-str '* { font: "Monospace 18"; background-color: #571d1d90; lines:4; active-background: #cc4545; }' -i -p "$1")" = "Yes" ] && $2
+# This sciprt can ask the user for permision to do somethign
+# The first option is what is prompted of the user and the second is code that will be ran if they say yes
+
+# -theme ~/.config/rofi/theme/dracula-dark.rasi 
+[ "$(printf "No\\nYes" | rofi -dmenu -theme-str '* { font: "Monospace 18"; background-color: #571d1d90; lines:4; active-background: #cc4545; }' -i -p "$1")" = "Yes" ] && $2

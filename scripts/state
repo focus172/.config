@@ -1,13 +1,7 @@
 #!/bin/bash
 
-# Cleanup first
-clear
-
 # Get the user's name
 username=$(whoami)
-
-# Get the current workspace number
-workspace=$(swaymsg -t get_workspaces | jq '.[] | select(.focused == true) | .num')
 
 # Get the current time
 time=$(date +"%r")
@@ -23,7 +17,6 @@ battery=$(upower -i /org/freedesktop/UPower/devices/battery_macsmc_battery | gre
 
 # Print the formatted output
 echo -e "\033[1mGreetings $username!\033[0m"
-echo -e "You are on workspace .................... \033[33m$workspace\033[0m"
 echo -e "It is currently ......................... \033[31m$time\033[0m"
 echo -e "Volume is at ............................ \033[34m$volume\033[0m"
 echo -e "Backlight is set to ..................... \033[32m$backlight%\033[0m"

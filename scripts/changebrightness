@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function send_notification() {
+	brightness=$(brightnessctl info | grep %)
+	notify-send $(printf "Brightness: %s" $brightness)
+}
+
+case $1 in
+up)
+	brightnessctl set +5%
+	send_notification $1
+	;;
+down)
+	brightnessctl set 5%-
+	send_notification $1
+	;;
+esac

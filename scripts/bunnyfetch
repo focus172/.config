@@ -17,8 +17,8 @@ v=$'\e[7m'
 sep=
 s=$d$f0$sep$t
 
-w='wifi'
-wifiname="$(iwgetid | cut -d \" -f2)"
+#w='wifi'
+#wifiname="$(iwgetid | cut -d \" -f2)"
 
 h='wm'
 wmname="$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")"
@@ -26,8 +26,8 @@ wmname="$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"
 k='krn'
 kernel="$(uname -r | cut -d '-' -f1)"
 
-r='res'
-resolution="$(xwininfo -root | grep geometry | awk '{print $2}' | cut -d + -f1)"
+#r='res'
+#resolution="$(xwininfo -root | grep geometry | awk '{print $2}' | cut -d + -f1)"
 
 sh='sh'
 shell=$(basename $SHELL)
@@ -40,7 +40,6 @@ shell=$(basename $SHELL)
 # ( . .)
 # c(")(")
 
-tput clear
 cat << EOF
 
              $d$f1$h  $t$wmname

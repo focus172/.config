@@ -1,7 +1,7 @@
 #!/bin/sh
 
 weather() {
-	local -r location="$(curl -s "https://ipvigilante.com/" | jq -r '.data.city_name')"
+	location="$(curl -s "https://ipvigilante.com/" | jq -r '.data.city_name')"
 	wttr=$(curl -s "wttr.in/${location}?format=%l:+%f+%C\n" | tr '[:upper:]' '[:lower:]')
 	if [[ ${wttr} == "unknown location"* ]] ; then
 		echo -e "weather is ${light_red}unavailable${reset}" > /tmp/weather
@@ -11,3 +11,9 @@ weather() {
 }
 
 weather
+#!/bin/sh
+
+city=$(curl -s ipinfo.io | jq -r '.city')
+weather="$(curl -s wttr.in/${city}?format=Current+weather+for+%l:+%c%t+▪+%h+humidity+▪+%w+wind)"
+
+notify-send "Weather Info" "$weather"

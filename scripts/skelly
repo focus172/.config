@@ -10,9 +10,8 @@ BLD=$(printf "%b" "\033[1m")
 
 # Update me when you add more insults!
 MAX=11
-#RAND=$(shuf -i 1-$MAX -n 1)
+RAND=$(shuf -i 1-$MAX -n 1)
 
-RAND=3
 
 case $RAND in
 1) Q="Blabbering bonehead! Come on, fight me!" ;;
