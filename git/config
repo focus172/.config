@@ -1,0 +1,5 @@
+[user]
+	email = evan.stokdyk@gmail.com
+	name = Focus172
+[credential]
+	helper = store --file ~/.config/git/.git-credentials

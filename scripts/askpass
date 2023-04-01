@@ -7,5 +7,5 @@ rofi -dmenu\
     -password\
     -i\
     -no-fixed-num-lines\
-    -p "Password:"
-#    -theme ~/.config/rofi/theme/askpass.rasi
+    -p "Password:"\
+    -theme ~/.config/rofi/theme/askpass.rasi

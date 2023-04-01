@@ -110,7 +110,7 @@
     },
     "custom/power": {
         "format": "",
-        "on-click": "exec /home/focus/.config/waybar/scripts/power-menu.sh",
+        "on-click": "exec /home/focus/.config/scripts/power",
         "tooltip": false
     },
     "return-type": "json",

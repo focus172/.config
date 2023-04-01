@@ -1,1 +1,9 @@
-@theme "/usr/share/rofi/themes/Monokai.rasi"
+configuration {
+
+	modi: "drun,run";
+	show-icons: true;
+	icon-theme: "Papirus";
+	sidebar-mode: true;
+}
+
+@theme "theme/dracula-dark.rasi"
