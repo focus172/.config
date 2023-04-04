@@ -18,9 +18,6 @@
 #---------------------------Stolen From: @rxyhn----------------------------------
 
 
-
-# Set path globally
-
 if [ $(uname) = "Darwin" ]; then
 		# run mac stuff
 		source /Users/evanstokdyk/.config/zsh/mac.zsh
@@ -32,7 +29,6 @@ fi
 # Use neovim for vim if present.
 # [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 
-# source <(/opt/homebrew/bin/starship init zsh --print-full-init)
 
 #se() {
 #	choice="$(find ~/.local/bin -mindepth 1 -printf '%P\n' | fzf)"
@@ -56,7 +52,7 @@ alias \
 
 # Colorize commands when possible.
 alias \
-	ls="exa -a --group-directories-first" \
+	l="exa -a --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
@@ -81,9 +77,9 @@ alias \
 
 alias \
 	magit="nvim -c MagitOnly" \
-	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
+	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"\
+	git="gix"
 
-#	lf="lfub" \
 
 # source /etc/inputrc
 #set editing-mode vi
@@ -219,25 +215,9 @@ HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 
 # cd and ls after
 cd() {
-	builtin cd "$@" && ls
+	builtin cd "$@" && l 
 }
 
-# recompile completion and reload zsh
-#src() {
-#	autoload -U zrecompile
-#	rm -rf "$compfile"*
-#	compinit -u -d "$compfile"
-#	zrecompile -p "$compfile"
-#	exec zsh
-#}
-
-# Ditch Nano, join the NeoVim Team
-#export EDITOR=/usr/bin/nvim
-#export SUDO_EDITOR=/usr/bin/nvim
-#export VISUAL=/usr/bin/nvim
-
-# Firefox plz
-#export BROWSER=/usr/bin/firefox
 
 # Lang
 #export LANG=en_US.UTF-8
@@ -250,9 +230,6 @@ cd() {
 #setopt GLOB_COMPLETE
 #setopt COMPLETE_ALIASES
 #setopt COMPLETE_IN_WORD
-
-# builtin command behaviour
-#setopt AUTO_CD
 
 # job control
 #setopt AUTO_CONTINUE
@@ -284,12 +261,6 @@ cd() {
 #	zle-line-init() { echoti smkx; }; zle -N zle-line-init
 #	zle-line-finish() { echoti rmkx; }; zle -N zle-line-finish
 #fi
-
-
-# History
-#zshAddHistory() {
-#	whence ${${(z)1}[1]} >| /dev/null || return 1
-#}
 
 # ---| Correction  and Autocompletion |--- #
 #zstyle ':completion:*:correct:*' original true
@@ -374,17 +345,12 @@ cd() {
 # ****** ALIAS SECTION ****** #
 ###############################
 
-# Archives
-alias mtar='tar -zcvf' # mtar <archive_compress>
-alias utar='tar -zxvf' # utar <archive_decompress> <file_list>
-alias z='zip -r' # z <archive_compress> <file_list>
-alias uz='unzip' # uz <archive_decompress> -d <dir>
-
 # alias for making a directory and cd to it
 mcd () {
     mkdir -p $1
     cd $1
 }
+
 # alias for searching through ps
 #alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
 # alias for mkdir so that it makes required parent directory
@@ -409,11 +375,6 @@ mcd () {
 #alias mv='mv -v'
 #alias cp='cp -vr'
 #alias rm='rm -vr'
-# alias for running cpp files
-#rc(){
-#  g++ "$1" -o run
-#  ./run
-#}
 # alias for checking dunst
 #alias dun='killall dunst && dunst &
 
@@ -458,11 +419,10 @@ mcd () {
 #export HISTFILE="$XDG_DATA_HOME/history"
 #export MBSYNCRC="$XDG_CONFIG_HOME/mbsync/config"
 #export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
-#export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 
 # Other program settings:
 #export DICS="/usr/share/stardict/dic/"
-export SUDO_ASKPASS="$HOME/.config/scripts/menupass"
+export SUDO_ASKPASS="$HOME/.config/scripts/askpass"
 #export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 #export QT_QPA_PLATFORMTHEME="gtk2" # Have QT use gtk2 theme.
 #export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.
@@ -504,5 +464,84 @@ function br {
         return "$code"
     fi
 }
+
+
+
+
+
+# Alias for commands I use often
+# alias chad='startx ~/.config/chadwm/scripts/run.sh'
+# alias sudo='doas'
+alias v="nvim"
+#alias rm="trash-put"
+#alias ls='exa --color=auto --icons' # my preferred listing
+#alias l='ls -l'
+#alias la='ls -a'
+#alias lla='ls -la'
+#alias lt='ls --tree'
+#alias svim='sudoedit'
+alias gu="gitui"
+#export TERM='xterm-256color'
+#export EDITOR='nvim'
+#export VISUAL='nvim'
+# alias lf='lfrun'
+#alias m='neomutt'
+alias r='newsboat' 
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages
+
+#alias wgu="sudo wg-quick up nebula"
+#alias wgd="sudo wg-quick down nebula"
+
+
+
+alias gl='git clone'
+#alias de='doasedit'
+
+
+alias ttc='tty-clock -c -C 7 -r -f "%A, %B %d"'
+
+#export SUDO_PROMPT=$'Password for ->\033[32;05;16m %u\033[0m  '
+
+
+
+# Cheat query
+#cht() {
+#    curl -s "cheat.sh/$(echo -n "$*" | jq -sRr @uri)"
+#}
+
+#lf () {
+#    tmp="$(mktemp)"
+#    # `command` is needed in case `lfcd` is aliased to `lf`
+#    command lf -last-dir-path="$tmp" "$@"
+#    if [ -f "$tmp" ]; then
+#        dir="$(cat "$tmp")"
+#        rm -f "$tmp"
+#        if [ -d "$dir" ]; then
+#            if [ "$dir" != "$(pwd)" ]; then
+#                cd "$dir"
+#            fi
+#        fi
+#    fi
+#}
+
+
+bindkey '^f' lf
+
+
+#export FZF_DEFAULT_OPTS='
+#  --color fg:#b6beca,bg:#13171b
+#  --color bg+:#ef7d7d,fg+:#2c2f30
+#  --color hl:#dadada,hl+:#13171b,gutter:#13171b
+#  --color pointer:#373d49,info:#606672
+#  --border
+#  --color border:#13171b
+#  --height 13'
+
+#export FZF_CTRL_R_OPTS="
+#  --preview 'echo {}' --preview-window up:3:hidden:wrap
+#  --bind 'ctrl-/:toggle-preview'
+#  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+#  --color header:italic
+#  --header 'Press CTRL-Y to copy command into clipboard'"
 
 

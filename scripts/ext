@@ -7,17 +7,17 @@
 # Behavior with `-c` option: Extract contents into current directory
 
 while getopts "hc" o; do case "${o}" in
-	c) extracthere="True" ;;
+	c) extract_there="True" ;;
 	*) printf "Options:\\n   -c: Extract archive into current directory rather than a new one.\\n" && exit 1 ;;
 esac done
 
-if [ -z "$extracthere" ]; then
-	archive="$(readlink -f "$*")" &&
+if [ -z "$extract_there" ]; then
+	archive="$(readlink -f "$*")"
+else
+	archive="$(readlink -f "$(echo "$*" | sed -F' ' -f2)")" &&
 	directory="$(echo "$archive" | sed 's/\.[^\/.]*$//')" &&
 	mkdir -p "$directory" &&
 	cd "$directory" || exit 1
-else
-	archive="$(readlink -f "$(echo "$*" | cut -d' ' -f2)" 2>/dev/null)"
 fi
 
 [ -z "$archive" ] && printf "Give archive to extract as argument.\\n" && exit 1

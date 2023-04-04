@@ -1,0 +1,16 @@
+#!/bin/sh
+
+#
+# ~/.config/scripts/update_playlist
+# @Focus172
+# set as cronjob with: 0 8 * * *
+#
+
+# there should be a test where if ncmpcpp is running it doesn't
+# do the thing
+
+#echo $(find ~/music/ -name '*.mp3' -o -name '*.opus' | sed -e 's%^./%%g')
+
+ls -1 ~/music | shuf > ~/.config/mpd/playlists/all.m3u
+notify-send "'All' playlist have been resynced with contents of ~/music"
+

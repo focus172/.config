@@ -10,7 +10,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 export PATH="$PATH:$HOME/.local/bin:$HOME/.config/scripts:$XDG_DATA_HOME/cargo/bin"
 
-#export BROWSER=""
+export LESSHISTFILE=-
 
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
@@ -18,3 +18,28 @@ export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 
 # Once config is done we can set our shell to prefered fish
 export SHELL=$(which fish)
+
+#export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+#export SUDO_ASKPASS="zenity"
+export XDG_DESKTOP_DIR="$HOME/current"
+export XDG_DOCUMENTS_DIR="$HOME/docs"
+export XDG_DOWNLOAD_DIR="$HOME/dl"
+export XDG_MUSIC_DIR="$HOME/music"
+export XDG_PICTURES_DIR="$HOME/pics"
+#export XDG_PUBLICSHARE_DIR="$HOME"
+
+
+export EDITOR="nvim"
+export READER="zathura"
+export VISUAL="nvim"
+export TERMINAL="foot"
+export BROWSER="brave"
+export VIDEO="mpv"
+export IMAGE="feh"
+#export COLORTERM="truecolor"
+export OPENER="handlr open"
+export PAGER="less"
+export WM="Hyprland"
+export MANPAGER='less'
+export XDG_CURRENT_DESKTOP='Hyprland'
+
