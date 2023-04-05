@@ -1,9 +1,9 @@
-configuration {
+/** Basic config file **/
 
-	modi: "drun,run";
-	show-icons: true;
-	icon-theme: "Papirus";
-	sidebar-mode: true;
+
+configuration {
+  show-icons:         true;
+  icon-theme:         "Papirus";
+  
 }
 
-@theme "theme/dracula-dark.rasi"
