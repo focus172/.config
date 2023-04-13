@@ -11,7 +11,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.config/scripts:$XDG_DATA_HOME/cargo/bin"
 
 # this is set at the start so if I fuck up other things then I still have a shell
-export SHELL=$(which fish)
+#export SHELL=$(which fish)
 
 export LESSHISTFILE=-
 

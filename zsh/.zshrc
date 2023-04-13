@@ -18,33 +18,23 @@
 #---------------------------Stolen From: @rxyhn----------------------------------
 
 
-if [ $(uname) = "Darwin" ]; then
-		# run mac stuff
-		source /Users/evanstokdyk/.config/zsh/mac.zsh
-else
-		# run linux stuff
-		source /home/focus/.config/zsh/linux.zsh
-fi
+# Basic structure (not implemented)
+# - init nesesities
+# - aliases
+# - options
+# - variables
+# - functions
+
 
 # adds colors if in tty
 source /home/focus/.config/zsh/tty.sh
 
-# Use neovim for vim if present.
-# [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
-
-
-#se() {
-#	choice="$(find ~/.local/bin -mindepth 1 -printf '%P\n' | fzf)"
-#	[ -f "$HOME/.local/bin/$choice" ] && $EDITOR "$HOME/.local/bin/$choice"
-#	;}
-
-
+# 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \
 	mv="mv -iv" \
 	rm="rm -vI" \
-	bc="bc -ql" \
 	rsync="rsync -vrPlu" \
 	mkd="mkdir -pv" \
 	yt="yt-dlp --embed-metadata -i" \
@@ -55,37 +45,46 @@ alias \
 
 # Colorize commands when possible.
 alias \
-	l="exa -a --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
-	ccat="highlight --out-format=ansi" \
 	ip="ip -color=auto"
+
+# done else where better
+# l="exa -a --group-directories-first" \
 
 # These common commands are just too long! Abbreviate them.
 alias \
 	ka="killall" \
-	g="git" \
-	trem="transmission-remote" \
+	g="gix" \
 	YT="youtube-viewer" \
 	sdn="shutdown -h now" \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	p="pacman" \
-	xi="sudo xbps-install" \
-	xr="sudo xbps-remove -R" \
-	xq="xbps-query" \
 	z="zathura" \
-	icat="kitten icat"
+	vdiff="nvim -d"
 
+# Alias for commands I use often
+# alias sudo='doas'
+#alias rm="trash-put"
+alias ls='exa --color=auto --icons' # my preferred listing
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
 
-alias \
-	magit="nvim -c MagitOnly" \
-	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"\
-	git="gix"
+alias gu="gitui"
+#export TERM='xterm-256color'
+# alias lf='lfrun'
+#alias m='neomutt'
+alias r='newsboat' 
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages
+
+alias ttc='tty-clock -c -C 7 -r -f "%A, %B %d"'
 
 
 # source /etc/inputrc
-#set editing-mode vi
+set editing-mode vi
 #$if mode=vi
 
 #set show-mode-in-prompt on
@@ -104,13 +103,9 @@ alias \
 
 #$endif
 
-
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-
-# Prompt
-# source <(starship init zsh --print-full-init)
 
 #setopt autocd		# Automatically cd into typed directory.
 #stty stop undef		# Disable ctrl-s to freeze terminal.
@@ -122,9 +117,9 @@ SAVEHIST=20000
 HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 
 # Load aliases and shortcuts if existent.
-#[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
-#[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
-#[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
+
+# TODO: create aliasrc and shortcutrc
+
 
 # Basic auto/tab complete:
 #autoload -U compinit
@@ -160,21 +155,21 @@ HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 # echo -ne '\e[5 q' # Use beam shape cursor on startup.
 # preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# # Use lf to switch directories and bind it to ctrl-o
-# lfcd () {
-#     tmp="$(mktemp -uq)"
-#     trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
-#     lf -last-dir-path="$tmp" "$@"
-#     if [ -f "$tmp" ]; then
-#         dir="$(cat "$tmp")"
-#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-#     fi
-# }
-# bindkey -s '^o' '^ulfcd\n'
+# Use lf to switch directories and bind it to ctrl-o
+lfcd () {
+        tmp="$(mktemp -uq)"
+        trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
+        lf -last-dir-path="$tmp" "$@"
+        if [ -f "$tmp" ]; then
+                dir="$(cat "$tmp")"
+                [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+        fi
+}
 
-# bindkey -s '^a' '^ubc -lq\n'
 
-# bindkey -s '^f' '^ucd "$(dirname "$(fzf)")"\n'
+# ********** The Binding of  **********
+bindkey -s '^o' '^ulfcd\n'
+bindkey -s '^f' '^ucd "$(dirname "$(fzf)")"\n'
 
 # bindkey '^[[P' delete-char
 
@@ -189,13 +184,6 @@ HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 #source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 
 
-
-
-# Uncomment the following line to enable command auto-correction.
-#ENABLE_CORRECTION="true"
-
-# if not running interactivly return
-
 # completion cache path setup
 # typeset -g comppath="$HOME/.cache"
 # typeset -g compfile="$comppath/.zcompdump"
@@ -207,18 +195,16 @@ HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 # fi
 
 # ---| zsh Internal Stuff |--- #
-#SHELL=$(which zsh || echo '/bin/zsh')
-
 
 
 # Show top 21 Commands used (thanks totoro
 #toppy() {
-#    history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n 21
+#        history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n 21
 #}
 
 # cd and ls after
 cd() {
-	builtin cd "$@" && l 
+	builtin cd "$@" && ls 
 }
 
 
@@ -323,10 +309,6 @@ cd() {
 # zstyle -e ':completion:*:hosts' hosts 'reply=( ${=${=${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) 2>/dev/null)"}%%[#| ]*}//\]:[0-9]*/ }//,/ }//\[/ } ${=${(f)"$(cat /etc/hosts(|)(N) <<(ypcat hosts 2>/dev/null))"}%%\#*} ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2>/dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}})'
 # ttyctl -f
 
-# # For tty
-# if [ "$TERM" = "linux" ] ; then
-#     echo -en "\e]P0232323"
-# fi
 
 # initialize completion
 #compinit -u -d "$compfile"
@@ -357,9 +339,7 @@ mcd () {
 # alias for searching through ps
 #alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
 # alias for mkdir so that it makes required parent directory
-#alias mkdir="mkdir -p"
-# alias for ranger
-#alias fm='ranger'
+alias mkdir="mkdir -p"
 # alias for searching and installing packages
 #alias pacs="pacman -Slq | fzf -m --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
 # alias for searching and installing packages from AUR
@@ -371,9 +351,8 @@ mcd () {
 # alias for wifi
 #alias wifi="nmtui-connect"
 # alias for grep
-#alias grep='grep --color=auto'
+alias grep='grep --color=auto'
 # alias for Neovim
-#alias v='nvim'
 # alias for verbose cp, mv, rm
 #alias mv='mv -v'
 #alias cp='cp -vr'
@@ -382,54 +361,16 @@ mcd () {
 #alias dun='killall dunst && dunst &
 
 # ---------------P R O M P T------------------
-# Init Starship
-#eval "$(starship init zsh)"
-# Setup Starship custom prompt
-#export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 
 
-# Default programs:
-#export EDITOR="nvim"
-#export TERMINAL="st"
-#export TERMINAL_PROG="st"
-#export BROWSER="librewolf"
 
-# Change the default crypto/weather monitor sites.
-# export CRYPTOURL="rate.sx"
-# export WTTRURL="wttr.in"
 
-# ~/ Clean-up:
-#export XDG_CONFIG_HOME="$HOME/.config"
-#export XDG_DATA_HOME="$HOME/.local/share"
-#export XDG_CACHE_HOME="$HOME/.cache"
-#export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
-#export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
-#export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
-#export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
-#export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
-#export INPUTRC="$XDG_CONFIG_HOME/shell/inputrc"
-#export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-#export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-#export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
-#export KODI_DATA="$XDG_DATA_HOME/kodi"
-#export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
-#export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
-#export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
-#export CARGO_HOME="$XDG_DATA_HOME/cargo"
-#export GOPATH="$XDG_DATA_HOME/go"
-#export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
-#export UNISON="$XDG_DATA_HOME/unison"
-#export HISTFILE="$XDG_DATA_HOME/history"
-#export MBSYNCRC="$XDG_CONFIG_HOME/mbsync/config"
-#export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
+
 
 # Other program settings:
-#export DICS="/usr/share/stardict/dic/"
 export SUDO_ASKPASS="$HOME/.config/scripts/askpass"
 #export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 #export QT_QPA_PLATFORMTHEME="gtk2" # Have QT use gtk2 theme.
-#export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.
-
 
 
 #alias startw="wpa supplicant -B -D wext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf"
@@ -439,21 +380,8 @@ export SUDO_ASKPASS="$HOME/.config/scripts/askpass"
 # Switch escape and caps if tty and no passwd required:
 #sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/larbs/ttymaps.kmap 2>/dev/null
 
-# export XDG_DATA_HOME="$HOME/.local/share"
-#
-# export CARGO_HOME="$XDG_DATA_HOME/cargo"
-# export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-# export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 
-
-
-
-# This script was automatically generated by the broot program
-# More information can be found in https://github.com/Canop/broot
-# This function starts broot and executes the command
-# it produces, if any.
-# It's needed because some shell commands, like `cd`,
-# have no useful effect if executed in a subshell.
+# allows broot to cd into places
 function br {
     local cmd cmd_file code
     cmd_file=$(mktemp)
@@ -472,73 +400,18 @@ function br {
 
 
 
-# Alias for commands I use often
-# alias chad='startx ~/.config/chadwm/scripts/run.sh'
-# alias sudo='doas'
-alias v="nvim"
-#alias rm="trash-put"
-#alias ls='exa --color=auto --icons' # my preferred listing
-#alias l='ls -l'
-#alias la='ls -a'
-#alias lla='ls -la'
-#alias lt='ls --tree'
-#alias svim='sudoedit'
-alias gu="gitui"
-#export TERM='xterm-256color'
-#export EDITOR='nvim'
-#export VISUAL='nvim'
-# alias lf='lfrun'
-#alias m='neomutt'
-alias r='newsboat' 
-alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages
-
-#alias wgu="sudo wg-quick up nebula"
-#alias wgd="sudo wg-quick down nebula"
-
-
-
-alias gl='git clone'
-#alias de='doasedit'
-
-
-alias ttc='tty-clock -c -C 7 -r -f "%A, %B %d"'
-
 #export SUDO_PROMPT=$'Password for ->\033[32;05;16m %u\033[0m  '
 
+export FZF_DEFAULT_OPTS='
+        --color hl:#dadada,hl+:#13171b,gutter:#13171b
+        --color bg+:#ef7d7d,fg+:#2c2f30
+        --color pointer:#373d49,info:#606672
+        --height 13'
 
+# --color fg:#b6beca,bg:#13171b
+# --border
+# --color border:#13171b
 
-# Cheat query
-#cht() {
-#    curl -s "cheat.sh/$(echo -n "$*" | jq -sRr @uri)"
-#}
-
-#lf () {
-#    tmp="$(mktemp)"
-#    # `command` is needed in case `lfcd` is aliased to `lf`
-#    command lf -last-dir-path="$tmp" "$@"
-#    if [ -f "$tmp" ]; then
-#        dir="$(cat "$tmp")"
-#        rm -f "$tmp"
-#        if [ -d "$dir" ]; then
-#            if [ "$dir" != "$(pwd)" ]; then
-#                cd "$dir"
-#            fi
-#        fi
-#    fi
-#}
-
-
-bindkey '^f' lf
-
-
-#export FZF_DEFAULT_OPTS='
-#  --color fg:#b6beca,bg:#13171b
-#  --color bg+:#ef7d7d,fg+:#2c2f30
-#  --color hl:#dadada,hl+:#13171b,gutter:#13171b
-#  --color pointer:#373d49,info:#606672
-#  --border
-#  --color border:#13171b
-#  --height 13'
 
 #export FZF_CTRL_R_OPTS="
 #  --preview 'echo {}' --preview-window up:3:hidden:wrap
@@ -546,5 +419,8 @@ bindkey '^f' lf
 #  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
 #  --color header:italic
 #  --header 'Press CTRL-Y to copy command into clipboard'"
+
+source /home/focus/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 
 

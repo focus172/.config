@@ -2,7 +2,7 @@
 
 entries="Cancel Logout Suspend Reboot Shutdown"
 
-selected=$(printf '%s\n' $entries | wofi --conf=$HOME/.config/wofi/power_off_config --style=$HOME/.config/wofi/widget_style.css | awk '{print tolower($1)}')
+selected=$(printf '%s\n' $entries | rofi -dmenu | awk '{print tolower($1)}')
 
 case $selected in
   cancel)
