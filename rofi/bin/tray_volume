@@ -5,12 +5,12 @@
 ## Github  : @adi1090x
 ## Twitter : @adi1090x
 
-dir="$HOME/.config/rofi/applets/android"
-rofi_command="rofi -theme $dir/three.rasi"
+dir="$HOME/.config/rofi/style/"
+rofi_command="rofi -theme $dir/tray.rasi"
 
 ## Get Volume
 #VOLUME=$(amixer get Master | tail -n 1 | awk -F ' ' '{print $5}' | tr -d '[]%')
-MUTE=$(amixer get Master | tail -n 1 | awk -F ' ' '{print $6}' | tr -d '[]%')
+MUTE=$(amixer get Master | tail -n 1 | awk -F' ' '{print $6}' | tr -d '[]%')
 
 active=""
 urgent=""

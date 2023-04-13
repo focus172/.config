@@ -5,8 +5,8 @@
 ## Github  : @adi1090x
 ## Twitter : @adi1090x
 
-dir="$HOME/.config/rofi/applets/android"
-rofi_command="rofi -theme $dir/five.rasi"
+dir="$HOME/.config/rofi/style"
+rofi_command="rofi -theme $dir/tray.rasi"
 
 uptime=$(uptime -p | sed -e 's/up //g')
 

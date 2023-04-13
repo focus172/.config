@@ -5,6 +5,7 @@ https://landchad.net/rss.xml
 https://based.cooking/index.xml
 https://artixlinux.org/feed.php "tech"
 https://www.archlinux.org/feeds/news/ "tech"
+https://asahilinux.org/blog/index.xml
 
 blogs
 https://log.pyratebeard.net/rss.xml "~pyratebeard" "blogs"
@@ -73,8 +74,6 @@ https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss.xml "~nvd all" "security"
 https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml "~nvd analysed" "security"
 
 news
-https://www.irishtimes.com/cmlink/news-1.1319192 "~irish times" "news headlines"
-http://feeds.bbci.co.uk/news/rss.xml "~bbc top stories" "news headlines"
 https://soylentnews.org/index.rss "~soylent news" "news headlines"
 https://www.phoronix.com/rss.php "~phoronix" "news tech"
 

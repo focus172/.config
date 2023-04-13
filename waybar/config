@@ -3,41 +3,40 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 32, // Waybar height (to be removed for auto height)
-    //  "width": 1280, // Waybar width
-    "margin-left": 5,
-    "margin-right": 5,
+    "height": 32,
+    "margin-left": 0,
+    "margin-right": 0,
     "spacing": 6,
 
 
-    // Modules positon
-    "modules-left": ["wlr/workspaces", "idle_inhibitor"],
+    "modules-left": ["wlr/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "custom/spotify", "pulseaudio", "network", "cpu", "memory", "temperature", "custom/power"],
+    "modules-right": ["battery", "pulseaudio", "backlight", "network", "cpu", "memory", "temperature", "custom/power"],
 
 
-    // Modules configuration
     "wlr/workspaces": {
         "disable-scroll": true,
         "on-click": "activate",
-        "format": "{name}"
+        "format": "{name}",
+    	  "on-click-middle": "minimize",
+    	  "on-click-right": "close"
     },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "tooltip-format": "{timeTo}, {capacity}%",
+        "format-charging": " {capacity}",
+        "format-plugged": " ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
     },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
-    },
-    "clock": {
-        // "timezone": "America/Chicago",
+   "clock": {
         "format": "{:%Y-%m-%d - %I:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "on-click": "swaync-client -t -sw"
+        "on-click": "foot -e tty-clock"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -47,28 +46,20 @@
         "format": "{}% "
     },
     "temperature": {
-        // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
+        "critical-threshold": 40,
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": ["", "", "", "", "", "", "", "", "" ,""],
+        "on-scroll-up": "light -A 1",
+        "on-scroll-down": "light -U 1"
     },
-    //"custom/spotify": {
-    //    "exec": "/usr/bin/python3 /home/focus/.config/waybar/mediaplayer.py --player spotify",
-    //    "format": "{}  ",
-    //    "return-type": "json",
-    //    "on-click": "playerctl play-pause",
-    //    "on-scroll-up": "playerctl next",
-    //    "on-scroll-down": "playerctl previous"
-    //},
-    "network": {
-        //"interface": "wlan0", // (Optional) To force the use of this interface
+   "network": {
+        "interface": "wlan0", 
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
@@ -106,13 +97,35 @@
         },
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
         "format": "",
         "on-click": "exec /home/focus/.config/scripts/power",
         "tooltip": false
     },
+    "custom/separator": {
+        "format": "" 
+    }, 
+    "custom/launcher": {
+      "format": "󰍜",
+      "on-click": "rofi -show drun"
+    },
+    "custom/bluetooth": {
+        //"exec": "~/.config/waybar/bluetooth.sh",
+        //"interval": 5,
+        "format": "",
+        "on-click": "$HOME/.local/bin/rofi-bluetooth",
+        "tooltip": "Configure Bluetooth"
+    },
+    "custom/updates": {
+	      "exec": "/home/aspect/.config/waybar/updates.sh",
+	      "interval": 30000,
+        // may be a good place to use ask pass
+        "on-click": "foot -e sudo pacman -Syu" 
+    },
+
+
+
     "return-type": "json",
     "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
@@ -120,3 +133,62 @@
     "on-click-right": "swaync-client -d -sw",
     "escape": true
 }
+
+//{
+
+ // "custom/notification": {
+ //   "tooltip": false,
+ //  "format": "{icon}",
+ //   "format-icons": {
+ //     "notification": "󰂚<span foreground='red'><sup></sup></span>",
+ //     "none": "󰂚",
+ //     "dnd-notification": "󰂛<span foreground='red'><sup></sup></span> ",
+ //     "dnd-none": "󰂛",
+ //     "inhibited-notification": "󰂚<span foreground='red'><sup></sup></span> ",
+ //     "inhibited-none": "󰂚",
+ //     "dnd-inhibited-notification": "󰂛<span foreground='red'><sup></sup></span> ",
+ //     "dnd-inhibited-none": "󰂛"
+ //   },
+ //   }, 
+ 
+    //   "clock": {
+    //    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+	//"format": "{:%I:%M %p}",
+	//"format-alt": "{:%A, %B %d, %Y}"
+   // }
+//        "format": "{usage}%  ",
+ //       "format": "{}%  "
+   //     "format": "{temperatureC}°C {icon}",
+  //      "format-icons": [" ", " ", " "]
+    //"network": {
+     //   "interface": "wlan0",
+      //  "format-wifi": "󰤨 ",
+       // "format-ethernet": "{ifname}: {ipaddr}/{cidr}  ",
+       // "format-linked": "{ifname} (No IP)  ",
+      //  "format-disconnected": "睊 ",
+      //  "format-alt": "{ifname}: {ipaddr}/{cidr}",
+      //  "tooltip-format": "{essid}",
+    //}  
+     // "pulseaudio": {
+     //   "format": "{icon} {volume}% {format_source}",
+     //   "format-bluetooth": "{icon} {format_source}",
+     //   "format-bluetooth-muted": " {icon} 0% {format_source}",
+      //  "format-muted": " 0% {format_source}",
+     //   "format-source": "  {volume}%",
+     //   "format-source-muted": "  0%",
+    //   "format-icons": {
+   //       "headphone": "",
+   //       "hands-free": "蓼",
+   //       "headset": "蓼",
+  //        "phone": "",
+  //        "portable": "",
+  //        "car": "",
+  //        "default": ["", "", ""] // 醙
+   //     },
+  //      "on-click": "pavucontrol"
+ //     },
+//            "default": " "
+   //     "on-click": "playerctl play-pause"
+//}
+
+

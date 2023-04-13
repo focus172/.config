@@ -10,14 +10,17 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 export PATH="$PATH:$HOME/.local/bin:$HOME/.config/scripts:$XDG_DATA_HOME/cargo/bin"
 
+# this is set at the start so if I fuck up other things then I still have a shell
+export SHELL=$(which fish)
+
 export LESSHISTFILE=-
 
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export npm_config_prefix="$XDG_DATA_HOME/npm"
 
 # Once config is done we can set our shell to prefered fish
-export SHELL=$(which fish)
 
 #export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 #export SUDO_ASKPASS="zenity"

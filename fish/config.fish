@@ -20,29 +20,20 @@ if status is-interactive
         set -g RUSTUP_HOME "$XDG_DATA_HOME/rustup"
         set -g GNUPGHOME "$XDG_DATA_HOME/gnupg"  
     else
-      	set -g PATH "$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$HOME/.config/scripts"
-	export RUSTC_WRAPPER=$(which sccache)
-
-        alias starts="exec dbus-run-session sway" 
-        alias starth="exec dbus-run-session Hyprland"
-  
+        export RUSTC_WRAPPER=$(which sccache) 
     end
-
-    # Set global variables
-    # set -g EDITOR "$(which nvim)"
-    
+ 
     # Start starship
     eval "$(starship init fish)"
 
     # Alias things
-    alias home="cd ~"
     alias ..="cd .."
-    alias c="clear"
-    alias ls="exa -a"
+    alias l="exa -a"
     alias land="cat ~/.config/assets/george.txt"
     alias hgrep="history | grep"
-
-    # math shit
+    alias h="history"
+    alias hclear="history --delete"
+    alias lf="/home/focus/.config/lf/lfrun"
     alias math="math \"$1\""
 
 end

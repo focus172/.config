@@ -26,6 +26,9 @@ else
 		source /home/focus/.config/zsh/linux.zsh
 fi
 
+# adds colors if in tty
+source /home/focus/.config/zsh/tty.sh
+
 # Use neovim for vim if present.
 # [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 

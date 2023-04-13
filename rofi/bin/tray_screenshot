@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+## Author  : Aditya Shakya
+## Mail    : adi1090x@gmail.com
+## Github  : @adi1090x
+## Twitter : @adi1090x
+
+dir="$HOME/.config/rofi/style"
+rofi_command="rofi -theme $dir/tray.rasi"
+
+# Options
+screen=""
+area=""
+window=""
+
+# Variable passed to rofi
+options="$screen\n$area\n$window"
+
+chosen="$(echo -e "$options" | $rofi_command -p '' -dmenu -selected-row 1)"
+case $chosen in
+    $screen)
+        sleep 0.5
+		grim
+    ;;
+    $area)
+    	grim -g "$(slurp)"
+    ;;
+    $window)
+    	space="$(echo -n $(hyprctl activewindow | grep 'at:\|size' | awk -F' ' '{print $2}' | sed -e '2s/,/x/'))"
+		sleep 0.5
+		grim -g "$space" 
+    ;;
+esac
+
+mv *_grim.* ~/pix/screenshots
+
