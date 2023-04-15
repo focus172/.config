@@ -2,19 +2,9 @@
 # ~/.config/.gitignore
 #
 
-# Ignore macOS specific files
-configstore
-sketchybar
-skhd
-wireshark
-yabai
-discord
-
-
 # Ignore linux specific files
 dconf
 keepassxc
-
 
 # Ignore general files
 BraveSoftware
@@ -22,21 +12,14 @@ pavucontrol.ini
 nvim
 spotify
 
-
 # Ignore secrets
 github-copilot
 
-# This file specificly is ignored beacuse it creates problems with different shells
-alacritty/alacritty.yml
 
 # zsh garbage
 zsh/.zsh_history
 
 # Unsorted ignores
-BraveSoftware
-spotify
-cleanstore
-mimeapps.list
 pavucontrol.ini
 pulse
 bottom
@@ -46,6 +29,7 @@ supertuxkart
 !supertuxkark/config-0.10/highscore.xml
 lutris
 fish/fish_variables
-fltk.org
 retroarch
 zsh/zsh-syntax-highlighting
+
+weechat

@@ -38,8 +38,8 @@ alias \
 	rsync="rsync -vrPlu" \
 	mkd="mkdir -pv" \
 	yt="yt-dlp --embed-metadata -i" \
-	yta="yt -x -f bestaudio/best" \
-	ytt="yt --skip-download --write-thumbnail" \
+	yta="yt-dlp --embed-metadata -i -x -f bestaudio/best --audio-format opus" \
+	ytt="yt-dlp --embed-metadata -i --skip-download --write-thumbnail" \
 	ffmpeg="ffmpeg -hide_banner" \
 	..="cd .."
 
