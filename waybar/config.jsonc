@@ -1,94 +1,345 @@
+//     "clock": {
+//         "format": "{: %R   %d/%m}",
+//         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+//     },
+//     "pulseaudio": {
+//         "format": "{icon} {volume}%",
+//         "tooltip": false,
+//         "format-muted": " Muted",
+//         "on-click": "pamixer -t",
+//         "on-scroll-up": "pamixer -i 5",
+//         "on-scroll-down": "pamixer -d 5",
+//         "scroll-step": 5,
+//         "format-icons": {
+//             "headphone": "",
+//             "hands-free": "",
+//             "headset": "",
+//             "phone": "",
+//             "portable": "",
+//             "car": "",
+//             "default": ["", "", ""]
+//         }
+//     },
+//     "pulseaudio#microphone": {
+//         "format": "{format_source}",
+//         "tooltip": false,
+//         "format-source": " {volume}%",
+//         "format-source-muted": " Muted",
+//         "on-click": "pamixer --default-source -t",
+//         "on-scroll-up": "pamixer --default-source -i 5",
+//         "on-scroll-down": "pamixer --default-source -d 5",
+//         "scroll-step": 5
+//     }
+// }
+// {
+//     "layer": "top",
+//     "position": "top",
+//     "height": 32,
+//     "margin-left": 0,
+//     "margin-right": 0,
+//     "spacing": 6,
+//
+//
+//     "modules-left": ["wlr/workspaces"],
+//     "modules-center": ["clock"],
+//     "modules-right": ["battery", "pulseaudio", "backlight", "network", "cpu", "memory", "temperature", "custom/power"],
+//
+//
+//     "wlr/workspaces": {
+//         "disable-scroll": true,
+//         "on-click": "activate",
+//         "format": "{name}",
+//     	  "on-click-middle": "minimize",
+//     	  "on-click-right": "close"
+//     },
+//     "battery": {
+//         "states": {
+//             "warning": 30,
+//             "critical": 15
+//         },
+//         "format": "{icon} {capacity}%",
+//         "tooltip-format": "{timeTo}, {capacity}%",
+//         "format-charging": " {capacity}",
+//         "format-plugged": " ",
+//         "format-alt": "{time} {icon}",
+//         "format-icons": ["", "", "", "", ""]
+//     },
+//    "clock": {
+//         "format": "{:%Y-%m-%d - %I:%M}",
+//         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+//         "on-click": "foot -e tty-clock"
+//     },
+//     "cpu": {
+//         "format": "{usage}% ",
+//         "tooltip": false
+//     },
+//     "memory": {
+//         "format": "{}% "
+//     },
+//     "temperature": {
+//         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+//         "critical-threshold": 40,
+//         "format": "{temperatureC}°C {icon}",
+//         "format-icons": ["", "", ""]
+//     },
+//     "backlight": {
+//         // "device": "acpi_video1",
+//         "format": "{percent}% {icon}",
+//         "format-icons": ["", "", "", "", "", "", "", "", "" ,""],
+//         "on-scroll-up": "light -A 1",
+//         "on-scroll-down": "light -U 1"
+//     },
+//    "network": {
+//         "interface": "wlan0", 
+//         "format-wifi": "{essid} ({signalStrength}%) ",
+//         "format-ethernet": "{ipaddr}/{cidr} ",
+//         "tooltip-format": "{ifname} via {gwaddr} ",
+//         "format-linked": "{ifname} (No IP) ",
+//         "format-disconnected": "Disconnected ⚠",
+//         "format-alt": "{ifname}: {ipaddr}/{cidr}"
+//     },
+//     "pulseaudio": {
+//         // "scroll-step": 1, // %, can be a float
+//         "format": "{volume}% {icon} {format_source}",
+//         "format-bluetooth": "{volume}% {icon} {format_source}",
+//         "format-bluetooth-muted": " {icon} {format_source}",
+//         "format-muted": " {format_source}",
+//         "format-source": "{volume}% ",
+//         "format-source-muted": "",
+//         "ignored-sinks": ["Easy Effects Sink"],
+//         "format-icons": {
+//             "headphone": "",
+//             "hands-free": "",
+//             "headset": "",
+//             "phone": "",
+//             "portable": "",
+//             "car": "",
+//             "default": ["", "", ""]
+//         },
+//         "on-click": "pavucontrol"
+//     },
+//     "custom/media": {
+//         "format": "{icon} {}",
+//         "return-type": "json",
+//         "max-length": 10,
+//         "format-icons": {
+//             "spotify": "",
+//             "default": "🎜"
+//         },
+//         "escape": true,
+//         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+//     },
+//     "custom/power": {
+//         "format": "",
+//         "on-click": "exec /home/focus/.config/scripts/power",
+//         "tooltip": false
+//     },
+//     "custom/separator": {
+//         "format": "" 
+//     }, 
+//     "custom/launcher": {
+//       "format": "󰍜",
+//       "on-click": "rofi -show drun"
+//     },
+//     "custom/bluetooth": {
+//         //"exec": "~/.config/waybar/bluetooth.sh",
+//         //"interval": 5,
+//         "format": "",
+//         "on-click": "$HOME/.local/bin/rofi-bluetooth",
+//         "tooltip": "Configure Bluetooth"
+//     },
+//     "custom/updates": {
+// 	      "exec": "/home/aspect/.config/waybar/updates.sh",
+// 	      "interval": 30000,
+//         // may be a good place to use ask pass
+//         "on-click": "foot -e sudo pacman -Syu" 
+//     },
+//
+//
+//
+//     "return-type": "json",
+//     "exec-if": "which swaync-client",
+//     "exec": "swaync-client -swb",
+//     "on-click": "swaync-client -t -sw",
+//     "on-click-right": "swaync-client -d -sw",
+//     "escape": true
+// }
+
+//{
+
+ // "custom/notification": {
+ //   "tooltip": false,
+ //  "format": "{icon}",
+ //   "format-icons": {
+ //     "notification": "󰂚<span foreground='red'><sup></sup></span>",
+ //     "none": "󰂚",
+ //     "dnd-notification": "󰂛<span foreground='red'><sup></sup></span> ",
+ //     "dnd-none": "󰂛",
+ //     "inhibited-notification": "󰂚<span foreground='red'><sup></sup></span> ",
+ //     "inhibited-none": "󰂚",
+ //     "dnd-inhibited-notification": "󰂛<span foreground='red'><sup></sup></span> ",
+ //     "dnd-inhibited-none": "󰂛"
+ //   },
+ //   }, 
+ 
+    //   "clock": {
+    //    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+	//"format": "{:%I:%M %p}",
+	//"format-alt": "{:%A, %B %d, %Y}"
+   // }
+//        "format": "{usage}%  ",
+ //       "format": "{}%  "
+   //     "format": "{temperatureC}°C {icon}",
+  //      "format-icons": [" ", " ", " "]
+    //"network": {
+     //   "interface": "wlan0",
+      //  "format-wifi": "󰤨 ",
+       // "format-ethernet": "{ifname}: {ipaddr}/{cidr}  ",
+       // "format-linked": "{ifname} (No IP)  ",
+      //  "format-disconnected": "睊 ",
+      //  "format-alt": "{ifname}: {ipaddr}/{cidr}",
+      //  "tooltip-format": "{essid}",
+    //}  
+     // "pulseaudio": {
+     //   "format": "{icon} {volume}% {format_source}",
+     //   "format-bluetooth": "{icon} {format_source}",
+     //   "format-bluetooth-muted": " {icon} 0% {format_source}",
+      //  "format-muted": " 0% {format_source}",
+     //   "format-source": "  {volume}%",
+     //   "format-source-muted": "  0%",
+    //   "format-icons": {
+   //       "headphone": "",
+   //       "hands-free": "蓼",
+   //       "headset": "蓼",
+  //        "phone": "",
+  //        "portable": "",
+  //        "car": "",
+  //        "default": ["", "", ""] // 醙
+   //     },
+  //      "on-click": "pavucontrol"
+ //     },
+//            "default": " "
+   //     "on-click": "playerctl play-pause"
+//}
+
 {
     "layer": "top",
     "position": "top",
+    "height": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    // "spacing": 6,
+    "gtk-layer-shell": true,
+    "passtrough": false,
     "mod": "dock",
     "exclusive": true,
-    "passtrough": false,
-    "gtk-layer-shell": true,
-    "height": 0,
-    "modules-left": [
-        "clock",
-        // "cpu",
-        // "memory",
-        "custom/weather",
-        "wlr/workspaces"
-    ],
-    "modules-center": ["hyprland/window"],
-    "modules-right": [
-        "tray",
-        "custom/updates",
-        // "custom/language",
-        "pulseaudio",
-        "pulseaudio#microphone"
-    ],
 
-    "hyprland/window": {
-        "format": "{}"
-    },
-    "wlr/workspaces": {
-        "on-scroll-up": "hyprctl dispatch workspace e+1",
-        "on-scroll-down": "hyprctl dispatch workspace e-1",
-        "all-outputs": true,
-        "on-click": "activate",
-        "format": "{icon}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "urgent": "",
-            "active": "",
-            "default": ""
-          }
-    },
-    // "cpu": {
-    //     "interval": 10,
-    //     "format": " {}%",
-    //     "max-length": 10,
-    //     "on-click": ""
-    // },
-    // "memory": {
-    //     "interval": 30,
-    //     "format": " {}%",
-    //     "format-alt":" {used:0.1f}G",
-    //     "max-length": 10
-    // },
+//         "tray",
+        // "custom/language",
+//         "custom/updates",
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["clock", "hyprland/window"],
+    "modules-right": ["battery", "custom/updates", "pulseaudio", "backlight", "network", "cpu", "memory", "temperature", "custom/power"],
+
+//     // "cpu": {
+//     //     "interval": 10,
+//     //     "format": " {}%",
+//     //     "max-length": 10,
+//     //     "on-click": ""
+//     // },
+//     // "memory": {
+//     //     "interval": 30,
+//     //     "format": " {}%",
+//     //     "format-alt":" {used:0.1f}G",
+//     //     "max-length": 10
+//     // },
+//     "tray": {
+//         "icon-size": 13,
+//         "tooltip": false,
+//         "spacing": 10
+//     },
     "custom/updates": {
         "exec": "(paru -Qua) | wc -l",
         "interval": 7200,
-        "format": " {}"
+        "format": " {}",
+        "on-click": "foot -e paru -Syu" 
     },
-    // "custom/language": {
-    //     "exec": "cat /tmp/kb_layout",
-    //     "interval": 3,
-    //     "format": " {}",
-    //     "tooltip": false
-    // },
     "custom/weather" : {
         "tooltip" : true,
         "format" : "{}",
-        "restart-interval" : 300,
-        "exec" : "~/.config/waybar/scripts/waybar-wttr.py",
-        "return-type" : "json"
+        "restart-interval" : 30000,
+        "exec" : ""
     },
-    "tray": {
-        "icon-size": 13,
-        "tooltip": false,
-        "spacing": 10
+    "custom/language": {
+        "exec": "cat /tmp/kb_layout",
+        "interval": 30,
+        "format": " {}",
+        "tooltip": false
     },
-    "clock": {
-        "format": "{: %R   %d/%m}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "wlr/workspaces": {
+        "all-outputs": true,
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "on-click": "activate",
+        "format": "{name}",
+    	  "on-click-middle": "minimize",
+    	  "on-click-right": "close"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "tooltip-format": "{timeTo}, {capacity}%",
+        "format-charging": " {capacity}",
+        "format-plugged": " ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+   "clock": {
+        "format": "{:%Y-%m-%d - %I:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "foot -e tty-clock"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 40,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", "" ,""],
+        "on-scroll-up": "light -A 1",
+        "on-scroll-down": "light -U 1"
+    },
+   "network": {
+        "interface": "wlan0", 
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "tooltip": false,
-        "format-muted": " Muted",
-        "on-click": "pamixer -t",
-        "on-scroll-up": "pamixer -i 5",
-        "on-scroll-down": "pamixer -d 5",
-        "scroll-step": 5,
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "ignored-sinks": ["Easy Effects Sink"],
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -97,16 +348,94 @@
             "portable": "",
             "car": "",
             "default": ["", "", ""]
-        }
+        },
+        "on-click": "pavucontrol"
     },
-    "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "tooltip": false,
-        "format-source": " {volume}%",
-        "format-source-muted": " Muted",
-        "on-click": "pamixer --default-source -t",
-        "on-scroll-up": "pamixer --default-source -i 5",
-        "on-scroll-down": "pamixer --default-source -d 5",
-        "scroll-step": 5
-    }
+    "custom/power": {
+        "format": "",
+        "on-click": "exec /home/focus/.config/scripts/power",
+        "tooltip": false
+    },
+    "custom/separator": {
+        "format": "" 
+    }, 
+    "custom/launcher": {
+      "format": "󰍜",
+      "on-click": "rofi -show drun"
+    },
+    "custom/bluetooth": {
+        //"exec": "~/.config/waybar/bluetooth.sh",
+        //"interval": 5,
+        "format": "",
+        "on-click": "$HOME/.local/bin/rofi-bluetooth",
+        "tooltip": "Configure Bluetooth"
+    },
+
+
+
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
 }
+
+//{
+
+ // "custom/notification": {
+ //   "tooltip": false,
+ //  "format": "{icon}",
+ //   "format-icons": {
+ //     "notification": "󰂚<span foreground='red'><sup></sup></span>",
+ //     "none": "󰂚",
+ //     "dnd-notification": "󰂛<span foreground='red'><sup></sup></span> ",
+ //     "dnd-none": "󰂛",
+ //     "inhibited-notification": "󰂚<span foreground='red'><sup></sup></span> ",
+ //     "inhibited-none": "󰂚",
+ //     "dnd-inhibited-notification": "󰂛<span foreground='red'><sup></sup></span> ",
+ //     "dnd-inhibited-none": "󰂛"
+ //   },
+ //   }, 
+ 
+    //   "clock": {
+    //    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+	//"format": "{:%I:%M %p}",
+	//"format-alt": "{:%A, %B %d, %Y}"
+   // }
+//        "format": "{usage}%  ",
+ //       "format": "{}%  "
+   //     "format": "{temperatureC}°C {icon}",
+  //      "format-icons": [" ", " ", " "]
+    //"network": {
+     //   "interface": "wlan0",
+      //  "format-wifi": "󰤨 ",
+       // "format-ethernet": "{ifname}: {ipaddr}/{cidr}  ",
+       // "format-linked": "{ifname} (No IP)  ",
+      //  "format-disconnected": "睊 ",
+      //  "format-alt": "{ifname}: {ipaddr}/{cidr}",
+      //  "tooltip-format": "{essid}",
+    //}  
+     // "pulseaudio": {
+     //   "format": "{icon} {volume}% {format_source}",
+     //   "format-bluetooth": "{icon} {format_source}",
+     //   "format-bluetooth-muted": " {icon} 0% {format_source}",
+      //  "format-muted": " 0% {format_source}",
+     //   "format-source": "  {volume}%",
+     //   "format-source-muted": "  0%",
+    //   "format-icons": {
+   //       "headphone": "",
+   //       "hands-free": "蓼",
+   //       "headset": "蓼",
+  //        "phone": "",
+  //        "portable": "",
+  //        "car": "",
+  //        "default": ["", "", ""] // 醙
+   //     },
+  //      "on-click": "pavucontrol"
+ //     },
+//            "default": " "
+   //     "on-click": "playerctl play-pause"
+//}
+
+
