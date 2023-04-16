@@ -1,6 +1,6 @@
 #!/bin/sh
 
-c=$(sed -e 's/%/%%/g;s/..//;s/..$/\\/;s/\",\"/\\n/g' /home/mzeinali/.local/share/clipman/clipman-primary.json)
+c=$(sed -e 's/%/%%/g;s/..//;s/..$/\\/;s/\",\"/\\n/g' /home/focus/.local/share/clipman/clipman-primary.json)
 
 chosen=$(printf "$c" | tac | rofi -dmenu)
 

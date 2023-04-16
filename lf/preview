@@ -72,11 +72,8 @@ case "$(file --dereference --brief --mime-type -- "$1")" in
 	# 	bat --color=always --style=plain --pager=never --language=cpp "$1"
 	# 	;;
 	# *)
-	text/* | */xml | application/json) bat --terminal-width "$(($4-2))" -f "$1" ;;
-    # bat --color=always --style=plain --pager=never "$1"
-    # ;;
+	text/* | */xml | application/json) bat --plain --color always $1 ;;
 esac
-
 
 # 	text/troff) man ./ "$1" | col -b ;;
 # 	*/pdf)

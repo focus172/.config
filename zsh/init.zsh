@@ -1,6 +1,6 @@
 #
 # $ZDOTDIR/init.zsh
-# This file is source by ~/.zshenv and is just a version controlled init
+# This file is source by ~/.zshenv 
 #
 
 
@@ -8,10 +8,11 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/.config/scripts:$XDG_DATA_HOME/cargo/bin"
 
-# this is set at the start so if I fuck up other things then I still have a shell
+
+export PATH="$PATH:$HOME/.local/bin:$HOME/.config/scripts:$XDG_DATA_HOME/cargo/bin"
 export SHELL=$(which fish)
+
 
 export LESSHISTFILE=-
 

@@ -2,48 +2,23 @@
 # config.fish
 #
 
-# Many import things are covered in init.zshrc
-# file as using fish as a login shell is 
-# dangerous.
-
 set -g fish_greeting 
 
 if status is-interactive
 
+    # Waiting for fish async
+    starship init fish | source &
+    cat ~/.config/zsh/aliases.sh | source &
+
     if string match -q "Darwin" $(uname)
-
-        set -g XDG_DATA_HOME "$HOME/.local/share"
-        set -g CARGO_HOME "$XDG_DATA_HOME/cargo"
-        
-        set -g PATH "$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.config/scripts:$CARGO_HOME/bin"
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-        export XDG_DATA_HOME="$HOME/.local/share"
-
-        set -g RUSTUP_HOME "$XDG_DATA_HOME/rustup"
-        set -g GNUPGHOME "$XDG_DATA_HOME/gnupg"  
+        brew shellenv | eval &
     else
         export RUSTC_WRAPPER=$(which sccache) 
     end
- 
-    starship init fish | source &
-
-    # Alias things
-    alias ..="cd .."
-    alias l="exa -a"
-    alias land="cat ~/.config/assets/george.txt"
-    alias hgrep="history | grep"
-    alias h="history"
-    alias hclear="history --delete"
-    alias lf="/home/focus/.config/lf/lfrun"
-    alias math="math \"$1\""
 
 end
 
-# if status is-interactive
-#         #source ~/.config/zsh/.zshrc
-#         starship init fish | source &
-#
-#
+
 # set -l teal 94e2d5
 # set -l flamingo f2cdcd
 # set -l mauve cba6f7
@@ -90,12 +65,6 @@ end
 #
 #
 # # Directory abbreviations
-# abbr -a -g l 'ls'
-# abbr -a -g la 'ls -a'
-# abbr -a -g ll 'ls -l'
-# abbr -a -g lal 'ls -al'
-# abbr -a -g d 'dirs'
-# abbr -a -g h 'cd $HOME'
 #
 # # Locale
 #
