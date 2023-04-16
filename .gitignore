@@ -33,3 +33,4 @@ retroarch
 zsh/zsh-syntax-highlighting
 
 weechat
+fish/functions/_fzf*.fish

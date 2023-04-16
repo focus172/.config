@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 #
 # Zoomer Shell
 # ~/.config/zsh/.zshrc
