@@ -1,152 +1,63 @@
+## ░█▀▀░▀█▀░█▀█░█▀▄░█▀▀░█░█░▀█▀░█▀█
+## ░▀▀█░░█░░█▀█░█▀▄░▀▀█░█▀█░░█░░█▀▀
+## ░▀▀▀░░▀░░▀░▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░░
+# Setups
+format="$directory$git_branch$character"
+right_format = """$git_status$cmd_duration"""
+add_newline = false 
 
-format = """
-[{](bold white)\
-($username)\
-[@](bold yellow)\
-($hostname)\
-( $directory )\
-($git_branch)\
-[}> ](bold purple)
-"""
+# Other languages configurations:
+c.disabled = true
+cmake.disabled = true
+haskell.disabled = true
+python.disabled = true
+ruby.disabled = true
+rust.disabled = true
+perl.disabled = true
+package.disabled = true
+lua.disabled = true
+nodejs.disabled = true
+java.disabled = true
+golang.disabled = true
 
-add_newline = false
+[conda]
+format = ' [$symbol$environment](dimmed green) '
 
-[username]
-disabled = false
-show_always = true
-style_user = "bold red"
-format = "[$user]($style)"
-
-[hostname]
-disabled = false
-ssh_only = false
-style = "bold green"
-format =  "[$hostname]($style)"
+# Prompt symbols 
+[character]
+success_symbol = "[](#8EC07C bold)"
+error_symbol = "[](#AD685A)"
+vicmd_symbol = "[](#DD8F6E)"
 
 [directory]
-disabled = false
+format = "[]($style)[ ](bg:#312C2E fg:#DD8F6E)[$path](bg:#312C2E fg:#83A598 bold)[ ]($style)"
+style = "bg:none fg:#312C2E"
 truncation_length = 3
-home_symbol = "~"
-format = "[$path](bold cyan)"
-
-[directory.substitutions]
-"library" = " "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
-
-[character]
-success_symbol = ""
-error_symbol = "[](bold red)"
+truncate_to_repo=false
 
 [git_branch]
-symbol = " "
-style = "bold blue"
-
-[git_commit]
-commit_hash_length = 4
-tag_symbol = "🔖 "
-
-[git_state]
-format = '[\($state( $progress_current of $progress_total)\)]($style) '
-cherry_pick = "[🍒 PICKING](bold red)"
-
-[git_metrics]
-added_style = "bold blue"
-format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+format = "[]($style)[[ ](bg:#312C2E fg:#8EC07C bold)$branch](bg:#312C2E fg:#83A598)[ ]($style)"
+style = "bg:none fg:#312C2E"
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
-style = "bold blue"
-conflicted = "= "
-ahead = "⇡ ${count} "
-behind = "⇣ ${count} "
-diverged = "⇕ "
-up_to_date = ""
-untracked = "? "
-stashed = "$ "
-modified = "! "
-staged = '[++\($count\)](green)'
-renamed = "» "
-deleted = " "
+# $all status$ahead_behind
+format = "[]($style)[$all_status$ahead_behind](bg:#312C2E fg:#b4befe)[ ]($style)"
+style = "bg:none fg:#312C2E"
+conflicted = "="
+ahead =	"⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = ""
+untracked = "?${count}"
+stashed = ""
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "${count}"
 
 [cmd_duration]
-disabled = true
-
-#format = """
-#[░▒▓](#a3aed2)\
-#[  ](bg:#a3aed2 fg:#090c0c)\
-#[](bg:#769ff0 fg:#a3aed2)\
-#$directory\
-#[](fg:#769ff0 bg:#394260)\
-#$git_branch\
-#$git_status\
-#[](fg:#394260 bg:#212736)\
-#$nodejs\
-#$rust\
-#$golang\
-#$php\
-#[](fg:#212736 bg:#1d2230)\
-#$time\
-#[ ](fg:#1d2230)\
-#$character"""
-
-# 
-
-#add_newline = false
-
-#[directory]
-#style = "fg:#e3e5e5 bg:#769ff0"
-#format = "[ $path ]($style)"
-#truncation_length = 3
-#truncation_symbol = "…/"
-
-#[git_branch]
-#symbol = ""
-#style = "bg:#394260"
-#format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
-
-#[git_status]
-#style = "bg:#394260"
-#format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
-
-#[nodejs]
-#symbol = ""
-#style = "bg:#212736"
-#format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-#[rust]
-#symbol = ""
-#style = "bg:#212736"
-#format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-#[time]
-#disabled = false
-#time_format = "%R" # Hour:Minute Format
-#style = "bg:#1d2230"
-#format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
-
-#[character]
-#error_symbol = "[](bold red)"
-#success_symbol = "[](bold cyan)"
-#vicmd_symbol = "[](bold yellow)"
-#format = "$symbol [|](bold bright-black) "
-
-#[username]
-#style_user = 'blue'
-#style_root = 'black bold'
-#format = '[$user]($style) '
-#disabled = true
-#show_always = true
-
-#[hostname]
-#ssh_only = true
-#format = "[$hostname](bold blue) "
-#disabled = false
-
-#[line_break]
-#disabled = true
-
-#[directory]
-#disabled = true
-
+min_time = 1
+# duration & style 
+format = "[]($style)[[神](bg:#312C2E fg:#eba0ac bold)$duration](bg:#312C2E fg:#BBC3DF)[ ]($style)"
+disabled = false
+style = "bg:none fg:#312C2E"
