@@ -5,23 +5,11 @@
 ;; on the command line, then restart Emacs for the changes to take effect -- or
 ;; use 'M-x doom/reload'.
 
-
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 
-;; To install a package directly from a remote git repo, you must specify a
-;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
-;; https://github.com/radian-software/straight.el#the-recipe-format
-
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
-
-;; If the package you are trying to install does not contain a PACKAGENAME.el
-;; file, or is located in a subdirectory of the repo, you'll need to specify
-;; `:files' in the `:recipe':
-;(package! this-package
-;  :recipe (:host github :repo "username/repo"
-;           :files ("some-file.el" "src/lisp/*.el")))
 
 ;; If you'd like to disable a package included with Doom, you can do so here
 ;; with the `:disable' property:
@@ -45,7 +33,38 @@
 ;; Doom's packages are pinned to a specific commit and updated from release to
 ;; release. The `unpin!' macro allows you to unpin single packages...
 ;(unpin! pinned-package)
-;; ...or multiple packages
-;(unpin! pinned-package another-pinned-package)
-;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
-;(unpin! t)
+
+
+;; (package! gitconfig-mode
+;; 	  :recipe (:host github :repo "magit/git-modes"
+;; 			 :files ("gitconfig-mode.el")))
+;; (package! gitignore-mode
+;; 	  :recipe (:host github :repo "magit/git-modes"
+;; 			 :files ("gitignore-mode.el")))
+;; (package! flycheck-aspell)
+;; (package! calfw)
+;; (package! calfw-org)
+;; ;;(package! dashboard)
+;; (package! dired-open)
+;; (package! dired-subtree)
+;; (package! dirvish)
+;; (package! dmenu)
+;; (package! ednc)
+;; (package! emojify)
+;; (package! evil-tutor)
+;; (package! exwm)
+;; (package! ivy-posframe)
+;; (package! mw-thesaurus)
+;; (package! org-auto-tangle)
+;; (package! org-web-tools)
+;; (package! ox-gemini)
+;; (package! peep-dired)
+;; (package! password-store)
+;; (package! rainbow-mode)
+;; (package! resize-window)
+;; (package! tldr)
+;; (package! wc-mode)
+;; (package! beacon)
+;; (package! clippy)
+;; (package! minimap)
+;; (package! olivetti)

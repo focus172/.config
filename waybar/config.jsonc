@@ -353,7 +353,7 @@
     },
     "custom/power": {
         "format": "",
-        "on-click": "exec /home/focus/.config/scripts/power",
+        //"on-click": "exec /home/focus/.config/scripts/power",
         "tooltip": false
     },
     "custom/separator": {
