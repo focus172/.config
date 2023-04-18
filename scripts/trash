@@ -2,5 +2,5 @@
 
 
 for f in $@; do 
-    mv $f ~/.local/share/.trash/
+    mv -f $f ~/.local/share/.trash/
 done

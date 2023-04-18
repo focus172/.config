@@ -9,7 +9,6 @@ keepassxc
 # Ignore general files
 BraveSoftware
 pavucontrol.ini
-nvim
 spotify
 
 # Ignore secrets
@@ -26,11 +25,10 @@ bottom
 git/.git-credentials
 nushell
 supertuxkart
-!supertuxkark/config-0.10/highscore.xml
 lutris
 fish/fish_variables
 retroarch
 zsh/zsh-syntax-highlighting
-
 weechat
-fish/functions/_fzf*.fish
+emacs
+btop

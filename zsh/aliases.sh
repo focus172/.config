@@ -39,8 +39,8 @@ alias vdiff="nvim -d"
 
 # contreversal
 # a script that just moves the things to some other place, cleared by cron job
-alias rm="trash"
-# alias rm="rm -vI" 
+#alias rm="trash"
+alias rm="rm -vI" 
 
 
 #alias sudo='doas'
