@@ -3,7 +3,7 @@
     border-radius: 0;
     font-family: Cartograph CF Nerd Font, monospace;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
     min-height: 0;
 }
 
@@ -119,8 +119,8 @@ tooltip {
 
 #clock {
     color: #fab387;
-    border-radius: 10px 0px 0px 10px;
-    margin-left: 5px;
+    border-radius: 10px;
+    margin-left: 0px;
     border-right: 0px;
 }
 

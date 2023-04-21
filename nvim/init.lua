@@ -3,13 +3,18 @@
 --
 
 
-
--- loading custom plugins (with reduced functionality)
-local comment = require "Comment"
-local neotree = require "nvim-tree"
-local telescope = require "telescope"
-
-vim.cmd(":colorscheme habamax")
+-- Loading the plugin manager
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
 local opt = vim.opt
 
@@ -52,21 +57,46 @@ opt.updatetime = 250
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
+-- opt.whichwrap:append "<>[]hl"
 
 
 -- disable some default providers
 for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
-  vim.g["loaded_" .. provider .. "_provider"] = 0
+    vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
 vim.g.mapleader = " "
 
---require("lazy").setup({
---    "numToStr/Comment.nvim",
---    "nvim-tree/nvim-tree.lua",
---    "nvim-telescope/telescope.nvim",
---})
+require("lazy").setup({
+    "numToStr/Comment.nvim",
+    "nvim-tree/nvim-tree.lua",
+    { "nvim-telescope/telescope.nvim", dependencies = { 'nvim-lua/plenary.nvim' }},
+    { "catppuccin/nvim", name = "catppuccin" },
+    "nvim-lualine/lualine.nvim"
+})
+
+require("catppuccin").setup({
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
+    transparent_background = true,
+})
+
+vim.cmd.colorscheme "catppuccin"
+
+require("Comment").setup({
+    -- although this claims to work in normal I disagree
+    opleader = { line = '/', block = 'b/' },
+    -- extra = { above = 'gcO', below = 'gco', eol = 'gcA', },
+    mappings = { basic = true, extra = false }
+})
+
+
+local map_key = vim.api.nvim_set_keymap
+local map_lua = vim.keymap.set
+local opts = { silent = true, noremap = true }
+
+local comment_api = require('Comment.api')
+map_lua("n", "<leader>/", comment_api.toggle.linewise.current, {})
+-- vim.cmd(":colorscheme habamax")
 
 
 --      "           ▄ ▄                   ",
@@ -81,77 +111,58 @@ vim.g.mapleader = " "
 
 
 
---vim.cmd(":set background=dark")
-
---vim.g.terminal_color_0 = '#1c1c1c'
---vim.g.terminal_color_1 = '#d75f5f'
---vim.g.terminal_color_2 = '#87af87'
---'#afaf87'
---'#5f87af'
---'#af87af'
---'#5f8787'
---'#9e9e9e'
---'#767676'
---'#d7875f'
---'#afd7af'
---'#d7d787'
---'#87afd7'
---'#d7afd7'
---'#87afaf'
---'#bcbcbc'
-
-
-
 
 -- Keybindings --
-local km = vim.keymap
 
-km.set("n", "<Leader>f", ":Ex<CR>")
+map_key("n", "<Leader>f", ":Ex<CR>", opts)
 
 
--- Comment in both modes
-km.set("n" , "<Leader>/", ":lua require('Comment.api').toggle.linewise.current()<CR>")
-km.set("v" , "<Leader>/", "<ESC>:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>")
+
+local builtin = require('telescope.builtin')
+map_lua('n', '<leader>ff', builtin.find_files, {})
+map_lua('n', '<leader>fg', builtin.live_grep, {})
+map_lua('n', '<leader>fb', builtin.buffers, {})
+map_lua('n', '<leader>fh', builtin.help_tags, {})
+
 
 -- save
-km.set("n", "<C-s>", ":w<CR>")
+map_key("n", "<C-s>", ":w<CR>", opts)
 
---   i = {
-  --   -- go to  beginning and end
-  --   ["<C-b>"] = { "<ESC>^i", "beginning of line" },
-  --   ["<C-e>"] = { "<End>", "end of line" },
-  --
+
+-- line navigation
+map_key("i", "<C-b>", "<ESC>^i", opts)
+map_key("i", "<C-e>", "<End>", opts)
+
   --   -- navigate within insert mode
   --   ["<C-h>"] = { "<Left>", "move left" },
   --   ["<C-l>"] = { "<Right>", "move right" },
   --   ["<C-j>"] = { "<Down>", "move down" },
   --   ["<C-k>"] = { "<Up>", "move up" },
-  -- },
-  --
-  -- n = {
-  --   -- switch between windows
-  --   ["<C-h>"] = { "<C-w>h", "window left" },
+
+  -- normal mode widow navigation
+--   ["<C-h>"] = { "<C-w>h", "window left" },
   --   ["<C-l>"] = { "<C-w>l", "window right" },
   --   ["<C-j>"] = { "<C-w>j", "window down" },
   --   ["<C-k>"] = { "<C-w>k", "window up" },
-  --
-  --   -- Copy all
-  --   ["<C-c>"] = { "<cmd> %y+ <CR>", "copy whole file" },
-  --
-  --   -- new buffer
-  --   ["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
-  -- },
+
+
+
+-- Copy all
+map_key("n", "<C-c>", "<cmd> %y+ <CR>", opts)
+
+
+
+-- new buffer
+map_key("n", "<leader>b", "<cmd> enew <CR>", opts)
+
+
 
 
 --  ┌                                                                              ┐
 --  │ These define common comment styles like this                                 │
 --  └                                                                              ┘
---km.set({ "n", "v" }, "<leader>x1", ":CBlbox12<cr>", { desc = "Comment - single side" })
---km.set({ "n", "v" }, "<leader>x2", ":CBlbox18<cr>", { desc = "Comment - both sides" })
---km.set("n", "<leader>x3", "CBline3<cr>", { desc = "Centered Line" })
---km.set("n", "<leader>x4", "CBline5<cr>", { desc = "Centered Line Weighted" })
 
---km.set("n", "<Leader>lu", ":Lazy update<CR>", { desc = "Lazy Update (Sync)" })
+map_key("n", "<Leader>lu", ":Lazy update<CR>", opts)
 
 --km.set("n", "<Leader>n", "<cmd>enew<CR>", { desc = "New File" })
 
@@ -171,17 +182,7 @@ km.set("n", "<C-s>", ":w<CR>")
 
 
 
-
-
-
 -- n, v, i, t = mode names
-
-local M = {}
-
-
-
---
---
 --
 -- M.nvimtree = {
 --   n = {
@@ -217,3 +218,123 @@ local M = {}
 
 
 
+-- local o = vim.opt
+-- local g = vim.g
+--
+-- -- Autocmds
+-- vim.cmd [[
+-- augroup CursorLine
+--     au!
+--     au VimEnter * setlocal cursorline
+--     au WinEnter * setlocal cursorline
+--     au BufWinEnter * setlocal cursorline
+--     au WinLeave * setlocal nocursorline
+-- augroup END
+--
+-- autocmd FileType nix setlocal shiftwidth=4
+-- ]]
+--
+-- -- Keybinds
+-- map("n", "<C-j>", "<C-w>j", opts)
+-- map("n", "<C-k>", "<C-w>k", opts)
+-- map("n", "<C-l>", "<C-w>l", opts)
+-- map('n', '<C-n>', ':Telescope live_grep <CR>', opts)
+-- map('n', '<C-f>', ':Telescope find_files <CR>', opts)
+-- map('n', 'j', 'gj', opts)
+-- map('n', 'k', 'gk', opts)
+-- map('n', ';', ':', { noremap = true } )
+--
+-- g.mapleader = ' '
+--
+-- -- Performance
+-- o.lazyredraw = true;
+-- o.shell = "zsh"
+-- o.shadafile = "NONE"
+--
+-- -- Colors
+-- o.termguicolors = true
+--
+-- -- Undo files
+-- o.undofile = true
+--
+-- -- Indentation
+-- o.smartindent = true
+-- o.tabstop = 4
+-- o.shiftwidth = 4
+-- o.shiftround = true
+-- o.expandtab = true
+-- o.scrolloff = 3
+--
+-- -- Set clipboard to use system clipboard
+-- o.clipboard = "unnamedplus"
+--
+-- -- Use mouse
+-- o.mouse = "a"
+--
+-- -- Nicer UI settings
+-- o.cursorline = true
+-- o.relativenumber = true
+-- o.number = true
+--
+-- -- Get rid of annoying viminfo file
+-- o.viminfo = ""
+-- o.viminfofile = "NONE"
+--
+-- -- Miscellaneous quality of life
+-- o.ignorecase = true
+-- o.ttimeoutlen = 5
+-- o.hidden = true
+-- o.shortmess = "atI"
+-- o.wrap = false
+-- o.backup = false
+-- o.writebackup = false
+-- o.errorbells = false
+-- o.swapfile = false
+-- o.showmode = false
+-- o.laststatus = 3
+-- o.pumheight = 6
+-- o.splitright = true
+-- o.splitbelow = true
+-- o.completeopt = "menuone,noselect"
+
+
+require('lualine').setup {
+  -- options = {
+  --   icons_enabled = true,
+  --   theme = 'auto',
+  --   component_separators = { left = '', right = ''},
+  --   section_separators = { left = '', right = ''},
+  --   disabled_filetypes = {
+  --     statusline = {},
+  --     winbar = {},
+  --   },
+  --   ignore_focus = {},
+  --   always_divide_middle = true,
+  --   globalstatus = false,
+  --   refresh = {
+  --     statusline = 1000,
+  --     tabline = 1000,
+  --     winbar = 1000,
+  --   }
+  -- },
+  -- sections = {
+  --   lualine_a = {'mode'},
+  --   lualine_b = {'branch', 'diff', 'diagnostics'},
+  --   lualine_c = {'filename'},
+  --   lualine_x = {'encoding', 'fileformat', 'filetype'},
+  --   lualine_y = {'progress'},
+  --   lualine_z = {'location'}
+  -- },
+  -- inactive_sections = {
+  --   lualine_a = {},
+  --   lualine_b = {},
+  --   lualine_c = {'filename'},
+  --   lualine_x = {'location'},
+  --   lualine_y = {},
+  --   lualine_z = {}
+  -- },
+  -- tabline = {},
+  -- winbar = {},
+  -- inactive_winbar = {},
+  -- extensions = {}
+}

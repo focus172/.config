@@ -5,6 +5,9 @@ ow	📂
 ln	⛓
 or	❌
 ex	🎯
+
+.git    
+*.rs    
 *.txt	✍
 *.mom	✍
 *.me	✍
@@ -37,10 +40,10 @@ ex	🎯
 *.rmd	📊
 *.Rmd	📊
 *.m	    📊
-*.mp3	🎵
-*.opus	🎵
-*.ogg	🎵
-*.m4a	🎵
+*.mp3	 
+*.opus	 
+*.ogg	 
+*.m4a	 
 *.flac	🎼
 *.wav	🎼
 *.mkv	🎥
@@ -71,7 +74,5 @@ ex	🎯
 *.img   📀
 *.bib   🎓
 *.ged   👪
-*.part  💔
 *.torrent 🔽
-*.jar   ♨
 *.java	♨

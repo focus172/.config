@@ -1,21 +1,21 @@
 #!/bin/sh
 
-#
 # ~/.config/scripts/update_playlist
-# @Focus172
+# Author: @Focus172
 # set as cronjob with: @daily 
-#
 
-# turns out I can't use other folders ops
-#find ~/music/jap -name "*.opus" > ~/.config/mpd/playlists/jap.m3u
-#find ~/music/rock -name "*.opus" > ~/.config/mpd/playlists/rock.m3u
-#find ~/music/city -name "*.opus" > ~/.config/mpd/playlists/city.m3u
+# songs are in the format of:
+# (Song\file name)
+#                 .playlist
+#                          .file_type
 
-#find ~/music -name "*.opus" > ~/.config/mpd/playlists/all.m3u
+# I only use opus for my music as I don't have any problems with the compression
+# and they have a great/well supported tagging system
+
 ls -1 ~/music | grep ".opus" > ~/.config/mpd/playlists/all.m3u
 grep ".jap" ~/.config/mpd/playlists/all.m3u > ~/.config/mpd/playlists/jap.m3u
 grep ".rock" ~/.config/mpd/playlists/all.m3u > ~/.config/mpd/playlists/rock.m3u
 grep ".city" ~/.config/mpd/playlists/all.m3u > ~/.config/mpd/playlists/city.m3u
 grep ".skitz" ~/.config/mpd/playlists/all.m3u > ~/.config/mpd/playlists/skitz.m3u
+mpc update
 notify-send -t 8000 "All playlists have been resynced with contents of ~/music"
-
