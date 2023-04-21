@@ -1,9 +1,9 @@
 --
 -- init.lua
+-- @Focus172
 --
 
-
--- Loading the plugin manager
+------------------------------ Plugins -------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -16,9 +16,107 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local opt = vim.opt
+-- must be set for some plugins to load keybinds correctly
+vim.g.mapleader = " "
+
+require("lazy").setup({
+    "numToStr/Comment.nvim",
+    "nvim-tree/nvim-tree.lua",
+    { "nvim-telescope/telescope.nvim", dependencies = { 'nvim-lua/plenary.nvim' }},
+    { "catppuccin/nvim", name = "catppuccin" },
+    "nvim-lualine/lualine.nvim"
+})
+
+-- Setting theme
+require("catppuccin").setup({ flavour = "mocha", transparent_background = true })
+vim.cmd.colorscheme "catppuccin"
+
+require("nvim-tree").setup()
+
+require("Comment").setup({
+    opleader = { line = '/', block = 'gb' },
+    -- extra = { above = 'gcO', below = 'gco', eol = 'gcA', },
+    mappings = { basic = true, extra = false }
+})
+
+------------------------------ Keybindings ---------------------------------
+
+local map_key = vim.api.nvim_set_keymap
+local map_lua = vim.keymap.set
+local opts = { silent = true, noremap = true }
+
+
+-- fix to get comments to work as expected in normal
+local comment_api = require('Comment.api')
+map_lua("n", "<leader>/", comment_api.toggle.linewise.current, {})
+
+-- File veiw
+map_key("n", "<Leader>fv", ":Ex<CR>", opts)
+
+
+-- Telescope commands
+local builtin = require('telescope.builtin')
+map_lua('n', '<leader>ff', builtin.find_files, opts)
+map_lua('n', '<leader>fg', builtin.live_grep, opts)
+map_lua('n', '<leader>fb', builtin.buffers, opts) 
+map_lua('n', '<leader>fh', builtin.help_tags, opts) 
+
+
+-- save
+map_key("n", "<leader>w", ":w<CR>", opts)
+
+
+-- line navigation
+map_key("i", "<C-b>", "<ESC>^i", opts)
+map_key("i", "<C-e>", "<End>", opts)
+
+  --   -- navigate within insert mode
+  --   ["<C-h>"] = { "<Left>", "move left" },
+  --   ["<C-l>"] = { "<Right>", "move right" },
+  --   ["<C-j>"] = { "<Down>", "move down" },
+  --   ["<C-k>"] = { "<Up>", "move up" },
+
+  -- normal mode widow navigation
+--   ["<C-h>"] = { "<C-w>h", "window left" },
+  --   ["<C-l>"] = { "<C-w>l", "window right" },
+  --   ["<C-j>"] = { "<C-w>j", "window down" },
+  --   ["<C-k>"] = { "<C-w>k", "window up" },
+
+
+
+-- Copy all
+map_key("n", "<C-c>", ":%y<CR>", opts)
+
+
+-- new buffer
+map_key("n", "<leader>b", "<cmd> enew <CR>", opts)
+
+
+
+
+--  ┌                                                                              ┐
+--  │ These define common comment styles like this                                 │
+--  └                                                                              ┘
+
+map_key("n", "<Leader>lu", ":Lazy update<CR>", opts)
+
+map_key("n", "<Leader>nb", "<cmd>enew<CR>", opts) 
+
+map_key("n", "<Leader>a", "ggVG<c-$>", opts) 
+
+
+--km.set("n", "<leader>xu", ":UndotreeToggle<cr>", { desc = "Undo Tree" })
+-- More molecular undo of text
+--km.set("i", ".", ".<c-g>u")
+--km.set("i", "!", "!<c-g>u")
+--km.set("i", "?", "?<c-g>u")
+--km.set("i", ";", ";<c-g>u")
+--km.set("i", ":", ":<c-g>u")
 
 -------------------------------------- options ------------------------------------------
+
+local opt = vim.opt
+
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
@@ -64,121 +162,6 @@ opt.updatetime = 250
 for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
     vim.g["loaded_" .. provider .. "_provider"] = 0
 end
-
-vim.g.mapleader = " "
-
-require("lazy").setup({
-    "numToStr/Comment.nvim",
-    "nvim-tree/nvim-tree.lua",
-    { "nvim-telescope/telescope.nvim", dependencies = { 'nvim-lua/plenary.nvim' }},
-    { "catppuccin/nvim", name = "catppuccin" },
-    "nvim-lualine/lualine.nvim"
-})
-
-require("catppuccin").setup({
-    flavour = "mocha", -- latte, frappe, macchiato, mocha
-    transparent_background = true,
-})
-
-vim.cmd.colorscheme "catppuccin"
-
-require("Comment").setup({
-    -- although this claims to work in normal I disagree
-    opleader = { line = '/', block = 'b/' },
-    -- extra = { above = 'gcO', below = 'gco', eol = 'gcA', },
-    mappings = { basic = true, extra = false }
-})
-
-
-local map_key = vim.api.nvim_set_keymap
-local map_lua = vim.keymap.set
-local opts = { silent = true, noremap = true }
-
-local comment_api = require('Comment.api')
-map_lua("n", "<leader>/", comment_api.toggle.linewise.current, {})
--- vim.cmd(":colorscheme habamax")
-
-
---      "           ▄ ▄                   ",
---      "       ▄   ▄▄▄     ▄ ▄▄▄ ▄ ▄     ",
---      "       █ ▄ █▄█ ▄▄▄ █ █▄█ █ █     ",
---      "    ▄▄ █▄█▄▄▄█ █▄█▄█▄▄█▄▄█ █     ",
---      "  ▄ █▄▄█ ▄ ▄▄ ▄█ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ",
---      "  █▄▄▄▄ ▄▄▄ █ ▄ ▄▄▄ ▄ ▄▄▄ ▄ ▄ █ ▄",
---      "▄ █ █▄█ █▄█ █ █ █▄█ █ █▄█ ▄▄▄ █ █",
---      "█▄█ ▄ █▄▄█▄▄█ █ ▄▄█ █ ▄ █ █▄█▄█ █",
---      "    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█ █▄█▄▄▄█    ",
-
-
-
-
--- Keybindings --
-
-map_key("n", "<Leader>f", ":Ex<CR>", opts)
-
-
-
-local builtin = require('telescope.builtin')
-map_lua('n', '<leader>ff', builtin.find_files, {})
-map_lua('n', '<leader>fg', builtin.live_grep, {})
-map_lua('n', '<leader>fb', builtin.buffers, {})
-map_lua('n', '<leader>fh', builtin.help_tags, {})
-
-
--- save
-map_key("n", "<C-s>", ":w<CR>", opts)
-
-
--- line navigation
-map_key("i", "<C-b>", "<ESC>^i", opts)
-map_key("i", "<C-e>", "<End>", opts)
-
-  --   -- navigate within insert mode
-  --   ["<C-h>"] = { "<Left>", "move left" },
-  --   ["<C-l>"] = { "<Right>", "move right" },
-  --   ["<C-j>"] = { "<Down>", "move down" },
-  --   ["<C-k>"] = { "<Up>", "move up" },
-
-  -- normal mode widow navigation
---   ["<C-h>"] = { "<C-w>h", "window left" },
-  --   ["<C-l>"] = { "<C-w>l", "window right" },
-  --   ["<C-j>"] = { "<C-w>j", "window down" },
-  --   ["<C-k>"] = { "<C-w>k", "window up" },
-
-
-
--- Copy all
-map_key("n", "<C-c>", "<cmd> %y+ <CR>", opts)
-
-
-
--- new buffer
-map_key("n", "<leader>b", "<cmd> enew <CR>", opts)
-
-
-
-
---  ┌                                                                              ┐
---  │ These define common comment styles like this                                 │
---  └                                                                              ┘
-
-map_key("n", "<Leader>lu", ":Lazy update<CR>", opts)
-
---km.set("n", "<Leader>n", "<cmd>enew<CR>", { desc = "New File" })
-
---km.set("n", "<Leader>a", "ggVG<c-$>", { desc = "Select All" })
-
--- Make visual yanks place the cursor back where started
---km.set("v", "y", "ygv<Esc>", { desc = "Yank and reposition cursor" })
-
-
---km.set("n", "<leader>xu", ":UndotreeToggle<cr>", { desc = "Undo Tree" })
--- More molecular undo of text
---km.set("i", ".", ".<c-g>u")
---km.set("i", "!", "!<c-g>u")
---km.set("i", "?", "?<c-g>u")
---km.set("i", ";", ";<c-g>u")
---km.set("i", ":", ":<c-g>u")
 
 
 
@@ -338,3 +321,46 @@ require('lualine').setup {
   -- inactive_winbar = {},
   -- extensions = {}
 }
+
+-- " autostarting nerdtree
+-- " autocmd vimenter * NERDTree
+--
+-- map <Leader>vs :VsplitVifm<CR>
+-- map <Leader>sp :SplitVifm<CR>
+-- map <Leader>dv :DiffVifm<CR>
+-- map <Leader>tv :TabVifm<CR>
+--
+--
+-- " TODO: import this
+-- map <Leader>tt :vnew term://fish<CR>
+--
+-- " Make adjusing split sizes a bit more friendly
+-- noremap <silent> <C-Left> :vertical resize +3<CR>
+-- noremap <silent> <C-Right> :vertical resize -3<CR>
+-- noremap <silent> <C-Up> :resize +3<CR>
+-- noremap <silent> <C-Down> :resize -3<CR>
+--
+-- " Change 2 split windows from vert to horiz or horiz to vert
+-- map <Leader>th <C-w>t<C-w>H
+-- map <Leader>tk <C-w>t<C-w>K
+--
+-- " Removes pipes | that act as seperators on splits
+-- set fillchars+=vert:\ 
+--
+-- set guioptions-=m  "remove menu bar
+-- set guioptions-=T  "remove toolbar
+-- set guioptions-=r  "remove right-hand scroll bar
+-- set guioptions-=L  "remove left-hand scroll bar
+
+--      "           ▄ ▄                   ",
+--      "       ▄   ▄▄▄     ▄ ▄▄▄ ▄ ▄     ",
+--      "       █ ▄ █▄█ ▄▄▄ █ █▄█ █ █     ",
+--      "    ▄▄ █▄█▄▄▄█ █▄█▄█▄▄█▄▄█ █     ",
+--      "  ▄ █▄▄█ ▄ ▄▄ ▄█ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ",
+--      "  █▄▄▄▄ ▄▄▄ █ ▄ ▄▄▄ ▄ ▄▄▄ ▄ ▄ █ ▄",
+--      "▄ █ █▄█ █▄█ █ █ █▄█ █ █▄█ ▄▄▄ █ █",
+--      "█▄█ ▄ █▄▄█▄▄█ █ ▄▄█ █ ▄ █ █▄█▄█ █",
+--      "    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█ █▄█▄▄▄█    ",
+
+
+
