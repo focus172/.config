@@ -1,0 +1,6 @@
+* Some persons bar
+
+This is someone elses code and for some reason the scss for it is broken and doesnt work or something idk.
+
+I might fix it sometime in the next 10 years
+

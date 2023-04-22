@@ -3,6 +3,7 @@
 ;;;;			AESTHETIC DASHBOARD					 ;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(include "./src/yuck/windows.yuck")
-(include "./src/yuck/widgets.yuck")
-(include "./src/yuck/variables.yuck")
+;; for some reason imports must be qualified from root not relative
+(include "./dashboard/src/yuck/windows.yuck")
+(include "./dashboard/src/yuck/widgets.yuck")
+(include "./dashboard/src/yuck/variables.yuck")

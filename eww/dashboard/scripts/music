@@ -15,7 +15,7 @@
 # 
 
 Control="MPD"
-[ -n "$(pgrep spotify)" ] && Control="spotify"
+# [ -n "$(pgrep spotify)" ] && Control="spotify"
 # [ -n "$(pgrep rhythmbox)" ] && Control="rhythmbox"
 # [ -n "$(pgrep audacious)" ] && Control="audacious"
 # [ -n "$(pgrep clementine)" ] && Control="clementine"
@@ -28,7 +28,7 @@ Cover=/tmp/cover.png
 # if cover not found in metadata use this instead
 bkpCover=~/.config/eww/dashboard/assets/fallback.png
 # mpd music directory
-mpddir=~/Music
+mpddir=~/music
 
 # ┌─┐┬  ┌─┐┬ ┬┌─┐┬─┐┌─┐┌┬┐┬    ┌─┐┌─┐┬─┐┬┌─┐┌┬┐┌─┐
 # ├─┘│  ├─┤└┬┘├┤ ├┬┘│   │ │    └─┐│  ├┬┘│├─┘ │ └─┐

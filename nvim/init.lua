@@ -24,7 +24,8 @@ require("lazy").setup({
     "nvim-tree/nvim-tree.lua",
     { "nvim-telescope/telescope.nvim", dependencies = { 'nvim-lua/plenary.nvim' }},
     { "catppuccin/nvim", name = "catppuccin" },
-    "nvim-lualine/lualine.nvim"
+    "nvim-lualine/lualine.nvim",
+    "nvim-treesitter/nvim-treesitter"
 })
 
 -- Setting theme
@@ -38,6 +39,18 @@ require("Comment").setup({
     -- extra = { above = 'gcO', below = 'gco', eol = 'gcA', },
     mappings = { basic = true, extra = false }
 })
+
+require("nvim-treesitter.configs").setup {
+    ensure_installed = {
+	    "c", "lua", "vim",
+	    "zig", "rust", "yuck",
+	    "toml", "yaml", "scss",
+	    "rasi", "jsonc"
+    },
+    auto_install = false,
+	highlight = { enable = true },
+}
+vim.cmd "TSUpdate"
 
 ------------------------------ Keybindings ---------------------------------
 

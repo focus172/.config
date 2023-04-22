@@ -1,7 +1,9 @@
+;; vim: ft=lisp
+
 ; -> WIDGETS FOR EWW <- ;
 
 ;;;; Imports
-(include "eww_variables.yuck")
+(include "./window/eww_variables.yuck")
 
 ;;;; Metric (cpu, ram, etc bars) constructor widget
 (defwidget metric [label value onchange]

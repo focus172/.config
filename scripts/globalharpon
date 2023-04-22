@@ -13,6 +13,10 @@ query_add() {
         cur=$(echo "$contents" | $menu)
 
         dir=$dir/$cur
+        
+        if [ -z $cur ]; then
+            exit 0
+        fi
 
         if [ ! -d $dir ]; then
             done="yup"
@@ -74,8 +78,10 @@ case $option in
     remove)
         query_remove
         # I dont use -i flag is it isn't posix
-        replace=$(sed -e "/$selection/d" $data)
-        echo "$replace" > $data
+        if [ ! -z $selection ]; then
+            replace=$(sed -e "/$selection/d" $data)
+            echo "$replace" > $data
+        fi
         ;;
     *)
         exit 1
