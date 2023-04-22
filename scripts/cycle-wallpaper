@@ -1,0 +1,19 @@
+#!/bin/bash
+TEMP=/tmp/current_wall
+files=(~/pix/wallpaper/*)
+
+index=$(cat $TEMP)
+if [ -z "$index" ]; then 
+    index=0
+fi
+
+index=$((index+1))
+if [ $index -ge ${#files[@]} ]; then
+    index=0
+fi
+
+echo $index > $TEMP
+wall="${files[$index]}"
+
+swww img $wall --transition-type grow --transition-pos "$(cursorpos-inv)" --transition-duration 3
+

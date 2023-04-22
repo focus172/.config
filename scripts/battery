@@ -1,5 +1,0 @@
-#!/bin/sh
-
-for d in $(upower -e); do
-  upower -i $d
-done | grep percentage | awk '{print $2}' | tail -n 1

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Spotify wont give me an API
+# Fine Ill make it myself at the expense
+# of their badnwidth
+
+IFS=$'\n'       # make newlines the only separator
+set -f          # disable globbing
+#!/bin/sh
+
+echo "Starting the download of song names"
+
+songs="$(cat $1)"
+for song in $songs; do
+    curl "$song" | grep "<title>" | awk -F'title>' '{ print $2 }' >> "$1.songs"
+done
+
+#content="$(cat $1)"
+
+#for i in $content; do
+#        echo $i | awk -F' - song and lyrics' '{ print $1 $2 }' | awk -F'|' '{ print $1 }' >> out.clean
+#done
+
+
