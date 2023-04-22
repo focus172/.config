@@ -12,12 +12,10 @@
 ;; (defpoll memory_free_mb :interval "2m" "scripts/mem-ad free")
 ;; (defvar vol_reveal false)
 ;; (defvar br_reveal false)
-;; (defvar music_reveal false)
+(defvar bar_music_revealed false)
 ;; (defvar wifi_rev false)
 ;; (defvar time_rev false)
-;; (deflisten workspace "scripts/workspace")
-;;
-;; (defvar eww "eww -c $HOME/.config/eww/bar")
+;; (deflisten workspace "./bar/scripts/workspace")
 
 
 ;; (defpoll COL_WLAN :interval "1m" "~/.config/eww/bar/scripts/wifi --COL")
@@ -25,11 +23,11 @@
 ;; (defpoll WLAN_ICON :interval "1m" "~/.config/eww/bar/scripts/wifi --ICON")
 
 
-;; (defpoll song :interval "2s"  "~/.config/eww/bar/scripts/music_info --song")
+(defpoll playing_song :interval "2s"  "~/.config/eww/bar/scripts/music_info --song")
 ;; (defpoll song_artist :interval "2s"  "~/.config/eww/bar/scripts/music_info --artist")
 ;; (defpoll current_status :interval "1s"  "~/.config/eww/bar/scripts/music_info --time")
-;; (defpoll song_status :interval "2s"  "~/.config/eww/bar/scripts/music_info --status")
-;; (defpoll cover_art :interval "2s"  "~/.config/eww/bar/scripts/music_info --cover")
+(defpoll song_status :interval "2s"  "~/.config/eww/bar/scripts/music_info --status")
+(defpoll cover_art :interval "2s"  "~/.config/eww/bar/scripts/music_info --cover")
 ;;
 ;; (defpoll calendar_day :interval "20h" "date '+%d'")
 ;; (defpoll calendar_year :interval "20h" "date '+%Y'")
@@ -49,11 +47,12 @@
 ;; 			  :orientation "h"
 ;; 			  )))))
 ;;
-;;
+
+;; this is to hard for now
 ;; (defwidget workspaces []
-;;   (literal :content workspace))
-;;
-;;
+    ;; (literal :content workspace))
+
+
 ;; (defwidget bat []
 ;; 		(box :class "bat_module" :vexpand "false" :hexpand "false" 
 ;;             (circular-progress :value battery
@@ -135,27 +134,26 @@
 ;; 			  :min 0
 ;; 			  :onchange "brightnessctl set {}%" )))))
 ;;
-;;
-;;
-;; 	;;  Music 
+
+
+
+;;  Music 
 (defwidget music [] 
-    (button :class "test" "test-button")
-;;   (eventbox :onhover "${eww} update music_reveal=true"
-;; 			  :onhoverlost "${eww} update music_reveal=false"
-;; 		(box :class "module-2" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
-;; 			(box :class "song_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
-;; 			(button :class "song" :wrap "true" :onclick "~/.config/eww/bar/scripts/pop music" song)
-;; 	    (revealer :transition "slideright"
-;; 			      :reveal music_reveal
-;; 			      :duration "350ms"
-;;           (box :vexpand "false" :hexpand "false" :oreintation "h" 
-;;                     (button :class "song_btn_prev" :onclick "~/.config/eww/bar/scripts/music_info --prev" "")
-;; 					(button :class "song_btn_play" :onclick "~/.config/eww/bar/scripts/music_info --toggle" song_status)
-;; 					(button :class "song_btn_next" :onclick "~/.config/eww/bar/scripts/music_info --next" ""))))))
-)
+    (eventbox :onhover "eww update bar_music_revealed=true"
+			  :onhoverlost "eww update bar_music_revealed=false"
+	    (box :class "module-2" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
+	        (box :class "song_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
+	        (button :class "cur_song" :wrap "true" playing_song) ;; :onclick "~/.config/eww/bar/scripts/pop music"
+	        (revealer :transition "slideright"
+			          :reveal bar_music_revealed
+			          :duration "350ms"
+                (box :vexpand "false" :hexpand "false" :oreintation "v" 
+                    (button :class "song_btn_prev" :onclick "~/.config/eww/bar/scripts/music_info --prev" "")
+				    (button :class "song_btn_play" :onclick "~/.config/eww/bar/scripts/music_info --toggle" song_status)
+				    (button :class "song_btn_next" :onclick "~/.config/eww/bar/scripts/music_info --next" ""))))))
 
 
-;;
+
 ;; (defwidget left []
 ;; 	(box :orientation "h" 
 ;; 		 :space-evenly false  
@@ -169,28 +167,22 @@
 ;; (mem)
 ;; (sep)
 ;; (clock_module)))
-;;
-;;
-;; (defwidget right []
-;; 	(box :orientation "h" 
-;; 		 :space-evenly false  
-;;          :halign "start"
-;; 		 :class "right_modules"
-;; (workspaces)))
-;;
+
+
+(defwidget right []
+	(box :orientation "h" 
+		 :space-evenly false  
+         :halign "start"
+		 :class "right_modules"
+(workspaces)))
+
 
 (defwidget center []
 	(box :orientation "h" 
 		 :space-evenly false  
          :halign "center"
-		 :class "modules"
+		 :class "center_modules"
     (music)))
-
-
-;; (defwidget bar_1 []
-;;   (box :class "bar_class"
-;;        :orientation "h"
-;;     ))
 
 (defwindow bar
     :monitor 0
@@ -199,13 +191,15 @@
                         :width "98%"
                         :height "24px"
                         :anchor "top right")
-          :stacking "fg"
-          :windowtype "dock"
-    
+                        :stacking "fg"
+                        :windowtype "dock"
+    (box :orientation "h"
+         :space-evenly false
+         :class "bar"
 ;;   (right)
     (center)
 ;;   (left)
-)
+))
 
   
 ;; (defwidget system []
