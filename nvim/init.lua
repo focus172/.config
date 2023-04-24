@@ -3,7 +3,7 @@
 -- @Focus172
 --
 
------------------------------- Plugins -------------------------------------
+------------------------------ Lazy -------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -23,22 +23,59 @@ require("lazy").setup({
     "numToStr/Comment.nvim",
     "nvim-tree/nvim-tree.lua",
     { "nvim-telescope/telescope.nvim", dependencies = { 'nvim-lua/plenary.nvim' }},
-    { "catppuccin/nvim", name = "catppuccin" },
+    -- { "catppuccin/nvim", name = "catppuccin" },
+	{ "rose-pine/neovim", name = "rose-pine" },
     "nvim-lualine/lualine.nvim",
-    "nvim-treesitter/nvim-treesitter"
+    "nvim-treesitter/nvim-treesitter",
+ --    "folke/trouble.nvim",
+ --    "nvim-treesitter/playground",
+ --    "theprimeagen/harpoon",
+ --    "theprimeagen/refactoring.nvim",
+    "mbbill/undotree",
+ --    "tpope/vim-fugitive",
+ --    "nvim-treesitter/nvim-treesitter-context",
+ --     { "VonHeikemen/lsp-zero.nvim",
+ --        dependencies = {
+ --            -- Core
+ --            'neovim/nvim-lspconfig',
+ --            'williamboman/mason.nvim',
+ --            'williamboman/mason-lspconfig.nvim',
+ -- 	        -- Autocompletion
+ --            'hrsh7th/nvim-cmp',
+ --            'hrsh7th/cmp-buffer',
+ --            'hrsh7th/cmp-path',
+ --            'saadparwaiz1/cmp_luasnip',
+ --            'hrsh7th/cmp-nvim-lsp',
+ --            'hrsh7th/cmp-nvim-lua',
+ --            -- Snippets
+ --            'L3MON4D3/LuaSnip',
+ --            'rafamadriz/friendly-snippets',
+ --    }},
+    -- "folke/zen-mode.nvim",
+    -- "github/copilot.vim",
+    -- "eandrju/cellular-automaton.nvim",
+    -- "laytan/cloak.nvim",
 })
 
--- Setting theme
-require("catppuccin").setup({ flavour = "mocha", transparent_background = true })
-vim.cmd.colorscheme "catppuccin"
 
-require("nvim-tree").setup()
+------------ Visuals ---------------- 
+-- require("catppuccin").setup({ flavour = "mocha", transparent_background = true })
+-- vim.cmd.colorscheme "catppuccin"
+require('rose-pine').setup({ disable_background = true })
+vim.cmd.colorscheme "rose-pine"
 
-require("Comment").setup({
-    opleader = { line = '/', block = 'gb' },
-    -- extra = { above = 'gcO', below = 'gco', eol = 'gcA', },
-    mappings = { basic = true, extra = false }
-})
+
+require('lualine').setup { sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+}}
+
+
+------------------- Language ---------------------
 
 require("nvim-treesitter.configs").setup {
     ensure_installed = {
@@ -48,9 +85,11 @@ require("nvim-treesitter.configs").setup {
 	    "rasi", "jsonc"
     },
     auto_install = false,
-	highlight = { enable = true },
 }
 vim.cmd "TSUpdate"
+
+
+require("nvim-tree").setup()
 
 ------------------------------ Keybindings ---------------------------------
 
@@ -59,294 +98,99 @@ local map_lua = vim.keymap.set
 local opts = { silent = true, noremap = true }
 
 
--- fix to get comments to work as expected in normal
-local comment_api = require('Comment.api')
-map_lua("n", "<leader>/", comment_api.toggle.linewise.current, {})
+----------------- F Motions ---------------------
 
 -- File veiw
 map_key("n", "<Leader>fv", ":Ex<CR>", opts)
-
+map_key("n", "<leader>ft", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope commands
-local builtin = require('telescope.builtin')
-map_lua('n', '<leader>ff', builtin.find_files, opts)
-map_lua('n', '<leader>fg', builtin.live_grep, opts)
-map_lua('n', '<leader>fb', builtin.buffers, opts) 
-map_lua('n', '<leader>fh', builtin.help_tags, opts) 
+local tele_builtin = require('telescope.builtin')
+map_lua('n', '<leader>ff', tele_builtin.find_files, opts)
+map_lua('n', '<leader>fg', tele_builtin.live_grep, opts)
+map_lua('n', '<leader>fb', tele_builtin.buffers, opts) 
+map_lua('n', '<leader>fh', tele_builtin.help_tags, opts) 
+
+ -- ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
+ -- ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
+ -- ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
+ -- ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "find in current buffer" },
 
 
--- save
-map_key("n", "<leader>w", ":w<CR>", opts)
+----------------- W Motion ---------------------
+
+map_key("n", "<leader>wh", "<C-w>h", opts)
+map_key("n", "<leader>wl", "<C-w>l", opts)
+map_key("n", "<leader>wj", "<C-w>j", opts)
+map_key("n", "<leader>wk", "<C-w>k", opts)
+
+-- allow for window navigation in insert mode, useful for getting out of terminal
+map_key("i", "<C-h>", "<C-w>h", opts)
+map_key("i", "<C-j>", "<C-w>j", opts)
+map_key("i", "<C-k>", "<C-w>k", opts)
+map_key("i", "<C-l>", "<C-w>l", opts)
+
+----------------- G Motion --------------------
+
+map_lua("n", "<leader>gc", tele_builtin.git_commits, opts)
+map_lua("n", "<leader>gt", tele_builtin.git_status, opts)
 
 
--- line navigation
-map_key("i", "<C-b>", "<ESC>^i", opts)
-map_key("i", "<C-e>", "<End>", opts)
-
-  --   -- navigate within insert mode
-  --   ["<C-h>"] = { "<Left>", "move left" },
-  --   ["<C-l>"] = { "<Right>", "move right" },
-  --   ["<C-j>"] = { "<Down>", "move down" },
-  --   ["<C-k>"] = { "<Up>", "move up" },
-
-  -- normal mode widow navigation
---   ["<C-h>"] = { "<C-w>h", "window left" },
-  --   ["<C-l>"] = { "<C-w>l", "window right" },
-  --   ["<C-j>"] = { "<C-w>j", "window down" },
-  --   ["<C-k>"] = { "<C-w>k", "window up" },
-
-
-
--- Copy all
-map_key("n", "<C-c>", ":%y<CR>", opts)
-
-
--- new buffer
-map_key("n", "<leader>b", "<cmd> enew <CR>", opts)
-
-
-
-
---  ┌                                                                              ┐
---  │ These define common comment styles like this                                 │
---  └                                                                              ┘
-
-map_key("n", "<Leader>lu", ":Lazy update<CR>", opts)
+-------------- N Motion -------------
 
 map_key("n", "<Leader>nb", "<cmd>enew<CR>", opts) 
 
+
+-------------- U Motion -------------
+map_key("n", "<leader>u", ":UndotreeToggle<cr>", opts)
+
+-- More molecular undo of text
+-- map_key("i", "<C-u>", ".<c-g>u")
+map_key("n", "<leader>U", "<c-g>u", opts)
+
+
+------------------ S Motion -------------------
+
+map_key("n", "<leader>sv", ":vs<CR>", opts)
+map_key("n", "<leader>sh", ":sp<CR>", opts)
+map_key("n", "<Leader>st", ":vnew term://fish<CR>", opts)
+
+
+------------ / Motion --------------- 
+-- instead of the ? vim binding use tele-find-grep
+require("Comment").setup({
+    -- ? == Shift + /
+    opleader = { line = '/', block = '?' },
+    -- extra = { above = 'k/', below = 'j/', eol = 'A/', },
+    mappings = { basic = true, extra = false }
+})
+local comment_api = require('Comment.api')
+map_lua("n", "<leader>/", comment_api.toggle.linewise.current, opts)
+
+
+-- save
+-- map_key("n", "<leader>s", ":w<CR>", opts)
+
+-- line navigation
+-- map_key("i", "<C-b>", "<ESC>^i", opts)
+-- map_key("i", "<C-e>", "<End>", opts)
+
+-- Copy all
+-- map_key("n", "<C-c>", ":%y<CR>", opts)
+
+--  ┌            ┐
+--  │ Common box │
+--  └            ┘
+
+map_key("n", "<Leader>lu", ":Lazy update<CR>", opts)
 map_key("n", "<Leader>a", "ggVG<c-$>", opts) 
 
 
---km.set("n", "<leader>xu", ":UndotreeToggle<cr>", { desc = "Undo Tree" })
--- More molecular undo of text
---km.set("i", ".", ".<c-g>u")
---km.set("i", "!", "!<c-g>u")
---km.set("i", "?", "?<c-g>u")
---km.set("i", ";", ";<c-g>u")
---km.set("i", ":", ":<c-g>u")
-
--------------------------------------- options ------------------------------------------
-
-local opt = vim.opt
-
-opt.laststatus = 3 -- global statusline
-opt.showmode = false
-
-opt.cursorline = true
-
--- Indenting
-opt.expandtab = true
-opt.shiftwidth = 4
-opt.smartindent = true
-opt.tabstop = 4
-opt.softtabstop = 4
-
-
-opt.fillchars = { eob = " " }
-opt.ignorecase = true
-opt.smartcase = true
-opt.mouse = "a"
-
--- Numbers
-opt.number = true
-opt.numberwidth = 2
-opt.ruler = false
-
--- disable nvim intro
---opt.shortmess:append "sI"
-
-opt.signcolumn = "yes"
-opt.splitbelow = true
-opt.splitright = true
-opt.termguicolors = true
-opt.timeoutlen = 400
-opt.undofile = true
-
--- interval for writing swap file to disk, also used by gitsigns
-opt.updatetime = 250
-
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
--- opt.whichwrap:append "<>[]hl"
-
-
--- disable some default providers
-for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
-    vim.g["loaded_" .. provider .. "_provider"] = 0
-end
-
-
-
--- n, v, i, t = mode names
---
--- M.nvimtree = {
---   n = {
---     -- toggle
---     ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
---
---     -- focus
---     ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
---   },
--- }
---
--- M.telescope = {
---   n = {
---     -- find
---     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
---     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
---     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
---     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
---     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
---     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
---     ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "find in current buffer" },
---
---     -- git
---     ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
---     ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "git status" },
---
---     -- pick a hidden term
---     ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
---
---   },
--- }
-
-
-
-
--- local o = vim.opt
--- local g = vim.g
---
--- -- Autocmds
--- vim.cmd [[
--- augroup CursorLine
---     au!
---     au VimEnter * setlocal cursorline
---     au WinEnter * setlocal cursorline
---     au BufWinEnter * setlocal cursorline
---     au WinLeave * setlocal nocursorline
--- augroup END
---
--- autocmd FileType nix setlocal shiftwidth=4
--- ]]
---
--- -- Keybinds
--- map("n", "<C-j>", "<C-w>j", opts)
--- map("n", "<C-k>", "<C-w>k", opts)
--- map("n", "<C-l>", "<C-w>l", opts)
--- map('n', '<C-n>', ':Telescope live_grep <CR>', opts)
--- map('n', '<C-f>', ':Telescope find_files <CR>', opts)
--- map('n', 'j', 'gj', opts)
--- map('n', 'k', 'gk', opts)
 -- map('n', ';', ':', { noremap = true } )
---
--- g.mapleader = ' '
---
--- -- Performance
--- o.lazyredraw = true;
--- o.shell = "zsh"
--- o.shadafile = "NONE"
---
--- -- Colors
--- o.termguicolors = true
---
--- -- Undo files
--- o.undofile = true
---
--- -- Indentation
--- o.smartindent = true
--- o.tabstop = 4
--- o.shiftwidth = 4
--- o.shiftround = true
--- o.expandtab = true
--- o.scrolloff = 3
---
--- -- Set clipboard to use system clipboard
--- o.clipboard = "unnamedplus"
---
--- -- Use mouse
--- o.mouse = "a"
---
--- -- Nicer UI settings
--- o.cursorline = true
--- o.relativenumber = true
--- o.number = true
---
--- -- Get rid of annoying viminfo file
--- o.viminfo = ""
--- o.viminfofile = "NONE"
---
--- -- Miscellaneous quality of life
--- o.ignorecase = true
--- o.ttimeoutlen = 5
--- o.hidden = true
--- o.shortmess = "atI"
--- o.wrap = false
--- o.backup = false
--- o.writebackup = false
--- o.errorbells = false
--- o.swapfile = false
--- o.showmode = false
--- o.laststatus = 3
--- o.pumheight = 6
--- o.splitright = true
--- o.splitbelow = true
--- o.completeopt = "menuone,noselect"
 
-
-require('lualine').setup {
-  -- options = {
-  --   icons_enabled = true,
-  --   theme = 'auto',
-  --   component_separators = { left = '', right = ''},
-  --   section_separators = { left = '', right = ''},
-  --   disabled_filetypes = {
-  --     statusline = {},
-  --     winbar = {},
-  --   },
-  --   ignore_focus = {},
-  --   always_divide_middle = true,
-  --   globalstatus = false,
-  --   refresh = {
-  --     statusline = 1000,
-  --     tabline = 1000,
-  --     winbar = 1000,
-  --   }
-  -- },
-  -- sections = {
-  --   lualine_a = {'mode'},
-  --   lualine_b = {'branch', 'diff', 'diagnostics'},
-  --   lualine_c = {'filename'},
-  --   lualine_x = {'encoding', 'fileformat', 'filetype'},
-  --   lualine_y = {'progress'},
-  --   lualine_z = {'location'}
-  -- },
-  -- inactive_sections = {
-  --   lualine_a = {},
-  --   lualine_b = {},
-  --   lualine_c = {'filename'},
-  --   lualine_x = {'location'},
-  --   lualine_y = {},
-  --   lualine_z = {}
-  -- },
-  -- tabline = {},
-  -- winbar = {},
-  -- inactive_winbar = {},
-  -- extensions = {}
-}
-
--- " autostarting nerdtree
--- " autocmd vimenter * NERDTree
---
--- map <Leader>vs :VsplitVifm<CR>
--- map <Leader>sp :SplitVifm<CR>
 -- map <Leader>dv :DiffVifm<CR>
 -- map <Leader>tv :TabVifm<CR>
---
---
--- " TODO: import this
--- map <Leader>tt :vnew term://fish<CR>
---
+
 -- " Make adjusing split sizes a bit more friendly
 -- noremap <silent> <C-Left> :vertical resize +3<CR>
 -- noremap <silent> <C-Right> :vertical resize -3<CR>
@@ -357,13 +201,6 @@ require('lualine').setup {
 -- map <Leader>th <C-w>t<C-w>H
 -- map <Leader>tk <C-w>t<C-w>K
 --
--- " Removes pipes | that act as seperators on splits
--- set fillchars+=vert:\ 
---
--- set guioptions-=m  "remove menu bar
--- set guioptions-=T  "remove toolbar
--- set guioptions-=r  "remove right-hand scroll bar
--- set guioptions-=L  "remove left-hand scroll bar
 
 --      "           ▄ ▄                   ",
 --      "       ▄   ▄▄▄     ▄ ▄▄▄ ▄ ▄     ",
@@ -375,5 +212,142 @@ require('lualine').setup {
 --      "█▄█ ▄ █▄▄█▄▄█ █ ▄▄█ █ ▄ █ █▄█▄█ █",
 --      "    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█ █▄█▄▄▄█    ",
 
+
+-- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+-- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+--
+-- vim.keymap.set("n", "J", "mzJ`z")
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- vim.keymap.set("n", "n", "nzzzv")
+-- vim.keymap.set("n", "N", "Nzzzv")
+--
+-- greatest remap ever
+-- vim.keymap.set("x", "<leader>p", [["_dP]])
+--
+-- next greatest remap ever : asbjornHaland
+-- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+-- vim.keymap.set("n", "<leader>Y", [["+Y]])
+--
+-- vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+
+-- i hate vim registerts/macros
+vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("n", "q", "<nop>")
+
+-- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+--
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+--
+-- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+--
+-- vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
+-- vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+
+
+-------------------------------------- options ------------------------------------------
+
+local o = vim.opt
+local g = vim.g
+
+o.laststatus = 3 -- global statusline
+o.showmode = false
+
+o.cursorline = true
+
+-- Indenting
+o.expandtab = true
+o.shiftwidth = 4
+o.smartindent = true
+o.tabstop = 4
+o.softtabstop = 4
+-- o.shiftround = true
+
+
+o.fillchars = { eob = " " }
+o.ignorecase = true
+o.smartcase = true
+o.mouse = "a"
+
+-- Numbers
+o.number = true
+o.numberwidth = 2
+o.ruler = false
+
+-- disable nvim intro
+o.shortmess:append "sI"
+
+o.signcolumn = "yes"
+o.splitbelow = true
+o.splitright = true
+o.termguicolors = true
+o.timeoutlen = 400
+o.undofile = true
+
+-- interval for writing swap file to disk, also used by gitsigns
+o.updatetime = 250
+
+-- Cursor wrap of h, l
+o.whichwrap:append "<>[]hl"
+
+
+-- Performance
+o.lazyredraw = true;
+o.shell = "fish"
+o.shadafile = "NONE"
+
+o.guicursor = ""
+
+-- vim.opt.nu = true
+-- vim.opt.wrap = false
+-- vim.opt.backup = false
+-- vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+-- vim.opt.hlsearch = false
+-- vim.opt.incsearch = true
+
+vim.opt.scrolloff = 8
+-- vim.opt.isfname:append("@-@")
+-- vim.opt.colorcolumn = "80"
+
+-- Set clipboard to use system clipboard
+-- o.clipboard = "wl-copy"
+
+-- Get rid of annoying viminfo file
+o.viminfo = ""
+o.viminfofile = "NONE"
+
+-- Miscellaneous quality of life
+-- o.ignorecase = true
+-- o.ttimeoutlen = 5
+-- o.hidden = true
+-- o.wrap = false
+-- o.backup = false
+-- o.writebackup = false
+-- o.errorbells = false
+o.swapfile = false
+-- o.showmode = false
+-- o.pumheight = 6
+-- o.splitright = true
+-- o.splitbelow = true
+o.completeopt = "menuone,noselect"
+
+-- " Removes pipes | that act as seperators on splits
+-- set fillchars+=vert:\ 
+
+-- vim.g.netrw_browse_split = 0
+-- vim.g.netrw_banner = 0
+-- vim.g.netrw_winsize = 25
+
+
+-- disable some default providers
+vim.g["loaded_node_provider"] = 0
+vim.g["loaded_perl_provider"] = 0
+vim.g["loaded_python3_provider"] = 0
+vim.g["loaded_ruby_provider"] = 0
 
 

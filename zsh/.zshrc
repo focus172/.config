@@ -234,6 +234,6 @@ export FZF_DEFAULT_OPTS='
 #  --color header:italic
 #  --header 'Press CTRL-Y to copy command into clipboard'"
 
-source /home/focus/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "/home/focus/.local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 
