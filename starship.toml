@@ -1,56 +1,47 @@
-## ░█▀▀░▀█▀░█▀█░█▀▄░█▀▀░█░█░▀█▀░█▀█
-## ░▀▀█░░█░░█▀█░█▀▄░▀▀█░█▀█░░█░░█▀▀
-## ░▀▀▀░░▀░░▀░▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░░
 
 format="""
-$directory$git_branch$rust$character
+$directory$git_branch$elixir$rust$character
 """
-# TODO: add languages like rust in
+# $hostname
+# $git_commit 
+
 right_format = """$git_status$cmd_duration"""
 add_newline = false 
-
-# get this dumb sit out of my face
-aws.disabled = true
-azure.disabled = true
-buf.disabled = true
-bun.disabled = true
-cmake.disabled = true
-cobol.disabled = true
-conda.disabled = true
-daml.disabled = true
-python.disabled = true
-ruby.disabled = true
-perl.disabled = true
-nodejs.disabled = true
-java.disabled = true
-dart.disabled = true
-docker_context.disabled = true 
-elm.disabled = true
-hg_branch.disabled = true
-julia.disabled = true
-php.disabled = true
-scala.disabled = true
-shlvl.disbaled = true
-swift.disabled = true
 
 # Prompt symbols 
 [character]
 success_symbol = "[](#8EC07C bold)"
+# success_symbol = "[🞈](#a6e3a1)"
 error_symbol = "[](#AD685A)"
+# error_symbol = "[🞈](#f38ba8)"
 vicmd_symbol = "[](#DD8F6E)"
+# vicmd_symbol = "[🞈](#f9e2af)"
+# format = "$symbol [|](bold bright-black) "
 
 [directory]
 format = "[]($style)[ ](bg:#312C2E fg:#DD8F6E)[$path](bg:#312C2E fg:#83A598 bold)[ ]($style)"
 style = "bg:none fg:#312C2E"
 truncation_length = 3
 truncate_to_repo=false
+# format = "[]($style)[(bg:#f5c2e7 fg:#eba0ac)$path](bg:#f5c2e7 fg:#a84c8d)[ ]($style)"
+# style = "fg:#f5c2e7"
+
+[hostname]
+ssh_only = false
+style = "bold green"
+format =  "[$hostname]($style)"
 
 [git_branch]
-format = "[]($style)[[ ](bg:#312C2E fg:#8EC07C bold)$branch](bg:#312C2E fg:#83A598)[ ]($style)"
+symbol = "" # 
+format = "[]($style)[$symbol $branch](bg:#312C2E fg:#83A598 bold)[ ]($style)"
 style = "bg:none fg:#312C2E"
+# #8EC07C 
+# #769ff0 
+# #394260
+# format = "[]($style)[[ ](bg:#f5c2e7 fg:#a84c8d bold)$branch](bg:#f5c2e7 fg:#4c4f69)[ ]($style)"
+# style = "fg:#f5c2e7"
 
 [git_status]
-# $all status$ahead_behind
 format = "[]($style)[$all_status$ahead_behind](bg:#312C2E fg:#b4befe)[ ]($style)"
 style = "bg:none fg:#312C2E"
 conflicted = "="
@@ -71,46 +62,12 @@ format = "[]($style)[[神](bg:#312C2E fg:#eba0ac bold)$duration](bg:#312C2E f
 disabled = false
 style = "bg:none fg:#312C2E"
 
-# # Prompt symbols 
-# [character]
-# success_symbol = "[🞈](#a6e3a1 bold)"
-# error_symbol = "[🞈](#f38ba8)"
-# vicmd_symbol = "[🞈](#f9e2af)"
-
-# [directory]
-# format = "[]($style)[(bg:#f5c2e7 fg:#eba0ac)$path](bg:#f5c2e7 fg:#a84c8d)[ ]($style)"
-# style = "fg:#f5c2e7"
-
-# [git_branch]
-# format = "[]($style)[[ ](bg:#f5c2e7 fg:#a84c8d bold)$branch](bg:#f5c2e7 fg:#4c4f69)[ ]($style)"
-# style = "fg:#f5c2e7"
-
-# format = """
-# [{](bold white)\
-# ($username)\
-# [@](bold yellow)\
-# ($hostname)\
-# ( $directory )\
-# ($git_branch)\
-# [}> ](bold purple)
-# """
-
-# add_newline = false
-#
 # [username]
-# disabled = false
 # show_always = true
 # style_user = "bold red"
 # format = "[$user]($style)"
-#
-# [hostname]
-# disabled = false
-# ssh_only = false
-# style = "bold green"
-# format =  "[$hostname]($style)"
 
 # [directory]
-# disabled = false
 # truncation_length = 3
 # home_symbol = "~"
 # format = "[$path](bold cyan)"
@@ -121,16 +78,8 @@ style = "bg:none fg:#312C2E"
 "music" = " "
 "pix" = " "
 
-# [character]
-# success_symbol = ""
-# error_symbol = "[](bold red)"
-
-# [git_branch]
-# symbol = " "
-# style = "bold blue"
-
 # [git_commit]
-# commit_hash_length = 4
+# commit_hash_length = 7
 # tag_symbol = "🔖 "
 
 # [git_state]
@@ -140,7 +89,7 @@ style = "bg:none fg:#312C2E"
 # [git_metrics]
 # added_style = "bold blue"
 # format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
-#
+
 # [git_status]
 # format = '([\[$all_status$ahead_behind\]]($style))'
 # style = "bold blue"
@@ -183,30 +132,14 @@ style = "bg:none fg:#312C2E"
 #truncation_length = 3
 #truncation_symbol = "…/"
 
-#[git_branch]
-#symbol = ""
-#style = "bg:#394260"
-#format = '[ $symbol $branch ](fg:#769ff0 bg:#394260)'
-
 #[git_status]
 #style = "bg:#394260"
 #format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
 
-[rust]
-symbol = ""
-format = '[ $symbol ($version) ](fg:#769ff0)' # bg:#212736
-
 #[time]
-#disabled = false
-#time_format = "%R" # Hour:Minute Format
 #style = "bg:#1d2230"
 #format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
 
-#[character]
-#error_symbol = "[](bold red)"
-#success_symbol = "[](bold cyan)"
-#vicmd_symbol = "[](bold yellow)"
-#format = "$symbol [|](bold bright-black) "
 
 #[username]
 #style_user = 'blue'
@@ -214,35 +147,20 @@ format = '[ $symbol ($version) ](fg:#769ff0)' # bg:#212736
 #format = '[$user]($style) '
 #disabled = true
 #show_always = true
+# style_user = "green bold"
+# style_root = "red bold"
 
 #[hostname]
 #ssh_only = true
 #format = "[$hostname](bold blue) "
 #disabled = false
+# format = 'on [$hostname](bold purple) '
+# trim_at = "."
 
 #[directory]
 #disabled = true
 
-#
-# [username]
-# style_user = "green bold"
-# style_root = "red bold"
-# format = "[$user]($style) "
-# disabled = false
-# show_always = true
-#
-# [hostname]
-# ssh_only = false
-# format = 'on [$hostname](bold purple) '
-# trim_at = "."
-# disabled = false
-#
-# # Replace the "❯" symbol in the prompt with "➜"
-# [character]                            # The name of the module we are configuring is "character"
-# success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
-# error_symbol = "[✗](bold red)"
-
-# #  
+#  
 # [directory]
 # read_only = " "
 # truncation_length = 10
@@ -255,8 +173,6 @@ format = '[ $symbol ($version) ](fg:#769ff0)' # bg:#212736
 # disabled = false
 # style = "bold italic red"
 
-# [git_branch]
-# symbol = " "
 
 # [git_status]
 # format = '([\[$all_status$ahead_behind\]]($style) )'
@@ -282,10 +198,13 @@ format = '[ $symbol ($version) ](fg:#769ff0)' # bg:#212736
 
 [elixir]
 symbol = " "
+format = "[$symbol $version ](fg:#769ff0)"
+[rust]
+symbol = ""
+format = '[$symbol $version ](fg:#769ff0)'
+# bg:#212736
 [haskell]
 symbol = "λ "
-[memory_usage]
-symbol = " "
 [golang]
 symbol = " "
 [nim]
@@ -294,5 +213,29 @@ symbol = " "
 symbol = " "
 [package]
 symbol = " "
+
+# get this dumb sit out of my face
+aws.disabled = true
+azure.disabled = true
+buf.disabled = true
+bun.disabled = true
+cmake.disabled = true
+cobol.disabled = true
+conda.disabled = true
+daml.disabled = true
+dart.disabled = true
+docker_context.disabled = true 
+elm.disabled = true
+hg_branch.disabled = true
+julia.disabled = true
+java.disabled = true
+nodejs.disabled = true
+perl.disabled = true
+php.disabled = true
+python.disabled = true
+ruby.disabled = true
+scala.disabled = true
+shlvl.disbaled = true
+# swift.disabled = true
 
 

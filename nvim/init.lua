@@ -3,7 +3,7 @@
 -- @Focus172
 --
 
------------------------------- Lazy -------------------------------------
+------------------------------ Lazy ------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -27,34 +27,31 @@ require("lazy").setup({
 	{ "rose-pine/neovim", name = "rose-pine" },
     "nvim-lualine/lualine.nvim",
     "nvim-treesitter/nvim-treesitter",
- --    "folke/trouble.nvim",
- --    "nvim-treesitter/playground",
- --    "theprimeagen/harpoon",
- --    "theprimeagen/refactoring.nvim",
+    "folke/trouble.nvim",
+    "nvim-treesitter/playground",
+    -- "theprimeagen/harpoon",
+    -- "theprimeagen/refactoring.nvim",
     "mbbill/undotree",
- --    "tpope/vim-fugitive",
- --    "nvim-treesitter/nvim-treesitter-context",
- --     { "VonHeikemen/lsp-zero.nvim",
- --        dependencies = {
- --            -- Core
- --            'neovim/nvim-lspconfig',
- --            'williamboman/mason.nvim',
- --            'williamboman/mason-lspconfig.nvim',
- -- 	        -- Autocompletion
- --            'hrsh7th/nvim-cmp',
- --            'hrsh7th/cmp-buffer',
- --            'hrsh7th/cmp-path',
- --            'saadparwaiz1/cmp_luasnip',
- --            'hrsh7th/cmp-nvim-lsp',
- --            'hrsh7th/cmp-nvim-lua',
- --            -- Snippets
- --            'L3MON4D3/LuaSnip',
- --            'rafamadriz/friendly-snippets',
- --    }},
-    -- "folke/zen-mode.nvim",
+    "tpope/vim-fugitive",
+    "nvim-treesitter/nvim-treesitter-context",
+     { "VonHeikemen/lsp-zero.nvim", dependencies = {
+        -- Core
+        'neovim/nvim-lspconfig',
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+ 	    -- Autocompletion
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'saadparwaiz1/cmp_luasnip',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-nvim-lua',
+        -- Snippets
+        'L3MON4D3/LuaSnip',
+        'rafamadriz/friendly-snippets',
+    }},
+    "folke/zen-mode.nvim",
     -- "github/copilot.vim",
-    -- "eandrju/cellular-automaton.nvim",
-    -- "laytan/cloak.nvim",
 })
 
 
@@ -63,7 +60,6 @@ require("lazy").setup({
 -- vim.cmd.colorscheme "catppuccin"
 require('rose-pine').setup({ disable_background = true })
 vim.cmd.colorscheme "rose-pine"
-
 
 require('lualine').setup { sections = {
     lualine_a = {'mode'},
@@ -74,8 +70,7 @@ require('lualine').setup { sections = {
     lualine_z = {'location'}
 }}
 
-
-------------------- Language ---------------------
+----------- Language ---------------
 
 require("nvim-treesitter.configs").setup {
     ensure_installed = {
@@ -91,14 +86,13 @@ vim.cmd "TSUpdate"
 
 require("nvim-tree").setup()
 
------------------------------- Keybindings ---------------------------------
+------------------------------ Space is Leader ---------------------------------
 
 local map_key = vim.api.nvim_set_keymap
 local map_lua = vim.keymap.set
 local opts = { silent = true, noremap = true }
 
-
------------------ F Motions ---------------------
+----------------- F (file) Motions ---------------------
 
 -- File veiw
 map_key("n", "<Leader>fv", ":Ex<CR>", opts)
@@ -108,16 +102,14 @@ map_key("n", "<leader>ft", ":NvimTreeToggle<CR>", opts)
 local tele_builtin = require('telescope.builtin')
 map_lua('n', '<leader>ff', tele_builtin.find_files, opts)
 map_lua('n', '<leader>fg', tele_builtin.live_grep, opts)
-map_lua('n', '<leader>fb', tele_builtin.buffers, opts) 
-map_lua('n', '<leader>fh', tele_builtin.help_tags, opts) 
-
- -- ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
- -- ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
- -- ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
- -- ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "find in current buffer" },
+map_lua('n', '<leader>fb', tele_builtin.buffers, opts)
+map_lua('n', '<leader>fh', tele_builtin.help_tags, opts)
+map_key('n', "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", opts)
+map_lua('n', "<leader>fo", tele_builtin.oldfiles, opts)
+map_lua('n', "<leader>fz", "<cmd> Telescope current_buffer_fuzzy_find <CR>", opts)
 
 
------------------ W Motion ---------------------
+----------------- W (window) Motion ---------------------
 
 map_key("n", "<leader>wh", "<C-w>h", opts)
 map_key("n", "<leader>wl", "<C-w>l", opts)
@@ -130,33 +122,34 @@ map_key("i", "<C-j>", "<C-w>j", opts)
 map_key("i", "<C-k>", "<C-w>k", opts)
 map_key("i", "<C-l>", "<C-w>l", opts)
 
------------------ G Motion --------------------
+----------------- G (git) Motion --------------------
 
 map_lua("n", "<leader>gc", tele_builtin.git_commits, opts)
 map_lua("n", "<leader>gt", tele_builtin.git_status, opts)
+map_lua("n", "<leader>gs", vim.cmd.Git, opts)
+-- vim.keymap.set("n", "<leader>gp", vim.cmd.Git('push'), opts)
+-- vim.keymap.set("n", "<leader>gP", vim.cmd.Git({'pull',  '--rebase'}), opts)
+-- vim.keymap.set("n", "<leader>gt", ":Git push -u origin ", opts);
 
+-------------- B (buffer) Motion -------------
 
--------------- N Motion -------------
+map_key("n", "<Leader>bn", "<cmd>enew<CR>", opts)
+map_key("n", "<Leader>ba", "ggVG<c-$>", opts)
 
-map_key("n", "<Leader>nb", "<cmd>enew<CR>", opts) 
-
-
--------------- U Motion -------------
+-------------- U (undo) Motion -------------
 map_key("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 
 -- More molecular undo of text
--- map_key("i", "<C-u>", ".<c-g>u")
 map_key("n", "<leader>U", "<c-g>u", opts)
 
-
------------------- S Motion -------------------
+------------------ S (split) Motion -------------------
 
 map_key("n", "<leader>sv", ":vs<CR>", opts)
 map_key("n", "<leader>sh", ":sp<CR>", opts)
 map_key("n", "<Leader>st", ":vnew term://fish<CR>", opts)
 
 
------------- / Motion --------------- 
+------------ / (comment) Motion --------------- 
 -- instead of the ? vim binding use tele-find-grep
 require("Comment").setup({
     -- ? == Shift + /
@@ -166,6 +159,10 @@ require("Comment").setup({
 })
 local comment_api = require('Comment.api')
 map_lua("n", "<leader>/", comment_api.toggle.linewise.current, opts)
+
+
+
+
 
 
 -- save
@@ -182,9 +179,7 @@ map_lua("n", "<leader>/", comment_api.toggle.linewise.current, opts)
 --  │ Common box │
 --  └            ┘
 
-map_key("n", "<Leader>lu", ":Lazy update<CR>", opts)
-map_key("n", "<Leader>a", "ggVG<c-$>", opts) 
-
+-- map_key("n", "<Leader>lu", ":Lazy update<CR>", opts)
 
 -- map('n', ';', ':', { noremap = true } )
 
@@ -236,8 +231,8 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "q", "<nop>")
 
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
--- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
---
+vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format)
+
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
@@ -245,9 +240,12 @@ vim.keymap.set("n", "q", "<nop>")
 --
 -- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
---
--- vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
--- vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+
+--------------------------------- keybindings Q leader ---------------------
+
+
+
+
 
 
 -------------------------------------- options ------------------------------------------
@@ -301,8 +299,6 @@ o.lazyredraw = true;
 o.shell = "fish"
 o.shadafile = "NONE"
 
-o.guicursor = ""
-
 -- vim.opt.nu = true
 -- vim.opt.wrap = false
 -- vim.opt.backup = false
@@ -310,7 +306,7 @@ o.guicursor = ""
 -- vim.opt.hlsearch = false
 -- vim.opt.incsearch = true
 
-vim.opt.scrolloff = 8
+o.scrolloff = 8
 -- vim.opt.isfname:append("@-@")
 -- vim.opt.colorcolumn = "80"
 
@@ -345,9 +341,124 @@ o.completeopt = "menuone,noselect"
 
 
 -- disable some default providers
-vim.g["loaded_node_provider"] = 0
-vim.g["loaded_perl_provider"] = 0
-vim.g["loaded_python3_provider"] = 0
-vim.g["loaded_ruby_provider"] = 0
+g["loaded_node_provider"] = 0
+g["loaded_perl_provider"] = 0
+g["loaded_python3_provider"] = 0
+g["loaded_ruby_provider"] = 0
 
+
+-- vim.keymap.set('n', '<leader>ps', function()
+	-- builtin.grep_string({ search = vim.fn.input("Grep > ") })
+-- end)
+
+-- require('refactoring').setup({})
+-- vim.api.nvim_set_keymap("v", "<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+
+
+-------------------------- Harpoon ------------------------------
+
+-- local mark = require("harpoon.mark")
+-- local ui = require("harpoon.ui")
+
+-- vim.keymap.set("n", "<leader>a", mark.add_file)
+-- vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+
+-- vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
+-- vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
+-- vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
+-- vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
+
+
+vim.keymap.set("n", "<leader>zz", function()
+    require("zen-mode").setup {
+        window = {
+            width = 90,
+            options = { }
+        },
+    }
+    require("zen-mode").toggle()
+    vim.wo.wrap = false
+    vim.wo.number = true
+    vim.wo.rnu = true
+end)
+
+
+vim.keymap.set("n", "<leader>zZ", function()
+    require("zen-mode").setup {
+        window = {
+            width = 80,
+            options = { }
+        },
+    }
+    require("zen-mode").toggle()
+    vim.wo.wrap = false
+    vim.wo.number = false
+    vim.wo.rnu = false
+    vim.opt.colorcolumn = "0"
+end)
+
+vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
+
+
+
+---------------------- LSP --------------------
+local lsp = require("lsp-zero")
+
+lsp.preset("recommended")
+
+lsp.ensure_installed({
+  -- 'tsserver',
+  'rust_analyzer',
+})
+
+-- Fix Undefined global 'vim'
+lsp.nvim_workspace()
+
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  -- ["<CR>"] = cmp.mapping.complete(),
+})
+
+-- cmp_mappings['<Tab>'] = nil
+-- cmp_mappings['<S-Tab>'] = nil
+
+lsp.setup_nvim_cmp({
+  mapping = cmp_mappings
+})
+
+lsp.set_preferences({
+    suggest_lsp_servers = false,
+    sign_icons = {
+        error = 'E',
+        warn = 'W',
+        hint = 'H',
+        info = 'I'
+    }
+})
+
+lsp.on_attach(function(client, bufnr)
+  local opts = {buffer = bufnr, remap = false}
+
+    -- vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', {buffer = true})
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+end)
+
+lsp.setup()
+
+vim.diagnostic.config({
+    virtual_text = true
+})
 

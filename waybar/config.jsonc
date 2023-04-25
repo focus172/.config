@@ -1,5 +1,4 @@
 
-
 //     "custom/separator": {
 //         "format": "" 
 //     }, 
@@ -52,8 +51,9 @@
 
     "modules-left": ["wlr/workspaces", "tray", "mpd"],
     "modules-center": ["clock"],
-    "modules-right": ["battery", "custom/updates", "pulseaudio", "pulseaudio#microphone", "backlight", "network", "cpu", "memory", "temperature", "custom/power"],
-
+    "modules-right": ["battery", "custom/updates", "pulseaudio", "pulseaudio#microphone", "backlight", "network", "custom/power"],
+    // "cpu", "memory", "temperature",
+    
     // TODO: make a custom media module that on click runs tray-mpd
     
     "custom/updates": {
