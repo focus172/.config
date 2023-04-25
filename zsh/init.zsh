@@ -10,7 +10,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/.config/scripts:$XDG_DATA_HOME/cargo/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts:$XDG_DATA_HOME/cargo/bin:$HOME/.config/scripts"
 export SHELL=$(which fish)
 
 

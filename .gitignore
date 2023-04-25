@@ -17,14 +17,12 @@ github-copilot
 
 # zsh garbage
 zsh/.zsh_history
+fish/fish_variables
 
 # Unsorted ignores
 pavucontrol.ini
 pulse
-bottom
 git/.git-credentials
-nushell
-fish/fish_variables
 retroarch
 weechat
 emacs
@@ -35,5 +33,8 @@ qt6ct
 GIMP
 gtk-2.0
 doom/bak.org
-nvim/after.bak
 htop
+nvim/LunarVim/
+tmux/plugins
+nvim/lazy-lock.json
+nvim/lazy-lock.json.bak

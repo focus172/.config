@@ -23,14 +23,13 @@ require("lazy").setup({
     "numToStr/Comment.nvim",
     "nvim-tree/nvim-tree.lua",
     { "nvim-telescope/telescope.nvim", dependencies = { 'nvim-lua/plenary.nvim' }},
-    -- { "catppuccin/nvim", name = "catppuccin" },
 	{ "rose-pine/neovim", name = "rose-pine" },
     "nvim-lualine/lualine.nvim",
     "nvim-treesitter/nvim-treesitter",
     "folke/trouble.nvim",
     "nvim-treesitter/playground",
-    -- "theprimeagen/harpoon",
-    -- "theprimeagen/refactoring.nvim",
+    "theprimeagen/harpoon",
+    "theprimeagen/refactoring.nvim",
     "mbbill/undotree",
     "tpope/vim-fugitive",
     "nvim-treesitter/nvim-treesitter-context",
@@ -51,7 +50,10 @@ require("lazy").setup({
         'rafamadriz/friendly-snippets',
     }},
     "folke/zen-mode.nvim",
-    -- "github/copilot.vim",
+    "github/copilot.vim",
+    { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+    "folke/twilight.nvim", -- use with zen mode
+    'akinsho/toggleterm.nvim',
 })
 
 
@@ -461,4 +463,10 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
+
+-- https://raw.githubusercontent.com/akinsho/toggleterm.nvim/main/README.md
+-- Add to config from here
+require("toggleterm").setup()
+
+
 
