@@ -5,7 +5,7 @@ $directory$git_branch$elixir$rust$character
 # $hostname
 # $git_commit 
 
-right_format = """$git_status$cmd_duration"""
+right_format = """$git_status""" #$cmd_duration
 add_newline = false 
 
 # Prompt symbols 

@@ -37,4 +37,5 @@ htop
 nvim/LunarVim/
 tmux/plugins
 nvim/lazy-lock.json
-nvim/lazy-lock.json.bak
+libreoffice
+nvim/lua

@@ -22,8 +22,12 @@ vim.g.mapleader = " "
 require("lazy").setup({
     "numToStr/Comment.nvim",
     "nvim-tree/nvim-tree.lua",
-    { "nvim-telescope/telescope.nvim", dependencies = { 'nvim-lua/plenary.nvim' }},
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { 'nvim-lua/plenary.nvim' },
+    },
 	{ "rose-pine/neovim", name = "rose-pine" },
+    -- { "folke/tokyonight.nvim" },
     "nvim-lualine/lualine.nvim",
     "nvim-treesitter/nvim-treesitter",
     "folke/trouble.nvim",
@@ -33,12 +37,12 @@ require("lazy").setup({
     "mbbill/undotree",
     "tpope/vim-fugitive",
     "nvim-treesitter/nvim-treesitter-context",
-     { "VonHeikemen/lsp-zero.nvim", dependencies = {
+    { "VonHeikemen/lsp-zero.nvim", dependencies = {
         -- Core
         'neovim/nvim-lspconfig',
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
- 	    -- Autocompletion
+        -- Autocompletion
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
@@ -50,16 +54,42 @@ require("lazy").setup({
         'rafamadriz/friendly-snippets',
     }},
     "folke/zen-mode.nvim",
-    "github/copilot.vim",
-    { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
     "folke/twilight.nvim", -- use with zen mode
+    -- "github/copilot.vim",
     'akinsho/toggleterm.nvim',
+
+ -- BEGIN LVIM CONFIG
+
+  -- { "tamago324/nlsp-settings.nvim", cmd = "LspSettings", lazy = true },
+  -- { "jose-elias-alvarez/null-ls.nvim", lazy = true },
+  -- { "Tastyep/structlog.nvim", lazy = true },
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        dependencies = { "nvim-treesitter/nvim-treesitter", "hrsh7th/nvim-cmp" },
+    },
+  -- {
+  --   "tamago324/lir.nvim",
+  --   event = "User DirOpened",
+  -- },
+
+    -- "lewis6991/gitsigns.nvim",
+    "nvim-tree/nvim-web-devicons",
+    -- "SmiteshP/nvim-navic",
+    -- "akinsho/bufferline.nvim",
+
+    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
+
+    "b0o/schemastore.nvim",
+
+  -- "lukas-reineke/indent-blankline.nvim",
 })
 
 
+require("nvim-tree").setup()
+
 ------------ Visuals ---------------- 
--- require("catppuccin").setup({ flavour = "mocha", transparent_background = true })
--- vim.cmd.colorscheme "catppuccin"
 require('rose-pine').setup({ disable_background = true })
 vim.cmd.colorscheme "rose-pine"
 
@@ -79,14 +109,11 @@ require("nvim-treesitter.configs").setup {
 	    "c", "lua", "vim",
 	    "zig", "rust", "yuck",
 	    "toml", "yaml", "scss",
-	    "rasi", "jsonc"
+	    "rasi", "jsonc", -- "elixir"
     },
     auto_install = false,
 }
 vim.cmd "TSUpdate"
-
-
-require("nvim-tree").setup()
 
 ------------------------------ Space is Leader ---------------------------------
 
@@ -161,6 +188,7 @@ require("Comment").setup({
 })
 local comment_api = require('Comment.api')
 map_lua("n", "<leader>/", comment_api.toggle.linewise.current, opts)
+
 
 
 
@@ -443,7 +471,7 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
+  -- local opts = {buffer = bufnr, remap = false}
 
     -- vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', {buffer = true})
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -469,4 +497,70 @@ vim.diagnostic.config({
 require("toggleterm").setup()
 
 
+-- local defaults = {
+--   insert_mode = {
+--     -- Move current line / block with Alt-j/k ala vscode.
+--     ["<A-j>"] = "<Esc>:m .+1<CR>==gi",
+--     -- Move current line / block with Alt-j/k ala vscode.
+--     ["<A-k>"] = "<Esc>:m .-2<CR>==gi",
+--     -- navigation
+--     ["<A-Up>"] = "<C-\\><C-N><C-w>k",
+--     ["<A-Down>"] = "<C-\\><C-N><C-w>j",
+--     ["<A-Left>"] = "<C-\\><C-N><C-w>h",
+--     ["<A-Right>"] = "<C-\\><C-N><C-w>l",
+--   },
+--
+--   normal_mode = {
+--     -- Better window movement
+--     ["<C-h>"] = "<C-w>h",
+--     ["<C-j>"] = "<C-w>j",
+--     ["<C-k>"] = "<C-w>k",
+--     ["<C-l>"] = "<C-w>l",
+--
+--     -- Resize with arrows
+--     ["<C-Up>"] = ":resize -2<CR>",
+--     ["<C-Down>"] = ":resize +2<CR>",
+--     ["<C-Left>"] = ":vertical resize -2<CR>",
+--     ["<C-Right>"] = ":vertical resize +2<CR>",
+--
+--     -- Move current line / block with Alt-j/k a la vscode.
+--     ["<A-j>"] = ":m .+1<CR>==",
+--     ["<A-k>"] = ":m .-2<CR>==",
+--
+--     -- QuickFix
+--     ["]q"] = ":cnext<CR>",
+--     ["[q"] = ":cprev<CR>",
+--     ["<C-q>"] = ":call QuickFixToggle()<CR>",
+--   },
+--
+--   term_mode = {
+--     -- Terminal window navigation
+--     ["<C-h>"] = "<C-\\><C-N><C-w>h",
+--     ["<C-j>"] = "<C-\\><C-N><C-w>j",
+--     ["<C-k>"] = "<C-\\><C-N><C-w>k",
+--     ["<C-l>"] = "<C-\\><C-N><C-w>l",
+--   },
+--
+--   visual_mode = {
+--     -- Better indenting
+--     ["<"] = "<gv",
+--     [">"] = ">gv",
+--
+--     -- ["p"] = '"0p',
+--     -- ["P"] = '"0P',
+--   },
+--
+--   visual_block_mode = {
+--     -- Move current line / block with Alt-j/k ala vscode.
+--     ["<A-j>"] = ":m '>+1<CR>gv-gv",
+--     ["<A-k>"] = ":m '<-2<CR>gv-gv",
+--   },
+--
+--   command_mode = {
+--     -- navigate tab completion with <c-j> and <c-k>
+--     -- runs conditionally
+--     ["<C-j>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
+--     ["<C-k>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
+--   },
+-- }
 

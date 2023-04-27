@@ -42,7 +42,6 @@ alias vdiff="nvim -d"
 #alias rm="trash"
 alias rm="rm -vI" 
 
-
 #alias sudo='doas'
 alias gu="gitui"
 alias m='neomutt'
