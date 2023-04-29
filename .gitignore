@@ -39,3 +39,4 @@ tmux/plugins
 nvim/lazy-lock.json
 libreoffice
 nvim/lua
+configstore

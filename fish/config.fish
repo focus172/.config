@@ -13,6 +13,7 @@ if status is-interactive
     if string match -q "Darwin" $(uname)
         brew shellenv | eval &
     else
+        export NODE_PATH=/usr/lib/node_modules
         export RUSTC_WRAPPER=$(which sccache) 
     end
 

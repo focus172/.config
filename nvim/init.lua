@@ -27,7 +27,7 @@ require("lazy").setup({
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
 	{ "rose-pine/neovim", name = "rose-pine" },
-    -- { "folke/tokyonight.nvim" },
+    { "folke/tokyonight.nvim" },
     "nvim-lualine/lualine.nvim",
     "nvim-treesitter/nvim-treesitter",
     "folke/trouble.nvim",
@@ -55,35 +55,33 @@ require("lazy").setup({
     }},
     "folke/zen-mode.nvim",
     "folke/twilight.nvim", -- use with zen mode
-    -- "github/copilot.vim",
+    "github/copilot.vim",
     'akinsho/toggleterm.nvim',
 
- -- BEGIN LVIM CONFIG
+   -- BEGIN LVIM CONFIG
 
-  -- { "tamago324/nlsp-settings.nvim", cmd = "LspSettings", lazy = true },
-  -- { "jose-elias-alvarez/null-ls.nvim", lazy = true },
-  -- { "Tastyep/structlog.nvim", lazy = true },
+    { "tamago324/nlsp-settings.nvim", lazy = true },
+    { "jose-elias-alvarez/null-ls.nvim", lazy = true },
+    { "Tastyep/structlog.nvim", lazy = true },
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         dependencies = { "nvim-treesitter/nvim-treesitter", "hrsh7th/nvim-cmp" },
     },
-  -- {
-  --   "tamago324/lir.nvim",
-  --   event = "User DirOpened",
-  -- },
+    {
+        "tamago324/lir.nvim",
+        event = "User DirOpened",
+    },
 
-    -- "lewis6991/gitsigns.nvim",
+    "lewis6991/gitsigns.nvim",
     "nvim-tree/nvim-web-devicons",
-    -- "SmiteshP/nvim-navic",
-    -- "akinsho/bufferline.nvim",
+    "SmiteshP/nvim-navic",
+    "akinsho/bufferline.nvim",
 
     "mfussenegger/nvim-dap",
     "rcarriga/nvim-dap-ui",
 
     "b0o/schemastore.nvim",
-
-  -- "lukas-reineke/indent-blankline.nvim",
 })
 
 
@@ -91,7 +89,9 @@ require("nvim-tree").setup()
 
 ------------ Visuals ---------------- 
 require('rose-pine').setup({ disable_background = true })
-vim.cmd.colorscheme "rose-pine"
+vim.cmd.colorscheme "rose-pine-moon"
+-- require('tokyonight').setup({ transparent = true })
+-- vim.cmd.colorscheme "tokyonight-night"
 
 require('lualine').setup { sections = {
     lualine_a = {'mode'},
@@ -173,10 +173,14 @@ map_key("n", "<leader>U", "<c-g>u", opts)
 
 ------------------ S (split) Motion -------------------
 
+
+-- https://raw.githubusercontent.com/akinsho/toggleterm.nvim/main/README.md
+-- Add to config from here
+require("toggleterm").setup()
+
 map_key("n", "<leader>sv", ":vs<CR>", opts)
 map_key("n", "<leader>sh", ":sp<CR>", opts)
-map_key("n", "<Leader>st", ":vnew term://fish<CR>", opts)
-
+map_key("n", "<Leader>st", ":ToggleTerm<CR>", opts)
 
 ------------ / (comment) Motion --------------- 
 -- instead of the ? vim binding use tele-find-grep
@@ -446,14 +450,17 @@ lsp.nvim_workspace()
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
+
+-- map_lua("i", "<S-Tab>", cmp.mapping.select_next_item(cmp_select), opts)
+
 local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
+  -- ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<S-Tab>'] = cmp.mapping.select_next_item(cmp_select),
   ['<CR>'] = cmp.mapping.confirm({ select = true }),
   -- ["<CR>"] = cmp.mapping.complete(),
 })
 
--- cmp_mappings['<Tab>'] = nil
+cmp_mappings['<Tab>'] = nil
 -- cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
@@ -492,11 +499,6 @@ vim.diagnostic.config({
     virtual_text = true
 })
 
--- https://raw.githubusercontent.com/akinsho/toggleterm.nvim/main/README.md
--- Add to config from here
-require("toggleterm").setup()
-
-
 -- local defaults = {
 --   insert_mode = {
 --     -- Move current line / block with Alt-j/k ala vscode.
@@ -517,12 +519,6 @@ require("toggleterm").setup()
 --     ["<C-k>"] = "<C-w>k",
 --     ["<C-l>"] = "<C-w>l",
 --
---     -- Resize with arrows
---     ["<C-Up>"] = ":resize -2<CR>",
---     ["<C-Down>"] = ":resize +2<CR>",
---     ["<C-Left>"] = ":vertical resize -2<CR>",
---     ["<C-Right>"] = ":vertical resize +2<CR>",
---
 --     -- Move current line / block with Alt-j/k a la vscode.
 --     ["<A-j>"] = ":m .+1<CR>==",
 --     ["<A-k>"] = ":m .-2<CR>==",
@@ -540,15 +536,9 @@ require("toggleterm").setup()
 --     ["<C-k>"] = "<C-\\><C-N><C-w>k",
 --     ["<C-l>"] = "<C-\\><C-N><C-w>l",
 --   },
---
---   visual_mode = {
---     -- Better indenting
---     ["<"] = "<gv",
---     [">"] = ">gv",
---
---     -- ["p"] = '"0p',
---     -- ["P"] = '"0P',
---   },
+map_key("v", "<", "<gv", opts)
+map_key("v", ">", ">gv", opts)
+
 --
 --   visual_block_mode = {
 --     -- Move current line / block with Alt-j/k ala vscode.

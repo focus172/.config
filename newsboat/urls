@@ -18,7 +18,6 @@ https://www.comicsbeat.com/feed/ "~the beat" "blogs" "comics"
 https://www.digitalrights.ie/feed/ "~digital rights ireland" "blogs"
 
 newsletters
-https://nixers.net/newsletter/feed.xml "~nixers" "newsletters"
 https://www.archlinux.org/feeds/news/ "~arch" "newsletters"
 https://pluralistic.net/feed/ "~cory - pluralistic" "newsletters"
 https://fedoramagazine.org/feed/ "~fedora magazine" "newsletters"
@@ -27,14 +26,7 @@ http://feeds.feedburner.com/comiclistfeed "~comic list - this week" "newsletters
 http://feeds.feedburner.com/comiclistnextweek "~comic list - next week" "newsletters" "comics"
 http://www.metalstorm.net/rss/news.xml "~metalstorm" "newsletters" "music"
 
-mastodon
-https://mastodon.social/@pyratebeard.rss "~pyratebeard" "mastodon"
-https://mastodon.social/@eff.rss "~eff" "mastodon"
-https://mastodon.social/@x0rz.rss "~x0rz" "mastodon"
-https://infosec.exchange/@0xmrtn.rss "~0xmrtn" "mastodon"
-
 podcasts
-https://podcast.nixers.net/feed/feed.xml "~nixers" "podcasts"
 http://www.2600.com/oth-broadband.xml "~off the hook" "podcasts"
 http://feeds.feedburner.com/doctorow_podcast "~cory doctorow" "podcasts"
 http://feeds.soundcloud.com/users/soundcloud:users:261098918/sounds.rss "~priv, sec, osint" "podcasts"
