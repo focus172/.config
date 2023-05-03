@@ -13,28 +13,7 @@ set previewer "~/.config/lf/preview"
 set autoquit true 
 
 # cmds/functions
-cmd open ${{
-    case $(file --mime-type "$(readlink -f $f)" -b) in
-        text/*|application/json) $EDITOR $fx ;;
-        image/svg+xml) display -- $f ;;
-        image/*) ls $f
-            | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp)*$"
-            | setsid -f sxiv -aio 2>/dev/null
-            | while read -r file; do
-                [ -z "$file" ] && continue
-                lf -remote "send select \"$file\""
-                lf -remote "send toggle"
-        done &
-        ;;
-        audio/*|video/x-ms-asf) mpv --audio-display=no $f ;;
-        video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
-        application/pdf) setsid -f zathura $fx >/dev/null 2>&1 ;;
-        application/pgp-encrypted) $EDITOR $fx ;;
-        *) for f in $fx; do
-            setsid -f $OPENER $f >/dev/null 2>&1
-        done ;;
-    esac
-}}
+# cmd open ${{handlr open $fx }}
 
 cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
 
@@ -94,7 +73,7 @@ map M moveto
 map <c-n> push :mkdir<space>
 map <c-r> reload
 map <c-s> set hidden!
-map <enter> shell
+map <enter> $handlr open $f 
 map x $$f
 map X !$f
 map o &mimeopen "$f"

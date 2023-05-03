@@ -7,12 +7,15 @@ alias cp="cp -ivr"
 alias mv="mv -iv"
 alias mkd="mkdir -pv"
 alias bat="bat --color always --plain"
+
 # yt-dl stuff
 alias yt="yt-dlp --embed-metadata -i"
 alias yta="yt-dlp --embed-metadata -i -x -f bestaudio/best --audio-format opus"
 alias ytt="yt-dlp --embed-metadata -i --skip-download --write-thumbnail"
 
 alias ..="cd .."
+alias ...="cd ../.."
+alias cdf="cd \$(fd -t d . | fzf)"
 alias wget="wget --hsts-file /dev/null"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
 

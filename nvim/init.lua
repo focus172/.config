@@ -58,8 +58,6 @@ require("lazy").setup({
     "github/copilot.vim",
     'akinsho/toggleterm.nvim',
 
-   -- BEGIN LVIM CONFIG
-
     { "tamago324/nlsp-settings.nvim", lazy = true },
     { "jose-elias-alvarez/null-ls.nvim", lazy = true },
     { "Tastyep/structlog.nvim", lazy = true },
@@ -80,8 +78,9 @@ require("lazy").setup({
 
     "mfussenegger/nvim-dap",
     "rcarriga/nvim-dap-ui",
+    -- "b0o/schemastore.nvim",
 
-    "b0o/schemastore.nvim",
+    'christoomey/vim-tmux-navigator'
 })
 
 
@@ -110,8 +109,12 @@ require("nvim-treesitter.configs").setup {
 	    "zig", "rust", "yuck",
 	    "toml", "yaml", "scss",
 	    "rasi", "jsonc", -- "elixir"
+        "svelte"
     },
     auto_install = false,
+    highlight = {
+        enable = true,
+    }
 }
 vim.cmd "TSUpdate"
 
@@ -261,8 +264,6 @@ map_lua("n", "<leader>/", comment_api.toggle.linewise.current, opts)
 -- vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 -- i hate vim registerts/macros
-vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "q", "<nop>")
 
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format)
@@ -276,7 +277,8 @@ vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format)
 -- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 --------------------------------- keybindings Q leader ---------------------
-
+vim.keymap.set("n", "q", "<nop>")
+vim.keymap.set("n", "Q", "<nop>")
 
 
 
