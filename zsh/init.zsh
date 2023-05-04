@@ -28,7 +28,7 @@ export npm_config_prefix="$XDG_DATA_HOME/npm"
 export XDG_DESKTOP_DIR="$HOME/current"
 export XDG_DOCUMENTS_DIR="$HOME/docs"
 export XDG_DOWNLOAD_DIR="$HOME/dl"
-export XDG_MUSIC_DIR="$HOME/music"
+export XDG_MUSIC_DIR="$HOME/aud/music"
 export XDG_PICTURES_DIR="$HOME/pics"
 #export XDG_PUBLICSHARE_DIR="$HOME"
 

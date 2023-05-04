@@ -87,10 +87,10 @@ require("lazy").setup({
 require("nvim-tree").setup()
 
 ------------ Visuals ---------------- 
-require('rose-pine').setup({ disable_background = true })
-vim.cmd.colorscheme "rose-pine-moon"
--- require('tokyonight').setup({ transparent = true })
--- vim.cmd.colorscheme "tokyonight-night"
+-- require('rose-pine').setup({ disable_background = true })
+-- vim.cmd.colorscheme "rose-pine-moon"
+require('tokyonight').setup({ transparent = true })
+vim.cmd.colorscheme "tokyonight-night"
 
 require('lualine').setup { sections = {
     lualine_a = {'mode'},
@@ -149,10 +149,10 @@ map_key("n", "<leader>wj", "<C-w>j", opts)
 map_key("n", "<leader>wk", "<C-w>k", opts)
 
 -- allow for window navigation in insert mode, useful for getting out of terminal
-map_key("i", "<C-h>", "<C-w>h", opts)
-map_key("i", "<C-j>", "<C-w>j", opts)
-map_key("i", "<C-k>", "<C-w>k", opts)
-map_key("i", "<C-l>", "<C-w>l", opts)
+-- map_key("i", "<C-h>", "<C-w>h", opts)
+-- map_key("i", "<C-j>", "<C-w>j", opts)
+-- map_key("i", "<C-k>", "<C-w>k", opts)
+-- map_key("i", "<C-l>", "<C-w>l", opts)
 
 ----------------- G (git) Motion --------------------
 

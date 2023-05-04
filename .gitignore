@@ -34,9 +34,8 @@ GIMP
 gtk-2.0
 doom/bak.org
 htop
-nvim/LunarVim/
 tmux/plugins
 nvim/lazy-lock.json
 libreoffice
-nvim/lua
 configstore
+
