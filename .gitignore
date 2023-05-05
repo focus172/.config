@@ -2,40 +2,32 @@
 # ~/.config/.gitignore
 #
 
-# Ignore linux specific files
+# Too large
 dconf
 keepassxc
-
-# Ignore general files
 BraveSoftware
-pavucontrol.ini
-spotify
+
 
 # Ignore secrets
 github-copilot
+configstore
+git/.git-credentials
 
 
-# zsh garbage
+# Garbage
 zsh/.zsh_history
 fish/fish_variables
-
-# Unsorted ignores
-pavucontrol.ini
-pulse
-git/.git-credentials
-retroarch
-weechat
-emacs
-btop
 ncmpcpp/error.log
-QtProject.conf
-qt6ct
-GIMP
-gtk-2.0
-doom/bak.org
-htop
+pavucontrol.ini
+
+# Too active
 tmux/plugins
 nvim/lazy-lock.json
+btop
+
+
+# Unsorted ignores
+pulse
+weechat
 libreoffice
-configstore
 

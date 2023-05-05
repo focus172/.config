@@ -1,4 +1,0 @@
-
-;; (include "./window/eww.yuck")
-(include "./dashboard/eww.yuck")
-(include "./bar/eww.yuck")
