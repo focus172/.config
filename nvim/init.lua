@@ -55,7 +55,7 @@ require("lazy").setup({
     }},
     "folke/zen-mode.nvim",
     "folke/twilight.nvim", -- use with zen mode
-    "github/copilot.vim",
+    { "github/copilot.vim", event = "InsertEnter" },
     'akinsho/toggleterm.nvim',
 
     { "tamago324/nlsp-settings.nvim", lazy = true },
@@ -64,7 +64,6 @@ require("lazy").setup({
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
-        dependencies = { "nvim-treesitter/nvim-treesitter", "hrsh7th/nvim-cmp" },
     },
     {
         "tamago324/lir.nvim",

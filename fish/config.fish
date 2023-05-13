@@ -14,7 +14,6 @@ if status is-interactive
         brew shellenv | eval &
     else
         export NODE_PATH=/usr/lib/node_modules
-        export RUSTC_WRAPPER=$(which sccache) 
     end
 
 end
@@ -82,75 +81,42 @@ end
 #
 # # User abbreviations
 # abbr -a -g ytmp3 'youtube-dl --extract-audio --audio-format mp3'				# Convert/Download YT videos as mp3
-# abbr -a -g cls 'clear'																								# Clear
-# abbr -a -g h 'history'																								# Show history
-# abbr -a -g upd 'paru -Syu --noconfirm'																								# Update everything
+# abbr -a -g cls 'clear'	
+# abbr -a -g h 'history'
+# # abbr -a -g upd 'paru -Syu --noconfirm'
 # abbr -a -g please 'sudo'
-# # Polite way to sudo
-# abbr -a -g fucking 'sudo'																						# Rude way to sudo
-# abbr -a -g sayonara 'shutdown now'																	# Epic way to shutdown
-# abbr -a -g shinei 'kill -9'																						# Kill ala DIO
-# abbr -a -g priv 'fish --private'																				# Fish incognito mode
-# abbr -a -g sshoff 'sudo systemctl stop sshd.service'										# Stop ssh service
-# abbr -a -g untar 'tar -zxvf'																					# Untar
-# abbr -a -g genpass 'openssl rand -base64 20'													# Generate a random, 20-charactered password
-# abbr -a -g sha 'shasum -a 256'																			# Test checksum
-# abbr -a -g ipe 'curl ifconfig.co'																				# Get external IP address
-# abbr -a -g ips 'ip link show'																					# Get network interfaces information
-# abbr -a -g wloff 'rfkill block wlan'																			# Block wlan, killing wifi connection
-# abbr -a -g wlon 'rfkill unblock wlan'																		# Unblock wlan, start wifi connection
-#
+# abbr -a -g fucking 'sudo'
+# abbr -a -g sayonara 'shutdown now'
+# abbr -a -g shinei 'kill -9'
+# abbr -a -g priv 'fish --private'
+# abbr -a -g sshoff 'sudo systemctl stop sshd.service'
+# abbr -a -g genpass 'openssl rand -base64 20'	
+# abbr -a -g sha 'shasum -a 256'
+# abbr -a -g ipe 'curl ifconfig.co'
+# abbr -a -g ips 'ip link show'
+# abbr -a -g wloff 'rfkill block wlan'
+# abbr -a -g wlon 'rfkill unblock wlan'
+
 # # Source plugins
 # # Useful plugins: archlinux bang-bang cd colorman sudope vcs
-#
-#
-# # Get terminal emulator
-# # set TERM_EMULATOR (ps -aux | grep (ps -p $fish_pid -o ppid=) | awk 'NR==1{print $11}')
-#
-# # Neofetch
-# # switch "$TERM_EMULATOR"
-# # case '*kitty*'
-# #       neofetch --backend 'kitty'
-# # case '*tmux*' '*login*' '*sshd*' '*konsole*'
-# #	neofetch --backend 'ascii' --ascii_distro 'arch_small' 
-# # case '*'
-# # 	neofetch --backend 'w3m' --xoffset 34 --yoffset 34 --gap 0
-# # end
-#
-# end
-#
 
 # First line removes the path; second line sets it.  Without the first line,
 # your path gets massive and fish becomes very slow.
 #set -e fish_user_paths
 #set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/.emacs.d/bin $HOME/Applications /var/lib/flatpak/exports/bin/ $fish_user_paths
 
+
 # set TERM "xterm-256color"                         # Sets the terminal type
-# # set EDITOR "emacsclient -t -a ''"                 # $EDITOR use Emacs in terminal
-# # set VISUAL "emacsclient -c -a emacs"              # $VISUAL use Emacs in GUI mode
-#
-# ### SET MANPAGER
-# ### Uncomment only one of these!
-#
-# ### "bat" as manpager
+
 # set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
-#
-# ### SET EITHER DEFAULT EMACS MODE OR VI MODE ###
-# function fish_user_key_bindings
-#     # fish_default_key_bindings
-#     fish_vi_key_bindings
-# end
-# ### END OF VI MODE ###
-#
+
+
 # ### AUTOCOMPLETE AND HIGHLIGHT COLORS ###
 # set fish_color_normal brcyan
 # set fish_color_autosuggestion '#7d7d7d'
 # set fish_color_command brcyan
 # set fish_color_error '#ff6c6b'
 # set fish_color_param brcyan
-#
-# ### SPARK ###
-#
 #
 #
 # ### FUNCTIONS ###
@@ -200,70 +166,54 @@ end
 #         command cp $argv
 #     end
 # end
-#
-# # Function for printing a column (splits input on whitespace)
-# # ex: echo 1 2 3 | coln 3
-# # output: 3
-# function coln
-#     while read -l input
-#         echo $input | awk '{print $'$argv[1]'}'
-#     end
-# end
-#
-# # Function for printing a row
-# # ex: seq 3 | rown 3
-# # output: 3
-# function rown --argument index
-#     sed -n "$index p"
-# end
-#
-# # Function for ignoring the first 'n' lines
-# # ex: seq 10 | skip 5
-# # results: prints everything but the first 5 lines
-# function skip --argument n
-#     tail +(math 1 + $n)
-# end
-#
-# # Function for taking the first 'n' lines
-# # ex: seq 10 | take 5
-# # results: prints only the first 5 lines
-# function take --argument number
-#     head -$number
-# end
-#
-# # Function for org-agenda
-# function org-search -d "send a search string to org-mode"
-#     set -l output (/usr/bin/emacsclient -a "" -e "(message \"%s\" (mapconcat #'substring-no-properties \
-#         (mapcar #'org-link-display-format \
-#         (org-ql-query \
-#         :select #'org-get-heading \
-#         :from  (org-agenda-files) \
-#         :where (org-ql--query-string-to-sexp \"$argv\"))) \
-#         \"
-#     \"))")
-#     printf $output
-# end
-#
-# ### END OF FUNCTIONS ###
-#
-#
+
+
+# Function for printing a column (splits input on whitespace)
+# ex: echo 1 2 3 | coln 3
+# output: 3
+function coln
+    while read -l input
+        echo $input | awk '{print $'$argv[1]'}'
+    end
+end
+
+
+# Function for printing a row
+# ex: seq 3 | rown 3
+# output: 3
+function rown --argument index
+    sed -n "$index p"
+end
+
+# Function for ignoring the first 'n' lines
+# ex: seq 10 | skip 5
+# results: prints everything but the first 5 lines
+function skip --argument n
+    tail +(math 1 + $n)
+end
+
+# Function for taking the first 'n' lines
+# ex: seq 10 | take 5
+# results: prints only the first 5 lines
+function take --argument number
+    head -$number
+end
+
+
+
 # ### ALIASES ###
 # # \x1b[2J   <- clears tty
 # # \x1b[1;1H <- goes to (1, 1) (start)
 # alias clear='echo -en "\x1b[2J\x1b[1;1H" ; echo; echo; seq 1 (tput cols) | sort -R | spark | lolcat; echo; echo'
-#
+
+
 # # root privileges
 # alias doas="doas --"
-#
-# # navigation
-# alias ..='cd ..'
-# alias ...='cd ../..'
-# alias .3='cd ../../..'
-# alias .4='cd ../../../..'
-# alias .5='cd ../../../../..'
-#
-# # vim and emacs
-# alias vim='nvim'
-# alias em='/usr/bin/emacs -nw'
-# alias emacs="emacsclient -c -a 'emacs'"
-#
+
+# navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+

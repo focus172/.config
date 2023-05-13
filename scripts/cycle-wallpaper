@@ -1,41 +1,7 @@
 #!/bin/bash
-TEMP=/tmp/current_wall
+
 files=(~/pix/wallpaper/*)
-
-if [ $# == "0" ]; then
-    option="forward"
-else 
-    option=$1
-fi
-
-
-index=$(cat $TEMP)
-if [ -z "$index" ]; then 
-    index=-1
-fi
-
-case $option in
-    "forward")
-        index=$((index+1))
-    ;;
-    "backward")
-        index=$((index-1))
-    ;;
-    *)
-        echo "unknown option:" "$option"
-        exit 1
-    ;;
-esac
-
-if [ $index -ge ${#files[@]} ]; then
-    index=0
-fi
-
-if [ $index -lt 0 ]; then
-    index=$((${#files[@]}-1))
-fi
-
-echo $index > $TEMP
+index=$(seq 0 $((${#files[@]}-1)) | shuf -n1)
 wall="${files[$index]}"
 
 swww img $wall --transition-type grow --transition-pos "$(cursorpos-inv)" --transition-duration 2

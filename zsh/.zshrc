@@ -59,9 +59,6 @@ SAVEHIST=20000
 HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 
 
-
-
-
 # vi mode
 #bindkey -v
 #export KEYTIMEOUT=1
@@ -175,8 +172,6 @@ cd() {
 #	zle-line-finish() { echoti rmkx; }; zle -N zle-line-finish
 #fi
 
-
-
 # initialize completion
 
 #source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -189,10 +184,6 @@ cd() {
 # alias for making a directory and cd to it
 
 # ---------------P R O M P T------------------
-
-
-
-
 
 
 # Other program settings:
