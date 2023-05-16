@@ -55,9 +55,11 @@ require("lazy").setup({
     }},
     "folke/zen-mode.nvim",
     "folke/twilight.nvim", -- use with zen mode
-    { "github/copilot.vim", event = "InsertEnter" },
+    {
+        "github/copilot.vim",
+        ft = {"rust", "lua"},
+    },
     'akinsho/toggleterm.nvim',
-
     { "tamago324/nlsp-settings.nvim", lazy = true },
     { "jose-elias-alvarez/null-ls.nvim", lazy = true },
     { "Tastyep/structlog.nvim", lazy = true },
@@ -74,11 +76,6 @@ require("lazy").setup({
     "nvim-tree/nvim-web-devicons",
     "SmiteshP/nvim-navic",
     "akinsho/bufferline.nvim",
-
-    "mfussenegger/nvim-dap",
-    "rcarriga/nvim-dap-ui",
-    -- "b0o/schemastore.nvim",
-
     'christoomey/vim-tmux-navigator'
 })
 
@@ -103,19 +100,15 @@ require('lualine').setup { sections = {
 ----------- Language ---------------
 
 require("nvim-treesitter.configs").setup {
-    ensure_installed = {
-	    "c", "lua", "vim",
-	    "zig", "rust", "yuck",
-	    "toml", "yaml", "scss",
-	    "rasi", "jsonc", -- "elixir"
-        "svelte"
-    },
+    ensure_installed = {},
     auto_install = false,
-    highlight = {
-        enable = true,
-    }
+    highlight = { enable = true },
 }
 vim.cmd "TSUpdate"
+
+-- https://raw.githubusercontent.com/akinsho/toggleterm.nvim/main/README.md
+-- Add to config from here
+require("toggleterm").setup()
 
 ------------------------------ Space is Leader ---------------------------------
 
@@ -147,11 +140,6 @@ map_key("n", "<leader>wl", "<C-w>l", opts)
 map_key("n", "<leader>wj", "<C-w>j", opts)
 map_key("n", "<leader>wk", "<C-w>k", opts)
 
--- allow for window navigation in insert mode, useful for getting out of terminal
--- map_key("i", "<C-h>", "<C-w>h", opts)
--- map_key("i", "<C-j>", "<C-w>j", opts)
--- map_key("i", "<C-k>", "<C-w>k", opts)
--- map_key("i", "<C-l>", "<C-w>l", opts)
 
 ----------------- G (git) Motion --------------------
 
@@ -161,6 +149,9 @@ map_lua("n", "<leader>gs", vim.cmd.Git, opts)
 -- vim.keymap.set("n", "<leader>gp", vim.cmd.Git('push'), opts)
 -- vim.keymap.set("n", "<leader>gP", vim.cmd.Git({'pull',  '--rebase'}), opts)
 -- vim.keymap.set("n", "<leader>gt", ":Git push -u origin ", opts);
+
+map_key("n", "<leader>gv", "<cmd>Gdiffsplit<CR>", opts)
+map_key("n", "<leader>gd", "<cmd>Gvdiffsplit<CR>", opts)
 
 -------------- B (buffer) Motion -------------
 
@@ -175,14 +166,12 @@ map_key("n", "<leader>U", "<c-g>u", opts)
 
 ------------------ S (split) Motion -------------------
 
-
--- https://raw.githubusercontent.com/akinsho/toggleterm.nvim/main/README.md
--- Add to config from here
-require("toggleterm").setup()
-
 map_key("n", "<leader>sv", ":vs<CR>", opts)
 map_key("n", "<leader>sh", ":sp<CR>", opts)
 map_key("n", "<Leader>st", ":ToggleTerm<CR>", opts)
+
+-- save
+map_key("n", "<leader>S", ":w<CR>", opts)
 
 ------------ / (comment) Motion --------------- 
 -- instead of the ? vim binding use tele-find-grep
@@ -197,31 +186,11 @@ map_lua("n", "<leader>/", comment_api.toggle.linewise.current, opts)
 
 
 
-
-
-
-
--- save
--- map_key("n", "<leader>s", ":w<CR>", opts)
-
--- line navigation
--- map_key("i", "<C-b>", "<ESC>^i", opts)
--- map_key("i", "<C-e>", "<End>", opts)
-
--- Copy all
--- map_key("n", "<C-c>", ":%y<CR>", opts)
-
 --  ┌            ┐
 --  │ Common box │
 --  └            ┘
 
--- map_key("n", "<Leader>lu", ":Lazy update<CR>", opts)
-
 -- map('n', ';', ':', { noremap = true } )
-
--- map <Leader>dv :DiffVifm<CR>
--- map <Leader>tv :TabVifm<CR>
-
 -- " Make adjusing split sizes a bit more friendly
 -- noremap <silent> <C-Left> :vertical resize +3<CR>
 -- noremap <silent> <C-Right> :vertical resize -3<CR>
@@ -441,21 +410,14 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-  -- 'tsserver',
-  'rust_analyzer',
-})
-
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
--- map_lua("i", "<S-Tab>", cmp.mapping.select_next_item(cmp_select), opts)
-
 local cmp_mappings = lsp.defaults.cmp_mappings({
-  -- ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<S-Tab>'] = cmp.mapping.select_next_item(cmp_select),
   ['<CR>'] = cmp.mapping.confirm({ select = true }),
   -- ["<CR>"] = cmp.mapping.complete(),
@@ -465,7 +427,7 @@ cmp_mappings['<Tab>'] = nil
 -- cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+    mapping = cmp_mappings
 })
 
 lsp.set_preferences({
@@ -500,58 +462,29 @@ vim.diagnostic.config({
     virtual_text = true
 })
 
--- local defaults = {
---   insert_mode = {
---     -- Move current line / block with Alt-j/k ala vscode.
---     ["<A-j>"] = "<Esc>:m .+1<CR>==gi",
---     -- Move current line / block with Alt-j/k ala vscode.
---     ["<A-k>"] = "<Esc>:m .-2<CR>==gi",
---     -- navigation
---     ["<A-Up>"] = "<C-\\><C-N><C-w>k",
---     ["<A-Down>"] = "<C-\\><C-N><C-w>j",
---     ["<A-Left>"] = "<C-\\><C-N><C-w>h",
---     ["<A-Right>"] = "<C-\\><C-N><C-w>l",
---   },
---
---   normal_mode = {
---     -- Better window movement
---     ["<C-h>"] = "<C-w>h",
---     ["<C-j>"] = "<C-w>j",
---     ["<C-k>"] = "<C-w>k",
---     ["<C-l>"] = "<C-w>l",
---
---     -- Move current line / block with Alt-j/k a la vscode.
---     ["<A-j>"] = ":m .+1<CR>==",
---     ["<A-k>"] = ":m .-2<CR>==",
---
---     -- QuickFix
+map_key("i", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
+map_key("i", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+
+-- map_key("i", "<A-Up>", "<C-\\><C-N><C-w>k", opts)
+-- map_key("i", "<A-Down>", "<C-\\><C-N><C-w>j", opts)
+-- map_key("i", "<A-Left>", "<C-\\><C-N><C-w>h", opts)
+-- map_key("i", "<A-Right>", "<C-\\><C-N><C-w>l", opts)
+
+-- Move current line / block with Alt-j/k a la vscode.
+map_key("n", "<A-j>", ":m .+1<CR>==", opts)
+map_key("n", "<A-k>", ":m .-2<CR>==", opts)
+
+--     -- QuickFix -- normal mode
 --     ["]q"] = ":cnext<CR>",
 --     ["[q"] = ":cprev<CR>",
 --     ["<C-q>"] = ":call QuickFixToggle()<CR>",
---   },
 --
---   term_mode = {
---     -- Terminal window navigation
---     ["<C-h>"] = "<C-\\><C-N><C-w>h",
---     ["<C-j>"] = "<C-\\><C-N><C-w>j",
---     ["<C-k>"] = "<C-\\><C-N><C-w>k",
---     ["<C-l>"] = "<C-\\><C-N><C-w>l",
---   },
+
 map_key("v", "<", "<gv", opts)
 map_key("v", ">", ">gv", opts)
 
---
---   visual_block_mode = {
---     -- Move current line / block with Alt-j/k ala vscode.
---     ["<A-j>"] = ":m '>+1<CR>gv-gv",
---     ["<A-k>"] = ":m '<-2<CR>gv-gv",
---   },
---
---   command_mode = {
---     -- navigate tab completion with <c-j> and <c-k>
---     -- runs conditionally
---     ["<C-j>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
---     ["<C-k>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
---   },
--- }
+-- Move current line / block with Alt-j/k ala vscode.
+map_key("v", "<A-j>", ":m '>+1<CR>gv-gv", opts)
+map_key("v", "<A-k>", ":m '<-2<CR>gv-gv", opts)
+
 

@@ -3,9 +3,7 @@
 [Default Applications]
 application/pdf=pdf.desktop;
 application/postscript=pdf.desktop;
-image/gif=img.desktop;
-image/jpeg=img.desktop;
-image/png=img.desktop;
+image/*=img.desktop;
 inode/directory=file.desktop;
-text/plain=text.desktop;
-video/mp4=video.desktop;
+text/*=text.desktop;
+video/*=video.desktop;
