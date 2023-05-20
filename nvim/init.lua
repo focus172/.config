@@ -76,16 +76,15 @@ require("lazy").setup({
     "nvim-tree/nvim-web-devicons",
     "SmiteshP/nvim-navic",
     "akinsho/bufferline.nvim",
-    'christoomey/vim-tmux-navigator'
+    'christoomey/vim-tmux-navigator',
 })
 
 
-require("nvim-tree").setup()
 
 ------------ Visuals ---------------- 
--- require('rose-pine').setup({ disable_background = true })
--- vim.cmd.colorscheme "rose-pine-moon"
+require('rose-pine').setup({ disable_background = true })
 require('tokyonight').setup({ transparent = true })
+-- vim.cmd.colorscheme "rose-pine-moon"
 vim.cmd.colorscheme "tokyonight-night"
 
 require('lualine').setup { sections = {
@@ -106,9 +105,11 @@ require("nvim-treesitter.configs").setup {
 }
 vim.cmd "TSUpdate"
 
+----- Start random plugins manually ------ 
 -- https://raw.githubusercontent.com/akinsho/toggleterm.nvim/main/README.md
 -- Add to config from here
 require("toggleterm").setup()
+require("nvim-tree").setup()
 
 ------------------------------ Space is Leader ---------------------------------
 
@@ -376,7 +377,7 @@ g["loaded_ruby_provider"] = 0
 vim.keymap.set("n", "<leader>zz", function()
     require("zen-mode").setup {
         window = {
-            width = 90,
+            width = 80,
             options = { }
         },
     }
@@ -444,16 +445,16 @@ lsp.on_attach(function(client, bufnr)
   -- local opts = {buffer = bufnr, remap = false}
 
     -- vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', {buffer = true})
-  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set("n", "<leader>cd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "<leader>ce", function() vim.lsp.buf.hover() end, opts)
+  -- vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+  -- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
   vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-  -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set("n", "<leader>crr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>crn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("n", "<leader>cs", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
 lsp.setup()
