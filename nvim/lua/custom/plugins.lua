@@ -1,14 +1,14 @@
 local plugins = {
   -- Overriding plugins --
-  {
-    'williamboman/mason.nvim',
-    opts = {
-      ensure_installed = {
-        "rust-analyzer",
-        "gopls"
-      }
-    }
-  },
+    {
+        'williamboman/mason.nvim',
+        opts = {
+            ensure_installed = {
+                "rust-analyzer",
+                "gopls"
+            }
+        }
+    },
   {
     'neovim/nvim-lspconfig',
     config = function()
@@ -16,14 +16,16 @@ local plugins = {
       require "custom.conf.lspconfig"
     end
   },
-  {
-    "hrsh7th/nvim-cmp",
-    opts = function ()
-      local M = require("plugins.configs.cmp")
-      table.insert(M.sources, {name = "crates"})
-      return M
-    end
-  },
+    {
+        "hrsh7th/nvim-cmp",
+        opts = function ()
+            local M = require("plugins.configs.cmp")
+            table.insert(M.sources, {
+                name = "crates"
+            })
+            return M
+        end
+    },
 
   -- My plugins --
   {
@@ -53,7 +55,29 @@ local plugins = {
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
-  }
+  },
+    {
+        'github/copilot.vim',
+        event = "InsertEnter",
+    },
+    {
+        'theprimeagen/harpoon',
+    },
+    -- "theprimeagen/refactoring.nvim",
+    {
+        "mbbill/undotree",
+        cmd = "UndotreeToggle",
+    },
+    {
+        "hrsh7th/nvim-cmp",
+        opts = function()
+            local M = require "plugins.configs.cmp"
+            local complete = M.mapping["<Tab>"]
+            M.mapping["<S-Tab>"] = complete
+            M.mapping["<Tab>"] = nil
+            return M
+        end,
+    },
 }
 
 return plugins
