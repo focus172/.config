@@ -52,7 +52,7 @@ local plugins = {
     }, {
         "folke/trouble.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
-        cmd = "TroubleToggle"
+        after = "null-ls",
     }
 }
 

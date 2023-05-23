@@ -1,7 +1,7 @@
 local o = vim.opt
 local g = vim.g
 
-o.colorcolumn = "80"
+-- o.colorcolumn = "80"
 o.expandtab = true
 o.shiftwidth = 4
 o.smartindent = true
