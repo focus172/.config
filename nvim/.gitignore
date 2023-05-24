@@ -1,3 +1,4 @@
 *.lua
 !lua/custom/*
+!lua/custom/conf/*
 LICENSE
