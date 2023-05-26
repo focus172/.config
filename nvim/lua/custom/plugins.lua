@@ -53,6 +53,10 @@ local plugins = {
         "folke/trouble.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
         after = "null-ls",
+    }, {
+        'stevearc/oil.nvim',
+        event = "User DirOpened",
+        opts = {},
     }
 }
 
