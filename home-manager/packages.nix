@@ -16,6 +16,9 @@
     distrobox
     sassc 
     glib
+   
+    # needed for sourcing bashing scripts
+    babelfish
 
     # file manager
     lfsixel
