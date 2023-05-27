@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 files=(~/pix/wallpaper/*)
 index=$(seq 0 $((${#files[@]}-1)) | shuf -n1)
 wall="${files[$index]}"
 
-swww img $wall --transition-type grow --transition-pos "$(cursorpos-inv)" --transition-duration 2
+swww img $wall --transition-type grow --transition-pos "$(~/.config/scripts/cursorpos-inv)" --transition-duration 2
 
