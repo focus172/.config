@@ -31,12 +31,16 @@ require("lazy").setup({
     "nvim-lualine/lualine.nvim",
     "nvim-treesitter/nvim-treesitter",
     "folke/trouble.nvim",
-    "nvim-treesitter/playground",
     "theprimeagen/harpoon",
     "theprimeagen/refactoring.nvim",
     "mbbill/undotree",
+
     "tpope/vim-fugitive",
     "nvim-treesitter/nvim-treesitter-context",
+    "nvim-treesitter/playground",
+    "folke/zen-mode.nvim",
+    "folke/twilight.nvim",
+
     { "VonHeikemen/lsp-zero.nvim", dependencies = {
         -- Core
         'neovim/nvim-lspconfig',
@@ -53,8 +57,6 @@ require("lazy").setup({
         'L3MON4D3/LuaSnip',
         'rafamadriz/friendly-snippets',
     }},
-    "folke/zen-mode.nvim",
-    "folke/twilight.nvim", -- use with zen mode
     {
         "github/copilot.vim",
         ft = {"rust", "lua"},

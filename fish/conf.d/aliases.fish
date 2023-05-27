@@ -20,6 +20,7 @@ alias ..="cd .."
 alias cdf="cd \$(fd -t d . | fzf)"
 alias wget="wget --hsts-file /dev/null"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
+alias vdiff="nvim -d"
 
 # ****** Packaging ******
 alias pacs="pacman -Slq | fzf -m --preview 'cat \$(pacman -Si {1}) \$(pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
@@ -39,17 +40,16 @@ alias e="$EDITOR"
 alias v="$VISUAL"
 alias z="zathura"
 alias o="$OPENER"
-alias vdiff="nvim -d"
+alias m="mpv"
+alias n='newsboat' 
 
-alias rm="rm -vI" 
+alias rm="rm -vI" # this cuases errors on busybox
+alias nmutt='neomutt'
 
 # root privileges
 alias doas="doas --"
 #alias sudo='doas'
 
-
-#alias m='neomutt'
-alias n='newsboat' 
 # alias ttc='tty-clock -c -C 7 -r -f "%A, %B %d"'
 
 # file viewing
@@ -64,18 +64,10 @@ alias l.='la | grep -E "^\."'
 # vim 
 alias vim="nvim"
 
-# Colorize grep output (good for log files)
-alias grep='grep --color=auto'
 
-# confirm before overwriting something
-alias cp="cp -i"
-alias mv='mv -i'
-alias rm='rm -i'
-
-alias free='free -m'                      # show sizes in MB
-alias lynx='lynx -cfg=~/.lynx/lynx.cfg -lss=~/.lynx/lynx.lss -vikeys'
+alias free='free -m'
+alias lynx='lynx -vikeys'
 alias ncmpcpp='ncmpcpp ncmpcpp_directory=$HOME/.config/ncmpcpp/'
-alias mocp='mocp -M "$XDG_CONFIG_HOME"/moc -O MOCDir="$XDG_CONFIG_HOME"/moc'
 
 # ps
 alias psa="ps auxf"

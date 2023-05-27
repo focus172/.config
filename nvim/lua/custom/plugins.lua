@@ -24,13 +24,11 @@ local plugins = {
             M.mapping["<Tab>"] = nil
             return M
         end
-    }, -- My plugins --
-    {
+    }, {
         'simrat39/rust-tools.nvim',
         ft = "rust",
         dependencies = "neovim/nvim-lspconfig",
         opts = function() return require("custom.conf.rusttools") end
-        -- config = function(_, opts) require('rust-tools').setup(opts) end
     }, {'mfussenegger/nvim-dap'}, {
         'saecki/crates.nvim',
         dependencies = "hrsh7th/nvim-cmp",
@@ -42,8 +40,7 @@ local plugins = {
         end
     }, {"christoomey/vim-tmux-navigator", lazy = false},
     {'github/copilot.vim', event = "InsertEnter"},
-    {'theprimeagen/harpoon', cmd = {'HarpoonAddTerm'}},
-    -- "theprimeagen/refactoring.nvim",
+    {'theprimeagen/harpoon', cmd = 'HarpoonAddTerm'},
     {"mbbill/undotree", cmd = "UndotreeToggle"}, {
         "jose-elias-alvarez/null-ls.nvim",
         opts = function() return require("custom.conf.nullls") end,
@@ -52,11 +49,23 @@ local plugins = {
     }, {
         "folke/trouble.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
-        after = "null-ls",
+        after = "null-ls"
+    }, {'stevearc/oil.nvim', event = "User DirOpened"},
+    {"nvim-treesitter/nvim-treesitter-context", after = "nvim-treesitter"},
+    -- "theprimeagen/refactoring.nvim",
+    -- "tpope/vim-fugitive",
+    -- "nvim-treesitter/playground",
+    -- "folke/zen-mode.nvim",
+    -- "folke/twilight.nvim",
+    {
+        "folke/todo-comments.nvim",
+        event = "BufRead",
+        config = function() require("todo-comments").setup() end
+
     }, {
-        'stevearc/oil.nvim',
-        event = "User DirOpened",
-        opts = {},
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"}
     }
 }
 

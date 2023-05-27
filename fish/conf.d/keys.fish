@@ -1,0 +1,3 @@
+
+
+# setkey ^l 'clear'

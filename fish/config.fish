@@ -7,7 +7,7 @@ if status is-interactive
 
     if string match -q "Darwin" $(uname)
         brew shellenv | eval &
-    else if string match -q "*nix*" $(uname -r)
-        # cat ~/.nix-profile/etc/profile.d/nix.sh | bablefish | source &
+    else  
+        cat ~/.nix-profile/etc/profile.d/hm-session-vars.sh | babelfish | source
     end
 end
