@@ -47,3 +47,6 @@ gtk-3.0
 ncmpcpp
 systemd
 waybar
+rofi/config.rasi
+fish/config.fish
+mpd
