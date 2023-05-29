@@ -60,7 +60,6 @@ alias lla="ls -la"
 alias lt="ls --tree --level=3"
 alias l.='la | grep -E "^\."'
 
-
 # vim 
 alias vim="nvim"
 
