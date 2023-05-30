@@ -30,12 +30,14 @@ pulse
 weechat
 libreoffice
 
-gtk-3.0/.themes/Lavanda-Dark
 gtk-3.0
 GIMP
 lutris
 
-nushell
+swayidle
+swaylock
+mako
+
 htop
 environment.d
 eww
@@ -56,3 +58,6 @@ neofetch
 QtProject.conf
 home-manager
 
+
+starship.toml
+git
