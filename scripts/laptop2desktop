@@ -1,0 +1,19 @@
+#!/bin/sh
+
+cd
+rsync -rvuP \
+    --exclude .local/share \
+    --exclude .cache/ \
+    --exclude .config/ \
+    --exclude .npm/ \
+    --exclude target/ \
+    --exclude dl/ \
+    --exclude .nix-defexpr/ \
+    --exclude .pki/ \
+    --exclude .lyrics/ \
+    --exclude .ssh/ \
+    --exclude zig-cache/ \
+    --exclude node_modules/ \
+    --exclude .git/ \
+    192.168.88.98:/home/focus \
+    192.168.88.42:~

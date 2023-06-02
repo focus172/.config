@@ -1,0 +1,23 @@
+#!/bin/sh
+
+echo "THIS SCRIPT IS EXTREAMLY DANGEROUS!"
+echo "It writes directly to the home partiton for the target"
+echo -n "Are you really sure you want to use this [y/N] : "
+
+read l
+[ -z $l ] && exit 1
+[ $l = "y" ] || exit 1
+
+echo "Ok, dont say i didn't warn you ..."
+
+rsync -uvPr \
+	--exclude .cache \
+	--exclude .config/ \
+	--exclude .local/share \
+	--exclude .npm/ \
+	--exclude target/ \
+	--exclude zig-cache/ \
+	--exclude node_modules/ \
+	--exclude .git/ \
+	192.168.88.42:focus \
+	192.168.88.98:/home \ 

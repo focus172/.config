@@ -1,0 +1,34 @@
+#!/bin/sh
+
+bind_drives(){
+    mount --types proc /proc /mnt/gentoo/proc
+    mount --rbind /sys /mnt/gentoo/sys
+    mount --make-rslave /mnt/gentoo/sys
+    mount --rbind /dev /mnt/gentoo/dev
+    mount --make-rslave /mnt/gentoo/dev
+    mount --bind /run /mnt/gentoo/run
+    mount --make-slave /mnt/gentoo/run
+}
+
+unbind_drives(){
+    umount -l /mnt/gentoo/dev{/shm,/pts,}
+    umount -R /mnt/gentoo
+}
+
+echo "Setting binding files to gentoo ..."
+
+bind_drives || echo "Failed to mount the drives! Did you use sudo?" && exit 1
+
+echo "Done!"
+
+echo "Going dark. Enjoy gentoo!"
+
+chroot /mnt/gentoo /bin/bash
+
+echo "Welcome back!"
+
+unbind_drives || echo "Failed to unmount gentoo drives? Did you leave something running on it?" && exit 1
+
+mount /dev/sda3 /mnt/gentoo
+
+echo "Drives have been unmounted and reset!"
