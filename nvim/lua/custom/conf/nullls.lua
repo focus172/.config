@@ -9,7 +9,15 @@ local options = {
         -- null_ls.builtins.formatting.ktlint, -- kotlin
         null_ls.builtins.formatting.lua_format, -- lua
         null_ls.builtins.formatting.trim_whitespace,
-        null_ls.builtins.formatting.zigfmt
+        null_ls.builtins.formatting.zigfmt,
+
+        null_ls.builtins.diagnostics.credo, -- elixir, requires mix
+
+        -- python things
+        null_ls.builtins.diagnostics.mypy,
+        null_ls.builtins.diagnostics.ruff,
+        null_ls.builtins.diagnostics.shellcheck,
+        null_ls.builtins.formatting.black
     }
 }
 

@@ -26,3 +26,14 @@ lspconfig.zls.setup {
     filetypes = {"zig"},
     root_dir = lspconfig.util.root_pattern("build.zig"),
 }
+
+lspconfig.pyright.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = {"python"},
+}
+
+lspconfig.csharp_ls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}

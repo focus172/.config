@@ -34,6 +34,7 @@ M.general = {
 }
 
 M.dap = {
+    plugin = true,
     n = {
         ["<leader>db"] = {"<cmd> DapToggleBreakpoint <CR>", "Toggle Breakpoint"},
         ["<leader>dus"] = {
@@ -47,6 +48,7 @@ M.dap = {
 }
 
 M.trouble = {
+    plugin = true,
     i = {["<C-t>"] = {"<cmd> TroubleToggle<CR>", "Toggle Trouble"}},
     n = {
         ["<leader>tx"] = {"<cmd> TroubleToggle<CR>", "Toggle Trouble"},
@@ -69,6 +71,7 @@ M.trouble = {
 }
 
 M.null_ls = {
+    plugin = true,
     i = {
         ["<C-t>"] = {"<cmd> lua vim.lsp.buf.format()<CR>", "Format"},
         ["<C-space>"] = {"<cmd> lua vim.lsp.buf.hover()<CR>", "Hover"}
@@ -106,8 +109,14 @@ M.rust_tools = {
         ["qK"] = {"<cmd> RustHoverActions <CR>", "Hover"},
         ["<leader>rc"] = {"<cmd> RustOpenCargo <CR>", "Open Cargo Toml"},
         ["<leader>rm"] = {"<cmd> RustExpandMacro <CR>", "Expand Macro"},
-        ["<leader>gm"] = {"<cmd> RustParentModule <CR>", "Go to rust parent module"},
+        ["<leader>gm"] = {
+            "<cmd> RustParentModule <CR>", "Go to rust parent module"
+        }
     }
+}
+
+M.oil = {
+    n = {["-"] = {"<cmd>lua require('oil').open", "Open parent directory"}}
 }
 
 return M

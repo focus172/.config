@@ -2,7 +2,12 @@ local plugins = {
     -- Overriding plugins --
     {
         'williamboman/mason.nvim',
-        opts = {ensure_installed = {"rust-analyzer", "gopls"}}
+        opts = {
+            ensure_installed = {
+                "rust-analyzer", "lua-language-server", "pyright", "mypy",
+                "ruff", "shellcheck" -- "zls", "gopls"
+            }
+        }
     }, {
         'neovim/nvim-lspconfig',
         config = function()
@@ -51,7 +56,7 @@ local plugins = {
         dependencies = "nvim-tree/nvim-web-devicons",
         after = "null-ls"
     }, {'stevearc/oil.nvim', event = "User DirOpened"},
-    {"nvim-treesitter/nvim-treesitter-context", after = "nvim-treesitter"},
+    {'nvim-treesitter/nvim-treesitter-context', after = "nvim-treesitter"},
     -- "theprimeagen/refactoring.nvim",
     -- "tpope/vim-fugitive",
     -- "nvim-treesitter/playground",
@@ -61,7 +66,6 @@ local plugins = {
         "folke/todo-comments.nvim",
         event = "BufRead",
         config = function() require("todo-comments").setup() end
-
     }, {
         "folke/noice.nvim",
         event = "VeryLazy",
