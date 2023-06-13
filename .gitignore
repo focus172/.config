@@ -13,7 +13,6 @@ github-copilot
 configstore
 git/.git-credentials
 
-
 # Garbage
 zsh/.zsh_history
 fish/fish_variables
@@ -32,12 +31,11 @@ libreoffice
 
 gtk-3.0
 GIMP
-lutris
-
 swayidle
 swaylock
 mako
-
+starship.toml
+git
 htop
 environment.d
 eww
@@ -57,7 +55,5 @@ bottom
 neofetch
 QtProject.conf
 home-manager
-
-
-starship.toml
-git
+retroarch
+lutris
