@@ -36,10 +36,10 @@ alias ip="ip -color=auto"
 
 alias ka="killall"
 alias g="gix"
-alias e="$EDITOR"
-alias v="$VISUAL"
+# alias e="$EDITOR"
+# alias v="$VISUAL"
 # alias z="zathura"
-alias o="$OPENER"
+# alias o="$OPENER"
 alias m="mpv"
 alias n='newsboat' 
 
@@ -50,7 +50,7 @@ alias nmutt='neomutt'
 alias doas="doas --"
 #alias sudo='doas'
 
-# alias ttc='tty-clock -c -C 7 -r -f "%A, %B %d"'
+alias ttc='tty-clock -c -C 7 -r -f "%A, %B %d"'
 
 # file viewing
 alias ls="exa --color=auto --group-directories-first" # --icons 

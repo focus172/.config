@@ -57,3 +57,6 @@ QtProject.conf
 home-manager
 retroarch
 lutris
+blender
+emacs/
+obs-studio

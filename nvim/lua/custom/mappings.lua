@@ -116,7 +116,7 @@ M.rust_tools = {
 }
 
 M.oil = {
-    n = {["-"] = {"<cmd>lua require('oil').open", "Open parent directory"}}
+    n = {["-"] = {"<cmd>lua require('oil').open<CR>", "Open parent directory"}}
 }
 
 return M

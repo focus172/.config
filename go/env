@@ -1,9 +1,4 @@
-GOARCH=arm64
 GOCACHE=/home/focus/.cache/go/build
 GOENV=/home/focus/.config/go/env
-GOHOSTARCH=arm64
-GOHOSTOS=linux
 GOMODCACHE=/home/focus/.cache/go/pkg/mod
-GOOS=linux
 GOPATH=/home/focus/.local/share/go
-GOROOT=/usr/lib/go

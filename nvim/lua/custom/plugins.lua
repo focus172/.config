@@ -55,8 +55,8 @@ local plugins = {
         "folke/trouble.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
         after = "null-ls"
-    }, {'stevearc/oil.nvim', event = "User DirOpened"},
-    {'nvim-treesitter/nvim-treesitter-context', after = "nvim-treesitter"},
+    }, {'stevearc/oil.nvim', lazy = false},
+    {'nvim-treesitter/nvim-treesitter-context'},
     -- "theprimeagen/refactoring.nvim",
     -- "tpope/vim-fugitive",
     -- "nvim-treesitter/playground",
@@ -66,11 +66,33 @@ local plugins = {
         "folke/todo-comments.nvim",
         event = "BufRead",
         config = function() require("todo-comments").setup() end
-    }, {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        dependencies = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"}
-    }
+    }, 
+    -- {
+    --     "folke/noice.nvim",
+    --     event = "VeryLazy",
+    --     dependencies = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"}
+    -- }, 
+    {
+        "nvim-neorg/neorg",
+        event = "BufRead",
+        build = ":Neorg sync-parsers",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+          require("neorg").setup {
+            load = {
+              ["core.defaults"] = {}, -- Loads default behaviour
+              ["core.concealer"] = {}, -- Adds pretty icons to your documents
+              ["core.dirman"] = { -- Manages Neorg workspaces
+                config = {
+                  workspaces = {
+                    notes = "~/cur",
+                  },
+                },
+              },
+            },
+          }
+        end,
+    },
 }
 
 return plugins
