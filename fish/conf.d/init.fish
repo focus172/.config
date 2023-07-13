@@ -7,7 +7,7 @@ if status --is-login
     
 
     export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts:$XDG_DATA_HOME/cargo/bin:$HOME/.config/scripts"
-    export SHELL=$(which fish)
+    export SHELL=(which fish)
 
     export LESSHISTFILE=-
 

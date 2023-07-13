@@ -4,9 +4,9 @@ function backup --argument filename
 end
 
 function br
-    local cmd_file=$(mktemp)
+    local cmd_file=(mktemp)
     if broot -t -h --outcmd "$cmd_file" "$argv" 
-        local cmd=$(cat "$cmd_file")
+        local cmd=(cat "$cmd_file")
         command rm -f "$cmd_file"
         eval "$cmd"
     else
@@ -21,11 +21,11 @@ function mcd ()
 end
 
 function lfcd () 
-    local tmp=$(mktemp -uq)
+    local tmp=(mktemp -uq)
     if lf -last-dir-path="$tmp" "$argv"
         if test -f "$tmp"  
-            local dir="$(cat "$tmp")"
-            [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+            local dir="(cat "$tmp")"
+            [ -d "$dir" ] && [ "$dir" != "(pwd)" ] && cd "$dir"
         end 
     end
 end

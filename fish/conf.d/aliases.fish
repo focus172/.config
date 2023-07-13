@@ -17,16 +17,16 @@ alias ytt="yt-dlp --embed-metadata -i --skip-download --write-thumbnail"
 
 
 alias ..="cd .."
-alias cdf="cd \$(fd -t d . | fzf)"
+alias cdf="cd (fd -t d . | fzf)"
 alias wget="wget --hsts-file /dev/null"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
 alias vdiff="nvim -d"
 
 # ****** Packaging ******
-alias pacs="pacman -Slq | fzf -m --preview 'cat \$(pacman -Si {1}) \$(pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
-alias pars="paru -Slq | fzf -m --preview 'cat \$(paru -Si {1}) \$(paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
+alias pacs="pacman -Slq | fzf -m --preview 'cat (pacman -Si {1}) (pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
+alias pars="paru -Slq | fzf -m --preview 'cat (paru -Si {1}) (paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
 alias pacr="pacman -Qqe | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
-alias cleanpac='sudo pacman -Rns $(pacman -Qtdq)' #; paru -c' 
+alias cleanpac='sudo pacman -Rns (pacman -Qtdq)'
 
 
 alias grep="grep --color=auto"
