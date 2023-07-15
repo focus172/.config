@@ -1,0 +1,48 @@
+add_newline = false
+format = "$nix_shell$directory$container$git_branch $git_status$rust$java$kotlin$zig$golang$cmd_duration$status$character"
+
+[character]
+error_symbol = "[❯](bold red)"
+success_symbol = "[❯](bold purple)"
+
+[cmd_duration]
+format = "[$duration ](fg:yellow)"
+min_time = 1000
+
+[container]
+format = "[$symbol ](yellow dimmed)"
+symbol = " 󰏖"
+
+[directory]
+format = "[](fg:bright-black)[$path](bg:bright-black fg:white)[](fg:bright-black)"
+
+[directory.substitutions]
+".config" = " "
+code = ""
+dev = "󱌢 "
+dox = " "
+dwnl = " "
+music = " "
+pix = " "
+skool = "󰑴 "
+vid = " "
+
+[git_branch]
+format = "[ $symbol $branch](fg:purple)(:$remote_branch)"
+style = ""
+symbol = ""
+
+[nix_shell]
+disabled = false
+format = "[](fg:white)[ ](bg:white fg:black)[](fg:white) "
+
+[status]
+disabled = false
+format = "[$symbol](fg:red)"
+map_symbol = true
+not_executable_symbol = " Not Executable"
+not_found_symbol = "󰍉 Not Found"
+sigint_symbol = "󰂭 "
+signal_symbol = "󱑽 "
+success_symbol = ""
+symbol = "✗"

@@ -1,0 +1,17 @@
+[credential]
+	helper = "store --file ~/.config/git/.git-credentials"
+
+[init]
+	defaultBranch = "main"
+
+[url "https://github.com/"]
+	insteadOf = "gh:"
+	insteadOf = "github:"
+
+[url "https://gitlab.com/"]
+	insteadOf = "gl:"
+	insteadOf = "gitlab:"
+
+[user]
+	email = "evan.stokdyk@gmail.com"
+	name = "Focus172"
