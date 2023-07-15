@@ -273,8 +273,6 @@ M.telescope = {
 }
 
 M.nvterm = {
-  plugin = true,
-
   t = {
     -- toggle in terminal mode
     ["<A-i>"] = {

@@ -1,22 +1,19 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local default_plugins = {
-  --[[
   "nvim-lua/plenary.nvim",
 
-  -- nvchad plugins
-  -- { "NvChad/extensions", branch = "v2.0" },
 
   {
     "NvChad/nvterm",
+    lazy = false,
     init = function()
-      require("core.utils").load_mappings "nvterm"
+      require("core.utils").load_plugin_mappings "nvterm"
     end,
-    config = function(_, opts)
-      require "base46.term"
-      require("nvterm").setup(opts)
-    end,
+    opts = {}
   },
+
+  --[[
 
   {
     "nvim-tree/nvim-web-devicons",

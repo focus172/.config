@@ -1,15 +1,14 @@
-# [env]
-# TERM = "xterm-256color"
-
 window:
   padding: 
-    x: 2
-    y: 2
+    x: 0
+    y: 0
   dynamic_padding: false
   decorations: none
   opacity: 0.60
-  # decorations: none
   title: Alacritty
+
+env:
+  TERM: xterm-256color
 
 font:
   normal:
@@ -27,39 +26,11 @@ shell:
   program: ~/.local/bin/fish
   # args: ["-c", "fish", "-l", "-u"]
 
-#mouse:
-  # Click settings
-  #
-  # The `double_click` and `triple_click` settings control the time
-  # alacritty should wait for accepting multiple clicks as one double
-  # or triple click.
+mouse:
   #double_click: { threshold: 300 }
   #triple_click: { threshold: 300 }
+  hide_when_typing: true 
 
-  # If this is `true`, the cursor is temporarily hidden when typing.
-  #hide_when_typing: false
-
-  #url:
-    # URL launcher
-    #
-    # This program is executed when clicking on a text which is recognized as a URL.
-    # The URL is always added to the command as the last parameter.
-    #
-    # When set to `None`, URL launching will be disabled completely.
-    #
-    # Default:
-    #   - (macOS) open
-    #   - (Linux/BSD) xdg-open
-    #   - (Windows) explorer
-    #launcher:
-    #  program: xdg-open
-    #  args: []
-
-    # URL modifiers
-    #
-    # These are the modifiers that need to be held down for opening URLs when clicking
-    # on them. The available modifiers are documented in the key binding section.
-    #modifiers: None
 
 # Key bindings
 #

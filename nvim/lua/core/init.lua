@@ -30,7 +30,7 @@ opt.numberwidth = 2
 opt.ruler = false
 
 -- disable nvim intro
-opt.shortmess:append "sI"
+-- opt.shortmess:append "sI"
 
 opt.signcolumn = "yes"
 opt.splitbelow = true
@@ -55,6 +55,15 @@ end
 
 -- add binaries installed by mason.nvim to path
 vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath "data" .. "/mason/bin"
+
+-- telescope = { style = "borderless" }, -- borderless / bordered
+--
+-- { "  Find File", "Spc f f", "Telescope find_files" },
+-- { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
+-- { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
+-- { "  Bookmarks", "Spc m a", "Telescope marks" },
+-- { "  Themes", "Spc t h", "Telescope themes" },
+-- { "  Mappings", "Spc c h", "NvCheatsheet" },
 
 -------------------------------------- commands ------------------------------------------
 
