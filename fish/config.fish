@@ -17,7 +17,6 @@ status --is-login; and begin
     # Login shell initialisation
     # set -g --export XDG_DATA_DIRS $HOME/.nix-profile/share:/usr/local/share/:/usr/share/
     # set -g --export FONTCONFIG_FILE /nix/store/2xji70cxxvpnpifjbyc586yraw9614p5-fontconfig-2.14.0/etc/fonts/fonts.conf
-
 end
 
 status --is-interactive; and begin

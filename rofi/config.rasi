@@ -10,4 +10,4 @@ configuration {
     yoffset: 0;
 }
 
-@theme "custom"
+// @theme "./theme.rasi"
