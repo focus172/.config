@@ -10,6 +10,10 @@ o.softtabstop = 4
 
 o.scrolloff = 8
 
+-- theme = 'gruvbox',
+-- theme_toggle = {"gruvbox", "rosepine"},
+-- transparency = true,
+
 g["loaded_node_provider"] = 0
 g["loaded_perl_provider"] = 0
 g["loaded_python3_provider"] = 0
