@@ -44,7 +44,7 @@ local plugins = {
             crates.show()
         end
     }, {"christoomey/vim-tmux-navigator", lazy = false},
-    {'github/copilot.vim', event = "InsertEnter"},
+    -- {'github/copilot.vim', event = "InsertEnter"},
     {'theprimeagen/harpoon', cmd = 'HarpoonAddTerm'},
     {"mbbill/undotree", cmd = "UndotreeToggle"}, {
         "jose-elias-alvarez/null-ls.nvim",
