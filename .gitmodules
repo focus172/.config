@@ -1,3 +1,0 @@
-[submodule "tmux/tpm"]
-	path = tmux/tpm
-	url = gh:tmux-plugins/tpm

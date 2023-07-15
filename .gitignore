@@ -4,7 +4,7 @@
 
 # Ignore secrets
 github-copilot
-configstore
+# configstore
 git/.git-credentials
 
 # Too active
@@ -22,7 +22,6 @@ obsidian
 syncthing
 BraveSoftware
 discord
-htop
 pavucontrol.ini
 pulse
 
