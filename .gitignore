@@ -2,50 +2,30 @@
 # ~/.config/.gitignore
 #
 
-# Too large
-dconf
-BraveSoftware
-
-
 # Ignore secrets
 github-copilot
 configstore
 git/.git-credentials
 
-# Garbage
-zsh/.zsh_history
-fish/fish_variables
-ncmpcpp/error.log
-pavucontrol.ini
-
 # Too active
 tmux/plugins
+tmux/tpm
+
 nvim/lazy-lock.json
-btop
 
 # Unsorted ignores
-pulse
-weechat
 libreoffice
-
-GIMP
-environment.d
-eww
-gtk-4.0
-gtk-3.0
-ncmpcpp
-systemd
-waybar
-rofi/config.rasi
-fish/config.fish
-mpd
-JetBrains
-discord
-bottom
-neofetch
-QtProject.conf
-retroarch
-lutris
 blender
 obs-studio
 VirtualBox
+obsidian
+syncthing
+BraveSoftware
+discord
+htop
+pavucontrol.ini
+pulse
+
+/mpd
+!/mpd/mpd.conf
+rofi-junk
