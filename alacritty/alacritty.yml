@@ -357,8 +357,8 @@ font:
 # cursor:
 # style = "Block"
 
-shell:
-  program: /opt/homebrew/bin/fish
+# shell:
+#   program: /opt/homebrew/bin/fish
 #  args: ["-c", "fish", "-l", "-u"]
 
 #mouse:

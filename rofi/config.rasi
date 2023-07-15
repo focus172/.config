@@ -3,7 +3,7 @@ configuration {
     drun-display-format: "{name}";
     font: "Hack Nerd Font 12";
     location: 0;
-    modi: "drun";
+    modi: ["drun", "ssh"];
     show-icons: true;
     sidebar-mode: false;
     xoffset: 0;
