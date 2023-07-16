@@ -1,5 +1,5 @@
 status --is-login; and begin
-    source "~/.config/fish/init.fish"
+    source "$HOME/.config/fish/init.fish"
     # Login shell initialisation
     # set -g --export XDG_DATA_DIRS $HOME/.nix-profile/share:/usr/local/share/:/usr/share/
     # set -g --export FONTCONFIG_FILE /nix/store/2xji70cxxvpnpifjbyc586yraw9614p5-fontconfig-2.14.0/etc/fonts/fonts.conf
@@ -11,7 +11,6 @@ status --is-interactive; and begin
 
     if string match Darwin (uname) >/dev/null
         /opt/homebrew/bin/brew shellenv | source
-        source ~/.config/fish/init.fish
     end
 
     eval (starship init fish)

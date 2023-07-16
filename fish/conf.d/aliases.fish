@@ -7,6 +7,7 @@
 alias e nvim
 alias exa 'exa '
 alias i imv
+alias it img2sixel
 alias la 'exa -a'
 # alias land 'cat $HOME/.config/george.txt | cowsay -W 70'
 alias ll 'exa -l'
@@ -32,7 +33,8 @@ alias bat="bat --color always --plain"
 
 # yt-dl stuff
 alias yt="yt-dlp --embed-metadata -i"
-alias yta="yt-dlp --embed-metadata -i -x -f bestaudio/best --audio-format opus"
+alias yta="yt-dlp --embed-metadata -i -x -f bestaudio/best --audio-format vorbis"
+alias ytaa="yta --embed-thumbnail --embed-chapters"
 alias ytt="yt-dlp --embed-metadata -i --skip-download --write-thumbnail"
 
 

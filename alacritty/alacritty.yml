@@ -21,12 +21,6 @@ import:
 cursor:
   style: Block
 
-shell:
-  # See the setup script on how to get this to work
-  program: /opt/homebrew/bin/fish 
-#~/.local/bin/fish
-  # args: ["-c", "fish", "-l", "-u"]
-
 mouse:
   #double_click: { threshold: 300 }
   #triple_click: { threshold: 300 }
@@ -34,9 +28,6 @@ mouse:
 
 
 # Key bindings
-#
-# Key bindings are specified as a list of objects. For example, this is the
-# default paste binding:
 #
 # `- { key: V, mods: Control|Shift, action: Paste }`
 #
@@ -133,19 +124,15 @@ mouse:
 # binding with the same triggers is defined. To unset a default binding, it can
 # be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
 # a no-op if you do not wish to receive input characters for that binding.
-# key_bindings:
-#   - { key: V,         mods: Control|Shift, action: Paste                       }
-#   - { key: C,         mods: Control|Shift, action: Copy                        }
+key_bindings:
+  - { key: V,         mods: Super, action: Paste                       }
+  - { key: C,         mods: Super, action: Copy                        }
 #   - { key: Insert,    mods: Shift,         action: PasteSelection              }
 #   - { key: Key0,      mods: Control,       action: ResetFontSize               }
 #   - { key: Equals,    mods: Control,       action: IncreaseFontSize            }
-#   - { key: Plus,      mods: Control,       action: IncreaseFontSize            }
 #   - { key: Minus,     mods: Control,       action: DecreaseFontSize            }
 #   - { key: F11,       mods: None,          action: ToggleFullscreen            }
-#   - { key: Paste,     mods: None,          action: Paste                       }
-#   - { key: Copy,      mods: None,          action: Copy                        }
-#   - { key: L,         mods: Control,       action: ClearLogNotice              }
-#   - { key: L,         mods: Control,       chars: "\x0c"                       }
+  - { key: I,         mods: Control,       chars: "\x0c"                       }
 #   - { key: PageUp,    mods: None,          action: ScrollPageUp,   mode: ~Alt  }
 #   - { key: PageDown,  mods: None,          action: ScrollPageDown, mode: ~Alt  }
 #   - { key: Home,      mods: Shift,         action: ScrollToTop,    mode: ~Alt  }
