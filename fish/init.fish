@@ -42,3 +42,8 @@ export WM="Hyprland"
 export MANPAGER='less'
 export XDG_CURRENT_DESKTOP='Hyprland'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+
+if string match Darwin (uname) >/dev/null
+    export PATH="$PATH:/opt/homebrew/opt/coreutils/libexec/gnubin"
+end
+
