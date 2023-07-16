@@ -3,6 +3,26 @@
 # see abbr.fish for a more full picture of my aliases
 
 
+# Aliases
+alias e nvim
+alias exa 'exa '
+alias i imv
+alias la 'exa -a'
+# alias land 'cat $HOME/.config/george.txt | cowsay -W 70'
+alias ll 'exa -l'
+alias lla 'exa -la'
+alias ls exa
+alias lt 'exa --tree'
+# alias sdn 'shutdown -h now'
+
+# file viewing
+# alias ls="exa --color=auto --group-directories-first" # --icons 
+# alias l="ls -l"
+# alias la="ls -a"
+# alias lla="ls -la"
+# alias lt="ls --tree --level=3"
+# alias l.='la | grep -E "^\."'
+
 # core utils
 alias cp="cp -ivr" 
 alias mv="mv -iv"
@@ -52,13 +72,6 @@ alias doas="doas --"
 
 alias ttc='tty-clock -c -C 7 -r -f "%A, %B %d"'
 
-# file viewing
-alias ls="exa --color=auto --group-directories-first" # --icons 
-alias l="ls -l"
-alias la="ls -a"
-alias lla="ls -la"
-alias lt="ls --tree --level=3"
-alias l.='la | grep -E "^\."'
 
 # vim 
 alias vim="nvim"
