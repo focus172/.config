@@ -1,7 +1,6 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local default_plugins = {
-  "nvim-lua/plenary.nvim",
 
   {
     "NvChad/nvterm",
@@ -9,7 +8,6 @@ local default_plugins = {
       require("core.utils").load_plugin_mappings "nvterm"
     end,
     opts = {},
-    lazy = true,
   },
 
 
@@ -229,6 +227,7 @@ local default_plugins = {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
     priority = 1000,
+    lazy = false,
     opts = { transparency = true },
     config = function()
       vim.cmd.colorscheme 'onedark'
@@ -348,12 +347,12 @@ local default_plugins = {
   -- { import = 'custom.plugins' },
 }
 
--- for thing in default_plugins do
---  if type(thing) == "table" then
---    if thing.lazy ~= false then
---      thing.lazy = true
---    end
---  end
--- end
+for _, thing in pairs(default_plugins) do
+ if type(thing) == "table" then
+   if thing.lazy ~= false then
+     thing.lazy = true
+   end
+ end
+end
 
 require("lazy").setup(default_plugins, {})
