@@ -3,7 +3,7 @@ window:
     x: 0
     y: 0
   dynamic_padding: false
-  decorations: none
+  # decorations: none
   opacity: 0.60
   title: Alacritty
 
@@ -23,7 +23,8 @@ cursor:
 
 shell:
   # See the setup script on how to get this to work
-  program: ~/.local/bin/fish
+  program: /opt/homebrew/bin/fish 
+#~/.local/bin/fish
   # args: ["-c", "fish", "-l", "-u"]
 
 mouse:

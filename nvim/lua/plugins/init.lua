@@ -3,29 +3,17 @@
 local default_plugins = {
   "nvim-lua/plenary.nvim",
 
-
   {
     "NvChad/nvterm",
-    lazy = false,
     init = function()
       require("core.utils").load_plugin_mappings "nvterm"
     end,
-    opts = {}
+    opts = {},
+    lazy = true,
   },
+
 
   --[[
-
-  {
-    "nvim-tree/nvim-web-devicons",
-    opts = function()
-      return { override = require("nvchad_ui.icons").devicons }
-    end,
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "devicons")
-      require("nvim-web-devicons").setup(opts)
-    end,
-  },
-
   {
     "lukas-reineke/indent-blankline.nvim",
     opts = function()
@@ -160,71 +148,8 @@ local default_plugins = {
   },
 
   {
-    "numToStr/Comment.nvim",
-    keys = {
-      { "gcc", mode = "n" },
-      { "gc", mode = "v" },
-      { "gbc", mode = "n" },
-      { "gb", mode = "v" },
-    },
-    init = function()
-      require("core.utils").load_mappings "comment"
-    end,
-    config = function(_, opts)
-      require("Comment").setup(opts)
-    end,
   },
 
-  -- file managing , picker etc
-  {
-    "nvim-tree/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    init = function()
-      require("core.utils").load_mappings "nvimtree"
-    end,
-    opts = function()
-      return require "plugins.configs.nvimtree"
-    end,
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "nvimtree")
-      require("nvim-tree").setup(opts)
-      vim.g.nvimtree_side = opts.view.side
-    end,
-  },
-
-  {
-    "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
-    init = function()
-      require("core.utils").load_mappings "telescope"
-    end,
-    opts = function()
-      return require "plugins.configs.telescope"
-    end,
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "telescope")
-      local telescope = require "telescope"
-      telescope.setup(opts)
-
-      -- load extensions
-      for _, ext in ipairs(opts.extensions_list) do
-        telescope.load_extension(ext)
-      end
-    end,
-  },
-
-  -- Only load whichkey after all the gui
-  {
-    "folke/which-key.nvim",
-    keys = { "<leader>", '"', "'", "`", "c", "v" },
-    init = function()
-      require("core.utils").load_mappings "whichkey"
-    end,
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "whichkey")
-      require("which-key").setup(opts)
-    end,
-  },
   ]]
 
   -- NOTE: First, some plugins that don't require any configuration
@@ -272,7 +197,14 @@ local default_plugins = {
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  {
+    'folke/which-key.nvim',
+    init = function()
+      require("core.utils").load_plugin_mappings "whichkey"
+    end,
+    opts = {}
+  },
+
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -297,6 +229,7 @@ local default_plugins = {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
     priority = 1000,
+    opts = { transparency = true },
     config = function()
       vim.cmd.colorscheme 'onedark'
     end,
@@ -328,10 +261,55 @@ local default_plugins = {
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    init = function()
+      require("core.utils").load_plugin_mappings "comment"
+    end,
+    opts = {},
+  },
+
+  -- file managing , picker etc
+  {
+    "nvim-tree/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    init = function()
+      require("core.utils").load_plugin_mappings "nvimtree"
+    end,
+    opts = function()
+      return require "plugins.configs.nvimtree"
+    end,
+    -- config = function(_, opts)
+    --   require("nvim-tree").setup(opts)
+    --   vim.g.nvimtree_side = opts.view.side
+    -- end,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+  {
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    init = function()
+      require("core.utils").load_plugin_mappings "telescope"
+    end,
+    opts = function()
+      return require "plugins.configs.telescope"
+    end,
+    config = function(_, opts)
+      local telescope = require "telescope"
+      telescope.setup(opts)
+
+      -- load extensions
+      for _, ext in ipairs(opts.extensions_list) do
+        telescope.load_extension(ext)
+      end
+    end,
+    branch = '0.1.x',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -369,5 +347,13 @@ local default_plugins = {
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
 }
+
+-- for thing in default_plugins do
+--  if type(thing) == "table" then
+--    if thing.lazy ~= false then
+--      thing.lazy = true
+--    end
+--  end
+-- end
 
 require("lazy").setup(default_plugins, {})
