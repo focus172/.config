@@ -7,7 +7,8 @@
 alias e nvim
 alias exa 'exa '
 alias i imv
-alias it img2sixel
+alias it 'kitty +kitten icat'
+alias is 'img2sixel'
 alias la 'exa -a'
 # alias land 'cat $HOME/.config/george.txt | cowsay -W 70'
 alias ll 'exa -l'

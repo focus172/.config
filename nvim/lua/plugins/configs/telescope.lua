@@ -1,3 +1,5 @@
+-- See `:help telescope` and `:help telescope.setup()`
+
 local options = {
   defaults = {
     vimgrep_arguments = {
@@ -46,10 +48,14 @@ local options = {
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
     mappings = {
       n = { ["q"] = require("telescope.actions").close },
+      i = {
+        ['<C-u>'] = false,
+        ['<C-d>'] = false,
+      },
     },
   },
 
-  extensions_list = { },
+  extensions_list = { "fzf" },
 }
 
 return options

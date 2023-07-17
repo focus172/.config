@@ -243,7 +243,7 @@ local default_plugins = {
         telescope.load_extension(ext)
       end
     end,
-    branch = '0.1.x',
+    lazy = false,
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
 

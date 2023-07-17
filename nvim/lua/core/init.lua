@@ -1,11 +1,20 @@
 local opt = vim.opt
+local o = vim.opt
 local g = vim.g
+
+
+
+-- theme = 'gruvbox',
+-- theme_toggle = {"gruvbox", "rosepine"},
+-- transparency = true,
 
 -------------------------------------- globals -----------------------------------------
 --  
 g.transparency = true
 
 -------------------------------------- options ------------------------------------------
+
+o.scrolloff = 8
 opt.laststatus = 3 -- global statusline
 opt.showmode = true
 
@@ -57,18 +66,18 @@ vim.o.hlsearch = false
 vim.wo.number = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+o.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+o.clipboard = 'unnamedplus'
 
 -- Enable break indent
-vim.o.breakindent = true
+o.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+o.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
@@ -76,6 +85,9 @@ vim.o.smartcase = true
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
+
+
+o.colorcolumn = "80"
 
 -- Decrease update time
 vim.o.updatetime = 250
@@ -89,9 +101,10 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- disable some default providers
-for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
-  vim.g["loaded_" .. provider .. "_provider"] = 0
-end
+g["loaded_node_provider"] = 0
+g["loaded_perl_provider"] = 0
+g["loaded_python3_provider"] = 0
+g["loaded_ruby_provider"] = 0
 
 -- add binaries installed by mason.nvim to path
 vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath "data" .. "/mason/bin"
