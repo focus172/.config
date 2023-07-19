@@ -3,23 +3,34 @@ window:
     x: 0
     y: 0
   dynamic_padding: false
-  # decorations: none
-  opacity: 0.60
+  decorations: "buttonless"
+  startup_mode: "SimpleFullscreen"
+  opacity: 0.40
   title: Alacritty
 
 env:
-  TERM: xterm-256color
+  TERM: "xterm-256color"
 
 font:
   normal:
-    family: Hack Nerd Font
-    size: 12.0
+    family: "Hack Nerd Font"
+
+  bold:
+    family: "Hack Nerd Font"
+
+  italic:
+    family: "Mononoki Nerd Font"
+
+  bold_italic:
+    family: "Mononoki Nerd Font"
+
+  size: 12.0
 
 import: 
-  - ./colors.yml
+  - "./colors.yml"
 
 cursor:
-  style: Block
+  style: "Block"
 
 mouse:
   #double_click: { threshold: 300 }

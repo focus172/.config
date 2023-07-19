@@ -10,7 +10,7 @@ local g = vim.g
 
 -------------------------------------- globals -----------------------------------------
 --  
-g.transparency = true
+-- g.transparency = true
 
 -------------------------------------- options ------------------------------------------
 
@@ -36,7 +36,7 @@ opt.mouse = "a"
 -- Numbers
 opt.number = true
 opt.numberwidth = 2
-opt.ruler = true
+-- opt.ruler = true
 
 -- disable nvim intro
 -- opt.shortmess:append "sI"
