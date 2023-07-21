@@ -155,7 +155,7 @@ M.lspconfig = {
 
     ["<leader>ra"] = {
       function()
-        require("nvchad_ui.renamer").open()
+        vim.lsp.buf.rename()
       end,
       "LSP rename",
     },
@@ -174,12 +174,12 @@ M.lspconfig = {
       "LSP references",
     },
 
-    ["<leader>f"] = {
-      function()
-        vim.diagnostic.open_float { border = "rounded" }
-      end,
-      "Floating diagnostic",
-    },
+    -- ["<leader>f"] = {
+    --   function()
+    --     vim.diagnostic.open_float { border = "rounded" }
+    --   end,
+    --   "Floating diagnostic",
+    -- },
 
     ["[d"] = {
       function()
@@ -267,7 +267,7 @@ M.telescope = {
     -- vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
     -- vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
     -- vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-    ['<leader>fd'] = { "<cmd> Telescope diagnostics", '[F]ind [D]iagnostics' },
+    ['<leader>fd'] = { "<cmd> Telescope diagnostics <CR>", '[F]ind [D]iagnostics' },
 
   },
 }
