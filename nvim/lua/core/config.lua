@@ -84,6 +84,40 @@ M.renames = {
 ---@type LazyVimConfig
 local options
 
+function M.bootstrap()
+	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+	if not vim.loop.fs_stat(lazypath) then
+		vim.fn.system({
+			"git",
+			"clone",
+			"--filter=blob:none",
+			"https://github.com/folke/lazy.nvim.git",
+			"--branch=stable",
+			lazypath,
+		})
+	end
+	vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
+end
+
+function M.init()
+	-- delay notifications till vim.notify was replaced or after 500ms
+	require("lazyvim.util").lazy_notify()
+
+	-- load options here, before lazy init while sourcing plugin modules
+	-- this is needed to make sure options will be correctly applied
+	-- after installing missing plugins
+	require("core.config").load("options")
+	local Plugin = require("lazy.core.plugin")
+	local add = Plugin.Spec.add
+	Plugin.Spec.add = function(self, plugin, ...)
+		if type(plugin) == "table" and M.renames[plugin[1]] then
+			plugin[1] = M.renames[plugin[1]]
+		end
+		return add(self, plugin, ...)
+	end
+end
+
 ---@param opts? LazyVimConfig
 function M.setup(opts)
 	options = vim.tbl_deep_extend("force", defaults, opts or {})
@@ -131,28 +165,6 @@ end
 function M.has(range)
 	local Semver = require("lazy.manage.semver")
 	return Semver.range(range or M.lazy_version):matches(require("lazy.core.config").version or "0.0.0")
-end
-
-M.did_init = false
-function M.init()
-	if not M.did_init then
-		M.did_init = true
-		-- delay notifications till vim.notify was replaced or after 500ms
-		require("lazyvim.util").lazy_notify()
-
-		-- load options here, before lazy init while sourcing plugin modules
-		-- this is needed to make sure options will be correctly applied
-		-- after installing missing plugins
-		require("core.config").load("options")
-		local Plugin = require("lazy.core.plugin")
-		local add = Plugin.Spec.add
-		Plugin.Spec.add = function(self, plugin, ...)
-			if type(plugin) == "table" and M.renames[plugin[1]] then
-				plugin[1] = M.renames[plugin[1]]
-			end
-			return add(self, plugin, ...)
-		end
-	end
 end
 
 setmetatable(M, {
