@@ -3,7 +3,6 @@ require("lazy").setup({
 		-- this needs to always be loaded fist so other things can extend it
 		{ import = "plugins" },
 
-		{ import = "extras.lang.rust" },
 		-- { import = "extras.coding.copilot" },
 		-- { import = "extras.ui.mini-animate" },
 	},
