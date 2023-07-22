@@ -1,5 +1,9 @@
-return {
+-- dont load the plugin
+if true then
+	return {}
+end
 
+return {
 	-- copilot
 	{
 		"zbirenbaum/copilot.lua",
