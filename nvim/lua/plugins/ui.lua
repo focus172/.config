@@ -22,7 +22,7 @@ return {
 		},
 		init = function()
 			-- when noice is not enabled, install notify on VeryLazy
-			local Util = require("lazyvim.util")
+			local Util = require("core.util")
 			if not Util.has("noice.nvim") then
 				Util.on_very_lazy(function()
 					vim.notify = require("notify")
@@ -90,7 +90,7 @@ return {
 		event = "VeryLazy",
 		opts = function()
 			local icons = require("core.config").icons
-			local Util = require("lazyvim.util")
+			local Util = require("core.util")
 
 			return {
 				options = {
@@ -228,7 +228,7 @@ return {
 	{
 		"folke/which-key.nvim",
 		opts = function(_, opts)
-			if require("lazyvim.util").has("noice.nvim") then
+			if require("core.util").has("noice.nvim") then
 				opts.defaults["<leader>sn"] = { name = "+noice" }
 			end
 		end,
@@ -347,7 +347,7 @@ return {
 		lazy = true,
 		init = function()
 			vim.g.navic_silence = true
-			require("lazyvim.util").on_attach(function(client, buffer)
+			require("core.util").on_attach(function(client, buffer)
 				if client.server_capabilities.documentSymbolProvider then
 					require("nvim-navic").attach(client, buffer)
 				end

@@ -11,7 +11,7 @@ return {
 			{
 				"hrsh7th/cmp-nvim-lsp",
 				cond = function()
-					return require("lazyvim.util").has("nvim-cmp")
+					return require("core.util").has("nvim-cmp")
 				end,
 			},
 		},
@@ -88,7 +88,7 @@ return {
 		},
 		---@param opts PluginLspOpts
 		config = function(_, opts)
-			local Util = require("lazyvim.util")
+			local Util = require("core.util")
 
 			if Util.has("neoconf.nvim") then
 				local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]

@@ -102,7 +102,7 @@ end
 
 function M.init()
 	-- delay notifications till vim.notify was replaced or after 500ms
-	require("lazyvim.util").lazy_notify()
+	require("core.util").lazy_notify()
 
 	-- load options here, before lazy init while sourcing plugin modules
 	-- this is needed to make sure options will be correctly applied

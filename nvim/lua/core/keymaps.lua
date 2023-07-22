@@ -3,7 +3,7 @@
 -- Add any additional keymaps here
 
 -- This file is automatically loaded by lazyvim.config.init
-local Util = require("lazyvim.util")
+local Util = require("core.util")
 
 local function map(mode, lhs, rhs, opts)
 	local keys = require("lazy.core.handler").handlers.keys
