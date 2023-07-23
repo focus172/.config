@@ -1,4 +1,12 @@
-require("core.config").bootstrap()
-require("core.config").init()
+-- [[ bootstrap lazy ]] --
+require("core.bootstrap")
+
+-- [[ initialization ]] --
+require("core.options")
+
+-- [[ init plugins ]] --
 require("core.lazy")
-require("core.config").setup()
+
+-- [[ post config hook ]] --
+require("core.autocmds")
+-- require("core.keymaps")

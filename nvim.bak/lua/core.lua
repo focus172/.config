@@ -2,15 +2,10 @@ local opt = vim.opt
 local o = vim.opt
 local g = vim.g
 
-
-
--- theme = 'gruvbox',
--- theme_toggle = {"gruvbox", "rosepine"},
--- transparency = true,
+-- [[ ]] --
 
 -------------------------------------- globals -----------------------------------------
---  
--- g.transparency = true
+g.transparency = true
 
 -------------------------------------- options ------------------------------------------
 
@@ -53,11 +48,9 @@ opt.updatetime = 250
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
+opt.whichwrap:append("<>[]hl")
 
--- [[ Setting options ]]
 -- See `:help vim.o`
--- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -66,12 +59,12 @@ vim.o.hlsearch = false
 vim.wo.number = true
 
 -- Enable mouse mode
-o.mouse = 'a'
+o.mouse = "a"
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-o.clipboard = 'unnamedplus'
+o.clipboard = "unnamedplus"
 
 -- Enable break indent
 o.breakindent = true
@@ -84,8 +77,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
-
+vim.wo.signcolumn = "yes"
 
 o.colorcolumn = "80"
 
@@ -95,7 +87,7 @@ vim.o.timeout = true
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = "menuone,noselect"
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
@@ -107,7 +99,7 @@ g["loaded_python3_provider"] = 0
 g["loaded_ruby_provider"] = 0
 
 -- add binaries installed by mason.nvim to path
-vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath "data" .. "/mason/bin"
+vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath("data") .. "/mason/bin"
 
 -- telescope = { style = "borderless" }, -- borderless / bordered
 --
@@ -117,6 +109,3 @@ vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath "data" .. "/mason/bin"
 -- { "  Bookmarks", "Spc m a", "Telescope marks" },
 -- { "  Themes", "Spc t h", "Telescope themes" },
 -- { "  Mappings", "Spc c h", "NvCheatsheet" },
-
--------------------------------------- commands ------------------------------------------
-
