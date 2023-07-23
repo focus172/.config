@@ -51,7 +51,6 @@ local telescope_opts = {
 
 -- fuzzy finder
 return {
-
 	{
 		"nvim-telescope/telescope.nvim",
 		lazy = false,

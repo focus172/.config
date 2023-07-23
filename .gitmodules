@@ -1,3 +1,6 @@
 [submodule "scripts"]
 	path = scripts
 	url = gh:Focus172/scripts
+[submodule "iyuma"]
+	path = iyuma
+	url = gh:Focus172/iyuma
