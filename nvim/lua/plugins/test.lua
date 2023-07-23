@@ -26,11 +26,7 @@ return {
 			output = { open_on_run = true },
 			quickfix = {
 				open = function()
-					if require("core.util").has("trouble.nvim") then
-						vim.cmd("Trouble quickfix")
-					else
-						vim.cmd("copen")
-					end
+					vim.cmd("Trouble quickfix")
 				end,
 			},
 		},

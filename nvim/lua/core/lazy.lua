@@ -1,10 +1,15 @@
 require("lazy").setup({
-	spec = { { import = "plugins" } }, -- sources all files in the config dir
-	defaults = {
-		lazy = false, -- TODO: Change this to true once configuration is done
-		version = false,
+	spec = { { import = "plugins" } }, -- sources all files in the plugins dir
+	defaults = { lazy = true },
+	install = { colorscheme = { "tokyonight" } },
+	ui = {
+		icons = {
+			ft = "",
+			lazy = "󰂠 ",
+			loaded = "",
+			not_loaded = "",
+		},
 	},
-	checker = { enabled = false }, -- automatically check for plugin updates
 	performance = {
 		rtp = {
 			disabled_plugins = {
@@ -16,6 +21,28 @@ require("lazy").setup({
 				"tohtml",
 				"tutor",
 				"zipPlugin",
+				"2html_plugin",
+				"getscript",
+				"getscriptPlugin",
+				"logipat",
+				"netrw",
+				"netrwSettings",
+				"netrwFileHandlers",
+				"tar",
+				"tarPlugin",
+				"rrhelper",
+				"spellfile_plugin",
+				"vimball",
+				"vimballPlugin",
+				"zip",
+				"rplugin",
+				"syntax",
+				"synmenu",
+				"optwin",
+				"compiler",
+				"bugreport",
+				"ftplugin",
+				"editorconfig",
 			},
 		},
 	},

@@ -1,14 +1,12 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
-
--- This file is automatically loaded by plugins.core
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+local o = vim.opt
+local g = vim.g
 
 local opt = vim.opt
 
-opt.autowrite = true -- Enable auto write
+g.mapleader = " "
+g.maplocalleader = " "
+
+o.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 3 -- Hide * markup for bold and italic
@@ -27,20 +25,22 @@ opt.number = true -- Print line number
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.relativenumber = true -- Relative line numbers
-opt.scrolloff = 4 -- Lines of context
+opt.scrolloff = 8 -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 opt.shiftround = true -- Round indent
-opt.shiftwidth = 2 -- Size of an indent
 opt.shortmess:append({ W = true, I = true, c = true })
 opt.showmode = false -- Dont show mode since we have a statusline
-opt.sidescrolloff = 8 -- Columns of context
+opt.sidescrolloff = 4 -- Columns of context
 opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 opt.smartcase = true -- Don't ignore case with capitals
 opt.smartindent = true -- Insert indents automatically
 opt.spelllang = { "en" }
 opt.splitbelow = true -- Put new windows below current
 opt.splitright = true -- Put new windows right of current
-opt.tabstop = 2 -- Number of spaces tabs count for
+
+opt.shiftwidth = 4 -- Size of an indent
+opt.tabstop = 4 -- Number of spaces tabs count for
+
 opt.termguicolors = true -- True color support
 opt.timeoutlen = 300
 opt.undofile = true
@@ -58,10 +58,6 @@ end
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 
--- local opt = vim.opt
--- local o = vim.opt
--- local g = vim.g
---
 -- -- [[ ]] --
 --
 -- -------------------------------------- globals -----------------------------------------
@@ -139,7 +135,7 @@ vim.g.markdown_recommended_style = 0
 -- -- Keep signcolumn on by default
 -- vim.wo.signcolumn = "yes"
 --
--- o.colorcolumn = "80"
+o.colorcolumn = "80"
 --
 -- -- Decrease update time
 -- vim.o.updatetime = 250
@@ -153,15 +149,14 @@ vim.g.markdown_recommended_style = 0
 -- vim.o.termguicolors = true
 --
 -- -- disable some default providers
--- g["loaded_node_provider"] = 0
--- g["loaded_perl_provider"] = 0
--- g["loaded_python3_provider"] = 0
--- g["loaded_ruby_provider"] = 0
+g["loaded_node_provider"] = 0
+g["loaded_perl_provider"] = 0
+g["loaded_python3_provider"] = 0
+g["loaded_ruby_provider"] = 0
 --
 -- -- add binaries installed by mason.nvim to path
 -- vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath("data") .. "/mason/bin"
 --
--- -- telescope = { style = "borderless" }, -- borderless / bordered
 -- --
 -- -- { "  Find File", "Spc f f", "Telescope find_files" },
 -- -- { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
@@ -169,3 +164,13 @@ vim.g.markdown_recommended_style = 0
 -- -- { "  Bookmarks", "Spc m a", "Telescope marks" },
 -- -- { "  Themes", "Spc t h", "Telescope themes" },
 -- -- { "  Mappings", "Spc c h", "NvCheatsheet" },
+
+if vim.g.neovide then
+	local alpha = function()
+		return string.format("%x", math.floor(255 * vim.g.transparency or 0.8))
+	end
+	-- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
+	vim.g.neovide_transparency = 0.0
+	vim.g.transparency = 0.8
+	vim.g.neovide_background_color = "#0f1117" .. alpha()
+end

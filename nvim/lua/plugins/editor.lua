@@ -20,12 +20,7 @@ return {
 				end,
 				desc = "Explorer NeoTree (cwd)",
 			},
-			{ "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
-			{ "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
 		},
-		deactivate = function()
-			vim.cmd([[Neotree close]])
-		end,
 		init = function()
 			if vim.fn.argc() == 1 then
 				local stat = vim.loop.fs_stat(vim.fn.argv(0))
