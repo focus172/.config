@@ -8,5 +8,4 @@ require("core.options")
 require("core.lazy")
 
 -- [[ post config hook ]] --
-require("core.autocmds")
--- require("core.keymaps")
+require("core.post")

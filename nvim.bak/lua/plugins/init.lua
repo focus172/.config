@@ -1,7 +1,6 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local default_plugins = {
-
 	--[[
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -25,7 +24,6 @@ local default_plugins = {
       return require "plugins.configs.treesitter"
     end,
     config = function(_, opts)
-      dofile(vim.g.base46_cache .. "syntax")
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
@@ -37,17 +35,6 @@ local default_plugins = {
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     opts = function()
       return require "plugins.configs.mason"
-    end,
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "mason")
-      require("mason").setup(opts)
-
-      -- custom nvchad cmd to install all mason binaries listed
-      vim.api.nvim_create_user_command("MasonInstallAll", function()
-        vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
-      end, {})
-
-      vim.g.mason_binaries_list = opts.ensure_installed
     end,
   },
 
@@ -125,23 +112,6 @@ local default_plugins = {
 		-- end,
 	},
 
-	{
-		-- Adds git releated signs to the gutter, as well as utilities for managing changes
-		"lewis6991/gitsigns.nvim",
-		event = "BufRead",
-		opts = function()
-			require("plugins.configs.gitsigns")
-		end,
-	},
-
-	{
-		"numToStr/Comment.nvim",
-		init = function()
-			require("core.utils").load_plugin_mappings("comment")
-		end,
-		opts = {},
-	},
-
 	-- file managing , picker etc
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -160,53 +130,4 @@ local default_plugins = {
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
-
-	-- Fuzzy Finder (files, lsp, etc)
-	{
-		"nvim-telescope/telescope.nvim",
-		cmd = "Telescope",
-		init = function()
-			require("core.utils").load_plugin_mappings("telescope")
-		end,
-		opts = function()
-			return require("plugins.configs.telescope")
-		end,
-		config = function(_, opts)
-			local telescope = require("telescope")
-			telescope.setup(opts)
-
-			-- load extensions
-			for _, ext in ipairs(opts.extensions_list) do
-				telescope.load_extension(ext)
-			end
-		end,
-		lazy = false,
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-
-	-- Fuzzy Finder Algorithm which requires local dependencies to be built.
-	-- Only load if `make` is available. Make sure you have the system
-	-- requirements installed.
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		-- NOTE: If you are having trouble with this installation,
-		--       refer to the README for telescope-fzf-native for more instructions.
-		build = "make",
-		cond = function()
-			return vim.fn.executable("make") == 1
-		end,
-	},
-
-	{
-		-- Highlight, edit, and navigate code
-		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
-		build = ":TSUpdate",
-	},
 }
-
-local lazy_config = require("plugins.configs.lazy_nvim")
-
-require("lazy").setup(default_plugins, lazy_config)

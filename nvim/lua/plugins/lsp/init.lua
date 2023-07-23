@@ -235,6 +235,14 @@ return {
 			ensure_installed = {
 				"stylua",
 				"shfmt",
+				-- "rust-analyzer",
+				-- "lua-language-server",
+				-- "pyright",
+				-- "mypy",
+				-- "ruff",
+				-- "shellcheck",
+				-- "zls",
+				-- "gopls"
 				-- "flake8",
 			},
 		},

@@ -3,21 +3,7 @@
 -- Add any additional keymaps here
 
 -- This file is automatically loaded by lazyvim.config.init
-local Util = require("core.util")
-
-local function map(mode, lhs, rhs, opts)
-	local keys = require("lazy.core.handler").handlers.keys
-	---@cast keys LazyKeysHandler
-	-- do not create the keymap if a lazy keys handler exists
-	if not keys.active[keys.parse({ lhs, mode = mode }).id] then
-		opts = opts or {}
-		opts.silent = opts.silent ~= false
-		if opts.remap and not vim.g.vscode then
-			opts.remap = nil
-		end
-		vim.keymap.set(mode, lhs, rhs, opts)
-	end
-end
+-- local Util = require("core.util")
 
 -- better up/down
 -- map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -44,26 +30,26 @@ end
 -- map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- buffers
-map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
-map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+-- map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+-- map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+-- map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+-- map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+-- map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+-- map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- Clear search with <esc>
 -- map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
-map(
-	"n",
-	"<leader>ur",
-	"<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
-	{ desc = "Redraw / clear hlsearch / diff update" }
-)
+-- map(
+-- 	"n",
+-- 	"<leader>ur",
+-- 	"<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+-- 	{ desc = "Redraw / clear hlsearch / diff update" }
+-- )
 
-map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
+-- map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 -- map("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
@@ -79,7 +65,7 @@ map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
 -- map("i", ";", ";<c-g>u")
 
 -- save file
-map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+-- map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 --keywordprg
 -- map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })

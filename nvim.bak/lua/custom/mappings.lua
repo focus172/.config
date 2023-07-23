@@ -16,7 +16,6 @@ M.dap = {
 }
 
 M.trouble = {
-	plugin = true,
 	i = { ["<C-t>"] = { "<cmd> TroubleToggle<CR>", "Toggle Trouble" } },
 	n = {
 		["<leader>tx"] = { "<cmd> TroubleToggle<CR>", "Toggle Trouble" },
@@ -41,7 +40,6 @@ M.trouble = {
 }
 
 M.null_ls = {
-	plugin = true,
 	i = {
 		["<C-t>"] = { "<cmd> lua vim.lsp.buf.format()<CR>", "Format" },
 		["<C-space>"] = { "<cmd> lua vim.lsp.buf.hover()<CR>", "Hover" },

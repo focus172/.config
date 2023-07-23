@@ -8,6 +8,11 @@ return {
 				"Saecki/crates.nvim",
 				event = { "BufRead Cargo.toml" },
 				config = true,
+				-- config = function(_, opts)
+				--   local crates = require("crates")
+				--   crates.setup(opts)
+				--   crates.show()
+				-- end,
 			},
 		},
 		---@param opts cmp.ConfigSchema
