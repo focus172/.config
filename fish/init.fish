@@ -1,7 +1,8 @@
-# This file is ran on all fish shells but only does anything on login shells 
+# This file is ran on all fish shells but only does anything on once shells
 
 set -q __init_config_sourced; and exit
 set -gx __init_config_sourced 1
+
 
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 set -gx XDG_DATA_HOME "$HOME/.local/share"
@@ -12,12 +13,12 @@ export LESSHISTFILE=-
 set -gx RUSTUP_HOME "$XDG_DATA_HOME/rustup"
 set -gx CARGO_HOME "$XDG_DATA_HOME/cargo"
 set -gx GNUPGHOME "$XDG_DATA_HOME/gnupg"
+set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/pass"
 # export npm_config_prefix="$XDG_DATA_HOME/npm"
 
 export PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$HOME/.config/scripts"
-export PATH="$PATH:$HOME/.local/share/go/bin/"
+# export PATH="$PATH:$HOME/.local/share/go/bin/"
 
-set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/pass"
 
 if string match Darwin (uname) >/dev/null
     export XDG_DESKTOP_DIR="$HOME/Desktop"

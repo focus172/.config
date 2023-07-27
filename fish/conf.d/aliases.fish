@@ -1,34 +1,33 @@
 # Aliases
-# @Focus172
 # see abbr.fish for a more full picture of my aliases
 
 
 # Aliases
 alias e nvim
-alias exa 'exa '
+# alias exa 'exa '
 alias i imv
-alias it 'img2sixel'
-alias la 'exa -a'
-# alias land 'cat $HOME/.config/george.txt | cowsay -W 70'
-alias ll 'exa -l'
-alias lla 'exa -la'
-alias ls exa
-alias lt 'exa --tree'
-# alias sdn 'shutdown -h now'
+alias it img2sixel
 
 # file viewing
+alias ls exa
+alias la 'exa -a'
+alias ll 'exa -l'
+alias lla 'exa -la'
+alias lt 'exa --tree'
+
+# alias land 'cat $HOME/.config/george.txt | cowsay -W 70'
+# alias sdn 'shutdown -h now'
+
 # alias ls="exa --color=auto --group-directories-first" # --icons 
-# alias l="ls -l"
-# alias la="ls -a"
-# alias lla="ls -la"
 # alias lt="ls --tree --level=3"
 # alias l.='la | grep -E "^\."'
 
 # core utils
-alias cp="cp -ivr" 
+alias cp="cp -ivr"
 alias mv="mv -iv"
 alias mkd="mkdir -pv"
 alias bat="bat --color always --plain"
+alias bat="bat --color never --plain --pageing never"
 
 
 # yt-dl stuff
@@ -40,15 +39,8 @@ alias ytt="yt-dlp --embed-metadata -i --skip-download --write-thumbnail"
 alias ..="cd .."
 alias cdf="cd (fd -t d . | fzf)"
 alias wget="wget --hsts-file /dev/null"
-alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
+alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias vdiff="nvim -d"
-
-# ****** Packaging ******
-alias pacs="pacman -Slq | fzf -m --preview 'cat (pacman -Si {1}) (pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
-alias pars="paru -Slq | fzf -m --preview 'cat (paru -Si {1}) (paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
-alias pacr="pacman -Qqe | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
-alias cleanpac='sudo pacman -Rns (pacman -Qtdq)'
-
 
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
@@ -62,7 +54,7 @@ alias g="gix"
 # alias z="zathura"
 # alias o="$OPENER"
 alias m="mpv"
-alias n='newsboat' 
+alias n='newsboat'
 
 alias rm="rm -vI" # this cuases errors on busybox
 alias nmutt='neomutt'
@@ -147,7 +139,7 @@ alias pscpu='ps auxf | sort -nr -k 3'
 
 
 # Other program settings:
-export SUDO_ASKPASS="$HOME/.config/scripts/askpass"
+# export SUDO_ASKPASS="$HOME/.config/scripts/askpass"
 #export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 #export QT_QPA_PLATFORMTHEME="gtk2" # Have QT use gtk2 theme.
 
@@ -177,5 +169,3 @@ export SUDO_ASKPASS="$HOME/.config/scripts/askpass"
 #  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
 #  --color header:italic
 #  --header 'Press CTRL-Y to copy command into clipboard'"
-
-

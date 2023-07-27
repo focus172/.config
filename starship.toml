@@ -1,6 +1,29 @@
 add_newline = false
 format = "$nix_shell$directory$container$git_branch $git_status$rust$java$kotlin$zig$golang$cmd_duration$status$character"
 
+aws.disabled = true
+azure.disabled = true
+buf.disabled = true
+bun.disabled = true
+cmake.disabled = true
+cobol.disabled = true
+conda.disabled = true
+daml.disabled = true
+dart.disabled = true
+docker_context.disabled = true
+elm.disabled = true
+hg_branch.disabled = true
+julia.disabled = true
+java.disabled = true
+nodejs.disabled = true
+perl.disabled = true
+php.disabled = true
+python.disabled = true
+ruby.disabled = true
+scala.disabled = true
+shlvl.disabled = true
+swift.disabled = true
+
 [character]
 error_symbol = "[❯](bold red)"
 success_symbol = "[❯](bold purple)"
@@ -18,11 +41,12 @@ format = "[](fg:bright-black)[$path](bg:bright-black fg:white)[](fg:bright
 
 [directory.substitutions]
 ".config" = " "
-code = ""
-dev = "󱌢 "
-dox = " "
+code = " "
+cur = "󱌢 "
+dox = " "
 dwnl = " "
-music = " "
+dl = " "
+aud = " "
 pix = " "
 skool = "󰑴 "
 vid = " "
@@ -205,24 +229,19 @@ symbol = "✗"
 # #show_always = true
 # # style_user = "green bold"
 # # style_root = "red bold"
-#
-# #[hostname]
-# #ssh_only = true
+
+[hostname]
+ssh_only = true
+
 # #format = "[$hostname](bold blue) "
 # #disabled = false
 # # format = 'on [$hostname](bold purple) '
 # # trim_at = "."
-#
+
 # #[directory]
 # #disabled = true
-#
-# #  
-# # [directory]
-# # read_only = " "
-# # truncation_length = 10
-# # truncate_to_repo = true # truncates directory to root folder if in github repo
-# # style = "bold italic blue"
-#
+
+
 # # [cmd_duration]
 # # min_time = 4
 # # show_milliseconds = false
@@ -251,47 +270,11 @@ symbol = "✗"
 # # bisect = "bisect"	
 # # am = "am"	
 # # am_or_rebase = "am/rebase"
-#
+
 # [elixir]
 # symbol = " "
 # format = "[$symbol $version ](fg:#769ff0)"
-# [rust]
-# symbol = ""
-# format = '[$symbol $version ](fg:#769ff0)'
-# # bg:#212736
 # [haskell]
 # symbol = "λ "
-# [golang]
-# symbol = " "
-# [nim]
-# symbol = " "
-# [nix_shell]
-# symbol = " "
-# [package]
-# symbol = " "
-#
-# # get this dumb sit out of my face
-# aws.disabled = true
-# azure.disabled = true
-# buf.disabled = true
-# bun.disabled = true
-# cmake.disabled = true
-# cobol.disabled = true
-# conda.disabled = true
-# daml.disabled = true
-# dart.disabled = true
-# docker_context.disabled = true 
-# elm.disabled = true
-# hg_branch.disabled = true
-# julia.disabled = true
-# java.disabled = true
-# nodejs.disabled = true
-# perl.disabled = true
-# php.disabled = true
-# python.disabled = true
-# ruby.disabled = true
-# scala.disabled = true
-# shlvl.disbaled = true
-# # swift.disabled = true
-#
-#
+
+# get this dumb sit out of my face

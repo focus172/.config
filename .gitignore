@@ -4,12 +4,16 @@
 
 # Ignore secrets
 github-copilot
+
 # configstore
 git/.git-credentials
 
-# Too active
-tmux/plugins
-tmux/tpm
+# too much junk. TODO: go talk with upsteam about moving some to cache
+termusic
+
+# trying something new fow now
+mpd
+ncmpcpp
 
 nvim/lazy-lock.json
 
@@ -24,5 +28,5 @@ BraveSoftware
 discord
 pavucontrol.ini
 pulse
-
 rofi-junk
+

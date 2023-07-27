@@ -21,9 +21,7 @@ keybinds clear-defaults=true {
         bind "Ctrl l" { Clear; }
         bind "Ctrl s" { DumpScreen "/Users/evan/Pictures/screenshots/terminal"; }
 
-        bind "Ctrl f" {
-            LaunchOrFocusPlugin "zellij:strider" {}
-        }
+        // bind "Ctrl f" { LaunchOrFocusPlugin "zellij:strider" {} }
         // bind "Ctrl Space" { SwitchToMode "Tmux"; }
 
         // bind "Ctrl n" { SwitchToMode "Resize"; }

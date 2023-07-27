@@ -3,8 +3,8 @@ window:
     x: 0
     y: 0
   dynamic_padding: false
-  decorations: "buttonless"
-  startup_mode: "SimpleFullscreen"
+  decorations: "None"
+  startup_mode: "Maximized"
   opacity: 0.40
   title: Alacritty
 
