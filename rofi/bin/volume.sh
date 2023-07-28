@@ -7,7 +7,7 @@
 
 # Import Current Theme
 type="$HOME/.config/rofi/apps"
-style='style-1.rasi'
+style='style-4.rasi'
 theme="$type/$style"
 
 # Volume Info
@@ -46,9 +46,9 @@ fi
 prompt="S:$stext, M:$mtext"
 mesg="$mixer - Speaker: $speaker, Mic: $mic"
 
-list_col='1'
-list_row='5'
-win_width='400px'
+# list_col='1'
+# list_row='5'
+# win_width='400px'
 
 # list_col='1'
 # list_row='5'
@@ -57,10 +57,10 @@ win_width='400px'
 # list_col='1'
 # list_row='5'
 # win_width='520px'
-#
-# list_col='5'
-# list_row='1'
-# win_width='670px'
+
+list_col='5'
+list_row='1'
+win_width='670px'
 
 # Options
 layout=$(cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2)
