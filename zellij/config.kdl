@@ -8,7 +8,9 @@ keybinds clear-defaults=true {
 
         bind "Ctrl g" { SwitchToMode "Locked"; }
         bind "Ctrl q" { Detach; }
-        bind "Alt s" { DumpScreen "/Users/evan/Pictures/screenshots/terminal"; }
+
+        // this crashs zellij instantly: FUN!
+        //bind "Alt s" { DumpScreen "/home/focus/pix/screenshots/terminal/"; }
 
         // bind "Alt n" { NewPane; }
         // bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }

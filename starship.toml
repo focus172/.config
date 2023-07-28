@@ -33,7 +33,7 @@ format = "[$duration ](fg:yellow)"
 min_time = 1000
 
 [container]
-format = "[$symbol ](yellow dimmed)"
+format = "[$symbol ](yellow)"
 symbol = " 󰏖"
 
 [directory]
