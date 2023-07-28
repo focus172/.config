@@ -30,3 +30,7 @@ pavucontrol.ini
 pulse
 rofi-junk
 
+rofi/applets
+rofi/images
+rofi/powermenu
+rofi.bak

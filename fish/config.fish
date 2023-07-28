@@ -1,5 +1,7 @@
 source "$HOME/.config/fish/init.fish"
 
+# $HOME/.config/fish/tty.sh
+
 status --is-login; and begin
     # Login shell initialisation
     # set -g --export XDG_DATA_DIRS $HOME/.nix-profile/share:/usr/local/share/:/usr/share/
