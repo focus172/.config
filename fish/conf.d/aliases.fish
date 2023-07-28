@@ -27,7 +27,7 @@ alias cp="cp -ivr"
 alias mv="mv -iv"
 alias mkd="mkdir -pv"
 alias bat="bat --color always --plain"
-alias bat="bat --color never --plain --pageing never"
+alias cat="bat --plain --paging never"
 
 
 # yt-dl stuff

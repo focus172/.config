@@ -11,10 +11,10 @@
 configuration {
 	modi:                       "drun,run,filebrowser";
     show-icons:                 true;
-    display-drun:               "";
-    display-run:                "";
-    display-filebrowser:        "";
-    display-window:             "";
+    display-drun:               "APPS";
+    display-run:                "RUN";
+    display-filebrowser:        "FILES";
+    display-window:             "WINDOW";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }
@@ -22,29 +22,28 @@ configuration {
 /*****----- Global Properties -----*****/
 * {
     font:                        "JetBrains Mono Nerd Font 10";
-    background:                  #2D1B14;
-    background-alt:              #462D23;
+    background:                  #11092D;
+    background-alt:              #281657;
     foreground:                  #FFFFFF;
-    selected:                    #E25F3E;
-    active:                      #7B6C5B;
-    urgent:                      #934A1C;
+    selected:                    #DF5296;
+    active:                      #6E77FF;
+    urgent:                      #8E3596;
 }
 
 /*****----- Main Window -----*****/
 window {
     /* properties for window widget */
     transparency:                "real";
-    location:                    west;
-    anchor:                      west;
+    location:                    center;
+    anchor:                      center;
     fullscreen:                  false;
-    width:                       500px;
-    height:                      100%;
+    width:                       1000px;
     x-offset:                    0px;
     y-offset:                    0px;
 
     /* properties for all widgets */
     enabled:                     true;
-    border-radius:               0px;
+    border-radius:               15px;
     cursor:                      "default";
     background-color:            @background;
 }
@@ -54,65 +53,66 @@ mainbox {
     enabled:                     true;
     spacing:                     0px;
     background-color:            transparent;
+    orientation:                 horizontal;
+    children:                    [ "imagebox", "listbox" ];
+}
+
+imagebox {
+    padding:                     20px;
+    background-color:            transparent;
+    background-image:            url("~/.config/rofi/images/j.jpg", height);
     orientation:                 vertical;
-    children:                    [ "inputbar", "listbox", "mode-switcher" ];
+    children:                    [ "inputbar", "dummy", "mode-switcher" ];
 }
 
 listbox {
-    spacing:                     15px;
-    padding:                     15px;
+    spacing:                     20px;
+    padding:                     20px;
     background-color:            transparent;
     orientation:                 vertical;
     children:                    [ "message", "listview" ];
+}
+
+dummy {
+    background-color:            transparent;
 }
 
 /*****----- Inputbar -----*****/
 inputbar {
     enabled:                     true;
     spacing:                     10px;
-    padding:                     40px 40px 155px;
-    background-color:            transparent;
-    background-image:            url("~/.config/rofi/images/d.png", width);
+    padding:                     15px;
+    border-radius:               10px;
+    background-color:            @background-alt;
     text-color:                  @foreground;
-    orientation:                 horizontal;
     children:                    [ "textbox-prompt-colon", "entry" ];
 }
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
     str:                         "";
-    padding:                     12px 15px;
-    border-radius:               0px;
-    background-color:            @background-alt;
+    background-color:            inherit;
     text-color:                  inherit;
 }
 entry {
     enabled:                     true;
-    expand:                      true;
-    padding:                     12px 16px;
-    border-radius:               0px;
-    background-color:            @background-alt;
+    background-color:            inherit;
     text-color:                  inherit;
     cursor:                      text;
     placeholder:                 "Search";
     placeholder-color:           inherit;
 }
-dummy {
-    expand:                      true;
-    background-color:            transparent;
-}
 
 /*****----- Mode Switcher -----*****/
 mode-switcher{
     enabled:                     true;
-    padding:                     15px;
-    spacing:                     10px;
+    spacing:                     20px;
     background-color:            transparent;
     text-color:                  @foreground;
 }
 button {
-    padding:                     12px;
-    border-radius:               0px;
+    padding:                     15px;
+    border-radius:               10px;
     background-color:            @background-alt;
     text-color:                  inherit;
     cursor:                      pointer;
@@ -126,7 +126,7 @@ button selected {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       10;
+    lines:                       8;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -144,9 +144,9 @@ listview {
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    spacing:                     10px;
+    spacing:                     15px;
     padding:                     8px;
-    border-radius:               0px;
+    border-radius:               10px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
@@ -178,7 +178,7 @@ element selected.active {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        24px;
+    size:                        32px;
     cursor:                      inherit;
 }
 element-text {
@@ -194,16 +194,16 @@ message {
     background-color:            transparent;
 }
 textbox {
-    padding:                     12px;
-    border-radius:               0px;
+    padding:                     15px;
+    border-radius:               10px;
     background-color:            @background-alt;
     text-color:                  @foreground;
     vertical-align:              0.5;
     horizontal-align:            0.0;
 }
 error-message {
-    padding:                     12px;
-    border-radius:               0px;
+    padding:                     15px;
+    border-radius:               20px;
     background-color:            @background;
     text-color:                  @foreground;
 }

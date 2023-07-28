@@ -16,12 +16,19 @@
 	red: #eb6f92;
 	yel: #f6c177;
 
-	font: "Cartograph CF 12";
+	font: "Hack Nerd Font 16";
 
 	foreground: @fgd;
 	background: @bg;
+
+	background-alt: @yel;
+
 	active-background: @grn;
 	urgent-background: @red;
+
+    urgent: @pur;
+    active: @cmt;
+    selected: @cya;
 
 	selected-background: @active-background;
 	selected-urgent-background: @urgent-background;

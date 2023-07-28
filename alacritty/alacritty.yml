@@ -1,11 +1,11 @@
 window:
   padding:
-    x: 0
-    y: 0
+    x: 5
+    y: 5
   dynamic_padding: false
   decorations: "None"
   startup_mode: "Maximized"
-  opacity: 0.40
+  opacity: 0.80
   title: Alacritty
 
 env:
@@ -24,14 +24,17 @@ font:
   bold_italic:
     family: "Mononoki Nerd Font"
 
-  size: 22.0
+  size: 21.0 # small imperfections can appear on odd values
 
 import: 
   - "~/.config/alacritty/colors/rosepine.yml"
   # - "~/.config/alacritty/colors/gruvbox-dark.yml"
 
 cursor:
-  style: "Block"
+  style:
+    shape: "Block"
+    blinking: "On"
+  unfocused_hollow: false
 
 mouse:
   #double_click: { threshold: 300 }
