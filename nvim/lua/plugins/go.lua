@@ -1,3 +1,7 @@
+if true then
+	return {}
+end
+
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -89,25 +93,10 @@ return {
 			end
 		end,
 	},
-	{
-		"mfussenegger/nvim-dap",
-		optional = true,
-		dependencies = {
-			{
-				"mason.nvim",
-				opts = function(_, opts)
-					opts.ensure_installed = opts.ensure_installed or {}
-					vim.list_extend(
-						opts.ensure_installed,
-						{ "gomodifytags", "impl", "gofumpt", "goimports-reviser", "delve" }
-					)
-				end,
-			},
-		},
-	},
+	-- needed lsps
+	-- { "gomodifytags", "impl", "gofumpt", "goimports-reviser", "delve" }
 	{
 		"nvim-neotest/neotest",
-		optional = true,
 		dependencies = {
 			"nvim-neotest/neotest-go",
 		},

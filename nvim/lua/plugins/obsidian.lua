@@ -1,3 +1,7 @@
+if true then
+    return {}
+end
+
 return {
 	"epwalsh/obsidian.nvim",
 	event = { "BufReadPre " .. vim.fn.expand("$XDG_DOCUMENTS_DIR") .. "/dnd/**.md" },

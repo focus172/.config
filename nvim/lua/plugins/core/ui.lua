@@ -13,8 +13,8 @@ return {
 		},
 		opts = {
 			timeout = 3000,
-            -- needed to not fuck things up
-            background_colour = "#000000",
+			-- needed to not fuck things up
+			background_colour = "#000000",
 			max_height = function()
 				return math.floor(vim.o.lines * 0.75)
 			end,
@@ -174,7 +174,6 @@ return {
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {
-			-- char = "▏",
 			char = "│",
 			filetype_exclude = {
 				"help",
@@ -183,7 +182,6 @@ return {
 				"neo-tree",
 				"Trouble",
 				"lazy",
-				"mason",
 				"notify",
 				"toggleterm",
 				"lazyterm",
@@ -214,7 +212,6 @@ return {
 					"neo-tree",
 					"Trouble",
 					"lazy",
-					"mason",
 					"notify",
 					"toggleterm",
 					"lazyterm",

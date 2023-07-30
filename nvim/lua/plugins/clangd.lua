@@ -1,12 +1,12 @@
-return {
+if true then
+	return {}
+end
 
-	-- Add C/C++ to treesitter
+return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = function(_, opts)
-			if type(opts.ensure_installed) == "table" then
-				vim.list_extend(opts.ensure_installed, { "c", "cpp" })
-			end
+			vim.list_extend(opts.ensure_installed, { "c", "cpp" })
 		end,
 	},
 
@@ -87,15 +87,15 @@ return {
 					},
 				},
 			},
-			setup = {
-				clangd = function(_, opts)
-					local clangd_ext_opts = require("core.util").opts("clangd_extensions.nvim")
-					require("clangd_extensions").setup(
-						vim.tbl_deep_extend("force", clangd_ext_opts or {}, { server = opts })
-					)
-					return true
-				end,
-			},
+			-- setup = {
+			-- 	clangd = function(_, opts)
+			-- 		local clangd_ext_opts = require("core.util").opts("clangd_extensions.nvim")
+			-- 		require("clangd_extensions").setup(
+			-- 			vim.tbl_deep_extend("force", clangd_ext_opts or {}, { server = opts })
+			-- 		)
+			-- 		return true
+			-- 	end,
+			-- },
 		},
 	},
 
@@ -109,16 +109,6 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		optional = true,
-		dependencies = {
-			-- Ensure C/C++ debugger is installed
-			"williamboman/mason.nvim",
-			optional = true,
-			opts = function(_, opts)
-				if type(opts.ensure_installed) == "table" then
-					vim.list_extend(opts.ensure_installed, { "codelldb" })
-				end
-			end,
-		},
 		opts = function()
 			local dap = require("dap")
 			if not dap.adapters["codelldb"] then

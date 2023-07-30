@@ -6,14 +6,13 @@ return {
 		"folke/persistence.nvim",
 		event = "BufReadPre",
 		opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp" } },
-    -- stylua: ignore
-    keys = {
-      { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
-      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-      { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
-    },
+        -- stylua: ignore
+        keys = {
+            { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
+            { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
+            { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
+        },
 	},
-
 	{
 		"telescope.nvim",
 		dependencies = {
@@ -33,14 +32,14 @@ return {
 		},
 	},
 
-	-- {
-	-- 	"goolord/alpha-nvim",
-	-- 	optional = true,
-	-- 	opts = function(_, dashboard)
-	-- 		local button = dashboard.button("p", " " .. " Projects", ":Telescope projects <CR>")
-	-- 		button.opts.hl = "AlphaButtons"
-	-- 		button.opts.hl_shortcut = "AlphaShortcut"
-	-- 		table.insert(dashboard.section.buttons.val, 4, button)
-	-- 	end,
-	-- },
+	{
+		"goolord/alpha-nvim",
+		optional = true,
+		opts = function(_, dashboard)
+			local button = dashboard.button("p", " " .. " Projects", ":Telescope projects <CR>")
+			button.opts.hl = "AlphaButtons"
+			button.opts.hl_shortcut = "AlphaShortcut"
+			table.insert(dashboard.section.buttons.val, 4, button)
+		end,
+	},
 }

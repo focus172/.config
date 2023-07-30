@@ -8,6 +8,14 @@ lastlogin="$(last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7)"
 uptime="$(uptime | awk '{ print $3 }' | sed -e 's/,//g')"
 host=$(hostname)
 
+cmds="\
+X kill window,     hyprctl kill
+ lock hypr,       swaylock -eFfki ~/pic/wallpaper/nasaGrey.png
+ leave hypr,      pkill Hyprland 
+⏾ hibernate,       ${hib:-systemctl suspend-then-hibernate -i}
+ reboot,          ${reb:-sudo -A reboot}
+⏻ shutdown,        ${shut:-sudo -A shutdown -h now}"
+
 # Options
 hibernate=''
 shutdown=''

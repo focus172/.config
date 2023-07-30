@@ -1,5 +1,11 @@
 require("lazy").setup({
-	spec = { { import = "plugins" } }, -- sources all files in the plugins dir
+	spec = {
+        -- these need to be sourced first so they can be extended
+        { import = "plugins.core" },
+
+        -- sources all files in the plugins dir
+        { import = "plugins" }
+    },
 	defaults = { lazy = true },
 	install = { colorscheme = { "tokyonight" } },
 	ui = {
