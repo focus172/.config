@@ -16,6 +16,7 @@ status --is-interactive; and begin
         /opt/homebrew/bin/brew shellenv | source
     end
 
+    fish_vi_key_bindings
 
     eval (starship init fish)
 end
