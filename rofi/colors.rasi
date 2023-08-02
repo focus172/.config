@@ -2,8 +2,6 @@
  * https://raw.githubusercontent.com/rose-pine/rofi/main/rose-pine.rasi
  */
 
-@import "default"
-
 * {
 	bg: #191724;
 	cur: #1f1d2e;
@@ -16,7 +14,7 @@
 	red: #eb6f92;
 	yel: #f6c177;
 
-	font: "Hack Nerd Font 16";
+	font: "Hack Nerd Font 12";
 
 	foreground: @fgd;
 	background: @bg;
@@ -25,6 +23,7 @@
 
 	active-background: @grn;
 	urgent-background: @red;
+	urgent-foreground: @cya;
 
     urgent: @pur;
     active: @cmt;
@@ -122,6 +121,13 @@
 	spacing:    0;
 	text-color: @foreground;
 	padding:    1px ;
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     15px;
+    border-radius:               10px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    children:                    [ "textbox-prompt-colon", "entry" ];
 }
 #case-indicator {
 	spacing:    0;
@@ -139,8 +145,10 @@
 	children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 #textbox-prompt-colon {
+    enabled:                     true;
+    str:                         "";
+    background-color:            inherit;
 	expand:     false;
-	str:        ":";
 	margin:     0px 0.3em 0em 0em;
 	text-color: @grn;
 }

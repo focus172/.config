@@ -1,0 +1,112 @@
+//       
+{
+    "layer": "top",
+    "position": "top",
+    // "height": 16,
+    "spacing": 0,
+    "modules-left": [ "wlr/workspaces", "tray", "mpd"],
+    "modules-center": [ "clock" ],
+    "modules-right": ["custom/wallpaper", "battery", "pulseaudio", "backlight", "network"],
+    "wlr/workspaces": {
+        "format": "{name}",
+        "on-click": "activate"
+    },
+    "clock": {
+        "format": "{:%b %d %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    // allow: unused
+    "cpu": {
+        "format": " {usage}%  ",
+        "interval": 3
+    },
+    // allow: unused
+    "memory": {
+        "format": "{}%  ",
+        "interval": 3
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", "" ,""]
+        // "format-icons": [" ", " "]
+        // on-scroll-down : "${pkgs.light}/bin/light -U 5",
+        // on-scroll-up : "${pkgs.light}/bin/light -A 5",
+    },
+    "battery": {
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}%  ",
+        "format-icons": [" ", " ", " ", " ", " "],
+        "format-alt": "{time} {icon}",
+        "max-length": 25
+    },
+    "network": {
+        "format-wifi": " ",
+        // format-ethernet : "󰈀 ", #{ifname}: {ipaddr}/{cidr}",
+        // format-linked : "󱘖 {ifname} (No IP)",
+        "format-disconnected": "󱘖  Not connected",
+        "tooltip-format": "{essid} {ipaddr}/{cidr}",
+        "on-click": "alacritty -e nmtui"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": "{volume}% x ",
+        "format-muted": "{volume}% x",
+        "format-icons": {
+            "default": [ "", "", "" ],
+            "headphone": ""
+        },
+        "tooltip-format": "{desc}, {volume}%",
+        "on-click": "${pkgs.pamixer}/bin/pamixer -t"
+    },
+    "mpd": {
+        // - {album}
+        "format": "Connected {stateIcon}",
+        "format-disconnected": "Disconnected  ",
+        // "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped  ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            // "off": " ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": " 1"
+        },
+        "state-icons": {
+            "paused": " ",
+            "playing": " "
+        },
+        "tooltip-format": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}%  ",
+        // "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    // "keyboard-state": {
+    //     "numlock": true,
+    //     "capslock": true,
+    //     "format": "{name} {icon}",
+    //     "format-icons": {
+    //         "locked": "",
+    //         "unlocked": ""
+    //     }
+    // },
+    "custom/wallpaper":{
+        "format": "",
+        "on-click": "~/.config/scripts/cycle-wallpaper"
+    },
+    "tray": {
+        "icon-size": 23,
+        "spacing": 5
+    }
+}
