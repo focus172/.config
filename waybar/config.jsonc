@@ -90,7 +90,7 @@
         "format-bluetooth-muted": "{volume}% x ",
         "format-muted": "{volume}% x",
         "format-icons": {
-            "default": [ "", "", "" ],
+            "default": [ " ", " ", " " ],
             "headphone": " ",
             "headset": " ",
             "phone": " ",
@@ -139,6 +139,7 @@
             "playing": " "
         },
         "tooltip-format": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}%  ",
+        "on-click": "~/.config/scripts/music "
         // "tooltip-format-disconnected": "MPD (disconnected)"
     },
     "temperature": {

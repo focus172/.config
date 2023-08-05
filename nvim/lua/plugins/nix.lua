@@ -12,7 +12,7 @@ return {
             local nls = require("null-ls")
             return {
                 sources = {
-                    nls.builtins.diagnostics.alejandra,
+                    -- nls.builtins.diagnostics.alejandra,
                     nls.builtins.code_actions.statix
                 },
             }
