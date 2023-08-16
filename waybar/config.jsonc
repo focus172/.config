@@ -159,7 +159,8 @@
     // },
     "custom/wallpaper":{
         "format": "",
-        "on-click": "~/.config/scripts/cycle-wallpaper"
+        "on-click": "~/.config/scripts/cycle-wallpaper",
+        "tooltip": false
     },
     "custom/bluetooth": {
         "exec": "~/.config/waybar/bluetooth.sh",

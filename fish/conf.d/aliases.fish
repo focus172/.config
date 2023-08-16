@@ -26,8 +26,8 @@ alias lt 'exa --tree'
 alias cp="cp -ivr"
 alias mv="mv -iv"
 alias mkd="mkdir -pv"
+alias cat="bat --plain --paging never --color auto"
 alias bat="bat --color always --plain"
-alias cat="bat --plain --paging never"
 
 
 # yt-dl stuff

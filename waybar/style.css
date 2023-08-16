@@ -3,7 +3,10 @@
     border-radius: 2px;
     font-family: Hack Nerd Font, monospace;
     font-weight: bold;
-    font-size: 23px;
+    /*** on 1.0 screen scaling ***/
+    /* font-size: 23px; */
+    /*** on 1.5 screen scaling ***/
+    font-size: 13px;
     min-height: 0;
 }
 
