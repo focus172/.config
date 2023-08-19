@@ -19,7 +19,7 @@
 	foreground: @fgd;
 	background: @bg;
 
-	background-alt: @yel;
+	background-alt: @pur;
 
 	active-background: @grn;
 	urgent-background: @red;
@@ -27,7 +27,7 @@
 
     urgent: @pur;
     active: @cmt;
-    selected: @cya;
+    selected: @grn;
 
 	selected-background: @active-background;
 	selected-urgent-background: @urgent-background;

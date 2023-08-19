@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-require('lazy').setup('plugins')
+require('lazy').setup('plugins', {lazy = true})
 
 -- [[ Setting options ]]
 vim.g.netrw_liststyle = 3 -- Set netrw in tree view
@@ -39,11 +39,9 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 -- Set colorscheme
-vim.g.gruvbox_material_transparent_background = 2
+-- vim.g.gruvbox_material_transparent_background = 2
 vim.opt.termguicolors = true
-vim.cmd("colorscheme onedark")
--- vim.cmd("colorscheme gruvbox-material")
--- vim.cmd("colorscheme rose-pine-moon")
+vim.cmd("colorscheme rose-pine-moon")
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
@@ -134,6 +132,7 @@ vim.api.nvim_create_autocmd('User', {
     vim.opt.cmdheight = 0
   end,
 })
+
 vim.api.nvim_create_autocmd('BufUnload', {
   buffer = 0,
   desc = 'enable status, tabline and cmdline after alpha',
@@ -143,10 +142,6 @@ vim.api.nvim_create_autocmd('BufUnload', {
     vim.opt.cmdheight = 1
   end,
 })
-
-require('onedark').setup {
-  style = 'darker'
-}
 
 -- Setup autoclose.nvim
 require('autoclose').setup()

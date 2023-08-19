@@ -6,8 +6,8 @@
 ## Applets : Battery
 
 # Import Current Theme
-source "$HOME"/.config/rofi/applets/shared/theme.bash
-theme="$type/$style"
+style=`ls ~/.config/rofi/apps | shuf | head -n1`
+theme="$HOME/.config/rofi/apps/$style"
 
 # Battery Info
 battery="$(acpi -b | cut -d',' -f1 | cut -d':' -f1)"

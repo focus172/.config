@@ -6,9 +6,8 @@
 ## Applets : Quick Links
 
 # Import Current Theme
-type="$HOME/.config/rofi/apps"
-style='style-4.rasi'
-theme="$type/$style"
+style=`ls ~/.config/rofi/apps | shuf | head -n1`
+theme="$HOME/.config/rofi/apps/$style"
 
 # Theme Elements
 prompt='Quick Links'

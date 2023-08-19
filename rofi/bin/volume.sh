@@ -6,9 +6,8 @@
 ## Applets : Volume
 
 # Import Current Theme
-type="$HOME/.config/rofi/apps"
-style='style-4.rasi'
-theme="$type/$style"
+style=`ls ~/.config/rofi/apps | shuf | head -n1`
+theme="$HOME/.config/rofi/apps/$style"
 
 # Volume Info
 mixer="$(amixer info Master | grep 'Mixer name' | cut -d':' -f2 | tr -d \',' ')"

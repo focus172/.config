@@ -36,12 +36,13 @@ return {
     },
 
     -- themes
-    'navarasu/onedark.nvim',
-    'sainnhe/gruvbox-material',
-    'rose-pine/neovim',
+    {
+        'rose-pine/neovim',
+    },
 
     'lukas-reineke/indent-blankline.nvim', -- add indentation guides even on blank lines
     'm4xshen/autoclose.nvim',              -- auto close brackets
+
     {
         'numToStr/Comment.nvim',
         config = function()
@@ -62,11 +63,10 @@ return {
 
     {
         'mrjones2014/legendary.nvim',
-        -- sqlite is only needed if you want to use frecency sorting
         dependencies = {
-
-    'stevearc/dressing.nvim', -- dressing UI for legendary
-        'kkharji/sqlite.lua',
+            'stevearc/dressing.nvim', -- dressing UI for legendary
+            -- sqlite is only needed if you want to use frecency sorting
+            'kkharji/sqlite.lua',
         },
         config = function()
             require('legendary').setup({
@@ -81,7 +81,6 @@ return {
         end
     },
 
-    'nvim-treesitter/nvim-treesitter-context',
 
     -- 'ocaml/vim-ocaml',
     -- 'mg979/vim-visual-multi',
