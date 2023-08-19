@@ -37,7 +37,7 @@ format = "[$symbol ](yellow)"
 symbol = " 󰏖"
 
 [directory]
-format = "[](fg:bright-black)[$path](bg:bright-black fg:white)[](fg:bright-black)"
+format = "[](fg:green)[$path](bg:green fg:white)[](fg:green)"
 
 [directory.substitutions]
 ".config" = " "

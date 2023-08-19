@@ -6,20 +6,9 @@
 github-copilot
 git/.git-credentials
 
-# too much junk. TODO: go talk with upsteam about moving some to cache
-termusic
-
 # home managaed
-systemd
-gtk-4.0
-gtk-3.0
-dconf
 environment.d
 fontconfig
-
-# trying something new fow now
-mpd
-ncmpcpp
 
 nvim/lazy-lock.json
 
@@ -33,7 +22,6 @@ BraveSoftware
 discord
 pavucontrol.ini
 pulse
-rofi/images
 BetterDiscord
 Slippi Launcher
 SlippiOnline
@@ -41,3 +29,5 @@ SlippiPlayback
 dolphin-emu
 QtProject.conf
 deluge
+
+zsh/.zcompdumps
