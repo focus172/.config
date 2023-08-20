@@ -50,10 +50,8 @@ opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
-if vim.fn.has("nvim-0.9.0") == 1 then
-	opt.splitkeep = "screen"
-	opt.shortmess:append({ C = true })
-end
+opt.splitkeep = "screen"
+opt.shortmess:append({ C = true })
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
@@ -154,16 +152,13 @@ g["loaded_perl_provider"] = 0
 g["loaded_python3_provider"] = 0
 g["loaded_ruby_provider"] = 0
 --
--- -- add binaries installed by mason.nvim to path
--- vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath("data") .. "/mason/bin"
 --
--- --
--- -- { "  Find File", "Spc f f", "Telescope find_files" },
--- -- { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
--- -- { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
--- -- { "  Bookmarks", "Spc m a", "Telescope marks" },
--- -- { "  Themes", "Spc t h", "Telescope themes" },
--- -- { "  Mappings", "Spc c h", "NvCheatsheet" },
+-- { "  Find File", "Spc f f", "Telescope find_files" },
+-- { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
+-- { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
+-- { "  Bookmarks", "Spc m a", "Telescope marks" },
+-- { "  Themes", "Spc t h", "Telescope themes" },
+-- { "  Mappings", "Spc c h", "NvCheatsheet" },
 
 if vim.g.neovide then
 	local alpha = function()

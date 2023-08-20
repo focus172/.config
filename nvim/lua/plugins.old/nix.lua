@@ -8,13 +8,11 @@ return {
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
-        opts = function()
+        opts = function(_, opts)
             local nls = require("null-ls")
-            return {
-                sources = {
-                    -- nls.builtins.diagnostics.alejandra,
-                    nls.builtins.code_actions.statix
-                },
+            opts.sources = {
+                -- nls.builtins.diagnostics.alejandra,
+                nls.builtins.code_actions.statix
             }
         end,
     },

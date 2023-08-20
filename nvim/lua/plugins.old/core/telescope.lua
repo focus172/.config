@@ -67,14 +67,13 @@ return {
 				telescope.load_extension(ext)
 			end
 		end,
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+            "nvim-lua/plenary.nvim",
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "make",
+            },
+        },
 	},
 
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "make",
-		cond = function()
-			return vim.fn.executable("make") == 1
-		end,
-	},
 }

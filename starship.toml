@@ -15,6 +15,7 @@ elm.disabled = true
 hg_branch.disabled = true
 julia.disabled = true
 java.disabled = true
+nix_shell.disabled = false
 nodejs.disabled = true
 perl.disabled = true
 php.disabled = true
@@ -56,9 +57,6 @@ format = "[ $symbol $branch](fg:purple)(:$remote_branch)"
 style = ""
 symbol = ""
 
-[nix_shell]
-disabled = false
-format = "[](fg:white)[ ](bg:white fg:black)[](fg:white) "
 
 [status]
 disabled = false
@@ -152,11 +150,6 @@ symbol = "✗"
 # # home_symbol = "~"
 # # format = "[$path](bold cyan)"
 #
-# [directory.substitutions]
-# "dox" = " "
-# "dl" = " "
-# "music" = " "
-# "pix" = " "
 #
 # # [git_commit]
 # # commit_hash_length = 7
@@ -276,5 +269,3 @@ ssh_only = true
 # format = "[$symbol $version ](fg:#769ff0)"
 # [haskell]
 # symbol = "λ "
-
-# get this dumb sit out of my face

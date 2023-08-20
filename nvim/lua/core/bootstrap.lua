@@ -13,4 +13,4 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 -- delay notifications till vim.notify was replaced or after 500ms
-require("core.util").lazy_notify()
+-- require("core.util").lazy_notify()

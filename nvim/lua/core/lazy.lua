@@ -7,7 +7,7 @@ require("lazy").setup({
         { import = "plugins" }
     },
 	defaults = { lazy = true },
-	install = { colorscheme = { "tokyonight" } },
+	-- install = { colorscheme = { "tokyonight" } },
 	ui = {
 		icons = {
 			ft = "",

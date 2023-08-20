@@ -1,4 +1,3 @@
-
 -- Treesitter is a new parser generator tool that we can
 -- use in Neovim to power faster and more accurate
 -- syntax highlighting.
@@ -8,6 +7,7 @@ return {
         opts = {},
         event = { "BufReadPost", "BufNewFile" },
     },
+
     {
         "nvim-treesitter/nvim-treesitter",
         version = false, -- last release is way too old and doesn't work on Windows
@@ -29,7 +29,7 @@ return {
                 "html",
                 "markdown",
                 "markdown_inline",
-                -- 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vim', 'ocaml' 
+                -- 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vim', 'ocaml'
             },
             incremental_selection = {
                 enable = true,

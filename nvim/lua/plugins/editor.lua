@@ -2,11 +2,11 @@ return {
     {
         -- open a prompt for <leader> commands
         "folke/which-key.nvim",
+        keys = { '<leader>', 'g' },
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 1000
-            require("which-key").setup {
-            }
+            require("which-key").setup({})
         end
     },
 
@@ -35,30 +35,43 @@ return {
         end
     },
 
-    -- themes
+    'lukas-reineke/indent-blankline.nvim', -- add indentation guides even on blank lines
+
     {
-        'rose-pine/neovim',
+        'm4xshen/autoclose.nvim',              -- auto close brackets
+        event = "BufRead",
+        opts = {}
     },
 
-    'lukas-reineke/indent-blankline.nvim', -- add indentation guides even on blank lines
-    'm4xshen/autoclose.nvim',              -- auto close brackets
-
+    -- Commenting with the push of -a- two buttons
     {
         'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup {
-                -- normal mode
-                toggler = {
-                    line = '<leader>c',
-                    block = '<leader>bc',
-                },
-                -- visual mode
-                opleader = {
-                    line = '<leader>c',
-                    block = '<leader>bc',
-                }
-            }
-        end
+        keys = {
+            {'<leader>cl', desc = "Toggles [C]omment for [L]ine"},
+            {'<leader>cb', desc = "Toggles [C]omment [B]lock"},
+        },
+
+        opts = {
+            -- operates on current line
+            toggler = {
+                line = '<leader>cl',
+                block = 'leader>cb',
+            },
+            -- accepts any vim motion as selection operator
+            opleader = {
+                line = 'gc',
+                block = 'gcb',
+            },
+            -- extra = {
+            --     above = false,
+            --     below = false,
+            --     eol = false,
+            -- },
+            mappings = {
+                basic = true,
+                extra = false,
+            },
+        },
     },
 
     {
@@ -80,7 +93,6 @@ return {
             })
         end
     },
-
 
     -- 'ocaml/vim-ocaml',
     -- 'mg979/vim-visual-multi',
