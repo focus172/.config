@@ -49,7 +49,7 @@ return {
                   augroup END
                 ]])
 
-                        require("plugins.core.lsp.keymaps").on_attach(client, buffer)
+                        -- require("plugins.core.lsp.keymaps").on_attach(client, buffer)
                     end,
                 },
             }

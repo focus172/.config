@@ -38,7 +38,7 @@ return {
     'lukas-reineke/indent-blankline.nvim', -- add indentation guides even on blank lines
 
     {
-        'm4xshen/autoclose.nvim',              -- auto close brackets
+        'm4xshen/autoclose.nvim', -- auto close brackets
         event = "BufRead",
         opts = {}
     },
@@ -46,21 +46,22 @@ return {
     -- Commenting with the push of -a- two buttons
     {
         'numToStr/Comment.nvim',
-        keys = {
-            {'<leader>cl', desc = "Toggles [C]omment for [L]ine"},
-            {'<leader>cb', desc = "Toggles [C]omment [B]lock"},
-        },
+        -- keys = {
+        -- { 'gc',  desc = "Toggles [C]omment for Line" },
+        -- { 'gbc', desc = "Toggles [C]omment [B]lock" },
+        -- },
+        lazy = false,
 
         opts = {
             -- operates on current line
             toggler = {
-                line = '<leader>cl',
-                block = 'leader>cb',
+                line = 'gc',
+                block = 'gbc',
             },
             -- accepts any vim motion as selection operator
             opleader = {
                 line = 'gc',
-                block = 'gcb',
+                block = 'gbc',
             },
             -- extra = {
             --     above = false,

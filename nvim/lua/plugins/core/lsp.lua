@@ -4,40 +4,28 @@ return {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            { "folke/neoconf.nvim",  cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
+            { "folke/neoconf.nvim",  cmd = "Neoconf", config = false,      dependencies = { "nvim-lspconfig" } },
             { "folke/neodev.nvim",   opts = {} },
             { "hrsh7th/cmp-nvim-lsp" },
+
+            { "j-hui/fidget.nvim",   tag = "legacy",  event = "LspAttach", opts = {} }
         },
         opts = {
             -- options for vim.diagnostic.config()
-            -- diagnostics = {
-            --     underline = true,
-            --     update_in_insert = false,
-            --     virtual_text = {
-            --         spacing = 4,
-            --         source = "if_many",
-            --         prefix = "●",
-            --     },
-            --     severity_sort = true,
-            -- },
-            -- -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
-            -- -- Be aware that you also will need to properly configure your LSP server to
-            -- -- provide the inlay hints.
-            -- inlay_hints = {
-            --     enabled = false,
-            -- },
-            -- -- Automatically format on save
-            -- autoformat = true,
-            -- -- Enable this to show formatters used in a notification
-            -- -- Useful for debugging formatter issues
-            -- format_notify = false,
-            -- -- options for vim.lsp.buf.format
-            -- -- `bufnr` and `filter` is handled by the LazyVim formatter,
-            -- -- but can be also overridden when specified
-            -- format = {
-            --     formatting_options = nil,
-            --     timeout_ms = nil,
-            -- },
+            diagnostics = {
+                underline = true,
+                update_in_insert = false,
+                virtual_text = {
+                    spacing = 4,
+                    source = "if_many",
+                    prefix = "●",
+                },
+                severity_sort = true,
+            },
+            -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
+            -- Be aware that you also will need to properly configure your LSP server to
+            -- provide the inlay hints.
+            inlay_hints = { enabled = false },
             servers = {},
         },
         config = function(_, opts)
@@ -45,21 +33,39 @@ return {
                 require("core.util").load_mappings("lspconf")
 
                 -- Create a command `:Format` local to the LSP buffer
-                -- vim.api.nvim_buf_create_user_command(
-                -- bufnr,
-                -- "Format",
-                -- function(_) vim.lsp.buf.format() end,
-                -- { desc = "Format current buffer with LSP" }
-                -- )
+                vim.api.nvim_buf_create_user_command(
+                    buffer,
+                    "Format",
+                    function(_) vim.lsp.buf.format() end,
+                    { desc = "Format current buffer with LSP" }
+                )
 
-                -- local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
-                -- if opts.inlay_hints.enabled and inlay_hint then
-                --         if client.server_capabilities.inlayHintProvider then
-                --             inlay_hint(buffer, true)
-                --         end
-                -- end
+                local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
+                if opts.inlay_hints.enabled and inlay_hint then
+                    if client.server_capabilities.inlayHintProvider then
+                        inlay_hint(buffer, true)
+                    end
+                end
 
-                -- require("plugins.core.lsp.keymaps").on_attach(client, buffer)
+                local Keys = require("lazy.core.handler.keys")
+                local function add(keymaps)
+                    for _, keys in pairs(keymaps) do
+                        local kopts = Keys.opts(keys)
+                        kopts.silent = true
+                        kopts.buffer = buffer
+                        vim.keymap.set(keys.mode or "n", keys[1], keys[2], kopts)
+                    end
+                end
+
+
+                for _, keymap in ipairs(require("keymaps.lsp")) do
+                    add(keymap)
+                end
+
+                local maps = opts.servers[client.name] and opts.servers[client.name].keys or {}
+                for _, keymap in ipairs(maps) do
+                    add(keymap)
+                end
             end
 
             -- Setup neovim lua configuration
@@ -84,20 +90,6 @@ return {
                 require("lspconfig")[server].setup(server_opts)
             end
 
-            -- 	require("lspconfig").rust_analyzer.setup({
-            -- 		capabilities = capabilities,
-            -- 		on_attach = on_attach,
-            -- 	})
-            --
-            -- 	require("lspconfig").lua_ls.setup({
-            -- 		capabilities = capabilities,
-            -- 		on_attach = on_attach,
-            -- 		Lua = {
-            -- 			workspace = { checkThirdParty = false },
-            -- 			telemetry = { enable = false },
-            -- 		},
-            -- 	})
-
             -- local register_capability = vim.lsp.handlers["client/registerCapability"]
 
             -- vim.lsp.handlers["client/registerCapability"] = function(err, res, ctx)
@@ -114,39 +106,6 @@ return {
             -- name = "DiagnosticSign" .. name
             -- vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
             -- end
-        end,
-    },
-
-    -- formatters
-    {
-        "jose-elias-alvarez/null-ls.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        opts = function()
-            local nls = require("null-ls")
-            return {
-                root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
-                sources = {
-                    -- nls.builtins.formatting.fish_indent,
-                    -- nls.builtins.diagnostics.fish,
-                    -- nls.builtins.formatting.stylua,
-                    -- nls.builtins.formatting.shfmt,
-                    -- nls.builtins.diagnostics.flake8,
-                },
-            }
-        end,
-        config = function(opts)
-            -- auto format on save
-            -- vim.api.nvim_create_autocmd("BufWritePre", {
-            -- group = vim.api.nvim_create_augroup("NvimFormater", {}),
-            -- callback = function()
-            -- local buf = vim.api.nvim_get_current_buf()
-            -- vim.lsp.buf.format({
-            -- bufnr = buf,
-            -- })
-            -- end,
-            -- })
-
-            require('null-ls').setup(opts)
         end,
     },
 }
