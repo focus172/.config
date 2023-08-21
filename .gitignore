@@ -30,13 +30,12 @@ dolphin-emu
 QtProject.conf
 deluge
 
-zsh/.zcompdumps
 systemd
-zsh/.zcompdump
-mpd
+zsh/.zcompdump*
 gtk-3.0
 gtk-4.0
-ncmpcpp
 rofi/images
 termusic
 dconf
+mpd/playlists
+ncmpcpp

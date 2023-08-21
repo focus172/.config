@@ -12,8 +12,9 @@ bind-key k up
 # bind-key K prev-feed articlelist
 bind-key G end
 bind-key g home
-# bind-key d pagedown
-# bind-key u pageup
+bind-key d pagedown
+bind-key u pageup
+
 bind-key l open
 bind-key h quit
 bind-key a toggle-article-read

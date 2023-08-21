@@ -1,76 +1,73 @@
-https://lukesmith.xyz/rss.xml
-https://lindypress.net/rss
-https://notrelated.xyz/rss
-https://landchad.net/rss.xml
-https://based.cooking/index.xml
-https://artixlinux.org/feed.php "tech"
-https://www.archlinux.org/feeds/news/ "tech"
-https://asahilinux.org/blog/index.xml
+# https://lukesmith.xyz/rss.xml
+# https://lindypress.net/rss
+# https://notrelated.xyz/rss
+# https://landchad.net/rss.xml
+# https://based.cooking/index.xml
 
 blogs
-https://log.pyratebeard.net/rss.xml "~pyratebeard" "blogs"
-http://feeds.xero.nu/rss/blog/newest "~xero" "blogs"
-https://venam.nixers.net/blog/feed.xml "~venam" "blogs"
-https://lonesysadmin.net/feed/ "~lonesysadmin" "blogs"
-http://comicsbulletin.com/feed/ "~comics bulletin" "blogs" "comics"
-http://www.previewsworld.com/Rss/1/1/71 "~previews world" "blogs" "comics"
-https://www.comicsbeat.com/feed/ "~the beat" "blogs" "comics"
-https://www.digitalrights.ie/feed/ "~digital rights ireland" "blogs"
+https://www.strongtowns.org/journal?format=rss "~strong towns" "blogs"
+# https://log.pyratebeard.net/rss.xml "~pyratebeard" "blogs"
+# http://feeds.xero.nu/rss/blog/newest "~xero" "blogs"
+# https://venam.nixers.net/blog/feed.xml "~venam" "blogs"
+# https://lonesysadmin.net/feed/ "~lonesysadmin" "blogs"
+# http://comicsbulletin.com/feed/ "~comics bulletin" "blogs" "comics"
+# http://www.previewsworld.com/Rss/1/1/71 "~previews world" "blogs" "comics"
+# https://www.comicsbeat.com/feed/ "~the beat" "blogs" "comics"
+# https://www.digitalrights.ie/feed/ "~digital rights ireland" "blogs"
 
 newsletters
 https://www.archlinux.org/feeds/news/ "~arch" "newsletters"
-https://pluralistic.net/feed/ "~cory - pluralistic" "newsletters"
-https://fedoramagazine.org/feed/ "~fedora magazine" "newsletters"
-https://itsfoss.com/feed/ "~it's foss" "newsletters"
-http://feeds.feedburner.com/comiclistfeed "~comic list - this week" "newsletters" "comics"
-http://feeds.feedburner.com/comiclistnextweek "~comic list - next week" "newsletters" "comics"
-http://www.metalstorm.net/rss/news.xml "~metalstorm" "newsletters" "music"
+https://asahilinux.org/blog/index.xml "~asahi" "newsletters"
+# https://pluralistic.net/feed/ "~cory - pluralistic" "newsletters"
+# https://fedoramagazine.org/feed/ "~fedora magazine" "newsletters"
+# https://itsfoss.com/feed/ "~it's foss" "newsletters"
+# http://feeds.feedburner.com/comiclistfeed "~comic list - this week" "newsletters" "comics"
+# http://feeds.feedburner.com/comiclistnextweek "~comic list - next week" "newsletters" "comics"
+# http://www.metalstorm.net/rss/news.xml "~metalstorm" "newsletters" "music"
 
 podcasts
-http://www.2600.com/oth-broadband.xml "~off the hook" "podcasts"
-http://feeds.feedburner.com/doctorow_podcast "~cory doctorow" "podcasts"
-http://feeds.soundcloud.com/users/soundcloud:users:261098918/sounds.rss "~priv, sec, osint" "podcasts"
-https://feeds.feedburner.com/xplainthexmen "~x-plain the x-men" "podcasts"
-https://myhauntedhead.libsyn.com/rss "~my haunted head" "podcasts"
-https://bigpunchstudios.squarespace.com/jlacast?format=rss "~the jlacast" "podcasts" "comics"
-https://latenightlinux.com/feed/all "~late night linux" "podcasts"
-https://destinationlinux.org/feed/mp3 "~destination linux" "podcasts"
-https://www.smashingsecurity.com/rss "~smashing security" "podcasts"
+# http://www.2600.com/oth-broadband.xml "~off the hook" "podcasts"
+# http://feeds.feedburner.com/doctorow_podcast "~cory doctorow" "podcasts"
+# http://feeds.soundcloud.com/users/soundcloud:users:261098918/sounds.rss "~priv, sec, osint" "podcasts"
+# https://feeds.feedburner.com/xplainthexmen "~x-plain the x-men" "podcasts"
+# https://myhauntedhead.libsyn.com/rss "~my haunted head" "podcasts"
+# https://bigpunchstudios.squarespace.com/jlacast?format=rss "~the jlacast" "podcasts" "comics"
+# https://latenightlinux.com/feed/all "~late night linux" "podcasts"
+# https://destinationlinux.org/feed/mp3 "~destination linux" "podcasts"
+# https://www.smashingsecurity.com/rss "~smashing security" "podcasts"
 
 videos
-https://www.youtube.com/feeds/videos.xml?channel_id=UCsvn_Po0SmunchJYOWpOxMg "youtube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCGca03sbLq7OUnXMdvRHyBQ "youtube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCmeds0MLhjfkjD_5acPnFlQ "youtube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCnv3-4xjza4xO9y6_rqKNQA "youtube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw "youtube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCXa6sE6cKXcQ97vI0Emn1XA "youtube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCjSEJkpGbcZhvo0lr-44X_w "youtube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "youtube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "youtube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ "youtube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "youtube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "youtube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCcaTUtGzOiS4cqrgtcsHYWg "youtube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCylGUf9BvQooEFjgdNudoQg "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCsvn_Po0SmunchJYOWpOxMg "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCGca03sbLq7OUnXMdvRHyBQ "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCmeds0MLhjfkjD_5acPnFlQ "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCnv3-4xjza4xO9y6_rqKNQA "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCXa6sE6cKXcQ97vI0Emn1XA "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCjSEJkpGbcZhvo0lr-44X_w "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCcaTUtGzOiS4cqrgtcsHYWg "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCylGUf9BvQooEFjgdNudoQg "youtube"
 
 music
-https://media.defcon.org/DEF%20CON%20rss/defcon-18-music.rss "~defcon" "music"
-http://www.hrhmag.com/category/event-news/hrh-vikings/feed "~hrh vikings" "music"
+# https://media.defcon.org/DEF%20CON%20rss/defcon-18-music.rss "~defcon" "music"
+# http://www.hrhmag.com/category/event-news/hrh-vikings/feed "~hrh vikings" "music"
 
 code
 https://www.kernel.org/feeds/kdist.xml "~kernel releases" "code"
-https://code.briarproject.org/briar/briar/-/tags?format=atom "~briar - tags" "code"
 
 security
-https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss.xml "~nvd all" "security"
-https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml "~nvd analysed" "security"
+# https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss.xml "~nvd all" "security"
+# https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml "~nvd analysed" "security"
 
 news
-https://soylentnews.org/index.rss "~soylent news" "news headlines"
-https://www.phoronix.com/rss.php "~phoronix" "news tech"
+# https://soylentnews.org/index.rss "~soylent news" "news headlines"
+# https://www.phoronix.com/rss.php "~phoronix" "news tech"
 
-#lazybear
-# ## bloggers
+# bloggers
 #https://andregarzia.com/feeds/all.atom.xml
 #https://amycastor.com/feed/
 #https://fury.hk/feed.xml
@@ -132,7 +129,7 @@ https://www.phoronix.com/rss.php "~phoronix" "news tech"
 #https://gomakethings.com/feed/index.xml
 #https://elswr.co/feed/
 #https://ashfurrow.com/feed.xml
-#
+
 ### Linux - system - foss
 #https://lwn.net/headlines/newrss
 #https://adamdesk.com/feed/blog.xml
@@ -142,15 +139,15 @@ https://www.phoronix.com/rss.php "~phoronix" "news tech"
 #https://planet.debian.org/rss20.xml
 #http://ithare.com/feed/
 #https://unixism.net/feed/
-#
+
 ### Vim - tmux
 #https://ctoomey.com/atom.xml
-#
+
 ### Rust related
 #https://this-week-in-rust.org/rss.xml
 #https://feeds.feedburner.com/steveklabnik/words
 #https://fasterthanli.me/index.xml
-#
+
 ### Photography
 #https://fujixweekly.com/feed/
 #https://www.japancamerahunter.com/feed
@@ -164,10 +161,10 @@ https://www.phoronix.com/rss.php "~phoronix" "news tech"
 #https://gregorymignard.com/index.xml
 #https://readframes.com/feed/
 #http://www.peterdrastrup.com/personal?format=rss
-#
+
 ### Art
 #https://saulsteinbergfoundation.org/feed/
-#
+
 ## Infosec
 #https://www.schneier.com/feed/
 #https://www.welivesecurity.com/feed
@@ -177,20 +174,20 @@ https://www.phoronix.com/rss.php "~phoronix" "news tech"
 #https://www.nist.gov/news-events/nist-rss-feeds
 #https://www.cisa.gov/uscert/ncas/all.xml
 #https://www.lightbluetouchpaper.org/feed
-#
+
 ### Privacy
 #https://ar.al/index.xml
 #https://edwardsnowden.substack.com/feed/
 #https://www.icij.org/feed
-#
+
 ### Literary
 #https://www.karlcalagan.com/reads?format=rss
 #https://lithub.com/feed/
-#
+
 ### Web design
 #https://alistapart.com/main/feed/
 #https://css-tricks.com/feed/
-#
+
 ### Doodling - drawing - comics
 #https://feeds.feedburner.com/DoodlersAnonymous
 #https://dilbert.com/feed.rss
