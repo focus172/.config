@@ -1,10 +1,5 @@
 # Aliases
 
-source '/usr/share/zsh-antidote/antidote.zsh'
-zsh_plugins=${ZDOTDIR}/zsh_plugins
-antidote load ${zsh_plugins}.txt
-antidote bundle <${zsh_plugins}.txt >${zsh_plugins}.zsh
-
 # letters
 alias e=nvim
 alias i=imv
@@ -31,7 +26,7 @@ alias mv="mv -iv"
 alias rm="rm -vI" # this cuases errors on busybox
 alias mkd="mkdir -pv"
 
-alias cat="bat --plain --paging never"
+alias cat="bat --plain --paging never --color auto"
 alias bat="bat --color always"
 
 
@@ -98,7 +93,8 @@ bindkey -s '^f' '^ucdf\n'
 ### CTRL-T - Paste the selected file path(s) into the command line
 ### ALT-C - cd into the selected directory (DOESNT WORK)
 ### CTRL-R - Paste the selected command from history into the command line
-source /usr/share/fzf/key-bindings.zsh
+# DOESNT WORK ON NIX
+# source /usr/share/fzf/key-bindings.zsh
 
 # Lang
 # export LANG=en_US.UTF-8
@@ -134,3 +130,27 @@ export FZF_CTRL_R_OPTS="
   --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
+
+# autoload -Uz compinit && compinit
+
+# history
+alias history="history 1"
+# HISTFILE=~/.zsh_history
+# HISTSIZE=100000000000
+# SAVEHIST=100000000000
+# setopt SHARE_HISTORY
+# setopt histignoredups
+
+# aliases
+alias uni="cd $HOME/skool/13/"
+
+
+# # opam configuration
+# [[ ! -r $HOME/.opam/opam-init/init.zsh ]] || source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+# alias gaa="git add --all"
+# alias gcm="git commit -m"
+# alias gp="git push"
+
+# alias to update rio term
+# alias rio-update="curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/raphamorim/rio/main/scripts/install.sh | bash"

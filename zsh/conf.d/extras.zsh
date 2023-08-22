@@ -1,11 +1,9 @@
 bindkey -v
 KEYTIMEOUT=1
 
-# typeset -A key
-
+### colors
+# autoload -U colors
 # colors
-autoload -U colors
-colors
 
 # autoload run-help
 
@@ -23,7 +21,7 @@ colors
 # READNULLCMD=less
 # REPORTTIME=15
 # SAVEHIST=30000000
-TIMEFMT='%J  %*U user %*S system %P cpu (%*E wasted time).'
+# TIMEFMT='%J  %*U user %*S system %P cpu (%*E wasted time).'
 # watch=(all)
 # WATCHFMT='%n %a %l from %m at %t.'
 # WORDCHARS="${WORDCHARS:s#/#}"
@@ -107,6 +105,3 @@ setopt notify
 
 # load starship
 eval "$(starship init zsh)"
-
-source "$ZDOTDIR/user.sh"
-source "$ZDOTDIR/pref.sh"
