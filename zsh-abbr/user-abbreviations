@@ -1,0 +1,3 @@
+abbr ".."="cd .."
+abbr "c"="clear"
+abbr "gu"="gitui"

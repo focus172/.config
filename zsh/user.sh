@@ -1,4 +1,4 @@
-# This file is ran on all fish shells but only does anything on once shells
+# TODO: have this only ran once on shell init
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -32,7 +32,7 @@ export XDG_PUBLICSHARE_DIR="$HOME"
 export EDITOR="nvim"
 export READER="zathura"
 export VISUAL="nvim"
-# export TERMINAL="foot"
+export TERMINAL="alacritty"
 export BROWSER="brave"
 export VIDEO="mpv"
 export IMAGE="imv"
@@ -41,4 +41,5 @@ export OPENER="handlr open"
 export WM="Hyprland"
 # export MANPAGER='less'
 # export XDG_CURRENT_DESKTOP='Hyprland'
-export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..|clear)"
+

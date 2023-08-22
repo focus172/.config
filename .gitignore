@@ -29,13 +29,14 @@ SlippiPlayback
 dolphin-emu
 QtProject.conf
 deluge
-
 systemd
-zsh/.zcompdump*
 gtk-3.0
 gtk-4.0
 rofi/images
 termusic
 dconf
 mpd/playlists
+
+zsh/zsh_plugins.zsh
+zsh/.zcompdump
 ncmpcpp
