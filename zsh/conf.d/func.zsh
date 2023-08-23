@@ -13,6 +13,23 @@ mcd () {
 #     ls
 # }
 
+### Openrc func
+
+rcstop() {
+    echo "rc-service $1 stop"
+    rc-service $1 stop
+}
+
+rcstart() {
+    echo "rc-service $1 start"
+    rc-service $1 start
+}
+
+rcrestart() {
+    echo "rc-service $1 restart"
+    rc-service $1 restart
+}
+
 ### Changing dir with nav functions
 
 lfcd () {

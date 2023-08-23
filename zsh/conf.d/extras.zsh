@@ -104,4 +104,8 @@ _comp_options+=(globdots)
 setopt notify
 
 # load starship
-eval "$(starship init zsh)"
+if [ $(tty) != "/dev/tty*" ]; then
+    eval "$(starship init zsh)"
+else
+    PROMPT="# "
+fi
