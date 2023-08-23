@@ -1,5 +1,5 @@
 bindkey -v
-KEYTIMEOUT=1
+export KEYTIMEOUT=1
 
 ### colors
 # autoload -U colors
@@ -27,42 +27,42 @@ KEYTIMEOUT=1
 # WORDCHARS="${WORDCHARS:s#/#}"
 
 # zsh options
-setopt \
-  auto_name_dirs \
-  auto_pushd \
-  auto_resume \
-  no_beep \
-  cdable_vars \
-  csh_null_glob \
-  extended_glob \
-  extended_history \
-  no_glob_dots \
-  hist_allow_clobber \
-  hist_find_no_dups \
-  no_hist_ignore_all_dups \
-  hist_ignore_dups \
-  hist_reduce_blanks \
-  no_hist_save_no_dups \
-  inc_append_history \
-  no_list_ambiguous \
-  no_list_beep \
-  long_list_jobs \
-  magic_equal_subst \
-  no_notify \
-  prompt_subst \
-  pushd_minus \
-  pushd_silent \
-  pushd_to_home \
-  rc_quotes \
-  no_share_history \
-  shwordsplit \
-  transient_rprompt \
-  hist_ignore_space \
-  no_equals
+setopt auto_pushd
+setopt pushd_silent
+setopt PUSHD_IGNORE_DUPS
+#   auto_name_dirs \
+#   auto_resume \
+#   no_beep \
+#   cdable_vars \
+#   csh_null_glob \
+#   extended_glob \
+#   extended_history \
+#   no_glob_dots \
+#   hist_allow_clobber \
+#   hist_find_no_dups \
+#   no_hist_ignore_all_dups \
+#   hist_ignore_dups \
+#   hist_reduce_blanks \
+setopt hist_save_no_dups
+#   inc_append_history \
+#   no_list_ambiguous \
+#   no_list_beep \
+#   long_list_jobs \
+#   magic_equal_subst \
+#   no_notify \
+#   prompt_subst \
+#   pushd_minus \
+#   pushd_to_home \
+#   rc_quotes \
+#   no_share_history \
+#   shwordsplit \
+#   transient_rprompt \
+#   hist_ignore_space \
+#   no_equals
 
-  # auto_cd \
-  # correct \
-  # correct_all \
+alias d='dirs -v'
+# for index ({1..4}) alias "$index"="cd +${index}"; unset index
+
   
 # modules
 # autoload -U url-quote-magic bracketed-paste-magic
@@ -79,7 +79,7 @@ setopt \
 
 # tab-completion
 autoload -Uz compinit
-compinit -i -d "${ZDOTDIR}/.zcompdump"
+compinit -i -d "${XDG_DATA_HOME}/zsh/zcompdump"
 
 # zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # zstyle ':completion::complete:cd::' tag-order '! users' -
@@ -99,13 +99,13 @@ zstyle ':completion:*:kill:*:processes' command "ps x"
 # zstyle ':completion:*' cache-path ~/.zsh/cache
 # zstyle ':completion:*' special-dirs true
 
-_comp_options+=(globdots)
+# _comp_options+=(globdots)
 
 setopt notify
 
 # load starship
-if [ $(tty) != "/dev/tty*" ]; then
+# if [ $(tty) != "/dev/tty*" ]; then
     eval "$(starship init zsh)"
-else
-    PROMPT="# "
-fi
+# else
+#     PROMPT="# "
+# fi

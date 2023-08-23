@@ -36,9 +36,6 @@ rofi/images
 termusic
 dconf
 mpd/playlists
-
-zsh/zsh_plugins.zsh
-zsh/.zcompdump
 ncmpcpp
 zsh/.antidote/
 zsh/plugins.zsh

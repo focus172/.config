@@ -34,6 +34,7 @@ return {
         "simrat39/rust-tools.nvim",
         ft = "rust",
         opts = function()
+            -- local codelldb_path = "/usr/bin/rust-lldb"
             -- local adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
             return {
                 -- dap = {
@@ -63,9 +64,9 @@ return {
             servers = {
                 rust_analyzer = {
                     keys = {
-                        --     { "K",          "<cmd>RustHoverActions<cr>", desc = "Hover Actions (Rust)" },
-                        --     { "<leader>ca", "<cmd>RustCodeAction<cr>",   desc = "Code Action (Rust)" },
-                        --     { "<leader>dr", "<cmd>RustDebuggables<cr>",  desc = "Run Debuggables (Rust)" },
+                        { "K",          "<cmd>RustHoverActions<cr>", desc = "Hover Actions (Rust)" },
+                        { "<leader>ca", "<cmd>RustCodeAction<cr>",   desc = "Code Action (Rust)" },
+                        { "<leader>dr", "<cmd>RustDebuggables<cr>",  desc = "Run Debuggables (Rust)" },
                     },
                     settings = {
                         ["rust-analyzer"] = {
@@ -116,6 +117,7 @@ return {
             },
         },
     },
+
     {
         "nvim-neotest/neotest",
         dependencies = {
