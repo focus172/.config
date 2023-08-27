@@ -1,6 +1,78 @@
 return {
 	-- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
+    -- {
+    --     "<leader>cl",
+    --     "<cmd>LspInfo<cr>",
+    --     desc = "Lsp Info"
+    -- },
+    -- {
+    --     "gd",
+    --     function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end,
+    --     desc = "Goto Definition"
+    -- },
+    -- {
+    --     "gr",
+    --     "<cmd>Telescope lsp_references<cr>",
+    --     desc = "References"
+    -- },
+    -- {
+    --     "gD",
+    --     vim.lsp.buf.declaration,
+    --     desc = "Goto Declaration"
+    -- },
+    -- {
+    --     "gI",
+    --     function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end,
+    --     desc = "Goto Implementation"
+    -- },
+    -- {
+    --     "gy",
+    --     function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end,
+    --     desc = "Goto T[y]pe Definition"
+    -- },
+    -- {
+    --     "K",
+    --     vim.lsp.buf.hover,
+    --     desc = "Hover"
+    -- },
+    -- {
+    --     "gK",
+    --     vim.lsp.buf.signature_help,
+    --     desc = "Signature Help",
+    -- },
+    -- {
+    --     "<c-k>",
+    --     vim.lsp.buf.signature_help,
+    --     mode = "i",
+    --     desc = "Signature Help"
+    -- },
+    -- {
+    --     "]d",
+    --     vim.diagnostic.goto_next,
+    --     desc = "Next Diagnostic"
+    -- },
+    -- {
+    --     "[d",
+    --     vim.diagnostic.goto_prev,
+    --     desc = "Prev Diagnostic"
+    -- },
+    -- {
+    --     "<leader>cf",
+    --     vim.lsp.buf.format,
+    --     desc = "Format Document",
+    -- },
+    -- {
+    --     "<leader>ca",
+    --     vim.lsp.buf.code_action,
+    --     desc = "Code Action",
+    --     mode = { "n", "v" },
+    -- },
 	n = {
+        ["<leader>cd"] = {
+            vim.diagnostic.open_float,
+            "Line Diagnostics",
+        },
+
 		["gD"] = {
 			function()
 				vim.lsp.buf.declaration()
@@ -23,9 +95,7 @@ return {
 		},
 
 		["gi"] = {
-			function()
-				vim.lsp.buf.implementation()
-			end,
+			vim.lsp.buf.implementation,
 			"LSP implementation",
 		},
 
@@ -37,18 +107,24 @@ return {
 		},
 
 		["<leader>D"] = {
-			function()
-				vim.lsp.buf.type_definition()
-			end,
+			vim.lsp.buf.type_definition,
 			"LSP definition type",
 		},
 
-		["<leader>ra"] = {
-			function()
-				vim.lsp.buf.rename()
-			end,
-			"LSP rename",
+		["<leader>rn"] = {
+            function()
+                return ":" .. require("inc_rename").config.cmd_name .. " " .. vim.fn.expand("<cword>")
+            end,
+            -- expr = true,
+			"Rename",
 		},
+
+        -- ["todo"] = {
+		--  function()
+		--      vim.lsp.buf.rename()
+		--  end,
+        --    "Lsp Rename"
+        -- },
 
 		["<leader>ca"] = {
 			function()

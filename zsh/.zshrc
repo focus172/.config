@@ -1,6 +1,4 @@
 
-source $ZDOTDIR/init.zsh
-
 for f in $ZDOTDIR/conf.d/*.zsh
 do
     # echo "sourcing: $f"

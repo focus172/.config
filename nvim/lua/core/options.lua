@@ -151,6 +151,45 @@ g["loaded_node_provider"] = 0
 g["loaded_perl_provider"] = 0
 g["loaded_python3_provider"] = 0
 g["loaded_ruby_provider"] = 0
+
+-- [[ Setting options ]]
+-- vim.g.netrw_liststyle = 3 -- Set netrw in tree view
+-- vim.g.netrw_altv = true   -- Open new pane in netrw on the right
+
+-- vim.opt.nu = true
+-- vim.opt.relativenumber = true
+-- vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 4
+-- vim.opt.shiftwidth = 4
+-- vim.opt.expandtab = true
+-- vim.opt.smartindent = true
+-- vim.opt.wrap = false
+-- vim.opt.swapfile = false
+-- vim.opt.backup = false
+-- vim.opt.undodir = os.getenv("XDG_DATA_HOME") .. "/nvim/undodir"
+-- vim.opt.undofile = true
+
+-- vim.opt.hlsearch = false
+-- vim.opt.incsearch = true
+
+-- -- Set colorscheme
+-- -- vim.g.gruvbox_material_transparent_background = 2
+-- vim.opt.termguicolors = true
+-- -- vim.cmd("colorscheme rose-pine-moon")
+
+-- vim.opt.scrolloff = 8
+-- vim.opt.signcolumn = "yes"
+-- vim.opt.isfname:append("@-@")
+-- vim.opt.updatetime = 50
+-- vim.opt.colorcolumn = "80"
+
+-- -- Enable mouse mode
+-- vim.opt.mouse = 'a'
+-- -- Enable break indent
+-- vim.opt.breakindent = true
+-- -- Case insensitive searching UNLESS /C or capital in search
+-- vim.opt.ignorecase = true
+-- vim.opt.smartcase = true
 --
 --
 -- { "  Find File", "Spc f f", "Telescope find_files" },

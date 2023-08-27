@@ -32,6 +32,7 @@ return {
 
     {
         "simrat39/rust-tools.nvim",
+        event = "BufReadPre rust",
         ft = "rust",
         opts = function()
             -- local codelldb_path = "/usr/bin/rust-lldb"
@@ -42,6 +43,10 @@ return {
                 -- },
                 tools = {
                     on_initialized = function()
+                        vim.keymap.set("n", "K", "<cmd>RustHoverActions<cr>", { desc = "Hover Actions (Rust)" })
+                        vim.keymap.set("n", "<leader>ca", "<cmd>RustCodeAction<cr>", { desc = "Code Actions (Rust)" })
+                        vim.keymap.set("n", "<leader>dr", "<cmd>RustDebuggables<cr>", { desc = "Run Debuggables (Rust)" })
+
                         vim.cmd([[
                   augroup RustLSP
                     autocmd CursorHold                      *.rs silent! lua vim.lsp.buf.document_highlight()
@@ -49,8 +54,6 @@ return {
                     autocmd BufEnter,CursorHold,InsertLeave *.rs silent! lua vim.lsp.codelens.refresh()
                   augroup END
                 ]])
-
-                        -- require("plugins.core.lsp.keymaps").on_attach(client, buffer)
                     end,
                 },
             }
@@ -63,11 +66,6 @@ return {
         opts = {
             servers = {
                 rust_analyzer = {
-                    keys = {
-                        { "K",          "<cmd>RustHoverActions<cr>", desc = "Hover Actions (Rust)" },
-                        { "<leader>ca", "<cmd>RustCodeAction<cr>",   desc = "Code Action (Rust)" },
-                        { "<leader>dr", "<cmd>RustDebuggables<cr>",  desc = "Run Debuggables (Rust)" },
-                    },
                     settings = {
                         ["rust-analyzer"] = {
                             cargo = {
@@ -108,13 +106,7 @@ return {
                     },
                 },
             },
-            setup = {
-                rust_analyzer = function(_, opts)
-                    local rust_tools_opts = require("core.util").opts("rust-tools.nvim")
-                    require("rust-tools").setup(vim.tbl_deep_extend("force", rust_tools_opts or {}, { server = opts }))
-                    return true
-                end,
-            },
+
         },
     },
 

@@ -13,6 +13,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+-- local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+-- vim.api.nvim_create_autocmd('TextYankPost', {
+--     callback = function()
+--         vim.highlight.on_yank()
+--     end,
+--     group = highlight_group,
+--     pattern = '*',
+-- })
 
 -- resize splits if window got resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
@@ -60,3 +68,43 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
 	end,
 })
+
+-- Close tabline with alpha
+-- vim.api.nvim_create_autocmd("User", {
+--     pattern = "AlphaReady",
+--     command = "set showtabline=0 | set laststatus=0",
+-- })
+
+-- vim.api.nvim_create_autocmd('User', {
+--   pattern = 'AlphaReady',
+--   desc = 'disable status, tabline and cmdline for alpha',
+--   callback = function()
+--     vim.go.laststatus = 0
+--     vim.opt.showtabline = 0
+--     vim.opt.cmdheight = 0
+--   end,
+-- })
+--
+-- vim.api.nvim_create_autocmd('BufUnload', {
+--   buffer = 0,
+--   desc = 'enable status, tabline and cmdline after alpha',
+--   callback = function()
+--     vim.go.laststatus = 3
+--     vim.opt.showtabline = 2
+--     vim.opt.cmdheight = 1
+--   end,
+-- })
+
+-- Enable `lukas-reineke/indent-blankline.nvim`
+-- See `:help indent_blankline.txt`
+require('indent_blankline').setup {
+    -- char = '┊',
+    show_trailing_blankline_indent = true,
+}
+
+-- [[ Configure Harpoon]]
+require('harpoon').setup({})
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+vim.keymap.set("n", "<leader>a", mark.add_file, { desc = '[A]dd to harpoon' })
+vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu, { desc = 'Open harpoon switcher' })

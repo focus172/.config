@@ -3,8 +3,11 @@ require("lazy").setup({
         -- these need to be sourced first so they can be extended
         { import = "plugins.core" },
 
-        -- sources all files in the plugins dir
-        { import = "plugins" }
+        -- sources all the files for ide type things
+        { import = "plugins.editor" },
+
+        -- add lsp config for langs
+        { import = "plugins.langs" }
     },
 	defaults = { lazy = true },
 	-- install = { colorscheme = { "tokyonight" } },

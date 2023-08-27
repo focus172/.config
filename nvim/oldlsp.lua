@@ -1,18 +1,8 @@
 return {
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
+        'neovim/nvim-lspconfig',
         dependencies = {
             -- LSP Support
-            { 'neovim/nvim-lspconfig' }, -- Required
-            {
-                -- Optional
-                'williamboman/mason.nvim',
-                build = function()
-                    pcall(vim.cmd, 'MasonUpdate')
-                end,
-            },
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },     -- Required
@@ -20,24 +10,8 @@ return {
             { 'L3MON4D3/LuaSnip' },     -- Required
         },
         config = function()
-            local lsp = require('lsp-zero')
-
-            lsp.preset('recommended')
-
-            lsp.setup_nvim_cmp({
-                preselect = 'none',
-                completion = {
-                    completeopt = 'menu,menuone,preview,noinsert,noselect'
-                },
-            })
-
-            lsp.ensure_installed({
-                'lua_ls'
-            })
-
             local cmp = require('cmp')
             local cmp_select = { behavior = cmp.SelectBehavior.Select }
-            local cmp_action = require('lsp-zero').cmp_action()
             cmp.setup({
                 mapping = {
                     ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
@@ -49,17 +23,11 @@ return {
                     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
-                    -- ["<Esc>"] = cmp.mapping.close(),
+                    ["<Esc>"] = cmp.mapping.close(),
                 }
             })
 
-            vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = '[L]SP [F]ormat current buffer' }) -- format current file
-
-            lsp.on_attach(function(_, bufnr)
-                lsp.default_keymaps({
-                    buffer = bufnr,
-                    preserve_mappings = false,
-                })
+            local on_attach = function(_, bufnr)
                 local opts = { buffer = bufnr, remap = false, desc = "test" }
 
                 opts.desc = "[G]o to [D]efinition";
@@ -81,16 +49,12 @@ return {
                 opts.desc = "[V]ariable [R]e[N]ame";
                 vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
                 opts.desc = "Get signature [HELP]";
-                vim.keymap.set("n", "<leader>help", function() vim.lsp.buf.signature_help() end, opts)
-            end)
-
-            require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+                vim.keymap.set("n", "<leader>help", vim.lsp.buf.signature_help, opts)
+            end
 
             -- require('lspconfig').ocamllsp.setup({
             --     filetypes = { 'ocaml' }
             -- })
-
-            lsp.setup()
         end
     },
 }

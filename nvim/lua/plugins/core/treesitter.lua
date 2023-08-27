@@ -4,18 +4,18 @@
 return {
     {
         'nvim-treesitter/nvim-treesitter-context',
-        opts = {},
         event = { "BufReadPost", "BufNewFile" },
+        opts = {},
     },
 
     {
         "nvim-treesitter/nvim-treesitter",
-        version = false, -- last release is way too old and doesn't work on Windows
+        version = false, -- last release is way too old
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter-textobjects",
-        },
+        -- dependencies = {
+        --     "nvim-treesitter/nvim-treesitter-textobjects",
+        -- },
         cmd = { "TSUpdateSync" },
         keys = {
             { "<c-space>", desc = "Increment selection" },

@@ -1,6 +1,6 @@
 abbr ".."="cd .."
 abbr "c"="clear"
 abbr "gu"="gitui"
-abbr "rcadd"="rc-update add"
-abbr "rcdel"="rc-update del"
+abbr "rcadd"="sudo rc-update add"
+abbr "rcdel"="sudo rc-update del"
 abbr "rcstat"="rc-status"

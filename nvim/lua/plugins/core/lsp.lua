@@ -22,84 +22,60 @@ return {
                 },
                 severity_sort = true,
             },
-            -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
-            -- Be aware that you also will need to properly configure your LSP server to
-            -- provide the inlay hints.
-            inlay_hints = { enabled = false },
             servers = {},
         },
         config = function(_, opts)
-            local on_attach = function(client, buffer)
-                require("core.util").load_mappings("lspconf")
+            vim.api.nvim_create_autocmd('LspAttach', {
+                group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+                callback = function(ev)
+                    local bufnr = ev.buf
 
-                -- Create a command `:Format` local to the LSP buffer
-                vim.api.nvim_buf_create_user_command(
-                    buffer,
-                    "Format",
-                    function(_) vim.lsp.buf.format() end,
-                    { desc = "Format current buffer with LSP" }
-                )
+                    -- Enable completion triggered by <c-x><c-o>
+                    vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-                local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
-                if opts.inlay_hints.enabled and inlay_hint then
-                    if client.server_capabilities.inlayHintProvider then
-                        inlay_hint(buffer, true)
+                    local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
+
+                    if inlay_hint then
+                        inlay_hint(bufnr, true)
                     end
-                end
 
-                local Keys = require("lazy.core.handler.keys")
-                local function add(keymaps)
-                    for _, keys in pairs(keymaps) do
-                        local kopts = Keys.opts(keys)
-                        kopts.silent = true
-                        kopts.buffer = buffer
-                        vim.keymap.set(keys.mode or "n", keys[1], keys[2], kopts)
-                    end
-                end
+                    local lsp_opts = { buffer = bufnr }
+                    require("core.util").load_mappings("lspconf", lsp_opts)
 
-
-                for _, keymap in ipairs(require("keymaps.lsp")) do
-                    add(keymap)
-                end
-
-                local maps = opts.servers[client.name] and opts.servers[client.name].keys or {}
-                for _, keymap in ipairs(maps) do
-                    add(keymap)
-                end
-            end
-
+                    -- Buffer local mappings.
+                    -- See `:help vim.lsp.*` for documentation on any of the below functions
+                    -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+                    -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+                    -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+                    -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+                    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+                    -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+                    -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+                    -- vim.keymap.set('n', '<space>wl', function()
+                    --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                    -- end, opts)
+                    -- vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+                    -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+                    -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+                    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+                    -- vim.keymap.set('n', '<space>f', function()
+                    --     vim.lsp.buf.format { async = true }
+                    -- end, opts)
+                end,
+            })
             -- Setup neovim lua configuration
             require("neodev").setup()
 
-            -- vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
-            local capabilities = vim.tbl_deep_extend(
-                "force",
-                {},
-                vim.lsp.protocol.make_client_capabilities(),
-                require("cmp_nvim_lsp").default_capabilities()
-            )
+            local lspconfig = require("lspconfig")
 
             for server, _ in pairs(opts.servers) do
-                local server_opts = vim.tbl_deep_extend(
-                    "force",
-                    { capabilities = capabilities, on_attach = on_attach },
-                    opts.servers[server] or {}
-                )
+                local server_opts = opts.servers[server] or {}
 
-                require("lspconfig")[server].setup(server_opts)
+                lspconfig[server].setup(server_opts)
             end
 
-            -- local register_capability = vim.lsp.handlers["client/registerCapability"]
-
-            -- vim.lsp.handlers["client/registerCapability"] = function(err, res, ctx)
-            -- local ret = register_capability(err, res, ctx)
-            -- local client_id = ctx.client_id
-            -- local client = vim.lsp.get_client_by_id(client_id)
-            -- local buffer = vim.api.nvim_get_current_buf()
-            -- require("plugins.lsp.keymaps").on_attach(client, buffer)
-            -- return ret
-            -- end
+            vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
             -- diagnostics
             -- for name, icon in pairs(require("core.config").icons.diagnostics) do

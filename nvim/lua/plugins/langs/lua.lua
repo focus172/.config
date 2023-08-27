@@ -13,7 +13,6 @@ return {
 		opts = {
 			servers = {
 				lua_ls = {
-					-- keys = {},
 					settings = {
 						Lua = {
 							workspace = { checkThirdParty = false },
