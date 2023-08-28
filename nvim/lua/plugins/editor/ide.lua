@@ -77,22 +77,21 @@ return {
 
     {
         'mrjones2014/legendary.nvim',
+        cmd = "Legendary",
         dependencies = {
             'stevearc/dressing.nvim', -- dressing UI for legendary
             -- sqlite is only needed if you want to use frecency sorting
             'kkharji/sqlite.lua',
         },
-        config = function()
-            require('legendary').setup({
-                keymaps = {
-                    {
-                        '<C-p>',
-                        { n = ':Legendary<CR>' },
-                        description = 'Command [P]alette',
-                    },
+        opts = {
+            keymaps = {
+                {
+                    '<C-p>',
+                    { n = ':Legendary<CR>' },
+                    description = 'Command [P]alette',
                 },
-            })
-        end
+            },
+        },
     },
 
     -- 'ocaml/vim-ocaml',

@@ -1,12 +1,8 @@
-if true then
-    return {}
-end
-
 return {
     "epwalsh/obsidian.nvim",
     event = { "BufReadPre " .. vim.fn.expand("$XDG_DOCUMENTS_DIR") .. "/dnd/**.md" },
     init = function()
-        vim.keymap.set("n", "gf", "<cmd>ObsidianFollowLink<CR>", { noremap = false, expr = true })
+        vim.keymap.set("n", "gl", "<cmd>ObsidianFollowLink<CR>", { desc = "Obsidian: Follow [L]ink" })
     end,
     dependencies = {
         "nvim-lua/plenary.nvim",

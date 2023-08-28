@@ -98,7 +98,7 @@ return {
             local telescope = require("telescope")
             telescope.setup(opts)
 
-            require("mappings").load("telescope", {})
+            require("core.keys").load_module("telescope")
 
             -- load extensions
             for _, ext in ipairs(opts.extensions_list) do

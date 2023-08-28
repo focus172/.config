@@ -1,9 +1,10 @@
 return {
 	n = {
-		-- toggle
-		["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+		-- Close
+		["<C-n>"] = { "<cmd> Neotree toggle <CR>", "Toggle [N]eotree" },
 
-		-- focus
-		["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
+		-- Open
+		["<leader>e"] = { "<cmd> Neotree left <CR>", "Focus File [E]xplorer" },
+		["<leader>we"] = { "<cmd> Neotree float <CR>", "Floating [W]indow File [E]xplorer" },
 	},
 }

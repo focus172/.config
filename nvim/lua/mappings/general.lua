@@ -37,7 +37,7 @@ return {
 		-- ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
 
 		-- new buffer
-		["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
+		["<leader>bn"] = { "<cmd> enew <CR>", "New buffer" },
 
 		-- Overide of vim + tmux
 		-- ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Window left" },

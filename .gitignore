@@ -10,8 +10,6 @@ git/.git-credentials
 environment.d
 fontconfig
 
-nvim/lazy-lock.json
-
 # Unsorted ignores
 libreoffice
 blender
@@ -23,21 +21,13 @@ discord
 pavucontrol.ini
 pulse
 BetterDiscord
-Slippi Launcher
-SlippiOnline
-SlippiPlayback
 dolphin-emu
 QtProject.conf
 deluge
-systemd
-gtk-3.0
-gtk-4.0
 rofi/images
 termusic
 dconf
 mpd/playlists
 ncmpcpp
-zsh/.antidote/
 zsh/plugins.zsh
 qastools
-lvim

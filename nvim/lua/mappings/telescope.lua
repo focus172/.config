@@ -1,46 +1,32 @@
 return {
 	n = {
 		-- find
-		["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
-		["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
-		["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
-		["<leader><space>"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
-		["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
-		["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "[F]ind [O]ldfiles" },
-		["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
-		["<leader>fg"] = { "<cmd> Telescope git_files <CR>", "Search [G]it [F]iles" },
-
-		-- git
-		["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
-		["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "Git status" },
-
-		-- pick a hidden term
-		-- ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
-
-		-- theme switcher
-		["<leader>ma"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
-
-		-- vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-		-- vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-		-- vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+		["<leader><space>"] = { "<cmd> Telescope buffers <CR>", "[F]ind [ ] buffers" },
+		["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "[F]ind [F]iles" },
+		-- ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "[F]ind [A]ll" },
+		["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "[F]ind [W]ord" },
+		-- ["<leader>fs"] = { "<cmd> Telescope grep_string <CR>", "[F]ind [S]tring" },
+		["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "[F]ind [H]elp" },
+		-- ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "[F]ind [O]ldfiles" },
+		["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "[F]u[Z]zy Find" },
+		["<leader>fg"] = { "<cmd> Telescope git_status <CR>", "[F]ind Active [G]it" },
+		-- ["<leader>fG"] = { "<cmd> Telescope git_files <CR>", "[F]ind All [G]it" },
+		["<leader>fc"] = { "<cmd> Telescope git_commits <CR>", "[F]ind Git [C]ommits" },
+-- 	{ "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
 		["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "[F]ind [D]iagnostics" },
+		["<leader>fm"] = { "<cmd> Telescope marks <CR>", "[F]ind [M]arks" },
+        ["<leader>f:"] = { "<cmd> Telescope command_history <cr>", "[F]ind [:] Command" },
+
+		-- ["<leader>uC"] = { "<cmd> Telescope colorscheme enable_preview=true", "Colorscheme" }
 	},
 }
 
 -- return {
 -- 	{ "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
--- 	{ "<leader>/", Util.telescope("live_grep"), desc = "Grep (root dir)" },
--- 	{ "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
--- 	{ "<leader><space>", Util.telescope("files"), desc = "Find Files (root dir)" },
--- 	-- find
--- 	{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
 -- 	{ "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
 -- 	{ "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
 -- 	{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
 -- 	{ "<leader>fR", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
--- 	-- git
--- 	{ "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
--- 	{ "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
 -- 	-- search
 -- 	{ '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Registers" },
 -- 	{ "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
@@ -60,11 +46,6 @@ return {
 -- 	{ "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
 -- 	{ "<leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
 -- 	{ "<leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
--- 	{
--- 		"<leader>uC",
--- 		Util.telescope("colorscheme", { enable_preview = true }),
--- 		desc = "Colorscheme with preview",
--- 	},
 -- 	{
 -- 		"<leader>ss",
 -- 		Util.telescope("lsp_document_symbols", {

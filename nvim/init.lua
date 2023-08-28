@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 -- [[ bootstrap lazy ]] --
 require("core.bootstrap")
 

@@ -110,9 +110,7 @@
 -- map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 --
 -- -- highlights under cursor
--- if vim.fn.has("nvim-0.9.0") == 1 then
---   map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
--- end
+-- map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 --
 -- -- LazyVim Changelog
 -- map("n", "<leader>L", Util.changelog, {desc = "LazyVim Changelog"})

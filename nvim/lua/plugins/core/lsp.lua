@@ -4,10 +4,9 @@ return {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            { "folke/neoconf.nvim",  cmd = "Neoconf", config = false,      dependencies = { "nvim-lspconfig" } },
+            { "folke/neoconf.nvim",  cmd = "Neoconf", config = false },
             { "folke/neodev.nvim",   opts = {} },
             { "hrsh7th/cmp-nvim-lsp" },
-
             { "j-hui/fidget.nvim",   tag = "legacy",  event = "LspAttach", opts = {} }
         },
         opts = {
@@ -33,6 +32,7 @@ return {
                     -- Enable completion triggered by <c-x><c-o>
                     vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
+
                     local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
 
                     if inlay_hint then
@@ -40,7 +40,7 @@ return {
                     end
 
                     local lsp_opts = { buffer = bufnr }
-                    require("core.util").load_mappings("lspconf", lsp_opts)
+                    require("core.keys").load_module("lspconf", lsp_opts)
 
                     -- Buffer local mappings.
                     -- See `:help vim.lsp.*` for documentation on any of the below functions

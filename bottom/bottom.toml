@@ -48,7 +48,7 @@ temperature_type = "c"
 #expanded_on_startup = true
 
 # Use basic mode
-# basic = true
+basic = true
 
 # Use the old network legend style
 #use_old_network_legend = false

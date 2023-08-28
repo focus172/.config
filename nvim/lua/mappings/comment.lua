@@ -1,7 +1,7 @@
 return {
 	-- toggle comment in both modes
 	n = {
-		["<leader>/"] = {
+		["gc"] = {
 			function()
 				require("Comment.api").toggle.linewise.current()
 			end,
@@ -10,7 +10,7 @@ return {
 	},
 
 	v = {
-		["<leader>/"] = {
+		["gc"] = {
 			"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
 			"Toggle comment",
 		},

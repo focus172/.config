@@ -1,5 +1,4 @@
 return {
-    -- Add Rust & related to treesitter
     {
         "nvim-treesitter/nvim-treesitter",
         opts = function(_, opts)
@@ -7,7 +6,6 @@ return {
         end,
     },
 
-    -- Correctly setup lspconfig for Rust
     {
         "neovim/nvim-lspconfig",
         opts = {
