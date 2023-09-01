@@ -2,8 +2,6 @@
 -- also check out mappings.default
 require("core.keys").load_module("general", { desc = "Core mapping" })
 
-require("core.keys").load_module("neotree")
-
 -- [[ Auto Commands ]] --
 local function augroup(name)
     return vim.api.nvim_create_augroup("fvim_" .. name, { clear = true })
@@ -65,64 +63,3 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end,
 })
 
--- Close tabline with alpha
--- vim.api.nvim_create_autocmd("User", {
---     pattern = "AlphaReady",
---     command = "set showtabline=0 | set laststatus=0",
--- })
-
--- vim.api.nvim_create_autocmd('User', {
---   pattern = 'AlphaReady',
---   desc = 'disable status, tabline and cmdline for alpha',
---   callback = function()
---     vim.go.laststatus = 0
---     vim.opt.showtabline = 0
---     vim.opt.cmdheight = 0
---   end,
--- })
---
--- vim.api.nvim_create_autocmd('BufUnload', {
---   buffer = 0,
---   desc = 'enable status, tabline and cmdline after alpha',
---   callback = function()
---     vim.go.laststatus = 3
---     vim.opt.showtabline = 2
---     vim.opt.cmdheight = 1
---   end,
--- })
-
--- Enable `lukas-reineke/indent-blankline.nvim`
--- See `:help indent_blankline.txt`
-require('indent_blankline').setup {
-    -- char = '┊',
-    show_trailing_blankline_indent = true,
-}
-
--- [[ Configure Harpoon]]
-require('harpoon').setup({})
-local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
-vim.keymap.set("n", "<leader>a", mark.add_file, { desc = '[A]dd to harpoon' })
-vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu, { desc = 'Open harpoon switcher' })
-
-
-
-
-
-
-
--- ---@param on_attach fun(client, buffer)
--- function M.on_attach(on_attach)
---     vim.api.nvim_create_autocmd("LspAttach", {
---         callback = function(args)
---             local buffer = args.buf
---             local client = vim.lsp.get_client_by_id(args.data.client_id)
---             on_attach(client, buffer)
---         end,
---     })
--- end
-
--- vim.keymap.set("t", "<c-h>", "<c-h>", { buffer = buf, nowait = true })
--- vim.keymap.set("t", "<c-j>", "<c-j>", { buffer = buf, nowait = true })
--- vim.keymap.set("t", "<c-k>", "<c-k>", { buffer = buf, nowait = true })
--- vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = buf, nowait = true })

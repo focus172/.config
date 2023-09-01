@@ -94,7 +94,20 @@ bindkey -s '^f' '^ucdf\n'
 ### ALT-C - cd into the selected directory (DOESNT WORK)
 ### CTRL-R - Paste the selected command from history into the command line
 # DOESNT WORK ON NIX
-# source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/key-bindings.zsh
+
+# history
+alias history="history 1"
+# HISTFILE=~/.zsh_history
+# HISTSIZE=100000000000
+# SAVEHIST=100000000000
+# setopt SHARE_HISTORY
+# setopt histignoredups
+
+
+
+alias 'cpu-savepower'='cpupower frequency-set -g powersave'
+alias 'cpu-performance'='cpupower frequency-set -g performance'
 
 # Lang
 # export LANG=en_US.UTF-8
@@ -133,13 +146,6 @@ export FZF_CTRL_R_OPTS="
 
 # autoload -Uz compinit && compinit
 
-# history
-alias history="history 1"
-# HISTFILE=~/.zsh_history
-# HISTSIZE=100000000000
-# SAVEHIST=100000000000
-# setopt SHARE_HISTORY
-# setopt histignoredups
 
 # aliases
 alias uni="cd $HOME/skool/13/"

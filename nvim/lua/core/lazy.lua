@@ -1,58 +1,38 @@
-require("lazy").setup({
-	spec = {
-        -- these need to be sourced first so they can be extended
-        { import = "plugins.core" },
+local M = {}
 
-        -- sources all the files for ide type things
-        { import = "plugins.editor" },
+M.bootstrap = function()
+    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-        -- add lsp config for langs
-        { import = "plugins.langs" }
-    },
-	defaults = { lazy = true },
-	-- install = { colorscheme = { "tokyonight" } },
-	ui = {
-		icons = {
-			ft = "",
-			lazy = "󰂠 ",
-			loaded = "",
-			not_loaded = "",
-		},
-	},
-	performance = {
-		rtp = {
-			disabled_plugins = {
-				"gzip",
-				"matchit",
-				"matchparen",
-				"netrwPlugin",
-				"tarPlugin",
-				"tohtml",
-				"tutor",
-				"zipPlugin",
-				"2html_plugin",
-				"getscript",
-				"getscriptPlugin",
-				"logipat",
-				"netrw",
-				"netrwSettings",
-				"netrwFileHandlers",
-				"tar",
-				"tarPlugin",
-				"rrhelper",
-				"spellfile_plugin",
-				"vimball",
-				"vimballPlugin",
-				"zip",
-				"rplugin",
-				"syntax",
-				"synmenu",
-				"optwin",
-				"compiler",
-				"bugreport",
-				"ftplugin",
-				"editorconfig",
-			},
-		},
-	},
-})
+    if not vim.loop.fs_stat(lazypath) then
+        vim.fn.system({
+            "git",
+            "clone",
+            "--filter=blob:none",
+            "https://github.com/folke/lazy.nvim.git",
+            "--branch=stable",
+            lazypath,
+        })
+    end
+    vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
+end
+
+M.load = function()
+    require("lazy").setup("plug", {
+        defaults = { lazy = true },
+        -- install = { colorscheme = { "tokyonight" } },
+        ui = {
+            icons = {
+                ft = "",
+                lazy = "󰂠 ",
+                loaded = "",
+                not_loaded = "",
+            },
+        },
+        change_detection = {
+            enabled = false,
+            -- notify = true,
+        },
+    })
+end
+
+return M

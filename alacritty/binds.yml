@@ -89,6 +89,8 @@
 # binding with the same triggers is defined. To unset a default binding, it can
 # be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
 # a no-op if you do not wish to receive input characters for that binding.
+#
+# ReceiveChar event is the same as unbinding it
 key_bindings:
   - { key: V,         mods: Alt, action: Paste                       }
   - { key: C,         mods: Alt, action: Copy                        }
@@ -106,7 +108,7 @@ key_bindings:
 #key_bindings:
   - { key: Paste,                 action: None }
   - { key: Copy,                  action: None }
-  - { key: L,     mods: Control,  action: None }
+  - { key: L,     mods: Control,  action: ReceiveChar }
   #- { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
   #- { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp   }
   #- { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
