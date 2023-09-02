@@ -1,15 +1,28 @@
 return {
-    -- toggle in terminal mode
-    t = {
-        ["<A-i>"] = { function() require("nvterm.terminal").toggle("float") end, "Toggle floating term" },
-        ["<A-h>"] = { function() require("nvterm.terminal").toggle("horizontal") end, "Toggle horizontal term", },
-        ["<A-v>"] = { function() require("nvterm.terminal").toggle("vertical") end, "Toggle vertical term" },
+    -- toggle in terminal mode and normal
+    {
+        "<A-i>",
+        function()
+            require("nvterm.terminal").toggle("float")
+        end,
+        mode = { "n", "t" },
+        desc = "Toggle floating term",
     },
 
-    -- toggle in normal mode
-    n = {
-        ["<A-i>"] = { function() require("nvterm.terminal").toggle("float") end, "Toggle floating term" },
-        ["<A-h>"] = { function() require("nvterm.terminal").toggle("horizontal") end, "Toggle horizontal term" },
-        ["<A-v>"] = { function() require("nvterm.terminal").toggle("vertical") end, "Toggle vertical term" },
+    {
+        "<A-h>",
+        function()
+            require("nvterm.terminal").toggle("horizontal")
+        end,
+        mode = { "n", "t" },
+        desc = "Toggle horizontal term",
+    },
+    {
+        "<A-v>",
+        function()
+            require("nvterm.terminal").toggle("vertical")
+        end,
+        mode = { "n", "t" },
+        desc = "Toggle vertical term",
     },
 }

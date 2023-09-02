@@ -19,7 +19,7 @@ end
 M.load = function()
     require("lazy").setup("plug", {
         defaults = { lazy = true },
-        -- install = { colorscheme = { "tokyonight" } },
+        install = { colorscheme = { "tokyonight" } },
         ui = {
             icons = {
                 ft = "",

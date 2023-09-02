@@ -66,8 +66,9 @@ local opts = {
         },
         ["<S-CR>"] = nil,
 
-        -- ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
-        -- ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<Tab>'] = nil,
+        ['<S-Tab>'] = cmp.mapping.select_next_item(),
+        -- cmp.mapping.select_prev_item(cmp_select),
         -- ['<CR>'] = cmp.mapping.confirm({
         --     behavior = cmp.ConfirmBehavior.Replace,
         --     select = false

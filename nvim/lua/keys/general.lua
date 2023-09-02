@@ -62,6 +62,7 @@ return {
 
         ["<A-j>"] = { "<cmd> m .+1<CR>==", "Move line down" },
         ["<A-k>"] = { "<cmd> m .-2<CR>==", "Move line up" },
+
     },
 
     v = {
