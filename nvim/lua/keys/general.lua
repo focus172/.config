@@ -4,15 +4,6 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 return {
     i = {
-
-    -- Remap for dealing with word wrap
-        -- vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-        -- vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
-        -- go to  beginning and end
-        ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
-        ["<C-e>"] = { "<End>", "End of line" },
-
         ["<A-j>"] = { "<Esc> <cmd>m .+1<CR>==gi", "Move line down" },
         ["<A-k>"] = { "<Esc> <cmd>m .-2<CR>==gi", "Move line up" },
 
@@ -24,7 +15,7 @@ return {
     },
 
     n = {
-        ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
+        -- ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
 
         -- switch between windows
         ["<C-h>"] = { "<C-w>h", "Window left" },
@@ -48,17 +39,10 @@ return {
         -- new buffer
         ["<leader>bn"] = { "<cmd> enew <CR>", "New buffer" },
 
-        -- Overide of vim + tmux
-        -- ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Window left" },
-        -- ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "Window down" },
-        -- ["<C-k>"] = { "<cmd> TmuxNavigateUp <CR>", "Window up" },
-        -- ["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "Window right" },
-
         ["q"] = { "<nop>", "Vim macros are garbage" },
         ["Q"] = { "<nop>", "I dont know what this does" },
 
-        -- ["<leader>n"] = { "<cmd> cnext <CR> zz", "See the next error" },
-        -- ["<leader>N"] = { "<cmd> cnext <CR> zz", "See the next error" },
+        ["<leader>n"] = { "<cmd> cnext <CR> zz", "See the next error" },
 
         ["<A-j>"] = { "<cmd> m .+1<CR>==", "Move line down" },
         ["<A-k>"] = { "<cmd> m .-2<CR>==", "Move line up" },
@@ -66,8 +50,8 @@ return {
     },
 
     v = {
-        -- ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
-        -- ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
+        -- ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
+        -- ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
         ["<"] = { "<gv", "Remove indent" },
         [">"] = { ">gv", "Add indent" },
 

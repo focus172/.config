@@ -1,4 +1,8 @@
 -- dont load the plugin
+if true then
+    return {}
+end
+
 return {
 	-- copilot
 	{

@@ -2,7 +2,6 @@ return {
 	-- edgy
 	{
 		"folke/edgy.nvim",
-		event = "VeryLazy",
 		keys = {
 			{
 				"<leader>ue",
@@ -11,8 +10,13 @@ return {
 				end,
 				desc = "Edgy Toggle",
 			},
-            -- stylua: ignore
-            { "<leader>uE", function() require("edgy").select() end, desc = "Edgy Select Window" },
+			{
+				"<leader>uE",
+				function()
+					require("edgy").select()
+				end,
+				desc = "Edgy Select Window",
+			},
 		},
 		opts = function()
 			local opts = {
@@ -105,27 +109,13 @@ return {
 					end,
 				},
 			}
-			local Util = require("core.util")
-			if Util.has("symbols-outline.nvim") then
-				table.insert(opts.left, {
-					title = "Outline",
-					ft = "Outline",
-					pinned = true,
-					open = "SymbolsOutline",
-				})
-			end
+            -- table.insert(opts.left, {
+            --     title = "Outline",
+            --     ft = "Outline",
+            --     pinned = true,
+            --     open = "SymbolsOutline",
+            -- })
 			return opts
-		end,
-	},
-
-	-- prevent neo-tree from opening files in edgy windows
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		optional = true,
-		opts = function(_, opts)
-			opts.open_files_do_not_replace_types = opts.open_files_do_not_replace_types
-				or { "terminal", "Trouble", "qf", "Outline" }
-			table.insert(opts.open_files_do_not_replace_types, "edgy")
 		end,
 	},
 

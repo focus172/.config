@@ -1,6 +1,6 @@
 local Keys = require("core.keys")
 return {
-    { "folke/lazy.nvim",     tag = "stable" },
+    { "folke/lazy.nvim", tag = "stable" },
 
     -- Treesitter
     {
@@ -8,23 +8,12 @@ return {
         version = false, -- last release is way too old
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
-        -- dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
-        cmd = {
-            "TSInstall",
-            "TSUninstall",
-            "TSUpdate",
-            "TSUpdateSync",
-            "TSInstallInfo",
-            "TSInstallSync",
-            "TSInstallFromGrammar",
-        },
+        dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
         keys = {
             { "<c-space>", desc = "Increment selection" },
             { "<bs>",      desc = "Decrement selection", mode = "x" },
         },
-        config = function()
-            require("conf.treesitter")
-        end,
+        config = require("conf.treesitter"),
     },
 
     {
@@ -42,40 +31,17 @@ return {
             require("conf.alpha")
         end,
     },
-    -- { "Tastyep/structlog.nvim", },
 
     -- FileTree
     {
         "nvim-neo-tree/neo-tree.nvim",
         cmd = "Neotree",
         event = "User DirOpened",
-        init = function()
-            require("core.keys").load_module("neotree")
-        end,
         dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", "MunifTanjim/nui.nvim" },
-        config = function()
-            require("conf.neotree")
-        end,
+        config = require("conf.neotree"),
+        keys = Keys.get_module("neotree"),
     },
 
-    -- Autopairs
-    -- {
-    --     "windwp/nvim-autopairs",
-    --     event = "InsertEnter",
-    --     config = function()
-    --         require("lvim.core.autopairs").setup()
-    --     end,
-    --     dependencies = { "nvim-treesitter/nvim-treesitter", "hrsh7th/nvim-cmp" },
-    -- },
-
-    -- Lir
-    -- {
-    --     "tamago324/lir.nvim",
-    --     event = "User DirOpened",
-    --     config = function()
-    --         require("lvim.core.lir").setup()
-    --     end,
-    -- },
     {
         "lewis6991/gitsigns.nvim",
         event = { "BufReadPre", "BufNewFile" },
@@ -112,12 +78,22 @@ return {
     --     config = function() require("conf.project").setup() end,
     -- },
 
+    -- Lir
+    -- {
+    --     "tamago324/lir.nvim",
+    --     event = "User DirOpened",
+    --     config = function()
+    --         require("lvim.core.lir").setup()
+    --     end,
+    -- },
+    -- { "Tastyep/structlog.nvim", },
+    --
     {
         "nvim-lualine/lualine.nvim",
         -- "hoob3rt/lualine.nvim",
         -- "Lunarvim/lualine.nvim",
         event = "VimEnter",
-		-- event = "VeryLazy",
+        -- event = "VeryLazy",
         config = function()
             require("conf.lualine")
         end,
@@ -140,10 +116,6 @@ return {
         config = function()
             require("conf.bufferline")
         end,
-        keys = {
-            { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
-            { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
-        },
     },
 
     -- SchemaStore
@@ -165,11 +137,11 @@ return {
         end,
     },
 
-    -- {
-    --     "lunarvim/bigfile.nvim",
-    --     event = { "FileReadPre", "BufReadPre", "User FileOpened" },
-    --     opts = {},
-    -- },
+    {
+        "lunarvim/bigfile.nvim",
+        event = { "FileReadPre", "BufReadPre", "User FileOpened" },
+        opts = {},
+    },
 
     {
         "NvChad/nvterm",
@@ -180,6 +152,7 @@ return {
     -- buffer remove
     {
         "echasnovski/mini.bufremove",
+        opts = {},
         -- stylua: ignore
         keys = {
             { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
@@ -190,20 +163,19 @@ return {
     -- better vim.ui
     {
         "stevearc/dressing.nvim",
-        lazy = false,
         opts = {},
-        -- init = function()
-        -- 	---@diagnostic disable-next-line: duplicate-set-field
-        -- 	vim.ui.select = function(...)
-        -- 		require("lazy").load({ plugins = { "dressing.nvim" } })
-        -- 		return vim.ui.select(...)
-        -- 	end
-        -- 	---@diagnostic disable-next-line: duplicate-set-field
-        -- 	vim.ui.input = function(...)
-        -- 		require("lazy").load({ plugins = { "dressing.nvim" } })
-        -- 		return vim.ui.input(...)
-        -- 	end
-        -- end,
+        init = function()
+            ---@diagnostic disable-next-line: duplicate-set-field
+            vim.ui.select = function(...)
+                require("lazy").load({ plugins = { "dressing.nvim" } })
+                return vim.ui.select(...)
+            end
+            ---@diagnostic disable-next-line: duplicate-set-field
+            vim.ui.input = function(...)
+                require("lazy").load({ plugins = { "dressing.nvim" } })
+                return vim.ui.input(...)
+            end
+        end,
     },
 
     -- auto pairs
@@ -212,11 +184,21 @@ return {
         event = "BufRead",
         opts = {},
     },
+
     {
         "m4xshen/autoclose.nvim", -- auto close brackets
         event = "BufRead",
         opts = {},
     },
+    -- Autopairs
+    -- {
+    --     "windwp/nvim-autopairs",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         require("lvim.core.autopairs").setup()
+    --     end,
+    --     dependencies = { "nvim-treesitter/nvim-treesitter", "hrsh7th/nvim-cmp" },
+    -- },
 
     -- Fast and feature-rich surround actions. For text that includes
     -- surrounding characters like brackets or quotes, this allows you
@@ -260,13 +242,45 @@ return {
             {
                 "<leader>qd",
                 function() require("persistence").stop() end,
-                desc =
-                "Don't Save Current Session"
+                desc = "Don't Save Current Session"
             },
         },
     },
-    -- { "christoomey/vim-tmux-navigator", lazy = false },
-    { "mbbill/undotree",     cmd = "UndotreeToggle" },
-    { "stevearc/oil.nvim",   lazy = false },
-    { "folke/zen-mode.nvim", dependencies = "folke/twilight.nvim" },
+    {
+        "mbbill/undotree",
+        cmd = "UndotreeToggle",
+        keys = { { "<leader>gu", ":UndotreeToggle", desc = "To[G]gle [U]ndotree" } },
+    },
+    -- { "stevearc/oil.nvim",   lazy = false },
+    {
+        "folke/zen-mode.nvim",
+        dependencies = "folke/twilight.nvim",
+        cmd = "ZenMode",
+        opts = {
+            plugins = {
+                options = {
+                    enabled = true,
+                    ruler = false,
+                    showcmd = false,
+                },
+                twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+                gitsigns = { enabled = true }, -- disables git signs
+            },
+        },
+        keys = {
+            {
+                "<leader>uz",
+                function()
+                    require("zen-mode").toggle()
+                end,
+                desc = "Toggle [Z]en Mode",
+            },
+        },
+    },
+
+    {
+        "NoahTheDuke/vim-just",
+        lazy = false
+        -- event = "BufRead",
+    },
 }

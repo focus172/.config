@@ -1,5 +1,4 @@
 -- [[ Load Basic Keymaps ]] --
--- also check out mappings.default
 require("core.keys").load_module("general", { desc = "Core mapping" })
 
 -- [[ Auto Commands ]] --
