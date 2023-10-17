@@ -8,12 +8,12 @@ alias o="$OPENER"
 alias m="mpv"
 alias n='newsboat'
 
-alias l='exa -l'
-alias ls=exa
-alias la='exa -a'
-alias ll='exa -la'
-alias lt="exa --tree --level=3"
-alias lsi="exa --group-directories-first --icons"
+alias l='eza -l'
+alias ls=eza
+alias la='eza -a'
+alias ll='eza -la'
+alias lt="eza --tree --level=3"
+alias lsi="eza --group-directories-first --icons"
 alias l.='la | grep -E "^\."'
 
 # alias land 'cat $HOME/.config/george.txt | cowsay -W 70'
@@ -148,8 +148,11 @@ export FZF_CTRL_R_OPTS="
 
 
 # aliases
-alias uni="cd $HOME/skool/13/"
+alias uni="cd $HOME/dox/skool/13/"
+alias uni-jap="cd $HOME/dox/skool/13/fall/japn/"
 
+alias doom1="chocolate-doom -iwad $HOME/dox/games/DOOM1.wad"
+alias doom2="chocolate-doom -iwad $HOME/dox/games/DOOM2.wad"
 
 
 # # opam configuration

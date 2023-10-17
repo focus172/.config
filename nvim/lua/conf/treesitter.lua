@@ -4,7 +4,10 @@
 return function()
 	local opts = {
 		auto_install = false,
-		highlight = { enable = true, additional_vim_regex_highlighting = false },
+		highlight = {
+			enable = true,
+			additional_vim_regex_highlighting = { "org" },
+		},
 		indent = { enable = true },
 		ensure_installed = {
 			"html",
@@ -22,6 +25,7 @@ return function()
 			"python",
 			"typescript",
 			"vim",
+			"org",
 			-- 'ocaml'
 		},
 		incremental_selection = {

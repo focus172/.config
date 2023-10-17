@@ -19,6 +19,9 @@ local function border(hl_name)
 end
 
 local opts = {
+	-- sorting = {
+ --        comparators = { require("clangd_extensions.cmp_scores") }
+ --    },
     completion = {
         completeopt = "menu,menuone,noinsert",
     },
@@ -87,6 +90,7 @@ local opts = {
         { name = "nvim_lua" },
         { name = "path" },
         -- { name = "crates" },
+        { name = 'orgmode' }
     },
     -- }),
     -- experimental = {
@@ -94,6 +98,7 @@ local opts = {
     --         hl_group = "CmpGhostText",
     --     },
     -- },
+    --
 }
 
 cmp.setup(opts)
