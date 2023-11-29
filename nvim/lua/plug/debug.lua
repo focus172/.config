@@ -1,34 +1,51 @@
 return {
-
-	-- Debugging
-	-- {
-	--     "mfussenegger/nvim-dap",
-	--     dependencies = {
-	--         -- Debugger user interface
-	--         "rcarriga/nvim-dap-ui",
-	--     },
-	--     config = function()
-	--         require("lvim.core.dap").setup()
-	--     end,
-	-- },
-
-	-- {
-	--     "rcarriga/nvim-dap-ui",
-	--     config = function()
-	--         require("lvim.core.dap").setup_ui()
-	--     end,
-	-- },
     {
         "mfussenegger/nvim-dap",
         dependencies = {
-            -- virtual text for the debugger
-            "theHamsta/nvim-dap-virtual-text",
+            -- "theHamsta/nvim-dap-virtual-text",
             -- "leoluz/nvim-dap-go",
+            "rcarriga/nvim-dap-ui",
         },
         init = function()
             require("core.keys").load_module("dap", {})
         end,
         config = function()
+            local dap = require("dap")
+            if not dap.adapters["codelldb"] then
+                require("dap").adapters["codelldb"] = {
+                    type = "server",
+                    host = "localhost",
+                    port = "${port}",
+                    executable = {
+                        command = "codelldb",
+                        args = {
+                            "--port",
+                            "${port}",
+                        },
+                    },
+                }
+            end
+            for _, lang in ipairs({ "c", "cpp" }) do
+                dap.configurations[lang] = {
+                    {
+                        type = "codelldb",
+                        request = "launch",
+                        name = "Launch file",
+                        program = function()
+                            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+                        end,
+                        cwd = "${workspaceFolder}",
+                    },
+                    {
+                        type = "codelldb",
+                        request = "attach",
+                        name = "Attach to process",
+                        processId = require("dap.utils").pick_process,
+                        cwd = "${workspaceFolder}",
+                    },
+                }
+            end
+
             local icons = require("icons")
             vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
@@ -87,8 +104,8 @@ return {
         end,
         -- stylua: ignore
         keys = {
-            { "<leader>td", function() require("neotest").run.run({strategy = "dap"}) end, desc = "Debug Nearest" },
-        }
+            { "<leader>td", function() require("neotest").run.run({ strategy = "dap" }) end, desc = "Debug Nearest" },
+        },
     },
 
     -- fancy UI for the debugger
@@ -119,73 +136,73 @@ return {
         end,
     },
 
-	{
-		"nvim-neotest/neotest",
-		dependencies = {
-			"rouge8/neotest-rust",
-		},
-		opts = {
-			adapters = {
-				["neotest-rust"] = {},
-			},
-			status = { virtual_text = true },
-			output = { open_on_run = true },
-			quickfix = {
-				open = function()
-					vim.cmd("Trouble quickfix")
-				end,
-			},
-		},
-		config = function(_, opts)
-			local neotest_ns = vim.api.nvim_create_namespace("neotest")
-			vim.diagnostic.config({
-				virtual_text = {
-					format = function(diagnostic)
-						-- Replace newline and tab characters with space for more compact diagnostics
-						local message =
-							diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
-						return message
-					end,
-				},
-			}, neotest_ns)
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "rouge8/neotest-rust",
+        },
+        opts = {
+            adapters = {
+                ["neotest-rust"] = {},
+            },
+            status = { virtual_text = true },
+            output = { open_on_run = true },
+            quickfix = {
+                open = function()
+                    vim.cmd("Trouble quickfix")
+                end,
+            },
+        },
+        config = function(_, opts)
+            local neotest_ns = vim.api.nvim_create_namespace("neotest")
+            vim.diagnostic.config({
+                virtual_text = {
+                    format = function(diagnostic)
+                        -- Replace newline and tab characters with space for more compact diagnostics
+                        local message =
+                            diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+                        return message
+                    end,
+                },
+            }, neotest_ns)
 
-			if opts.adapters then
-				local adapters = {}
-				for name, config in pairs(opts.adapters or {}) do
-					if type(name) == "number" then
-						if type(config) == "string" then
-							config = require(config)
-						end
-						adapters[#adapters + 1] = config
-					elseif config ~= false then
-						local adapter = require(name)
-						if type(config) == "table" and not vim.tbl_isempty(config) then
-							local meta = getmetatable(adapter)
-							if adapter.setup then
-								adapter.setup(config)
-							elseif meta and meta.__call then
-								adapter(config)
-							else
-								error("Adapter " .. name .. " does not support setup")
-							end
-						end
-						adapters[#adapters + 1] = adapter
-					end
-				end
-				opts.adapters = adapters
-			end
+            if opts.adapters then
+                local adapters = {}
+                for name, config in pairs(opts.adapters or {}) do
+                    if type(name) == "number" then
+                        if type(config) == "string" then
+                            config = require(config)
+                        end
+                        adapters[#adapters + 1] = config
+                    elseif config ~= false then
+                        local adapter = require(name)
+                        if type(config) == "table" and not vim.tbl_isempty(config) then
+                            local meta = getmetatable(adapter)
+                            if adapter.setup then
+                                adapter.setup(config)
+                            elseif meta and meta.__call then
+                                adapter(config)
+                            else
+                                error("Adapter " .. name .. " does not support setup")
+                            end
+                        end
+                        adapters[#adapters + 1] = adapter
+                    end
+                end
+                opts.adapters = adapters
+            end
 
-			require("neotest").setup(opts)
-		end,
+            require("neotest").setup(opts)
+        end,
         -- stylua: ignore
         keys = {
-            { "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File" },
-            { "<leader>tT", function() require("neotest").run.run(vim.loop.cwd()) end, desc = "Run All Test Files" },
-            { "<leader>tr", function() require("neotest").run.run() end, desc = "Run Nearest" },
-            { "<leader>ts", function() require("neotest").summary.toggle() end, desc = "Toggle Summary" },
+            { "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end,                      desc = "Run File" },
+            { "<leader>tT", function() require("neotest").run.run(vim.loop.cwd()) end,                          desc = "Run All Test Files" },
+            { "<leader>tr", function() require("neotest").run.run() end,                                        desc = "Run Nearest" },
+            { "<leader>ts", function() require("neotest").summary.toggle() end,                                 desc = "Toggle Summary" },
             { "<leader>to", function() require("neotest").output.open({ enter = true, auto_close = true }) end, desc = "Show Output" },
-            { "<leader>tO", function() require("neotest").output_panel.toggle() end, desc = "Toggle Output Panel" },
-            { "<leader>tS", function() require("neotest").run.stop() end, desc = "Stop" },
+            { "<leader>tO", function() require("neotest").output_panel.toggle() end,                            desc = "Toggle Output Panel" },
+            { "<leader>tS", function() require("neotest").run.stop() end,                                       desc = "Stop" },
         },
-	},
+    },
 }

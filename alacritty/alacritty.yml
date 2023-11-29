@@ -8,6 +8,12 @@ window:
   opacity: 0.80
   title: Alacritty
 
+shell:
+  program: "/bin/zsh"
+  args:
+    - "-c"
+    - "zellij"
+
 env:
   TERM: "xterm-256color"
 
@@ -27,7 +33,7 @@ font:
   ### on 1.0 scalling
   size: 21.0 # small imperfections can appear on even values
   ### on 1.5 scalling
-  # size: 13.0 # small imperfections can appear on even values
+  # size: 13.0
 
 import:
   ## Colors

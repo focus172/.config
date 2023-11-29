@@ -48,6 +48,7 @@ local opts = {
                 },
             },
         },
+        kotlin_language_server = {},
         taplo = {
             keys = {
                 {

@@ -1,21 +1,19 @@
 return {
     n = {
         ["<leader>dB"] = {
-            function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
-            desc = "Breakpoint Condition"
+            function()
+                require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+            end,
+            "Breakpoint Condition",
         },
-        -- {
-        --     "<leader>db",
-        --     function() require("dap").toggle_breakpoint() end,
-        --     desc =
-        --     "Toggle Breakpoint"
-        -- },
-        -- {
-        --     "<leader>dc",
-        --     function() require("dap").continue() end,
-        --     desc =
-        --     "Continue"
-        -- },
+        ["<leader>db"] = {
+            require("dap").toggle_breakpoint,
+            "Toggle Breakpoint",
+        },
+        ["<leader>dc"] = {
+            require("dap").continue,
+            "Continue",
+        },
         -- {
         --     "<leader>dC",
         --     function() require("dap").run_to_cursor() end,
@@ -89,5 +87,5 @@ return {
         --     desc =
         --     "Widgets"
         -- },
-    }
+    },
 }
