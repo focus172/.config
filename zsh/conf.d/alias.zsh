@@ -94,7 +94,7 @@ bindkey -s '^f' '^ucdf\n'
 ### ALT-C - cd into the selected directory (DOESNT WORK)
 ### CTRL-R - Paste the selected command from history into the command line
 # DOESNT WORK ON NIX
-source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/shell/key-bindings.zsh
 
 # history
 alias history="history 1"
@@ -124,32 +124,32 @@ alias 'cpu-performance'='cpupower frequency-set -g performance'
 # alias startw="wpa supplicant -B -D wext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf"
 
 
-export SUDO_PROMPT=$'Password ->\033[32;05;16m %u\033[0m  '
+export SUDO_PROMPT=$'password for\033[32;05;16m %u\033[0m -> '
 
-export FZF_DEFAULT_OPTS='
-        --color hl:#dadada,hl+:#13171b,gutter:#13171b
-        --color bg+:#ef7d7d,fg+:#2c2f30
-        --color pointer:#373d49,info:#606672
-        --height 13'
+# export FZF_DEFAULT_OPTS='
+#         --color hl:#dadada,hl+:#13171b,gutter:#13171b
+#         --color bg+:#ef7d7d,fg+:#2c2f30
+#         --color pointer:#373d49,info:#606672
+#         --height 13'
 
 # --color fg:#b6beca,bg:#13171b
 # --border
 # --color border:#13171b
 
 
-export FZF_CTRL_R_OPTS="
-  --preview 'echo {}' --preview-window up:3:hidden:wrap
-  --bind 'ctrl-/:toggle-preview'
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'
-  --color header:italic
-  --header 'Press CTRL-Y to copy command into clipboard'"
+# export FZF_CTRL_R_OPTS="
+#   --preview 'echo {}' --preview-window up:3:hidden:wrap
+#   --bind 'ctrl-/:toggle-preview'
+#   --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'
+#   --color header:italic
+#   --header 'Press CTRL-Y to copy command into clipboard'"
 
 # autoload -Uz compinit && compinit
 
 
 # aliases
-alias uni="cd $HOME/dox/skool/13/"
-alias uni-jap="cd $HOME/dox/skool/13/fall/japn/"
+# alias uni="cd $HOME/dox/skool/13/"
+# alias uni-jap="cd $HOME/dox/skool/13/fall/japn/"
 
 alias doom1="chocolate-doom -iwad $HOME/dox/games/DOOM1.wad"
 alias doom2="chocolate-doom -iwad $HOME/dox/games/DOOM2.wad"

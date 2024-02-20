@@ -1,14 +1,18 @@
-#
 # ~/.config/.gitignore
-#
 
-# Ignore secrets
+# Secrets
 github-copilot
 git/.git-credentials
+gcloud
 
 # home managaed
 environment.d
 fontconfig
+
+# shell
+zsh/.antidote/
+zsh/plugins.zsh
+zsh/.zcompdump
 
 # Unsorted ignores
 libreoffice
@@ -25,10 +29,15 @@ dconf
 mpd/playlists
 ncmpcpp
 qastools
-zsh/plugins.zsh
-zsh/.zcompdump
 cava
 com.modrinth.theseus
 cef_user_data
 mozc
 ibus
+gsconnect
+
+anthy
+evince
+evolution
+zoom.conf
+zoomus.conf

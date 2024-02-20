@@ -7,8 +7,8 @@ done
 
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 
-source '/usr/share/zsh-antidote/antidote.zsh'
-# source "$ZDOTDIR/.antidote/antidote.zsh"
+# source '/usr/share/zsh-antidote/antidote.zsh'
+source "$ZDOTDIR/.antidote/antidote.zsh"
 
 zsh_plugins=${ZDOTDIR}/plugins
 antidote load ${zsh_plugins}.conf

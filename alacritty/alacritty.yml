@@ -10,9 +10,9 @@ window:
 
 shell:
   program: "/bin/zsh"
-  args:
-    - "-c"
-    - "zellij"
+  # args:
+  #   - "-c"
+  #   - "zellij"
 
 env:
   TERM: "xterm-256color"
