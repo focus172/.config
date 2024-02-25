@@ -21,35 +21,6 @@ return {
         enabled = true,
     },
 
-    -- Treesitter
-    {
-        "nvim-treesitter/nvim-treesitter",
-        version = false, -- last release is way too old
-        build = ":TSUpdate",
-        event = { "BufReadPost", "BufNewFile" },
-        dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
-        keys = {
-            { "<c-space>", desc = "Increment selection" },
-            { "<bs>",      desc = "Decrement selection", mode = "x" },
-        },
-        config = require("conf.treesitter"),
-    },
-
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        event = { "BufReadPost", "BufNewFile" },
-        opts = {},
-    },
-
-    -- alpha
-    {
-        "goolord/alpha-nvim",
-        event = "VimEnter",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("conf.alpha")
-        end,
-    },
 
     -- FileTree
     {
@@ -70,15 +41,6 @@ return {
         end,
     },
 
-    -- Whichkey
-    {
-        "folke/which-key.nvim",
-        cmd = "WhichKey",
-        event = "VeryLazy",
-        config = function()
-            require("conf.whichkey")
-        end,
-    },
 
     -- Comments
     {
@@ -265,11 +227,13 @@ return {
             },
         },
     },
+
     {
         "mbbill/undotree",
         cmd = "UndotreeToggle",
         keys = { { "<leader>gu", ":UndotreeToggle", desc = "To[G]gle [U]ndotree" } },
     },
+
     -- { "stevearc/oil.nvim",   lazy = false },
     {
         "folke/zen-mode.nvim",

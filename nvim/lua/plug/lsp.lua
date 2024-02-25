@@ -5,30 +5,10 @@ return {
         dependencies = {
             { "folke/neodev.nvim", opts = {} },
             { "j-hui/fidget.nvim", tag = "legacy", event = "LspAttach", opts = {} },
-            "hrsh7th/cmp-nvim-lsp",
             -- { "tamago324/nlsp-settings.nvim", cmd = "LspSettings", opts = {} },
         },
         config = function()
             require("conf.lspconf")
-        end,
-    },
-
-    {
-        "Saecki/crates.nvim",
-        event = { "BufRead Cargo.toml" },
-        config = function(_, opts)
-            local crates = require("crates")
-            crates.setup(opts)
-            crates.show() -- should not be nessisary but is
-        end,
-    },
-
-    {
-        "simrat39/rust-tools.nvim",
-        event = "BufReadPre rust",
-        ft = "rust",
-        config = function()
-            require("conf.rusttools")
         end,
     },
 
@@ -56,12 +36,4 @@ return {
             require("conf.cmp")
         end,
     },
-
-    {
-        "jose-elias-alvarez/null-ls.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        config = function()
-            require("conf.nullls")
-        end,
-    }
 }

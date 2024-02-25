@@ -17,12 +17,13 @@ return {
         mode = { "n", "t" },
         desc = "Toggle horizontal term",
     },
-    {
-        "<A-v>",
-        function()
-            require("nvterm.terminal").toggle("vertical")
-        end,
-        mode = { "n", "t" },
-        desc = "Toggle vertical term",
-    },
+    -- TODO:: this bind is overwritten. Find out where
+    -- {
+    --     "<A-v>",
+    --     function()
+    --         require("nvterm.terminal").toggle("vertical")
+    --     end,
+    --     mode = { "n", "t" },
+    --     desc = "Toggle vertical term",
+    -- },
 }

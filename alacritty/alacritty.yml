@@ -31,7 +31,7 @@ font:
     family: "Mononoki Nerd Font"
 
   ### on 1.0 scalling
-  size: 21.0 # small imperfections can appear on even values
+  size: 19.0 # small imperfections can appear on even values
   ### on 1.5 scalling
   # size: 13.0
 

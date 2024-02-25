@@ -1,6 +1,8 @@
 -- dont load the plugin
 if true then return {} end
 
+-- TODO: just use VSCODIUM whenever this is needed
+
 return {
     {
         "mfussenegger/nvim-dap",

@@ -10,6 +10,6 @@ return {
         "nvim-telescope/telescope.nvim",
     },
     opts = {
-        dir = vim.fn.expand("$XDG_DOCUMENTS_DIR") .. "/dnd", -- no need to call 'vim.fn.expand' here
+        dir = vim.fn.expand("$XDG_DOCUMENTS_DIR"),
     },
 }
