@@ -1,12 +1,8 @@
 return {
-	{
-		"p00f/clangd_extensions.nvim",
-		lazy = true,
-		config = function() end,
-	},
+    { "p00f/clangd_extensions.nvim" },
 
-	-- {
-	-- 	"alaviss/nim.nvim",
-	-- 	ft = "nim",
-	-- },
+    -- {
+    --     "alaviss/nim.nvim",
+    --     ft = "nim",
+    -- },
 }

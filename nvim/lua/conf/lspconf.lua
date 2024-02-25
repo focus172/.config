@@ -12,16 +12,15 @@ local opts = {
     },
     servers = {
         -- ocamllsp = { filetypes = { 'ocaml' } }
-        lua_ls = {
-            settings = {
-                Lua = {
-                    workspace = { checkThirdParty = false },
-                    completion = { callSnippet = "Replace" },
-                    telemetry = { enable = false },
-                },
-            },
-        },
-
+        -- lua_ls = {
+        --     settings = {
+        --         Lua = {
+        --             workspace = { checkThirdParty = false },
+        --             completion = { callSnippet = "Replace" },
+        --             telemetry = { enable = false },
+        --         },
+        --     },
+        -- },
         rust_analyzer = {
             settings = {
                 ["rust-analyzer"] = {
@@ -48,7 +47,7 @@ local opts = {
                 },
             },
         },
-        kotlin_language_server = {},
+        -- kotlin_language_server = {},
         taplo = {
             keys = {
                 {
@@ -65,8 +64,8 @@ local opts = {
             },
         },
 
-        zls = {},
-        hls = {},
+        -- zls = {},
+        -- hls = {},
 
         clangd = {
             keys = {

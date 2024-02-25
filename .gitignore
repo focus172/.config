@@ -6,8 +6,8 @@ git/.git-credentials
 gcloud
 
 # home managaed
-environment.d
-fontconfig
+# environment.d
+# fontconfig
 
 # shell
 zsh/.antidote/
@@ -41,3 +41,4 @@ evince
 evolution
 zoom.conf
 zoomus.conf
+VSCodium

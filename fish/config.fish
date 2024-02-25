@@ -1,20 +1,19 @@
-source "$HOME/.config/fish/init.fish"
-
-# $HOME/.config/fish/tty.sh
 
 status --is-login; and begin
-    # Login shell initialisation
-    # set -g --export XDG_DATA_DIRS $HOME/.nix-profile/share:/usr/local/share/:/usr/share/
-    # set -g --export FONTCONFIG_FILE /nix/store/2xji70cxxvpnpifjbyc586yraw9614p5-fontconfig-2.14.0/etc/fonts/fonts.conf
+    # THIS SHOULD NEVER BE THE LOGIN SHELL
+    echo "Oh, no. You are fucked!"
 end
 
 status --is-interactive; and begin
     # Interactive shell initialisation
     set -g fish_greeting
 
-    if string match Darwin (uname) >/dev/null
-        /opt/homebrew/bin/brew shellenv | source
-    end
+    # source "$HOME/.config/fish/init.fish"
+    export PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$HOME/.config/scripts"
+
+    # if string match Darwin (uname) >/dev/null
+    #     /opt/homebrew/bin/brew shellenv | source
+    # end
 
     fish_vi_key_bindings
 

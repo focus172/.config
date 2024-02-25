@@ -70,18 +70,6 @@ alias psmem='ps auxf | sort -nr -k 4'
 alias pscpu='ps auxf | sort -nr -k 3'
 
 
-# git
-# alias addup='git add -u'
-# alias addall='git add .'
-# alias branch='git branch'
-# alias checkout='git checkout'
-# alias clone='git clone'
-# alias commit='git commit -m'
-# alias fetch='git fetch'
-# alias pull='git pull origin'
-# alias push='git push origin'
-# alias stat='git status'
-
 # TODO: remove /etc/inputrc
 
 ### ************* The Binding of  ************* ###
@@ -144,23 +132,9 @@ export SUDO_PROMPT=$'password for\033[32;05;16m %u\033[0m -> '
 #   --color header:italic
 #   --header 'Press CTRL-Y to copy command into clipboard'"
 
-# autoload -Uz compinit && compinit
-
-
 # aliases
 # alias uni="cd $HOME/dox/skool/13/"
 # alias uni-jap="cd $HOME/dox/skool/13/fall/japn/"
 
 alias doom1="chocolate-doom -iwad $HOME/dox/games/DOOM1.wad"
 alias doom2="chocolate-doom -iwad $HOME/dox/games/DOOM2.wad"
-
-
-# # opam configuration
-# [[ ! -r $HOME/.opam/opam-init/init.zsh ]] || source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-
-# alias gaa="git add --all"
-# alias gcm="git commit -m"
-# alias gp="git push"
-
-# alias to update rio term
-# alias rio-update="curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/raphamorim/rio/main/scripts/install.sh | bash"

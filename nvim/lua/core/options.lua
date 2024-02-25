@@ -179,8 +179,8 @@ g["loaded_ruby_provider"] = 0
 
 
 if g.neovide then
-	-- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
-	g.neovide_transparency = 0.0
-	g.transparency = 0.8
-	g.neovide_background_color = "#0f1117" .. string.format("%x", math.floor(255 * g.transparency))
+    -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
+    g.neovide_transparency = 0.0
+    g.transparency = 0.8
+    g.neovide_background_color = "#0f1117" .. string.format("%x", math.floor(255 * g.transparency))
 end

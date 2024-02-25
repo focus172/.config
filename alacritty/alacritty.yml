@@ -9,7 +9,7 @@ window:
   title: Alacritty
 
 shell:
-  program: "/bin/zsh"
+  program: "/bin/fish"
   # args:
   #   - "-c"
   #   - "zellij"

@@ -1,5 +1,5 @@
 add_newline = false
-format = "$nix_shell$directory$container$git_branch $git_status$rust$java$kotlin$zig$golang$cmd_duration$status$character"
+format = "$nix_shell$directory$container $hostname $git_branch $git_status$rust$java$kotlin$zig$golang$cmd_duration$status$character"
 
 aws.disabled = true
 azure.disabled = true
@@ -25,6 +25,11 @@ scala.disabled = true
 shlvl.disabled = true
 swift.disabled = true
 
+[hostname]
+ssh_only = false 
+disabled = false
+format = 'on [$ssh_symbol$hostname](bold purple)'
+
 [character]
 error_symbol = "[❯](bold red)"
 success_symbol = "[❯](bold purple)"
@@ -48,14 +53,13 @@ dox = " "
 dln = " "
 aud = " "
 pix = " "
-skool = "󰑴 "
+# skool = "󰑴 "
 vid = " "
 
 [git_branch]
-format = "[ $symbol $branch](fg:purple)(:$remote_branch)"
+format = "[$symbol $branch](fg:purple)(:$remote_branch)"
 style = ""
 symbol = ""
-
 
 [status]
 disabled = false
@@ -222,13 +226,6 @@ symbol = "✗"
 # # style_user = "green bold"
 # # style_root = "red bold"
 
-[hostname]
-ssh_only = true
-
-# #format = "[$hostname](bold blue) "
-# #disabled = false
-# # format = 'on [$hostname](bold purple) '
-# # trim_at = "."
 
 # #[directory]
 # #disabled = true

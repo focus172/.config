@@ -1,4 +1,3 @@
-
 function backup --argument filename
     cp $filename $filename.bak
 end
@@ -39,7 +38,6 @@ end
 
 
 ## Iterator ##
-
 function coln
     while read -l input
         echo $input | awk '{print $'$argv[1]'}'

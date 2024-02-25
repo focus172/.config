@@ -16,9 +16,6 @@ set -gx GNUPGHOME "$XDG_DATA_HOME/gnupg"
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/pass"
 # export npm_config_prefix="$XDG_DATA_HOME/npm"
 
-export PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$HOME/.config/scripts"
-# export PATH="$PATH:$HOME/.local/share/go/bin/"
-
 
 if string match Darwin (uname) >/dev/null
     export XDG_DESKTOP_DIR="$HOME/Desktop"

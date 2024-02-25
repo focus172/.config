@@ -1,13 +1,13 @@
 vim.loader.enable()
 
 -- [[ bootstrap lazy ]] --
-require("core.lazy").bootstrap()
+require("core.bootstrap")
 
 -- [[ initialization ]] --
 require("core.options")
 
 -- [[ load plugins ]] --
-require("core.lazy").load()
+require("core.lazy")
 
 -- [[ More options ]]
 require("core.post")

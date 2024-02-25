@@ -1,3 +1,6 @@
+-- dont load the plugin
+if true then return {} end
+
 return {
     {
         "mfussenegger/nvim-dap",

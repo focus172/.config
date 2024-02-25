@@ -2,6 +2,25 @@ local Keys = require("core.keys")
 return {
     { "folke/lazy.nvim", tag = "stable" },
 
+    -- tokyonight
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {
+            transparent = true,
+            styles = {
+                sidebars = "transparent",
+                -- floats = "transparent",
+            },
+            style = "moon",
+        },
+        init = function()
+            vim.cmd([[colorscheme tokyonight]])
+        end,
+        enabled = true,
+    },
+
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
@@ -60,6 +79,7 @@ return {
             require("conf.whichkey")
         end,
     },
+
     -- Comments
     {
         "numToStr/Comment.nvim",
@@ -71,12 +91,12 @@ return {
     },
 
     -- project.nvim
-    -- {
-    --     "ahmedkhalf/project.nvim",
-    --     event = "VimEnter",
-    --     cmd = "Telescope projects",
-    --     config = function() require("conf.project").setup() end,
-    -- },
+    {
+        "ahmedkhalf/project.nvim",
+        event = "VimEnter",
+        cmd = "Telescope projects",
+        config = function() require("conf.project").setup() end,
+    },
 
     -- Lir
     -- {
@@ -87,7 +107,7 @@ return {
     --     end,
     -- },
     -- { "Tastyep/structlog.nvim", },
-    --
+
     {
         "nvim-lualine/lualine.nvim",
         -- "hoob3rt/lualine.nvim",
@@ -132,9 +152,8 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         event = { "BufReadPost", "BufNewFile" },
-        config = function()
-            require("conf.indentlines")
-        end,
+        opts = require("conf.indent-blankline"),
+        main = "ibl",
     },
 
     {
