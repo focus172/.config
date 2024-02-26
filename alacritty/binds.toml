@@ -1,3 +1,31 @@
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "I"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "None"
+key = "Paste"
+
+[[keyboard.bindings]]
+action = "None"
+key = "Copy"
+
+[[keyboard.bindings]]
+action = "ReceiveChar"
+key = "L"
+mods = "Control"
+
 # Key bindings
 #
 # Each key binding will specify a:
@@ -91,24 +119,18 @@
 # a no-op if you do not wish to receive input characters for that binding.
 #
 # ReceiveChar event is the same as unbinding it
-key_bindings:
-  - { key: V,         mods: Alt, action: Paste                       }
-  - { key: C,         mods: Alt, action: Copy                        }
+# key_bindings:
 #   - { key: Insert,    mods: Shift,         action: PasteSelection              }
 #   - { key: Key0,      mods: Control,       action: ResetFontSize               }
 #   - { key: Equals,    mods: Control,       action: IncreaseFontSize            }
 #   - { key: Minus,     mods: Control,       action: DecreaseFontSize            }
 #   - { key: F11,       mods: None,          action: ToggleFullscreen            }
-  - { key: I,         mods: Control,       chars: "\x0c"                       }
 #   - { key: PageUp,    mods: None,          action: ScrollPageUp,   mode: ~Alt  }
 #   - { key: PageDown,  mods: None,          action: ScrollPageDown, mode: ~Alt  }
 #   - { key: Home,      mods: Shift,         action: ScrollToTop,    mode: ~Alt  }
 #   - { key: End,       mods: Shift,         action: ScrollToBottom, mode: ~Alt  }
 
 #key_bindings:
-  - { key: Paste,                 action: None }
-  - { key: Copy,                  action: None }
-  - { key: L,     mods: Control,  action: ReceiveChar }
   #- { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
   #- { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp   }
   #- { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }

@@ -1,0 +1,46 @@
+import = ["/home/focus/.config/alacritty/rosepine.toml", "/home/focus/.config/alacritty/binds.toml"]
+
+[cursor]
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+### on 1.0 scalling
+size = 19.0 # small imperfections can appear on even values
+### on 1.5 scalling
+# size = 13.0
+
+[font.bold]
+family = "Hack Nerd Font"
+
+[font.bold_italic]
+family = "Mononoki Nerd Font"
+
+[font.italic]
+family = "Mononoki Nerd Font"
+
+[font.normal]
+family = "Hack Nerd Font"
+
+[mouse]
+hide_when_typing = false
+
+[shell]
+program = "/bin/fish"
+
+[window]
+decorations = "None"
+dynamic_padding = false
+opacity = 0.8
+startup_mode = "Maximized"
+title = "Alacritty"
+
+[window.padding]
+x = 5
+y = 5
