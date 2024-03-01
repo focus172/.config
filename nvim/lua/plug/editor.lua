@@ -52,13 +52,13 @@ return {
         config = require("conf.comment"),
     },
 
-    -- project.nvim
-    {
-        "ahmedkhalf/project.nvim",
-        event = "VimEnter",
-        cmd = "Telescope projects",
-        config = function() require("conf.project").setup() end,
-    },
+    -- -- project.nvim
+    -- {
+    --     "ahmedkhalf/project.nvim",
+    --     event = "VimEnter",
+    --     cmd = "Telescope projects",
+    --     config = function() require("conf.project").setup() end,
+    -- },
 
     -- Lir
     -- {

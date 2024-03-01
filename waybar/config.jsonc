@@ -16,10 +16,10 @@
     "return-type": "json",
     "escape": true,
 
-    "modules-left": [ "wlr/workspaces", "tray", "mpd"],
+    "modules-left": [ "hyprland/workspaces", "tray", "mpd"],
     "modules-center": [ "clock" ],
     "modules-right": ["custom/wallpaper", "battery", "pulseaudio", "backlight", "network"],
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "format": "{icon}",
         "format-active": " {name} ",
         "all-outputs": true,

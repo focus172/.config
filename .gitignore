@@ -36,8 +36,17 @@ VSCodium
 goa-1.0
 gnome-session
 gnome-initial-setup-done
+<<<<<<< HEAD
 spotify
 neofetch
 git/credentials
 fcitx
 fcitx5
+=======
+git/credentials
+spotify
+fcitx5
+fcitx
+neofetch
+rclone-browser
+>>>>>>> bee8af7 (things and more why not)

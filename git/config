@@ -1,5 +1,5 @@
 [credential]
-	helper = "store --file ~/.config/git/.git-credentials"
+	helper = "store" # file is at '~/.config/git/credentials'
 
 [init]
 	defaultBranch = "main"

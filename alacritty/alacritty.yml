@@ -18,17 +18,17 @@ env:
   TERM: "xterm-256color"
 
 font:
-  #normal:
-    #family: "Hack Nerd Font"
+  normal:
+    family: "Hack Nerd Font"
 
-  #bold:
-    #family: "Hack Nerd Font"
+  bold:
+    family: "Hack Nerd Font"
 
-  #italic:
-    #family: "Mononoki Nerd Font"
+  italic:
+    family: "Mononoki Nerd Font"
 
-  #bold_italic:
-    #family: "Mononoki Nerd Font"
+  bold_italic:
+    family: "Mononoki Nerd Font"
 
   ### on 1.0 scalling
   size: 19.0 # small imperfections can appear on even values
