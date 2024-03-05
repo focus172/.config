@@ -1,4 +1,7 @@
-import = ["/home/focus/.config/alacritty/rosepine.toml", "/home/focus/.config/alacritty/binds.toml"]
+import = [
+    "/home/focus/.config/alacritty/rosepine.toml",
+    "/home/focus/.config/alacritty/binds.toml",
+]
 
 [cursor]
 unfocused_hollow = true
@@ -32,7 +35,7 @@ family = "Hack Nerd Font"
 hide_when_typing = false
 
 [shell]
-program = "/bin/fish"
+program = "fish"
 
 [window]
 decorations = "None"
