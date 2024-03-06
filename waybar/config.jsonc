@@ -1,6 +1,5 @@
 //        
 {
-    // "hyprland/window",
     "layer": "top",
     "position": "top",
     // "height": 16,
@@ -16,9 +15,9 @@
     "return-type": "json",
     "escape": true,
 
-    "modules-left": [ "hyprland/workspaces", "tray", "mpd"],
+    "modules-left": [ "hyprland/workspaces", "tray"], // "mpd", "hyprland/window",
     "modules-center": [ "clock" ],
-    "modules-right": ["custom/wallpaper", "battery", "pulseaudio", "backlight", "network"],
+    "modules-right": ["custom/wallpaper", "battery", "pulseaudio", "backlight"], // "network"
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-active": " {name} ",
@@ -39,22 +38,10 @@
         }
     },
     "clock": {
-
         "format": "{: %Y-%m-%d -  %I:%M}",
         // "format": "{:%b %d %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "on-click": "foot -e ttc"
-    },
-    // allow: unused
-    "cpu": {
-        "format": " {usage}%  ",
-        "interval": 3,
-        "tooltip": false
-    },
-    // allow: unused
-    "memory": {
-        "format": "{}%  ",
-        "interval": 3
+        "on-click": "$TERMINAL -e ttc"
     },
     "backlight": {
         "device": "intel_backlight",
@@ -76,6 +63,7 @@
         "format-alt": "{time} {icon}",
         "max-length": 25
     },
+    // unused
     "network": {
         "format-wifi": " ",
         // format-ethernet : "󰈀 ", #{ifname}: {ipaddr}/{cidr}",

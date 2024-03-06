@@ -2,56 +2,25 @@
 
 # Secrets
 github-copilot
-git/.git-credentials
+git/credentials
 gcloud
 
-# BIG files
-rofi/images
-
 # Not config
+spotify
+BraveSoftware
+VSCodium
 obsidian
-discord
-libreoffice
-blender
-obs-studio
+mozc
+zoom*
+fcitx*
 
 # Unsorted ignores
-pavucontrol.ini
-pulse
-dolphin-emu
-dconf
-mpd/playlists
-qastools
-com.modrinth.theseus
-cef_user_data
-mozc
-ibus
-gsconnect
-anthy
-evince
-evolution
-zoom.conf
-zoomus.conf
-VSCodium
-goa-1.0
-gnome-session
-gnome-initial-setup-done
-spotify
-neofetch
-git/credentials
-fcitx
-fcitx5
-git/credentials
-spotify
-fcitx5
-fcitx
-neofetch
-rclone-browser
-bluetuith
-BraveSoftware
 cava
+gtk-*
+ibus
+rclone-browser
+pulse
 environment.d
-
-gtk-3.0
-gtk-4.0
-nushell
+dconf
+cef_user_data
+pavucontrol.ini
