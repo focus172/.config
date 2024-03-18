@@ -1,4 +1,6 @@
-if true then return {} end
+if true then
+	return {}
+end
 
 return {
 	{
@@ -93,18 +95,4 @@ return {
 	},
 	-- needed lsps
 	-- { "gomodifytags", "impl", "gofumpt", "goimports-reviser", "delve" }
-	{
-		"nvim-neotest/neotest",
-		dependencies = {
-			"nvim-neotest/neotest-go",
-		},
-		opts = {
-			adapters = {
-				["neotest-go"] = {
-					-- Here we can set options for neotest-go, e.g.
-					-- args = { "-tags=integration" }
-				},
-			},
-		},
-	},
 }

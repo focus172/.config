@@ -1,18 +1,17 @@
-if true then return {} end
-
 return {
 	-- Telescope
-	{
-	    "nvim-telescope/telescope.nvim",
-	    branch = "0.1.x",
-	    cmd = "Telescope",
-	    dependencies = {
-	        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	        "nvim-lua/plenary.nvim"
-	    },
-	    config = function() require("conf.telescope") end,
-	},
-
+	-- {
+	-- 	"nvim-telescope/telescope.nvim",
+	-- 	branch = "0.1.x",
+	-- 	cmd = "Telescope",
+	-- 	dependencies = {
+	-- 		-- { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	-- 		"nvim-lua/plenary.nvim",
+	-- 	},
+	-- 	config = function()
+	-- 		require("conf.telescope")
+	-- 	end,
+	-- },
 
 	{
 		"nvim-telescope/telescope.nvim",
@@ -78,7 +77,7 @@ return {
 					},
 				},
 			},
-			extensions_list = { "fzf" },
+			-- extensions_list = { "fzf" },
 		},
 		config = function(_, opts)
 			local telescope = require("telescope")
@@ -91,22 +90,22 @@ return {
 		end,
 	},
 
-	{
-		"telescope.nvim",
-		dependencies = {
-			-- project management
-			{
-				"ahmedkhalf/project.nvim",
-				opts = {},
-				event = "VeryLazy",
-				config = function(_, opts)
-					require("project_nvim").setup(opts)
-					require("telescope").load_extension("projects")
-				end,
-				keys = {
-					{ "<leader>fp", "<Cmd>Telescope projects<CR>", desc = "Projects" },
-				},
-			},
-		},
-	},
+	-- {
+	-- 	"telescope.nvim",
+	-- 	dependencies = {
+	-- 		-- project management
+	-- 		{
+	-- 			"ahmedkhalf/project.nvim",
+	-- 			opts = {},
+	-- 			event = "VeryLazy",
+	-- 			config = function(_, opts)
+	-- 				require("project_nvim").setup(opts)
+	-- 				require("telescope").load_extension("projects")
+	-- 			end,
+	-- 			keys = {
+	-- 				{ "<leader>fp", "<Cmd>Telescope projects<CR>", desc = "Projects" },
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 }

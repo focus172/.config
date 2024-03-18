@@ -3,4 +3,5 @@ video/*=mpv.desktop;
 audio/*=mpv.desktop;
 image/*=imv.desktop;
 text/plain=nvim.desktop;
+text/markdown=nvim.desktop;
 text/html=brave.desktop;
