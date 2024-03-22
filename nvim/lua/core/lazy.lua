@@ -9,5 +9,5 @@ require("lazy").setup("plug", {
             not_loaded = "",
         },
     },
-    change_detection = { enabled = true },
+    change_detection = { enabled = false },
 })

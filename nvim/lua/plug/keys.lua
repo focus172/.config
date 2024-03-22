@@ -16,7 +16,6 @@ return {
                 ["gc"] = { name = "+comment" },
                 ["]"] = { name = "+next" },
                 ["["] = { name = "+prev" },
-                ["<leader><tab>"] = { name = "+tabs" },
                 ["<leader>b"] = { name = "+buffer" },
                 ["<leader>c"] = { name = "+code" },
                 ["<leader>f"] = { name = "+file/find" },
@@ -25,12 +24,10 @@ return {
                 ["<leader>q"] = { name = "+quit/session" },
                 ["<leader>s"] = { name = "+search" },
                 ["<leader>u"] = { name = "+ui" },
-                ["<leader>un"] = { name = "+noice" },
                 ["<leader>w"] = { name = "+windows" },
                 ["<leader>x"] = { name = "+diagnostics/quickfix" },
                 ["<leader>d"] = { name = "+debug" },
                 ["<leader>da"] = { name = "+adapters" },
-                ["<leader>t"] = { name = "+test" },
             },
         },
         config = function(_, opts)
@@ -40,6 +37,6 @@ return {
             local wk = require("which-key")
             wk.setup(opts)
             wk.register(opts.defaults)
-        end
-    }
+        end,
+    },
 }
