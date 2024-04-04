@@ -1,5 +1,4 @@
 -- [[ Load Basic Keymaps ]] --
--- require("core.keys").load_module("general", { desc = "Core mapping" })
 
 -- [[ Auto Commands ]] --
 local function augroup(name)

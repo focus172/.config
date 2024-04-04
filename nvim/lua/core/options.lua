@@ -7,7 +7,7 @@ g.maplocalleader = " "
 o.autowrite = true -- Enable auto write
 o.clipboard = "unnamedplus" -- Sync with system clipboard. See `:help 'clipboard'`
 o.completeopt = "menu,menuone,noselect"
-o.conceallevel = 3 -- Hide * markup for bold and italic
+o.conceallevel = 2 -- Hide * markup for bold and italic
 o.confirm = true -- Confirm to save changes before exiting modified buffer
 o.cursorline = true -- Enable highlighting of the current line
 o.expandtab = true -- Use spaces instead of tabs
@@ -180,7 +180,7 @@ g["loaded_ruby_provider"] = 0
 
 if g.neovide then
     -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
-    g.neovide_transparency = 0.0
-    g.transparency = 0.8
+    g.neovide_transparency = 0.9
+    g.transparency = 0.9
     g.neovide_background_color = "#0f1117" .. string.format("%x", math.floor(255 * g.transparency))
 end

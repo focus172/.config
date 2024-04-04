@@ -18,14 +18,8 @@ tooltip {
 
 #workspaces button {
   padding: 5px;
-  /*     background-color: transparent; */
   color: #313244;
-  /*     color: @rosewater; */
-  margin-right: 5px;
-  /*     box-shadow: inset 0 -3px transparent; */
-  /*     Avoid rounded borders under each workspace name */
-  /*     border: none; */
-  /*     border-radius: 1px; */ }
+  margin-right: 5px; }
 
 #workspaces button.active {
   color: #a6adc8; }
@@ -45,24 +39,6 @@ tooltip {
   color: #cdd6f4;
   border-radius: 10px; }
 
-/* #workspaces button:hover { */
-/*     background: rgba(0, 0, 0, 0.2); */
-/*     box-shadow: inset 0 -3px @maroon; */
-/*     border-radius: 5px; */
-/*     border: none; */
-/**/
-/* } */
-/**/
-/* #workspaces button.active { */
-/*     background-color: @surface2; */
-/*     box-shadow: inset 0 -3px @pink; */
-/*     border-radius: 5px; */
-/*     border: none; */
-/* } */
-/**/
-/* #workspaces button.urgent { */
-/*     background-color: shade(alpha(@red, 0.7), 0.8); */
-/* } */
 #custom-wallpaper,
 #window,
 #clock,
@@ -73,11 +49,12 @@ tooltip {
 #tray,
 #mpd,
 #backlight {
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   background: #1e1e2e;
   padding: 0px 0px;
-  margin: 0px 0px;
-  margin-top: 5px;
-  /* border: 3px solid #181825;*/
+  margin: 5px;
   padding-right: 5px;
   padding-left: 5px; }
 
@@ -90,37 +67,13 @@ tooltip {
 
 #custom-wallpaper {
   color: #f38ba8;
-  border-radius: 10px;
-  margin-right: 10px;
-  /* making the icon appear in the center of a square */
   padding-left: 9px;
   padding-right: 16px; }
 
-#tray {
-  border-radius: 10px;
-  margin-left: 10px;
-  margin-right: 10px; }
-
-#mpd {
-  border-radius: 10px;
-  padding-left: 12px;
-  margin-left: 10px; }
-
 #backlight {
-  border-radius: 0px 10px 10px 0px;
-  margin-left: 0px;
-  margin-right: 10px;
   color: #f9e2af; }
 
-#window {
-  border-radius: 0px 10px 10px 0px;
-  margin-left: 0px;
-  margin-right: 10px; }
-
 #clock {
-  border-radius: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
   color: #fab387; }
 
 #pulseaudio {
@@ -130,58 +83,4 @@ tooltip {
   color: #cba6f7; }
 
 #battery {
-  border-radius: 10px 0px 0px 10px;
-  margin-left: 10px;
-  margin-right: 0px;
   color: #a6e3a1; }
-
-/* window#waybar.alacritty { */
-/*     background-color: #3F3F3F; */
-/* } */
-/* window#waybar.firefox { */
-/*     background-color: #000000; */
-/*     border: none; */
-/* } */
-/* #mode { */
-/*     background-color: #64727D; */
-/*     border-bottom: 3px solid #ffffff; */
-/* } */
-/* #battery { */
-/*     background-color: #ffffff; */
-/*     color: #000000; */
-/* } */
-/* #battery.charging, #battery.plugged { */
-/*     color: #ffffff; */
-/*     background-color: #26A65B; */
-/* } */
-@keyframes blink {
-  to {
-    background-color: #ffffff;
-    /* background-color: #1e222a; */
-    color: #000000;
-    /* color: #e06c75; */ } }
-#battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate; }
-
-/* #battery { */
-/*   margin-top: 5px; */
-/*   margin-bottom: 4px; */
-/*   margin-right: 6px; */
-/*   margin-left: 0px; */
-/*   padding: 0px 9px; */
-/*   color: #b6beca; */
-/* } */
-/* #battery.charging, #battery.plugged { */
-/*   color: #a3b8ef; */
-/* } */
-/*   #battery.discharging { */
-/*     color: #b6beca; */
-/*   } */
-
-/*# sourceMappingURL=style.css.map */

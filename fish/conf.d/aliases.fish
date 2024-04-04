@@ -3,10 +3,13 @@
 
 ### 1 Key Aliases
 alias e "$EDITOR" # nvim
-alias o "$OPENER" # handlr open
-alias v "$VISUAL" # bat --paging always
-alias m "$VIDEO" # mpv
-alias i "$IMAGE" # imv
+# alias o "$OPENER"
+alias o "handlr open"
+# alias m "$VIDEO"
+alias m "mpv"
+# alias i "$IMAGE"
+alias i "imv"
+
 alias n newsboat
 # alias g="gix"
 

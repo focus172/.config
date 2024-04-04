@@ -2,10 +2,8 @@
 # https://lindypress.net/rss
 # https://notrelated.xyz/rss
 # https://landchad.net/rss.xml
-# https://based.cooking/index.xml
 
 blogs
-https://www.strongtowns.org/journal?format=rss "~strong towns" "blogs"
 # https://log.pyratebeard.net/rss.xml "~pyratebeard" "blogs"
 # http://feeds.xero.nu/rss/blog/newest "~xero" "blogs"
 # https://venam.nixers.net/blog/feed.xml "~venam" "blogs"
@@ -16,14 +14,19 @@ https://www.strongtowns.org/journal?format=rss "~strong towns" "blogs"
 # https://www.digitalrights.ie/feed/ "~digital rights ireland" "blogs"
 
 newsletters
-https://www.archlinux.org/feeds/news/ "~arch" "newsletters"
-https://asahilinux.org/blog/index.xml "~asahi" "newsletters"
+https://www.strongtowns.org/journal?format=rss "~strong towns" "blogs"
+# https://www.archlinux.org/feeds/news/ "~arch" "newsletters"
+# https://asahilinux.org/blog/index.xml "~asahi" "newsletters"
 # https://pluralistic.net/feed/ "~cory - pluralistic" "newsletters"
 # https://fedoramagazine.org/feed/ "~fedora magazine" "newsletters"
 # https://itsfoss.com/feed/ "~it's foss" "newsletters"
 # http://feeds.feedburner.com/comiclistfeed "~comic list - this week" "newsletters" "comics"
 # http://feeds.feedburner.com/comiclistnextweek "~comic list - next week" "newsletters" "comics"
 # http://www.metalstorm.net/rss/news.xml "~metalstorm" "newsletters" "music"
+
+news
+# https://soylentnews.org/index.rss "~soylent news" "news headlines"
+# https://www.phoronix.com/rss.php "~phoronix" "news tech"
 
 podcasts
 # http://www.2600.com/oth-broadband.xml "~off the hook" "podcasts"
@@ -56,17 +59,12 @@ music
 # https://media.defcon.org/DEF%20CON%20rss/defcon-18-music.rss "~defcon" "music"
 # http://www.hrhmag.com/category/event-news/hrh-vikings/feed "~hrh vikings" "music"
 
-code
-https://www.kernel.org/feeds/kdist.xml "~kernel releases" "code"
-
 security
+https://www.kernel.org/feeds/kdist.xml "~kernel releases" "code"
 # https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss.xml "~nvd all" "security"
 # https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml "~nvd analysed" "security"
 
-news
-# https://soylentnews.org/index.rss "~soylent news" "news headlines"
-# https://www.phoronix.com/rss.php "~phoronix" "news tech"
-
+https://based.cooking/index.xml
 # bloggers
 #https://andregarzia.com/feeds/all.atom.xml
 #https://amycastor.com/feed/

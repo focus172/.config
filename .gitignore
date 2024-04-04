@@ -14,6 +14,9 @@ mozc
 zoom*
 fcitx*
 
+# Hm
+broot
+
 # Unsorted ignores
 cava
 gtk-*
@@ -30,3 +33,7 @@ obs-studio
 nethack
 emacs/
 fontconfig
+direnv
+wiki-tui
+
+retroarch

@@ -1,6 +1,6 @@
 return {
-	{
-		"alaviss/nim.nvim",
-		ft = "nim",
-	},
+    {
+        "alaviss/nim.nvim",
+        ft = "nim",
+    },
 }

@@ -24,7 +24,7 @@ return {
             ensure_installed = {
                 "html",
                 "markdown",
-                "markdown_inline",
+                -- "markdown_inline",
                 "lua",
                 "rust",
                 "toml",
