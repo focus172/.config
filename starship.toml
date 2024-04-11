@@ -1,34 +1,33 @@
 add_newline = false
-format = "$nix_shell$directory$container $hostname $git_branch $git_status$rust$java$kotlin$zig$golang$cmd_duration$status$character"
+format = "$nix_shell$directory$hostname$git_branch$git_status$cmd_duration$status $character"
+# $git_commit
+# right_format = "$git_status"
 
-aws.disabled = true
-azure.disabled = true
-buf.disabled = true
-bun.disabled = true
-cmake.disabled = true
-cobol.disabled = true
-conda.disabled = true
-daml.disabled = true
-dart.disabled = true
-docker_context.disabled = true
-elm.disabled = true
-hg_branch.disabled = true
-julia.disabled = true
-java.disabled = true
-nix_shell.disabled = false
-nodejs.disabled = true
-perl.disabled = true
-php.disabled = true
-python.disabled = true
-ruby.disabled = true
-scala.disabled = true
-shlvl.disabled = true
-swift.disabled = true
+[nix_shell]
+format = '[$symbol]($style)'
+symbol = '❄️ '
+
+[directory]
+format = "[](fg:green)[$path](bg:green fg:white)[](fg:green)"
+truncation_symbol = "…/"
+truncation_length = 5
+# style = "fg:#e3e5e5 bg:#769ff0"
+# format = "[ $path ]($style)"
+
+[directory.substitutions]
+".config" = " "
+aud = " "
+cur = "󱌢 "
+dev = " "
+dln = " "
+dox = " "
+pix = " "
+vid = " "
+school = "󰑴 "
 
 [hostname]
-ssh_only = false 
-disabled = false
-format = 'on [$ssh_symbol$hostname](bold purple)'
+ssh_only = true
+format = ' on [$ssh_symbol$hostname](bold purple)'
 
 [character]
 error_symbol = "[❯](bold red)"
@@ -38,26 +37,11 @@ success_symbol = "[❯](bold purple)"
 format = "[$duration ](fg:yellow)"
 min_time = 1000
 
-[container]
-format = "[$symbol ](yellow)"
-symbol = " 󰏖"
-
-[directory]
-format = "[](fg:green)[$path](bg:green fg:white)[](fg:green)"
-
-[directory.substitutions]
-".config" = " "
-code = " "
-cur = "󱌢 "
-dox = " "
-dln = " "
-aud = " "
-pix = " "
-# skool = "󰑴 "
-vid = " "
+[git_status]
+format = '[\[$all_status$ahead_behind\]]($style)'
 
 [git_branch]
-format = "[$symbol $branch](fg:purple)(:$remote_branch)"
+format = " [$symbol $branch](fg:purple)(:$remote_branch) "
 style = ""
 symbol = ""
 
@@ -65,203 +49,9 @@ symbol = ""
 disabled = false
 format = "[$symbol](fg:red)"
 map_symbol = true
-not_executable_symbol = " Not Executable"
-not_found_symbol = "󰍉 Not Found"
+not_executable_symbol = " "
+not_found_symbol = "󰍉 "
 sigint_symbol = "󰂭 "
 signal_symbol = "󱑽 "
 success_symbol = ""
 symbol = "✗"
-
-# format="""
-# [](bg:none fg:#312C2E)\
-# $hostname\
-# $directory\
-# $git_branch\
-# \
-# $elixir\
-# $rust\
-# \
-# $character
-# """
-# # $hostname
-# # $git_commit 
-#
-# right_format = """$git_status""" #$cmd_duration
-# add_newline = false 
-#
-# # Prompt symbols 
-# [character]
-# success_symbol = "[](#8EC07C bold)"
-# # success_symbol = "[🞈](#a6e3a1)"
-# error_symbol = "[](#AD685A)"
-# # error_symbol = "[🞈](#f38ba8)"
-# vicmd_symbol = "[](#DD8F6E)"
-# # vicmd_symbol = "[🞈](#f9e2af)"
-# # format = "$symbol [|](bold bright-black) "
-#
-# [directory]
-# format = "[ ](bg:#312C2E fg:#DD8F6E)[$path](bg:#312C2E fg:#83A598 bold)[ ]($style)"
-# style = "bg:none fg:#312C2E"
-# truncation_length = 3
-# truncate_to_repo=false
-# # format = "[]($style)[(bg:#f5c2e7 fg:#eba0ac)$path](bg:#f5c2e7 fg:#a84c8d)[ ]($style)"
-# # style = "fg:#f5c2e7"
-#
-# [hostname]
-# ssh_only = false 
-# style = "bold bg:#312C2E fg:#83A598"
-# format =  "[$hostname ]($style)"
-#
-# [git_branch]
-# symbol = "" # 
-# format = "[]($style)[$symbol $branch](bg:#312C2E fg:#83A598 bold)[ ]($style)"
-# style = "bg:none fg:#312C2E"
-# # #8EC07C 
-# # #769ff0 
-# # #394260
-# # format = "[]($style)[[ ](bg:#f5c2e7 fg:#a84c8d bold)$branch](bg:#f5c2e7 fg:#4c4f69)[ ]($style)"
-# # style = "fg:#f5c2e7"
-#
-# [git_status]
-# format = "[]($style)[$all_status$ahead_behind](bg:#312C2E fg:#b4befe)[ ]($style)"
-# style = "bg:none fg:#312C2E"
-# conflicted = "="
-# ahead =	"⇡${count}"
-# behind = "⇣${count}"
-# diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-# up_to_date = ""
-# untracked = "?${count}"
-# stashed = ""
-# modified = "!${count}"
-# staged = "+${count}"
-# renamed = "»${count}"
-# deleted = "${count}"
-#
-# [cmd_duration]
-# min_time = 1
-# format = "[]($style)[[神](bg:#312C2E fg:#eba0ac bold)$duration](bg:#312C2E fg:#BBC3DF)[ ]($style)"
-# disabled = false
-# style = "bg:none fg:#312C2E"
-#
-# # [username]
-# # show_always = true
-# # style_user = "bold red"
-# # format = "[$user]($style)"
-#
-# # [directory]
-# # truncation_length = 3
-# # home_symbol = "~"
-# # format = "[$path](bold cyan)"
-#
-#
-# # [git_commit]
-# # commit_hash_length = 7
-# # tag_symbol = "🔖 "
-#
-# # [git_state]
-# # format = '[\($state( $progress_current of $progress_total)\)]($style) '
-# # cherry_pick = "[🍒 PICKING](bold red)"
-#
-# # [git_metrics]
-# # added_style = "bold blue"
-# # format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
-#
-# # [git_status]
-# # format = '([\[$all_status$ahead_behind\]]($style))'
-# # style = "bold blue"
-# # conflicted = "= "
-# # ahead = "⇡ ${count} "
-# # behind = "⇣ ${count} "
-# # diverged = "⇕ "
-# # up_to_date = ""
-# # untracked = "? "
-# # stashed = "$ "
-# # modified = "! "
-# # staged = '[++\($count\)](green)'
-# # renamed = "» "
-# # deleted = " "
-#
-#
-# #format = """
-# #[░▒▓](#a3aed2)\
-# #[  ](bg:#a3aed2 fg:#090c0c)\
-# #[](bg:#769ff0 fg:#a3aed2)\
-# #$directory\
-# #[](fg:#769ff0 bg:#394260)\
-# #$git_branch\
-# #$git_status\
-# #[](fg:#394260 bg:#212736)\
-# #$rust\
-# #$golang\
-# #[](fg:#212736 bg:#1d2230)\
-# #$time\
-# #[ ](fg:#1d2230)\
-# #$character"""
-#
-# # 
-#
-# #add_newline = false
-#
-# #[directory]
-# #style = "fg:#e3e5e5 bg:#769ff0"
-# #format = "[ $path ]($style)"
-# #truncation_length = 3
-# #truncation_symbol = "…/"
-#
-# #[git_status]
-# #style = "bg:#394260"
-# #format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
-#
-# #[time]
-# #style = "bg:#1d2230"
-# #format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
-#
-#
-# #[username]
-# #style_user = 'blue'
-# #style_root = 'black bold'
-# #format = '[$user]($style) '
-# #disabled = true
-# #show_always = true
-# # style_user = "green bold"
-# # style_root = "red bold"
-
-
-# #[directory]
-# #disabled = true
-
-
-# # [cmd_duration]
-# # min_time = 4
-# # show_milliseconds = false
-# # disabled = false
-# # style = "bold italic red"
-#
-#
-# # [git_status]
-# # format = '([\[$all_status$ahead_behind\]]($style) )'
-# # stashed = "[${count}*](green)" 
-# # modified = "[${count}+](yellow)" 
-# # deleted =  "[${count}-](red)" 
-# # conflicted =  "[${count}~](red)" 
-# # ahead = "⇡${count}"
-# # behind = "⇣${count}"
-# # untracked = "[${count}?](blue)" 
-# # staged = "[${count}+](green)" 
-#
-# # [git_state]
-# # style =	"bold red"
-# # format = "[$state( $progress_current/$progress_total) ]($style)"
-# # rebase = "rebase"
-# # merge = "merge"	
-# # revert = "revert"	
-# # cherry_pick = "cherry"
-# # bisect = "bisect"	
-# # am = "am"	
-# # am_or_rebase = "am/rebase"
-
-# [elixir]
-# symbol = " "
-# format = "[$symbol $version ](fg:#769ff0)"
-# [haskell]
-# symbol = "λ "

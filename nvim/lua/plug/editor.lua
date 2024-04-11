@@ -21,18 +21,14 @@ return {
         enabled = true,
     },
 
-    -- FileTree
+    { "MunifTanjim/nui.nvim", lazy = false },
+
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        cmd = "Neotree",
+        "stevearc/oil.nvim",
+        cmd = "Oil",
         event = "User DirOpened",
-        dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", "MunifTanjim/nui.nvim" },
-        config = require("conf.neotree"),
-        keys = {
-            { "<C-n>", "<cmd> Neotree toggle <CR>", desc = "Toggle [N]eotree" },
-            { "<leader>e", "<cmd> Neotree left <CR>", desc = "Focus File [E]xplorer" },
-            { "<leader>we", "<cmd> Neotree float <CR>", desc = "Floating [W]indow File [E]xplorer" },
-        },
+        opts = {},
+        dependencies = { "nvim-tree/nvim-web-devicons" },
     },
 
     {

@@ -138,19 +138,21 @@ vim.keymap.set("n", "<leader><tab>p", "<cmd>tabprevious<cr>", { desc = "[P]revio
 -- vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 
 
+vim.keymap.set("n", "-", "<cmd> Oil <CR>", { desc = "Edit Parent Dir" })
+
 -- # Telelscope
 vim.keymap.set("n", "<leader><space>", "<cmd> Telescope buffers <CR>", { desc = "Find [ ] buffers" })
 vim.keymap.set("n", "<leader>ff", "<cmd> Telescope find_files <CR>", { desc = "[F]ind [F]iles" })
--- find files with rg
-vim.keymap.set("n", "<leader>fw", "<cmd> Telescope find_files <CR>", { desc = "[F]ind [W]ord" })
+
+-- rg
+vim.keymap.set("n", "<leader>fw", "<cmd> Telescope live_grep <CR>", { desc = "[F]ind [W]ord" })
+-- looks for the work under your cursor + selection
+vim.keymap.set("n", "<leader>fg", "<cmd> Telescope grep_string <CR>", { desc = "[F]ind [G]rep" })
 
 vim.keymap.set("n", "<leader>p", "<cmd> Telescope registers <CR>", { desc = "[P]aste Register" })
 
 -- return {
 --     n = {
---         -- find files with grep
---         ["<leader>fg"] = { "<cmd> Telescope grep_string <CR>", "[F]ind [S]tring" },
---
 --         -- ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "[F]ind [A]ll" },
 --
 --         ["<leader>fH"] = { "<cmd> Telescope help_tags <CR>", "[F]ind [H]elp" },

@@ -42,10 +42,11 @@ return {
 
     -- { "mg979/vim-visual-multi" },
     -- { 'LionC/nest.nvim' }
-    {
-        "github/copilot.vim",
-        lazy = false,
-    },
+
+    -- {
+    --     "github/copilot.vim",
+    --     lazy = false,
+    -- },
 
     -- Flash enhances the built-in search functionality by showing labels
     -- at the end of each match, letting you quickly jump to a specific
