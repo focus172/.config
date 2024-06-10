@@ -18,20 +18,6 @@ return {
         -- keys = Keys.get_module("harpoon"),
     },
 
-    -- search/replace in multiple files
-    {
-        "nvim-pack/nvim-spectre",
-        cmd = "Spectre",
-        opts = { open_cmd = "noswapfile vnew" },
-        keys = {
-            { "<leader>sr", "<cmd> Spectre <CR>", desc = "[S]pectre [R]eplace" },
-            -- ["<leader>st"] = {
-            --     function() require("spectre").toggle() end,
-            --     "[S]pectre [T]oggle",
-            -- },
-        },
-    },
-
     -- better diagnostics list and others
     {
         "folke/trouble.nvim",

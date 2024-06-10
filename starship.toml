@@ -34,7 +34,7 @@ error_symbol = "[❯](bold red)"
 success_symbol = "[❯](bold purple)"
 
 [cmd_duration]
-format = "[$duration ](fg:yellow)"
+format = " [$duration](fg:yellow)"
 min_time = 1000
 
 [git_status]
@@ -47,11 +47,11 @@ symbol = ""
 
 [status]
 disabled = false
-format = "[$symbol](fg:red)"
+format = " [$symbol](fg:red)"
 map_symbol = true
-not_executable_symbol = " "
-not_found_symbol = "󰍉 "
-sigint_symbol = "󰂭 "
-signal_symbol = "󱑽 "
+not_executable_symbol = ""
+not_found_symbol = "󰍉"
+sigint_symbol = "󰂭"
+signal_symbol = "󱑽"
 success_symbol = ""
 symbol = "✗"

@@ -2,7 +2,7 @@
 # see abbr.fish for a more full picture of my aliases
 
 ### 1 Key Aliases
-alias e "$EDITOR" # nvim
+# alias e "$EDITOR" # nvim
 # alias o "$OPENER"
 alias o "handlr open"
 # alias m "$VIDEO"

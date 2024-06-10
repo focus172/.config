@@ -21,8 +21,6 @@ return {
         enabled = true,
     },
 
-    { "MunifTanjim/nui.nvim", lazy = false },
-
     {
         "stevearc/oil.nvim",
         cmd = "Oil",
@@ -269,9 +267,9 @@ return {
     --     },
     -- },
 
-    {
-        "NoahTheDuke/vim-just",
-        lazy = false,
-        -- event = "BufRead",
-    },
+    -- {
+    --     "NoahTheDuke/vim-just",
+    --     lazy = false,
+    --     -- event = "BufRead",
+    -- },
 }

@@ -13,35 +13,35 @@ return {
             -- kotlin_language_server = {},
             -- hls = {},
             -- ocamllsp = {},
-            lua_ls = {
-                -- on_attach = function(client, bufnr)
-                --     -- Done by NoneLs
-                --     client.server_capabilities.documentFormattingProvider = false
-                --     client.server_capabilities.documentRangeFormattingProvider = false
-                --
-                --     -- Done by Treesitter
-                --     client.server_capabilities.semanticTokensProvider = nil
-                -- end,
-                -- capabilities = capabilities,
-                settings = {
-                    Lua = {
-                        -- diagnostics = { globals = { "vim" } },
-                        workspace = {
-                            library = {
-                                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                                -- [vim.fn.stdpath("data") .. "/lazy/extensions/nvchad_types"] = true,
-                                [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
-                            },
-                            maxPreload = 100000,
-                            preloadFileSize = 10000,
-                            checkThirdParty = false,
-                        },
-                        completion = { callSnippet = "Replace" },
-                        telemetry = { enable = false },
-                    },
-                },
-            },
+            -- lua_ls = {
+            --     -- on_attach = function(client, bufnr)
+            --     --     -- Done by NoneLs
+            --     --     client.server_capabilities.documentFormattingProvider = false
+            --     --     client.server_capabilities.documentRangeFormattingProvider = false
+            --     --
+            --     --     -- Done by Treesitter
+            --     --     client.server_capabilities.semanticTokensProvider = nil
+            --     -- end,
+            --     -- capabilities = capabilities,
+            --     settings = {
+            --         Lua = {
+            --             -- diagnostics = { globals = { "vim" } },
+            --             workspace = {
+            --                 library = {
+            --                     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+            --                     [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+            --                     -- [vim.fn.stdpath("data") .. "/lazy/extensions/nvchad_types"] = true,
+            --                     [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
+            --                 },
+            --                 maxPreload = 100000,
+            --                 preloadFileSize = 10000,
+            --                 checkThirdParty = false,
+            --             },
+            --             completion = { callSnippet = "Replace" },
+            --             telemetry = { enable = false },
+            --         },
+            --     },
+            -- },
         },
     },
     config = function(_, opts)
@@ -55,11 +55,11 @@ return {
                 -- Enable completion triggered by <c-x><c-o>
                 -- vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-                local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
-
-                if inlay_hint then
-                    inlay_hint(bufnr, true)
-                end
+                -- local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
+                --
+                -- if inlay_hint then
+                --     inlay_hint(bufnr, true)
+                -- end
 
                 local map = function(mode, key, action, desc)
                     local opt = { buffer = bufnr }

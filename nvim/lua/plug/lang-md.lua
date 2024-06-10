@@ -93,9 +93,6 @@ return {
 
 
 
-
-
-
         -- Optional, set to true if you use the Obsidian Advanced URI plugin.
         -- https://github.com/Vinzent03/obsidian-advanced-uri
         use_advanced_uri = false,

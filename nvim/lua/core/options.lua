@@ -184,3 +184,14 @@ if g.neovide then
     g.transparency = 0.9
     g.neovide_background_color = "#0f1117" .. string.format("%x", math.floor(255 * g.transparency))
 end
+
+-- [[ Auto Commands ]] --
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+    group = vim.api.nvim_create_augroup("highlight_yank" , { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    pattern = '*',
+})

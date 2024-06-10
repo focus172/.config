@@ -5,7 +5,7 @@ return {
     -- init = function() require("core.keys").load_module("telescope") end,
     dependencies = {
         "nvim-lua/plenary.nvim",
-        "ahmedkhalf/project.nvim",
+        -- "ahmedkhalf/project.nvim",
         -- {
         --     "nvim-telescope/telescope-fzf-native.nvim",
         --     build = "make",

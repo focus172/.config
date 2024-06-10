@@ -1,4 +1,4 @@
-local icons = require("icons")
+-- local icons = require("icons")
 
 local opts = {
 	options = {
@@ -17,10 +17,10 @@ local opts = {
 			{
 				"diagnostics",
 				symbols = {
-					error = icons.diagnostics.Error,
-					warn = icons.diagnostics.Warn,
-					info = icons.diagnostics.Info,
-					hint = icons.diagnostics.Hint,
+					-- error = icons.diagnostics.Error,
+					-- warn = icons.diagnostics.Warn,
+					-- info = icons.diagnostics.Info,
+					-- hint = icons.diagnostics.Hint,
 				},
 			},
 			{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
@@ -35,44 +35,30 @@ local opts = {
             },
 		},
 		lualine_x = {
-			{
-				function()
-					return require("noice").api.status.command.get()
-				end,
-				cond = function()
-					return package.loaded["noice"] and require("noice").api.status.command.has()
-				end,
-				-- color = Util.fg("Statement"),
-			},
-			{
-				function()
-					return require("noice").api.status.mode.get()
-				end,
-				cond = function()
-					return package.loaded["noice"] and require("noice").api.status.mode.has()
-				end,
-				-- color = Util.fg("Constant"),
-			},
-			{
-				function()
-					return "  " .. require("dap").status()
-				end,
-				cond = function()
-					return package.loaded["dap"] and require("dap").status() ~= ""
-				end,
-				-- color = Util.fg("Debug"),
-			},
-			{
-				require("lazy.status").updates,
-				cond = require("lazy.status").has_updates,
-				-- color = Util.fg("Special"),
-			},
+			-- {
+			-- 	function()
+			-- 		return require("noice").api.status.command.get()
+			-- 	end,
+			-- 	cond = function()
+			-- 		return package.loaded["noice"] and require("noice").api.status.command.has()
+			-- 	end,
+			-- 	-- color = Util.fg("Statement"),
+			-- },
+			-- {
+			-- 	function()
+			-- 		return require("noice").api.status.mode.get()
+			-- 	end,
+			-- 	cond = function()
+			-- 		return package.loaded["noice"] and require("noice").api.status.mode.has()
+			-- 	end,
+			-- 	-- color = Util.fg("Constant"),
+			-- },
 			{
 				"diff",
 				symbols = {
-					added = icons.git.added,
-					modified = icons.git.modified,
-					removed = icons.git.removed,
+					-- added = icons.git.added,
+					-- modified = icons.git.modified,
+					-- removed = icons.git.removed,
 				},
 			},
             -- {

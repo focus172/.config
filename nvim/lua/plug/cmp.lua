@@ -26,19 +26,19 @@ return {
 
         local cmp = require("cmp")
         local luasnip = require("luasnip")
-        local icons = require("icons")
+        -- local icons = require("icons")
 
         local opts = {
             completion = {
                 completeopt = "menu,menuone,noinsert",
             },
             formatting = {
-                format = function(_, item)
-                    if icons[item.kind] then
-                        item.kind = icons[item.kind] .. item.kind
-                    end
-                    return item
-                end,
+                -- format = function(_, item)
+                --     if icons[item.kind] then
+                --         item.kind = icons[item.kind] .. item.kind
+                --     end
+                --     return item
+                -- end,
             },
             window = {
                 completion = {},

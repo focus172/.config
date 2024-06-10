@@ -14,21 +14,21 @@
     "return-type": "json",
     "escape": true,
 
-    "modules-left": [ "sway/workspaces", "tray" ], // "mpd"
+    "modules-left": [ "hyprland/workspaces", "mpd", "tray" ],
     "modules-center": [ "clock" ],
-    "modules-right": [ "custom/wallpaper", "battery", "pulseaudio", "backlight" ],
+    "modules-right": [ "custom/wallpaper", "battery", "pulseaudio", "pulseaudio#microphone", "backlight" ],
     "sway/workspaces": {
         "format": "{icon}",
         // "format-active": " {name} ",
         "all-outputs": true,
         "on-click": "activate",
         "format-icons": {
-            "1": "一", "2": "二", "3": "三", "4": "四", "5": "五",
-            "6": "六", "7": "七", "8": "八", "9": "九", "10": "十"
+            // "1": "一", "2": "二", "3": "三", "4": "四", "5": "五",
+            // "6": "六", "7": "七", "8": "八", "9": "九", "10": "十"
         }
     },
     "clock": {
-        "format": "{: %Y-%m-%d -  %I:%M}",
+        "format": "{: %Y-%m-%d -  %H:%M}",
         // "format": "{:%b %d %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "on-click": "$TERMINAL -e ttc"
@@ -67,22 +67,22 @@
             "car": " "
         },
         "on-click": "pavucontrol",
+        // "on-click": "foot alsamixer",
         "on-scroll-up": "amixer set Master 1%+",
         "on-scroll-down": "amixer set Master 1%-",
         "scroll-step": 1,
-        "tooltip-format": "{desc}, {volume}%",
-        // "on-click": "${pkgs.pamixer}/bin/pamixer -t"
+        "tooltip-format": "{desc}, {volume}%"
     },
-    // "pulseaudio#microphone": {
-    //     "format": "{format_source}",
-    //     "tooltip": false,
-    //     "format-source": " {volume}%",
-    //     "format-source-muted": " Muted",
-    //     "on-click": "pavucontrol",
-    //     "on-scroll-up": "",
-    //     "on-scroll-down": "",
-    //     "scroll-step": 1
-    // },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "tooltip": false,
+        "format-source": "{volume}% ",
+        "format-source-muted": "Muted ",
+        "on-click": "foot alsamixer",
+        "scroll-step": 1
+        // "on-scroll-up": "",
+        // "on-scroll-down": "",
+    },
     "mpd": {
         // - {album}
         "format": "{stateIcon}",

@@ -1,16 +1,30 @@
 vim.loader.enable()
 
 -- [[ bootstrap lazy ]] --
-require("core.bootstrap")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 -- [[ initialization ]] --
 require("core.options")
 
 -- [[ load plugins ]] --
-require("core.lazy")
+require("lazy").setup("plug", {
+    defaults = { lazy = true },
+    install = { colorscheme = { "tokyonight" } },
+    change_detection = { enabled = false },
+})
 
 -- [[ More options ]]
-require("core.post")
 require("core.keys")
 
 -- See `:help modeline`

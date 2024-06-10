@@ -3,11 +3,19 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
+(setq user-full-name "Evan Stokdyk"
+      user-mail-address "evan.stokdyk@gmail.com"
+      ;;+doom-dashboard-banner-file "family-photo.jpg"
+      )
+
+;; Turn on pixel scrolling
+(pixel-scroll-precision-mode t)
+
+;; Turn on abbrev mode
+(add-to-list 'default-frame-alist '(width . 144))
+(add-to-list 'default-frame-alist '(height . 50))
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -21,18 +29,18 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+(setq doom-font (font-spec :family "Hack Nerd Font" :size 21 :weight 'semi-light)
+      ;;doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13)
+      )
+
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;; see `load-theme' function
+(setq doom-theme 'doom-outrun-electric)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -40,7 +48,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-;; (setq org-directory "~/org/")
+(setq org-directory "~/dox/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -75,29 +83,42 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(use-package! obsidian
-  :ensure t
-  :demand t
+;; (use-package! obsidian
+;;   :ensure t
+;;   :demand t
+;;   :config
+;;   (obsidian-specify-path "~/dox/dnd")
+;;   ;;(global-obsidian-mode t)
+;;   :custom
+;;   ;; This directory will be used for `obsidian-capture' if set.
+;;   (obsidian-inbox-directory "inbox")
+;;   ;; The directory for daily notes (file name is YYYY-MM-DD.md)
+;;                                         ;(obsidian-daily-notes-directory "daily")
+;;   :bind (:map obsidian-mode-map
+;;               ;; Replace C-c C-o with Obsidian.el's implementation. It's ok to use another key binding.
+;;               ("C-c C-o" . obsidian-follow-link-at-point)
+;;               ;; Jump to backlinks
+;;               ("C-c C-b" . obsidian-backlink-jump)
+;;               ;; If you prefer you can use `obsidian-insert-link'
+;;               ("C-c C-l" . obsidian-insert-wikilink)))
+
+(use-package! org-roam
   :config
-  (obsidian-specify-path "~/dox")
-  (global-obsidian-mode t)
-  :custom
-  ;; This directory will be used for `obsidian-capture' if set.
-  ;; (obsidian-inbox-directory "Inbox")
-  ;; Create missing files in inbox? - when clicking on a wiki link
-  ;; t: in inbox, nil: next to the file with the link
-  ;; default: t
-  ;(obsidian-wiki-link-create-file-in-inbox nil)
-  ;; The directory for daily notes (file name is YYYY-MM-DD.md)
-  (obsidian-daily-notes-directory "Daily")
-  ;; Directory of note templates, unset (nil) by default
-  ;(obsidian-templates-directory "Templates")
-  ;; Daily Note template name - requires a template directory. Default: Daily Note Template.md
-  ;(setq obsidian-daily-note-template "Daily Note Template.md")
-  :bind (:map obsidian-mode-map
-    ;; Replace C-c C-o with Obsidian.el's implementation. It's ok to use another key binding.
-    ("C-c C-o" . obsidian-follow-link-at-point)
-    ;; Jump to backlinks
-    ("C-c C-b" . obsidian-backlink-jump)
-    ;; If you prefer you can use `obsidian-insert-link'
-    ("C-c C-l" . obsidian-insert-wikilink)))
+  (setq org-roam-directory (file-truename "~/dox")
+        org-roam-db-update-on-save t)
+  (require 'org-roam-export))
+
+(use-package! websocket
+  :after org-roam)
+
+(use-package! org-roam-ui
+  :after org-roam ;; or :after org
+  ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+  ;;         a hookable mode anymore, you're advised to pick something yourself
+  ;;         if you don't care about startup time, use
+  ;;  :hook (after-init . org-roam-ui-mode)
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow nil
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
